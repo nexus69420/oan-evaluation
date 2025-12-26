@@ -1,0 +1,6 @@
+# Include base requirements
+-r requirements.txt
+
+# Logfire and Pydantic AI
+pydantic-ai
+logfire

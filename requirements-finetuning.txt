@@ -1,0 +1,12 @@
+# Include base requirements
+-r requirements.txt
+
+# Fine-tuning dependencies
+unsloth            # installs all required packages by itself
+huggingface-hub
+wandb
+accelerate
+datasets
+typing-extensions==4.8.0
+# flash-attn         # install if required
+
