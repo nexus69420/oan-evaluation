@@ -112,7 +112,6 @@ Required environment variables (set in `.env`):
 src/tasks/
 ├── prepare_dataset.py    # Step 1: Download and process
 ├── upload_dataset.py     # Step 2: Upload to HuggingFace
-├── update_dataset.py     # [DEPRECATED] Combined script
 └── README.md            # This file
 
 data/hf_dataset_staging/  # Local staging area
