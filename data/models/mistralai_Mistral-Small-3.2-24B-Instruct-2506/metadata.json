@@ -1,0 +1,9 @@
+{
+    "provider_name": "openai",
+    "provider_base_url": "http://216.48.185.71:8080/v1/",
+    "model_name": "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+    "model_settings": {
+        "parallel_tool_calls": true
+    },
+    "date": "2025-12-26 17:59:56"
+}

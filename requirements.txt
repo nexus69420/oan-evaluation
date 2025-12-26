@@ -16,3 +16,5 @@ tenacity
 matplotlib
 openai-harmony
 datasets
+marqo
+rapidfuzz

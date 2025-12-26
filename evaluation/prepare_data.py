@@ -1,0 +1,88 @@
+import os
+import sys
+import json
+import asyncio
+from datetime import datetime
+import pandas as pd
+import numpy as np
+
+## Model name to be evaluated
+model_name = "mistralai/Mistral-Small-3.2-24B-Instruct-2506"
+
+
+# Get the parent directory - oan-evaluation
+current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Change path to the project root
+project_dir = "/Users/adityachhabra/Github/sunbird-va-api"
+os.chdir(project_dir)
+sys.path.append(project_dir)
+
+PATH_TO_QUESTIONS_DATA = os.path.join(current_dir, "data", "evaluation_questions.csv")
+MODEL_DATA_PATH        = os.path.join(current_dir, "data", "models", model_name.replace("/", "_"))
+os.makedirs(MODEL_DATA_PATH, exist_ok=True)
+
+from dotenv import load_dotenv
+load_dotenv()
+
+from tqdm.asyncio import tqdm
+from agents.agrinet import agrinet_agent
+from agents.deps import FarmerContext
+from pydantic_ai.providers.openai import OpenAIProvider
+from pydantic_ai.models.openai import OpenAIChatModel, OpenAIChatModelSettings
+
+provider = OpenAIProvider(
+    base_url="http://216.48.185.71:8080/v1",
+    api_key="dummy",  # vLLM doesn't need it, but some clients require a value
+)
+model = OpenAIChatModel(
+    model_name,
+    provider=provider,
+)
+
+settings = OpenAIChatModelSettings(parallel_tool_calls=True)
+
+async def get_response(q, target_lang='mr', farmer_id=None):
+    deps = FarmerContext(
+            query=q,
+            lang_code=target_lang,
+            farmer_id=farmer_id
+    )
+    # NOTE: Forcing Positive Moderation - This is a hack to ensure the query is valid and not banned.
+    deps.update_moderation_str("Valid Agricultural (Proceed with the query)")
+    res = await agrinet_agent.run(deps.get_user_message(), deps=deps, model=model, model_settings=settings)
+    answer = res.output    
+    all_messages = json.loads(res.all_messages_json())
+    internal_messages = all_messages[1:-1]
+    return {
+        'answer': answer, 
+        'agent_turns': internal_messages, 
+    }
+
+async def main():
+    questions_df = pd.read_csv(PATH_TO_QUESTIONS_DATA).replace({np.nan: None})
+    questions_df['farmer_id'] = questions_df['farmer_id'].apply(lambda x: str(int(x)) if x is not None else None)
+    results = []
+    for idx, row in tqdm(questions_df.iterrows(), desc="Processing questions"):
+        question     = row['question']
+        farmer_id = row['farmer_id']
+        result = await get_response(question, target_lang='mr', farmer_id=farmer_id)
+        result_dict = {**row.to_dict(), **result}
+        results.append(result_dict)
+    return results
+
+if __name__ == "__main__":
+    results = asyncio.run(main())
+    # Metadata:
+    metadata = {
+        "provider_name": provider.name,
+        "provider_base_url": provider.base_url,
+        "model_name": model.model_name,
+        "model_settings": settings,
+        "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+
+    with open(os.path.join(MODEL_DATA_PATH, "data.json"), "w", encoding="utf-8") as f:
+        json.dump(results, f, ensure_ascii=False, indent=4)
+
+    with open(os.path.join(MODEL_DATA_PATH, "metadata.json"), "w", encoding="utf-8") as f:
+        json.dump(metadata, f, ensure_ascii=False, indent=4)
