@@ -1,0 +1,9 @@
+{
+    "provider_name": "openai",
+    "provider_base_url": "https://api.openai.com/v1/",
+    "model_name": "gpt-4.1-mini",
+    "model_settings": {
+        "parallel_tool_calls": true
+    },
+    "date": "2025-12-30 18:53:38"
+}
