@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 
 ## Model name to be evaluated
-model_name = "mistralai/Mistral-Small-3.2-24B-Instruct-2506"
+model_name = "openai/gpt-oss-20b"
 
 
 # Get the parent directory - oan-evaluation
@@ -39,7 +39,13 @@ model = OpenAIChatModel(
     provider=provider,
 )
 
-settings = OpenAIChatModelSettings(parallel_tool_calls=True)
+settings = OpenAIChatModelSettings(
+    temperature=1.0,
+    top_k=100,
+    top_p=1.0,
+    openai_reasoning_effort='medium',
+    parallel_tool_calls=True
+    )
 
 async def get_response(q, target_lang='mr', farmer_id=None):
     deps = FarmerContext(
@@ -63,11 +69,17 @@ async def main():
     questions_df['farmer_id'] = questions_df['farmer_id'].apply(lambda x: str(int(x)) if x is not None else None)
     results = []
     for idx, row in tqdm(questions_df.iterrows(), desc="Processing questions"):
-        question     = row['question']
-        farmer_id = row['farmer_id']
-        result = await get_response(question, target_lang='mr', farmer_id=farmer_id)
-        result_dict = {**row.to_dict(), **result}
-        results.append(result_dict)
+        for _ in range(3):
+            try:
+                question     = row['question']
+                farmer_id = row['farmer_id']
+                result = await get_response(question, target_lang='mr', farmer_id=farmer_id)
+                result_dict = {**row.to_dict(), **result}
+                results.append(result_dict)
+                break
+            except Exception as e:
+                print(f"Error: {e}")
+                continue
     return results
 
 if __name__ == "__main__":
