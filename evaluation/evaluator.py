@@ -40,8 +40,6 @@ def format_agent_turns_to_markdown(
     """
 
     out: List[str] = []
-    out.append("# Agent Trace\n")
-
     for i, turn in enumerate(agent_turns, start=1):
         role = turn.get("role") or turn.get("speaker") or "unknown"
         turn_id = turn.get("id") or turn.get("turn_id")
