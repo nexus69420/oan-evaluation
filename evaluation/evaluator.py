@@ -4,6 +4,8 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
 from helpers.utils import get_prompt
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def _json_dump(obj: Any) -> str:
