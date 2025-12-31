@@ -1,12 +1,22 @@
 from __future__ import annotations
 import json
+import os
+import sys
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
-from helpers.utils import get_prompt
 from dotenv import load_dotenv
 load_dotenv()
+import logfire
+logfire.configure(scrubbing=False)
 
+# Get the parent directory - oan-evaluation
+current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(current_dir)
+os.chdir(current_dir)
+sys.path.append(current_dir)
+
+from helpers.utils import get_prompt
 
 def _json_dump(obj: Any) -> str:
     return json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=False)
@@ -175,7 +185,6 @@ class MarathiQuality(BaseModel):
 
 class IntegrityHygiene(BaseModel):
     tool_name_confidentiality: Metric  # high = no leakage
-    mandi_date_rule_compliance: Metric  # high = never fabricates dates; only uses provided dates
 
 class EvaluationResult(BaseModel):
     protocol: ProtocolCompliance

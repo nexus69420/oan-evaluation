@@ -5,7 +5,7 @@ import warnings
 warnings.filterwarnings('ignore')
 from tqdm.asyncio import tqdm
 from dotenv import load_dotenv
-from evaluation.evaluator import evaluation_agent, format_agent_turns_to_markdown
+from evaluator import evaluation_agent, format_agent_turns_to_markdown
 
 load_dotenv()
 
@@ -29,7 +29,7 @@ async def main():
 
         message = "\n\n".join(message_parts)
         eval_result = await evaluation_agent.run(message)
-        data['evaluation'] = eval_result.output.model_dump()
+        item['evaluation'] = eval_result.output.model_dump()
         
         eval_results.append(data)
     return eval_results
