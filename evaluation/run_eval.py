@@ -15,7 +15,9 @@ current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_DATA_PATH        = os.path.join(current_dir, "data", "models", model_name.replace("/", "_"))
 json_file = os.path.join(MODEL_DATA_PATH, "data.json")
 eval_json_file = os.path.join(MODEL_DATA_PATH, "evaluation.json")   
-data = json.load(open(json_file, 'r', encoding='utf-8'))
+
+with open(json_file, 'r', encoding='utf-8') as f:
+    data = json.load(f)
 
 async def main():
     eval_results = []
@@ -28,10 +30,18 @@ async def main():
         ]
 
         message = "\n\n".join(message_parts)
-        eval_result = await evaluation_agent.run(message)
-        item['evaluation'] = eval_result.output.model_dump()
-        
-        eval_results.append(data)
+
+        try:
+            eval_result = await evaluation_agent.run(message)
+            item['evaluation'] = eval_result.output.model_dump()
+        except Exception as e:
+            print(f"Error evaluating item {item['question']}: {e}")
+            continue #skip the item and continue with the next item
+
+        print(f"Evaluated item {item['question']} successfully")
+        #append item ,not full data
+        eval_results.append(item)
+
     return eval_results
 
 if __name__ == "__main__":
