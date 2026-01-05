@@ -9,7 +9,7 @@ from evaluator import evaluation_agent, format_agent_turns_to_markdown
 
 load_dotenv()
 
-model_name = "mistralai/Mistral-Small-3.2-24B-Instruct-2506"
+model_name = "gpt-4.1-mini"
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_DATA_PATH = os.path.join(current_dir, "data", "models", model_name.replace("/", "_"))
 json_file = os.path.join(MODEL_DATA_PATH, "data.json")
