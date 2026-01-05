@@ -131,11 +131,22 @@ def format_agent_turns_to_markdown(
                     out.append(_json_dump(payload))
                     out.append("```")
 
+            # elif kind in ("retry-prompt", "retry_prompt"):
+            #     prompt = part.get("content") or part.get("text") or ""
+            #     out.append("> **Retry prompt**")
+            #     out.append("> " + "\n> ".join(prompt.rstrip().splitlines()) if prompt.strip() else "> _Empty retry prompt_")
             elif kind in ("retry-prompt", "retry_prompt"):
-                prompt = part.get("content") or part.get("text") or ""
+                # Get content or text
+                raw_value = part.get("content") or part.get("text") or ""
+                
+                # Handle list case: join list items into string
+                if isinstance(raw_value, list):
+                    prompt = "\n".join(str(item) for item in raw_value)
+                else:
+                    prompt = str(raw_value) if raw_value else ""
+                ###added
                 out.append("> **Retry prompt**")
                 out.append("> " + "\n> ".join(prompt.rstrip().splitlines()) if prompt.strip() else "> _Empty retry prompt_")
-
             else:
                 out.append("_Unrecognized part kind; dumping raw part_")
                 out.append("```json")
