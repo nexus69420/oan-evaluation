@@ -3,7 +3,8 @@
     "provider_base_url": "http://216.48.185.71:8080/v1/",
     "model_name": "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
     "model_settings": {
+        "temperature": 0.15,
         "parallel_tool_calls": true
     },
-    "date": "2025-12-30 16:48:00"
+    "date": "2026-01-06 02:32:17"
 }

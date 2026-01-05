@@ -18,6 +18,24 @@ from pydantic_ai.messages import ModelMessage
 load_dotenv()
 
 
+def walk_dir(path: str, keyword: str = "", extension: str = "") -> list:
+    """Walk through a directory and return a list of filepaths (full path).
+    
+    Args:
+        path (str): Path to the directory to walk through.
+        keyword (str, optional): Keyword to filter files. Defaults to "".
+        extension (str, optional): Extension to filter files. Defaults to "".
+    Returns:
+        list: List of filepaths.
+    """
+    list_of_files = []
+    for (dirpath, dirnames, filenames) in os.walk(path):
+        for filename in filenames:
+            if (filename.endswith(extension)) & (str(keyword) in filename):
+                list_of_files.append(os.path.join(dirpath, filename))
+    list_of_files.sort()
+    return list_of_files
+    
 
 def get_today_date_str() -> str:
     """Get today's date as a string in the format Monday, 23rd May 2025."""

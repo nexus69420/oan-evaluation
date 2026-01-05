@@ -5,6 +5,7 @@ import sys
 from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
+from pydantic_ai.models.openai import OpenAIChatModelSettings
 from dotenv import load_dotenv
 load_dotenv()
 import logfire
@@ -12,151 +13,23 @@ logfire.configure(scrubbing=False)
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(current_dir)
 os.chdir(current_dir)
 sys.path.append(current_dir)
 
 from helpers.utils import get_prompt
 
-def _json_dump(obj: Any) -> str:
-    return json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=False)
-
 
 def format_agent_turns_to_markdown(
-    agent_turns: List[Dict[str, Any]],
-    *,
-    collapse_thinking: bool = True,
-    collapse_tool_payloads: bool = False,
-) -> str:
+    agent_turns: List[Dict[str, Any]]) -> str:
     """
-    Convert agent_turns into readable Markdown.
-
-    Assumes turn shape (flexible):
-      turn: { "role": "...", "parts": [ ... ], ... }
-      part: { "part_kind": "...", ... }
-
-    Thinking is ALWAYS included.
-    Tool call/return payloads are rendered as JSON fenced blocks.
+    Convert agent_turns into readable format by dumping parts as JSON.
     """
-
-    out: List[str] = []
-    for i, turn in enumerate(agent_turns, start=1):
-        role = turn.get("role") or turn.get("speaker") or "unknown"
-        turn_id = turn.get("id") or turn.get("turn_id")
-
-        header = f"## Turn {i} ({role})"
-        if turn_id is not None:
-            header += f" `{turn_id}`"
-        out.append(header)
-
-        parts = turn.get("parts") or []
-        if not parts:
-            out.append("_No parts_")
-            out.append("")
-            continue
-
-        for j, part in enumerate(parts, start=1):
-            kind = part.get("part_kind") or part.get("kind") or "unknown"
-            out.append(f"### Part {j}: `{kind}`")
-
-            if kind in ("text", "message", "content"):
-                text = part.get("content") or part.get("text") or ""
-                out.append(text.rstrip() if text.strip() else "_Empty text_")
-
-            elif kind in ("thinking", "reasoning"):
-                thinking = part.get("content") or part.get("text") or ""
-                if not thinking.strip():
-                    out.append("_Empty thinking_")
-                elif collapse_thinking:
-                    out.append("<details>")
-                    out.append("<summary>Thinking</summary>\n")
-                    out.append("```text")
-                    out.append(thinking.rstrip())
-                    out.append("```")
-                    out.append("</details>")
-                else:
-                    out.append("```text")
-                    out.append(thinking.rstrip())
-                    out.append("```")
-
-            elif kind in ("tool-call", "tool_call"):
-                tool_name = part.get("tool_name") or part.get("name") or part.get("tool") or "unknown_tool"
-                args = part.get("args") or part.get("arguments") or {}
-                call_id = part.get("call_id") or part.get("tool_call_id")
-
-                meta = f"**Tool call:** `{tool_name}`"
-                if call_id:
-                    meta += f"  \n**Call id:** `{call_id}`"
-                out.append(meta)
-
-                payload = {"tool": tool_name, "arguments": args}
-                if collapse_tool_payloads:
-                    out.append("<details>")
-                    out.append("<summary>Arguments (JSON)</summary>\n")
-                    out.append("```json")
-                    out.append(_json_dump(payload))
-                    out.append("```")
-                    out.append("</details>")
-                else:
-                    out.append("```json")
-                    out.append(_json_dump(payload))
-                    out.append("```")
-
-            elif kind in ("tool-return", "tool_result", "tool-output", "tool_output"):
-                tool_name = part.get("tool_name") or part.get("name") or part.get("tool") or "unknown_tool"
-                call_id = part.get("call_id") or part.get("tool_call_id")
-                result = part.get("result")
-                error = part.get("error")
-
-                meta = f"**Tool return:** `{tool_name}`"
-                if call_id:
-                    meta += f"  \n**Call id:** `{call_id}`"
-                out.append(meta)
-
-                payload: Dict[str, Any] = {"tool": tool_name}
-                if error is not None:
-                    payload["error"] = error
-                if result is not None:
-                    payload["result"] = result
-
-                if collapse_tool_payloads:
-                    out.append("<details>")
-                    out.append("<summary>Result (JSON)</summary>\n")
-                    out.append("```json")
-                    out.append(_json_dump(payload))
-                    out.append("```")
-                    out.append("</details>")
-                else:
-                    out.append("```json")
-                    out.append(_json_dump(payload))
-                    out.append("```")
-
-            # elif kind in ("retry-prompt", "retry_prompt"):
-            #     prompt = part.get("content") or part.get("text") or ""
-            #     out.append("> **Retry prompt**")
-            #     out.append("> " + "\n> ".join(prompt.rstrip().splitlines()) if prompt.strip() else "> _Empty retry prompt_")
-            elif kind in ("retry-prompt", "retry_prompt"):
-                # Get content or text
-                raw_value = part.get("content") or part.get("text") or ""
-                
-                # Handle list case: join list items into string
-                if isinstance(raw_value, list):
-                    prompt = "\n".join(str(item) for item in raw_value)
-                else:
-                    prompt = str(raw_value) if raw_value else ""
-                ###added
-                out.append("> **Retry prompt**")
-                out.append("> " + "\n> ".join(prompt.rstrip().splitlines()) if prompt.strip() else "> _Empty retry prompt_")
-            else:
-                out.append("_Unrecognized part kind; dumping raw part_")
-                out.append("```json")
-                out.append(_json_dump(part))
-                out.append("```")
-
-            out.append("")  # blank line between parts
-
-        out.append("")  # blank line between turns
-
+    out = []
+    for t, turn in enumerate(agent_turns):
+        out.append(f"## Turn {t+1}")
+        out.append(json.dumps(turn['parts'], ensure_ascii=False, indent=2))
+        out.append("\n\n")  # blank line between turns
+    
     return "\n".join(out)
 
 class Metric(BaseModel):
@@ -201,9 +74,9 @@ class EvaluationResult(BaseModel):
     safety: SafetyPolicy
     response: ResponseQuality
     integrity: IntegrityHygiene
-    marathi: Optional[MarathiQuality] = None  # include only if selected_language == "mr"
+    marathi: MarathiQuality  # Only evaluating Marathi for now
 
-    overall_score: int = Field(..., ge=0, le=100)
+    overall_score: int = Field(..., ge=0, le=10)
     summary: str = Field(..., description="1–3 lines: strongest points + top improvement")
 
 
@@ -212,6 +85,9 @@ evaluation_agent = Agent(
     name="Evaluation Agent",
     instrument=True,
     output_type=EvaluationResult,
-    retries=2,
+    retries=3,
     system_prompt=get_prompt('evaluation_system'),
+    model_settings=OpenAIChatModelSettings(
+        openai_reasoning_effort='medium',
+    )
 )

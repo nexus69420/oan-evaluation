@@ -7,8 +7,7 @@ import pandas as pd
 import numpy as np
 
 ## Model name to be evaluated
-model_name = "openai/gpt-oss-20b"
-
+model_name = "gpt-4.1"
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,8 +30,9 @@ from pydantic_ai.providers.openai import OpenAIProvider
 from pydantic_ai.models.openai import OpenAIChatModel, OpenAIChatModelSettings
 
 provider = OpenAIProvider(
-    base_url="http://216.48.185.71:8080/v1",
-    api_key="dummy",  # vLLM doesn't need it, but some clients require a value
+    #base_url="http://216.48.185.71:8080/v1",
+    #api_key="dummy",  # vLLM doesn't need it, but some clients require a value
+    api_key=os.getenv("OPENAI_API_KEY"),
 )
 model = OpenAIChatModel(
     model_name,
@@ -40,10 +40,10 @@ model = OpenAIChatModel(
 )
 
 settings = OpenAIChatModelSettings(
-    temperature=1.0,
-    top_k=100,
-    top_p=1.0,
-    openai_reasoning_effort='medium',
+    # temperature=0.15,
+    # top_k=100,
+    # top_p=1.0,
+    # openai_reasoning_effort='medium',
     parallel_tool_calls=True
     )
 
@@ -84,6 +84,10 @@ async def main():
 
 if __name__ == "__main__":
     results = asyncio.run(main())
+
+    with open(os.path.join(MODEL_DATA_PATH, "data.json"), "w", encoding="utf-8") as f:
+        json.dump(results, f, ensure_ascii=False, indent=4)
+
     # Metadata:
     metadata = {
         "provider_name": provider.name,
@@ -93,8 +97,6 @@ if __name__ == "__main__":
         "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
-    with open(os.path.join(MODEL_DATA_PATH, "data.json"), "w", encoding="utf-8") as f:
-        json.dump(results, f, ensure_ascii=False, indent=4)
 
     with open(os.path.join(MODEL_DATA_PATH, "metadata.json"), "w", encoding="utf-8") as f:
         json.dump(metadata, f, ensure_ascii=False, indent=4)
