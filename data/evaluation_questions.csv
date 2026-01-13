@@ -1,102 +1,471 @@
 question,category,agristack_required,farmer_id
-माझा महाडीबीटी अर्ज स्टेटस दाखवा.,MahaDBT,Yes,50396788689
-Aadhaar eKYC MahaDBT madhe yashaswi jhale ka?,MahaDBT,Yes,30230052162
-MahaDBT पोर्टलवर अर्जाची पडताळणी पूर्ण होण्यासाठी साधारण किती दिवस लागतात?,MahaDBT,Yes,26815933009
-बँक खाते पडताळणी अयशस्वी झाल्यास महाडीबीटीमध्ये दुरुस्ती कशी करावी?,MahaDBT,Yes,15759514812
-MahaDBT लाभ कोणत्या बँकेत जमा झाला आहे ते तपासा.,MahaDBT,Yes,62891426784
-माझ्या अर्जात कोणती कागदपत्रे पुन्हा अपलोड करायची आहेत?,MahaDBT,Yes,40881321091
-MahaDBT madhe arja submit yogya jhala ki nahi he kase kalel?,MahaDBT,Yes,30230052162
-महाडीबीटीमध्ये अर्जाची नवीन अपडेट किंवा लॉटरी लागली आहे का?,MahaDBT,Yes,50396788689
-महाडीबीटी पोर्टलवर योजना बदलण्यासाठी अर्जात बदल करण्याची प्रक्रिया काय आहे?,MahaDBT,Yes,26815933009
-नागपूर जिल्ह्यातील गोदामात संत्रा साठवणुकीसाठी ओलावा नियंत्रणाची सुविधा आहे का?,Warehouse,No,
-माझ्या जवळच्या शासकीय गोदामात जागा आरक्षित करण्याची प्रक्रिया काय आहे?,Warehouse,Yes,62891426784
-बीड जिल्ह्यात धान्य वाळवण्याची सुविधा सध्या कोठे उपलब्ध आहे?,Warehouse,No,
-तूर साठवणुकीदरम्यान होणारे नुकसान टाळण्यासाठी शास्त्रोक्त पद्धत सांगा.,Warehouse,No,
-गोदामात साठवलेल्या मालाचा विमा उतरवण्याची सोय असते का?,Warehouse,No,
-गोदामात धान्य ठेवण्यासाठी दरमहा किती भाडे आकारले जाते?,Warehouse,No,
-गोदामात कीटक नियंत्रणासाठी (Pest Control) कोणत्या सुविधा आहेत?,Warehouse,No,
-तांदूळ दीर्घकाळ साठवण्यासाठी गोदामात कोणती खबरदारी घेतली जाते?,Warehouse,No,
-जळगाव जिल्ह्यातील जवळच्या गोदामाचा संपर्क क्रमांक आणि पत्ता द्या.,Warehouse,No,
-माझ्या गावाजवळ उपलब्ध असलेल्या सी.एच.सी (CHC) केंद्राचा पत्ता सांगा.,CHC,Yes,40881321091
-CHC kendramadhun bhadyane milnarya avjaranchi yadi kashi milel?,CHC,Yes,30230052162
-गाव पातळीवर उपलब्ध असलेल्या CHC मध्ये ट्रॅक्टर भाड्याचे प्रति तास दर काय आहेत?,CHC,Yes,15759514812
-तालुक्यात एकूण किती सी.एच.सी केंद्रे अधिकृतपणे नोंदणीकृत आहेत?,CHC,Yes,50396788689
-शासकीय आणि खासगी CHC केंद्रांच्या सेवा शुल्कात काय फरक असतो?,CHC,Yes,62891426784
-CHC kendrache kamkaju vel ani suttinchi mahiti kuthe milel?,CHC,Yes,30230052162
-पेरणी यंत्राची होम डिलिव्हरी सी.एच.सी केंद्राकडून मिळते का?,CHC,Yes,26815933009
-मशागतीसाठी रोटाव्हेटर आणि नांगर सी.एच.सी वर उपलब्ध आहेत का?,CHC,Yes,40881321091
-हंगामात कृषी यंत्रांची आगाऊ नोंदणी कशी करावी?,CHC,Yes,15759514812
-कृषी विज्ञान केंद्रातील (KVK) चालू शेतकरी मेळावे आणि प्रशिक्षणांची माहिती द्या.,KVK,Yes,50396788689
-KVK कडे उपलब्ध असलेल्या पीक मॉनिटरिंग सेवांची माहिती आणि शुल्क सांगा.,KVK,Yes,15759514812
-महिला शेतकऱ्यांसाठी कृषी विज्ञान केंद्र (KVK) मध्ये कोणते स्वतंत्र प्रशिक्षण कार्यक्रम आहेत?,KVK,No,
-कृषी विज्ञान केंद्र (KVK) कडून सुधारित बियाणे वितरणाची सोय कोठे आहे?,KVK,Yes,62891426784
-FPO किंवा बचत गटांसाठी कृषी विज्ञान केंद्र (KVK) कोणत्या तांत्रिक सेवा पुरवते?,KVK,No,
-तालुक्यानुसार कृषी विज्ञान केंद्रांची (KVK) यादी आणि संपर्क क्रमांक द्या.,KVK,Yes,30230052162
-शेतमजुरांच्या कौशल्य विकासासाठी कृषी विज्ञान केंद्र (KVK) प्रशिक्षण देते का?,KVK,Yes,15759514812
-KVK मध्ये पीक रोगनिदानासाठी नमुना कोठे जमा करावा लागतो?,KVK,No,
-पाणी संवर्धन आणि ठिबक सिंचनावर कृषी विज्ञान केंद्र मार्गदर्शन देते का?,KVK,No,
-माझ्या जवळच्या मृदा चाचणी प्रयोगशाळेचा (Soil Lab) फोन नंबर काय आहे?,Soil Labs,Yes,30230052162
-Soil Lab cha purna patta ani nakashavaril sthan dakhva.,Soil Labs,Yes,50396788689
-माती चाचणीसाठी शासकीय प्रयोगशाळेत सध्या किती शुल्क आकारले जाते?,Soil Labs,Yes,26815933009
-विशेष सूक्ष्म अन्नद्रव्य माती चाचणीसाठी वेगळे शासकीय शुल्क लागते का?,Soil Labs,Yes,15759514812
-सर्व प्रकारच्या मृदा चाचण्यांचे प्रमाणित शासकीय दरपत्रक कोठे मिळेल?,Soil Labs,No,
-माती नमुना घेण्याची योग्य पद्धत आणि खबरदारी सांगा.,Soil Labs,No,
-माती चाचणीचा अहवाल ऑनलाइन पोर्टलवर पाहण्याची सोय आहे का?,Soil Labs,No,
-माती सुधारण्यासाठी शिफारस केलेले खत व्यवस्थापन अहवालात मिळते का?,Soil Labs,No,
-लहान आणि अत्यल्प भूधारक शेतकऱ्यांसाठी मृदा चाचणीवर काही सवलत आहे का?,Soil Labs,No,
-Thandi vadhyas draksha pikache sanrakshan kase karave?,Advisory,No,
-जास्त पाऊस झाल्यास कपाशी पिकाचे नुकसान टाळण्यासाठी काय उपाय करावेत?,Advisory,No,
-दुष्काळ परिस्थितीत संत्रा आणि मोसंबी बागांची कोणती विशेष काळजी घ्यावी?,Advisory,No,
-गारपीट झाल्यास द्राक्ष पिकाच्या झालेल्या नुकसानीवर काय त्वरित उपाय आहेत?,Advisory,No,
-उष्णतेच्या लाटेत केळी पिकाचे संरक्षण करण्यासाठी सावलीची काय सोय करावी?,Advisory,No,
-हवामान अंदाजावर आधारित रबी हंगामाचे पीक नियोजन कसे करावे?,Advisory,Yes,26815933009
-हवेतील आर्द्रता वाढल्यास कांदा पिकावरील करपा रोग कसा टाळावा?,Advisory,No,
-अचानक तापमान बदलल्यास हरभरा पिकातील मर रोग रोखण्यासाठी काय करावे?,Advisory,No,
-Soyabean pikache utpadan vadhavnyasathi sudharit tips dya.,Advisory,Yes,30230052162
-गहू पिकासाठी संतुलित खत व्यवस्थापनाचा योग्य डोस आणि वेळ सांगा.,Advisory,Yes,62891426784
-आर्द्रतेमुळे तूर पिकावर शेंग पोखरणाऱ्या अळीचा प्रादुर्भाव वाढण्याची शक्यता आहे का?,Weather Historical,No,
-गेल्या आठवड्यातील ढगाळ वातावरणामुळे गहू पिकात तांबेरा रोगाचा धोका वाढला होता का?,Weather Historical,No,
-वाऱ्याचा वेग जास्त असल्याने ऊस पिकाला कोसळण्यापासून वाचवण्यासाठी काय खबरदारी घ्यायची होती?,Weather Historical,No,
-वादळी परिस्थितीमुळे कापूस पिकाचे नुकसान टाळण्यासाठी कोणती तांत्रिक मदत लागली असती?,Weather Historical,No,
-कालच्या जोरदार वाऱ्यामुळे भाजीपाला पिकावर आलेला ताण कमी करण्यासाठी काय करावे?,Weather Historical,No,
-अतिवृष्टीमुळे सोयाबीन पिकावर झालेल्या प्रतिकूल परिणामांचा गेल्या १५ दिवसांचा डेटा काय सांगतो?,Weather Historical,Yes,40881321091
-गेल्या ३ दिवसांतील हवामानाचा हरभरा पिकातील परागीभवनावर काय परिणाम झाला?,Weather Historical,Yes,15759514812
-Gahu perni sathi prati hectari kitti biyane vaparave?,Advisory,Yes,40881321091
-मागील हंगामात पाऊस उशिरा आल्यामुळे पेरणीच्या तारखांमध्ये काय बदल सुचवले होते?,Weather Historical,No,
-कृषी केंद्रांची आणि खत दुकानांची नियमित गुणवत्ता तपासणी कोणामार्फत केली जाते?,Agri Assistant Contact,Yes,62891426784
-कृषी निविष्ठांच्या गुणवत्तेबाबत तक्रार कोठे व कोणत्या अधिकाऱ्याकडे करावी?,Agri Assistant Contact,Yes,40881321091
-नवीन खत विक्री परवाना मिळवण्यासाठी कोणत्या विभागाकडे अर्ज करावा?,Agri Assistant Contact,Yes,30230052162
-कृषी निविष्ठा तक्रार नोंदवण्यासाठी अधिकृत हेल्पलाईन नंबर काय आहे?,Agri Assistant Contact,Yes,26815933009
-नवीन शेतकरी नोंदणी करण्यासाठी आवश्यक कागदपत्रे कोणाकडे जमा करावीत?,Agri Assistant Contact,Yes,62891426784
-शेतकरी नोंदणीसाठी विस्तार अधिकाऱ्यांचे मार्गदर्शन कोठे मिळेल?,Agri Assistant Contact,Yes,26815933009
-Mazya kshetratil Krushi Sahayyakacha contact number dya.,Agri Assistant Contact,No,
-कृषी सहाय्यकामार्फत राबवल्या जाणाऱ्या प्रमुख सबसिडी योजनांची यादी द्या.,Agri Assistant Contact,No,
-तालुक्यातील कृषी विस्तार अधिकारी (Ext. Officer) कधी उपलब्ध असतात?,Agri Assistant Contact,No,
-Solapur bajaratil kandya che aaj che bhav kai aahet?,Mandi,No,
-सातारा बाजारातील सोयाबीन आणि गव्हाचे आजचे सरासरी बाजारभाव दाखवा.,Mandi,No,
-सोलापूर बाजार समितीमध्ये आजची आवक आणि सर्वाधिक दर काय आहेत?,Mandi,No,
-नाशिक जिल्ह्यातील प्रमुख मंडींमधील टोमॅटोचे सध्याचे किमान आणि कमाल दर काय आहेत?,Mandi,No,
-सोलापूर जिल्ह्यातील कोणत्या बाजारात डाळिंबाला सर्वाधिक दर मिळत आहे?,Mandi,No,
-नाशिक विभागात द्राक्षाचे सर्वात कमी दर कोणत्या बाजार समितीत आहेत?,Mandi,No,
-नाशिक आणि लासलगाव मंडीमधील कांद्याच्या भावांची सविस्तर तुलना करा.,Mandi,No,
-खासगी बाजार आणि शासकीय APMC मधील सोयाबीनच्या भावातील फरक सांगा.,Mandi,Yes,30230052162
-माझ्या जिल्ह्यातील कापसाला सर्वाधिक भाव देणारी मंडी कोणती आहे?,Mandi,Yes,26815933009
-सोयाबीन विक्रीसाठी सोलापूर जिल्ह्यातील कोणती बाजार समिती सध्या फायदेशीर आहे?,Mandi,Yes,15759514812
-पीएम किसान योजनेच्या अर्जाची स्थिती (Status) ऑनलाइन कशी तपासावी?,Scheme,Yes,62891426784
-नमो शेतकरी महासन्मान निधी योजनेबद्दल (NSMNY) सविस्तर माहिती द्या.,Scheme,Yes,30230052162
-प्रधानमंत्री किसान सन्मान निधी अंतर्गत वर्षाला किती आर्थिक मदत मिळते?,Scheme,Yes,26815933009
-PM-KISAN योजनेचे पैसे कोणत्या बँक खात्यात जमा झाले आहेत हे कसे तपासावे?,Scheme,Yes,62891426784
-PM-KISAN yojnechya arjachi sthiti online kashi pahavi?,Scheme,Yes,50396788689
-नमो शेतकरी महासन्मान निधी योजनेसाठी पात्रता आणि अटी काय आहेत?,Scheme,No,
-ई-केवायसी (eKYC) पूर्ण केल्याशिवाय पीएम किसानचे लाभ मिळतात का?,Scheme,No,
-पीएम किसान योजनेचा पुढील हप्ता कोणत्या तारखेला जमा होणार आहे?,Scheme,Yes,15759514812
-पंतप्रधान पीक विमा योजनेसाठी (PMFBY) विमा हप्ता (Premium) किती भरावा लागतो?,Scheme,No,
-लातूर मध्ये भुईमूग पिकासाठी पुढील ५ दिवसांत पावसाचा काय अंदाज आहे?,Weather Forecast,No,
-उस्मानाबाद मध्ये तीळ पिकासाठी येत्या आठवड्यात हवामान कोरडे राहील का?,Weather Forecast,No,
-बीड जिल्ह्यात एरंडेल पिकासाठी येत्या आठवड्यातील किमान तापमान किती राहील?,Weather Forecast,No,
-परभणी भागात कुसुम पिकासाठी जमिनीत ओलावा टिकवून ठेवण्याबाबत हवामान काय सांगते?,Weather Forecast,No,
-पुढील ३ दिवस माझ्या क्षेत्रातील हवामान कापूस वेचणीसाठी सुरक्षित आहे का?,Weather Forecast,Yes,50396788689
-पुढील आठवड्यात होणाऱ्या पावसाचा सोयाबीन मळणीवर काय परिणाम होऊ शकतो?,Weather Forecast,Yes,50396788689
-वाढत्या तापमानामुळे संत्रा बागेचे नुकसान टाळण्यासाठी कोणती उपाययोजना करावी?,Weather Forecast,Yes,26815933009
-तासवार हवामान अंदाज आणि पावसाची शक्यता तपासून माहिती द्या.,Weather Forecast,Yes,50396788689
-येत्या ७ दिवसांत ढगाळ वातावरण असेल तर बाजरी पेरणीवर काही परिणाम होईल का?,Weather Forecast,No,
+उद्या पाऊस पडेल का?,Weather Forecast,Yes,15759514812
+पुढचे काही दिवस पाऊस पडण्याची शक्यता आहे का?,Weather Forecast,Yes,30230052162
+या आठवड्यात हवामान कसे राहील?,Weather Forecast,Yes,15759514812
+या आठवड्यात खत टाकणे योग्य राहील का?,Weather Forecast,Yes,30230052162
+या आठवड्यात फवारणी करणे सुरक्षित आहे का?,Weather Forecast,Yes,15759514812
+येत्या काही दिवसांत पाणी द्यावे का?,Weather Forecast,Yes,62891426784
+या आठवड्यात जोरदार पावसाची शक्यता आहे का?,Weather Forecast,Yes,62891426784
+पुढचे काही दिवस कोरडे हवामान राहील का?,Weather Forecast,Yes,62891426784
+या आठवड्यात पीक काढणीसाठी हवामान योग्य आहे का?,Weather Forecast,Yes,15759514812
+पुढचे काही दिवस सलग पाऊस पडेल का?,Weather Forecast,Yes,15759514812
+पुणे जिल्ह्यात पुढचे काही दिवस पाऊस पडेल का?,Weather Forecast,No,
+लातूर भागात या आठवड्यात जोरदार पावसाची शक्यता आहे का?,Weather Forecast,No,
+नाशिक जिल्ह्यासाठी पुढील ५ दिवसांचा हवामान अंदाज काय आहे?,Weather Forecast,No,
+लातूर मध्ये सोयाबीनवर फवारणी करायला हवामान योग्य आहे का?,Weather Forecast,No,
+सोलापूर जिल्ह्यात उद्या पाऊस पडेल का?,Weather Forecast,No,
+जळगावमध्ये या आठवड्यात खत टाकणे योग्य आहे का?,Weather Forecast,No,
+बीड जिल्ह्यात पुढचे काही दिवस कोरडे हवामान राहील का?,Weather Forecast,No,
+यवतमाळमध्ये कापसासाठी या आठवड्यात जोरदार पावसाची शक्यता आहे का?,Weather Forecast,No,
+सांगली भागात पुढचे काही दिवस हवामान कसे राहील?,Weather Forecast,No,
+साताऱ्यात गहू पिकाला या आठवड्यात पाणी द्यावे का?,Weather Forecast,No,
+अकोला जिल्ह्यात या आठवड्यात सलग पाऊस पडेल का?,Weather Forecast,No,
+नाशिकमध्ये कांदा काढणीसाठी हवामान योग्य आहे का?,Weather Forecast,No,
+परभणी जिल्ह्यात पुढचे काही दिवस पाऊस पडण्याची शक्यता आहे का?,Weather Forecast,No,
+नांदेडमध्ये पावसामुळे फवारणी पुढे ढकलावी का?,Weather Forecast,No,
+अमरावती जिल्ह्यासाठी या आठवड्यातील पावसाचा अंदाज काय आहे?,Weather Forecast,No,
+येत्या काही दिवसांत पावसामुळे शेती कामे थांबवावी लागतील का?,Weather Forecast,Yes,62891426784
+या आठवड्यात पाऊस नसल्यामुळे सिंचन वाढवावे का?,Weather Forecast,Yes,26815933009
+पुढचे काही दिवस ढगाळ हवामान राहील का?,Weather Forecast,Yes,26815933009
+या आठवड्यात मुसळधार पावसाची शक्यता आहे का?,Weather Forecast,Yes,40881321091
+पावसामुळे या आठवड्यात फवारणी टाळावी का?,Weather Forecast,Yes,40881321091
+पुढचे काही दिवस हवामान पीक वाढीसाठी अनुकूल आहे का?,Weather Forecast,Yes,62891426784
+या आठवड्यात पावसाचा खंड पडेल का?,Weather Forecast,Yes,62891426784
+पावसाच्या अंदाजामुळे खत देणे पुढे ढकलावे का?,Weather Forecast,Yes,30230052162
+पुढचे काही दिवस तापमान जास्त राहील का?,Weather Forecast,Yes,30230052162
+या आठवड्यात हवामान शेती कामांसाठी योग्य आहे का?,Weather Forecast,Yes,26815933009
+पुढचे काही दिवस पावसाची तीव्रता जास्त राहील का?,Weather Forecast,Yes,62891426784
+या आठवड्यात काढणीसाठी हवामान धोकादायक आहे का?,Weather Forecast,Yes,62891426784
+पुढचे काही दिवस हवामान स्थिर राहील का?,Weather Forecast,Yes,15759514812
+या आठवड्यात पाऊस आणि वारा जास्त राहील का?,Weather Forecast,Yes,15759514812
+येत्या काही दिवसांत पावसाचा अंदाज काय सांगतो?,Weather Forecast,Yes,62891426784
+Udya paus padel ka?,Weather Forecast,Yes,40881321091
+Pudche kahi divas thandi vadnyachi shakya aahe ka?,Weather Forecast,Yes,30230052162
+Ya athavdyat havaman kasa raheel?,Weather Forecast,Yes,30230052162
+Ya athavdyat khat takane yogya raheel ka?,Weather Forecast,Yes,15759514812
+Ya athavdyat fawaarni karane surakshit aahe ka?,Weather Forecast,Yes,15759514812
+Pune jilhyaat pudche kahi divas paus padel ka?,Weather Forecast,No,
+Latur madhe ya athavdyat joradar paus padel ka?,Weather Forecast,No,
+Nashik jilhyaasathi pudil 5 divsacha havaman andaaj kai aahe?,Weather Forecast,No,
+Solapur madhe udya paus padnyachi shakya aahe ka?,Weather Forecast,No,
+Ahmednagar madhe soyabean sathi fawaarni yogya aahe ka?,Weather Forecast,No,
+जळगावमध्ये कापूस साठवण्यासाठी कोणती MSWC गोदामे उपलब्ध आहेत?,Warehouse,No,
+माझ्या शेताजवळील तुरीच्या साठवणुकीसाठी सर्वात जवळची सुविधा कोणती आहे?,Warehouse,Yes,15759514812
+नाशिकमधील कोणत्या गोदामात ५० क्विंटल द्राक्षांसाठी जागा आहे?,Warehouse,No,
+"सांगोला, सोलापूर जवळ डाळिंबासाठी शीतगृह (Cold Storage) उपलब्ध आहे का?",Warehouse,No,
+माझ्या सध्याच्या ठिकाणापासून २० किमी अंतरावरील सर्व नोंदणीकृत गोदामांची यादी दाखवा.,Warehouse,Yes,15759514812
+अकोल्यात अल्पभूधारक शेतकऱ्यांसाठी ५०% सवलत देणारे गोदाम मिळेल का?,Warehouse,No,
+लातूर जवळ माझ्या सोयाबीन पिकासाठी साठवणूक केंद्र शोधा.,Warehouse,No,
+नाशिकमधील कळवण तालुक्यात 'महाओनियन'ची साठवणूक केंद्रे आहेत का?,Warehouse,No,
+माझ्या गावानजीक बाजरी साठवण्यासाठी सर्वात जवळचे कोरडे गोदाम कुठे आहे?,Warehouse,Yes,15759514812
+नागपूरमध्ये भात साठवण्यासाठी रिक्त क्षमता असलेले CWC गोदाम शोधा.,Warehouse,No,
+माझ्या शेताजवळील कोणती गोदामे पावतीवर बँक कर्ज मिळवण्यासाठी पात्र आहेत?,Warehouse,Yes,30230052162
+बारामती जवळ साखर आणि गूळ साठवणुकीच्या सुविधांची यादी द्या.,Warehouse,No,
+हिंगोली जिल्ह्यात माझे हळदीचे पीक मी सुरक्षितपणे कुठे साठवू शकतो?,Warehouse,No,
+माझ्या गव्हाच्या पिकासाठी सर्वात जवळचे सरकारी गोदाम दाखवा.,Warehouse,Yes,30230052162
+वाशी APMC जवळ वैज्ञानिक साठवणूक सुविधा असलेली खाजगी गोदामे आहेत का?,Warehouse,No,
+"रावेर, जळगाव जवळ केळीसाठी शीतगृह केंद्र शोधा.",Warehouse,No,
+माझ्या ठिकाणाजवळील कोणत्या MSWC केंद्रात सध्या हरभरा स्वीकारला जात आहे?,Warehouse,Yes,62891426784
+चंद्रपूर जवळ भात (Paddy) साठवण्यासाठी गोदाम उपलब्ध आहे का?,Warehouse,No,
+वाशिम भागात माझ्या मूग पिकासाठी गोदाम शोधा.,Warehouse,Yes,62891426784
+औरंगाबादमध्ये 'सेंट्रल वेअरहाउसिंग कॉर्पोरेशन' (CWC) चे कार्यालय कुठे आहे?,Warehouse,No,
+माझ्या जमिनीजवळ साठवलेल्या धान्यासाठी कीड नियंत्रण सुविधा देणारे केंद्र शोधा.,Warehouse,Yes,30230052162
+सातारा जिल्ह्यात आले आणि लसूण साठवण्यासाठी गोदामे आहेत का?,Warehouse,No,
+माझ्या जवळच्या कोणत्या गोदामाचे साठवणूक शुल्क (Tariff) सर्वात कमी आहे?,Warehouse,Yes,15759514812
+कोल्हापूर जिल्ह्यातील सर्व नोंदणीकृत गोदामांची यादी द्या.,Warehouse,No,
+रत्नागिरी/कोकण भागात मी काजू कुठे साठवू शकतो?,Warehouse,No,
+१०० पोती मका साठवण्याची क्षमता असलेले माझ्या शेताजवळील गोदाम शोधा.,Warehouse,Yes,15759514812
+महाबळेश्वर जवळ स्ट्रॉबेरीसाठी शीतगृह सुविधा उपलब्ध आहे का?,Warehouse,No,
+अमरावतीमधील MSWC गोदाम व्यवस्थापकाचा संपर्क तपशील दाखवा.,Warehouse,No,
+माझ्या ठिकाणाजवळील कोणते साठवणूक केंद्र सर्वात जवळच्या APMC मार्केटला लागून आहे?,Warehouse,Yes,62891426784
+उडीद स्वीकारणारे बुलढाण्यातील गोदाम शोधा.,Warehouse,No,
+बीडमधील माझ्या गावाजवळ ज्वारी साठवण्यासाठी सुविधा उपलब्ध आहेत का?,Warehouse,No,
+धुळे जिल्ह्यातील NWR-नोंदणीकृत गोदामांची यादी द्या.,Warehouse,No,
+नाशिक जवळ माझ्या करडई पिकासाठी गोदाम कुठे मिळेल?,Warehouse,No,
+परभणी जवळ माझ्या सूर्यफूल पिकासाठी साठवणूक सुविधा शोधा.,Warehouse,No,
+गोंदियात भात साठवणुकीसाठी खास गोदामे उपलब्ध आहेत का?,Warehouse,No,
+माल उतरवण्यासाठी २४/७ उघडे असणारे माझ्या शेताजवळील गोदाम शोधा.,Warehouse,Yes,62891426784
+पुण्यातील मंचर बाजारपेठेजवळील गोदामांची यादी दाखवा.,Warehouse,No,
+देवगडमध्ये हापूस आंब्यासाठी सर्वात जवळचे शीतगृह कुठे आहे?,Warehouse,No,
+माझ्या जवळच्या कोणत्या गोदामात साठवलेल्या कृषी मालाचा विमा उतरवला जातो?,Warehouse,Yes,15759514812
+"पुरंदर, पुणे जवळ सीताफळासाठी साठवणूक केंद्र शोधा.",Warehouse,No,
+Maza najikchi storage facilities Negotiable Warehouse Receipt (NWR) system sathi eligible ahet ka?,Warehouse,Yes,30230052162
+Solapur madhe maze pomegranate harvest sathi cold storage facility kuthe milte?,Warehouse,No,
+Satara jillayat available space asnarya government godowns ahet ka?,Warehouse,No,
+Maza zameenajolshi warehouse shodha ji soybean sathi scientific storage deti.,Warehouse,Yes,15759514812
+Turmeric sathi dry storage warehouse pahije; maze locationajolshi konti sabat nikat ahe?,Warehouse,Yes,62891426784
+Ahmednagar madhe kontya registered warehouses pest control ani fumigation services detat?,Warehouse,No,
+Jalgaon madhe turi chi daal satavnyachi warehouse kuthe ahe?,Warehouse,No,
+Maza sheta javal warehouses ahet ka ji cold storage pan detat?,Warehouse,Yes,40881321091
+Maze onion crop sathi sabat nikat MAHAONION storage center kuthe ahe?,Warehouse,Yes,26815933009
+Marathwada region madhe available Central Warehousing Corporation (CWC) godowns chi list dya.,Warehouse,No,
+माझ्या जवळची माती परीक्षण प्रयोगशाळा कोठे आहे?,Soil Lab,Yes,26815933009
+माझ्या नोंदणीकृत शेत जमिनीजवळ माती परीक्षण प्रयोगशाळा शोधू शकता का?,Soil Lab,Yes,15759514812
+नांदेड जिल्ह्यात शासनमान्य माती परीक्षण प्रयोगशाळा आहेत का?,Soil Lab,No,
+माझ्या गावापासून २० किमी अंतरावरील माती परीक्षण प्रयोगशाळांची संपर्क माहिती द्या.,Soil Lab,Yes,15759514812
+मला माझ्या जमिनीचे माती परीक्षण करायचे आहे; मी कोठे जावे?,Soil Lab,Yes,26815933009
+"पुण्यातील कोणत्या प्रयोगशाळांमध्ये सूक्ष्म अन्नद्रव्य तपासणी (झिंक, लोह, मॅंगनीज) केली जाते?",Soil Lab,No,
+माझ्या जवळ अशी एखादी प्रयोगशाळा आहे का जी मृदा आरोग्य पत्रिका (Soil Health Card) देते?,Soil Lab,Yes,30230052162
+माझ्या जमिनीच्या प्रकारानुसार शिफारसी देणारी माती परीक्षण प्रयोगशाळा शोधा.,Soil Lab,Yes,62891426784
+विदर्भ भागात सध्या काही फिरती माती परीक्षण वाहने कार्यरत आहेत का?,Soil Lab,No,
+माझ्या शेतातील पिकांसाठी मी मातीचा नमुना कोणत्या प्रयोगशाळेत पाठवावा?,Soil Lab,Yes,15759514812
+पुण्यातील शिवाजीनगर येथील शासकीय माती परीक्षण प्रयोगशाळेचा पत्ता शोधा.,Soil Lab,No,
+सांगली भागात जमिनीची क्षारता तपासणारी प्रयोगशाळा कोठे मिळेल?,Soil Lab,No,
+मला माझ्या जमिनीतील सेंद्रिय कर्बाची तपासणी करायची आहे; माझ्या गावाजवळील प्रयोगशाळा शोधा.,Soil Lab,Yes,40881321091
+नाशिकमध्ये डिजिटल अहवाल देणारी खाजगी माती परीक्षण केंद्रे आहेत का?,Soil Lab,No,
+जमिनीचा सामू (pH) आणि क्षारता (EC) तपासू शकणारी माझ्या जवळची प्रयोगशाळा शोधा.,Soil Lab,Yes,26815933009
+अहमदनगरमधील जिल्हा माती परीक्षण प्रयोगशाळा कोठे आहे?,Soil Lab,No,
+छत्रपती संभाजीनगर (औरंगाबाद) मध्ये कार्यरत असलेल्या शासकीय अनुदानित प्रयोगशाळांची यादी द्या.,Soil Lab,No,
+मृदा आरोग्य पत्रिका योजनेअंतर्गत मला मोफत माती परीक्षण कोठे करून मिळेल?,Soil Lab,Yes,15759514812
+माझ्या क्षेत्राजवळ २४ तासांत निकाल देणारी एखादी माती परीक्षण प्रयोगशाळा आहे का?,Soil Lab,Yes,30230052162
+सोलापूरमध्ये खतांच्या मात्रांची शिफारस देणारी माती परीक्षण प्रयोगशाळा शोधा.,Soil Lab,No,
+माझ्या गावाजवळील कोणती प्रयोगशाळा मातीतील जड धातूंच्या दूषणाची तपासणी करू शकते?,Soil Lab,Yes,62891426784
+सोलापूरमधील दयानंद कॉलेजजवळ माती परीक्षण प्रयोगशाळा आहे का?,Soil Lab,No,
+लातूर मार्केट यार्डमधील माती परीक्षण प्रयोगशाळेशी संपर्क कसा साधायचा?,Soil Lab,No,
+"नत्र, स्फुरद आणि पालाशची तपासणी करणारी प्रयोगशाळा माझ्या नोंदणीकृत जमिनीजवळ शोधा.",Soil Lab,Yes,15759514812
+कोकण भागात आंबा बागेच्या मातीसाठी विशेष प्रयोगशाळा आहेत का?,Soil Lab,No,
+माझे क्षेत्र अल्पभूधारक आहे; माझ्या जवळची सर्वात स्वस्त माती परीक्षण प्रयोगशाळा शोधा.,Soil Lab,Yes,30230052162
+जळगाव जिल्ह्यातील सर्वात जवळची माती परीक्षण प्रयोगशाळा कोठे आहे?,Soil Lab,No,
+महाराष्ट्रातील कोणत्या प्रयोगशाळांना सध्या शेती माती परीक्षणासाठी NABL मान्यता आहे?,Soil Lab,No,
+प्रत्यक्ष मृदा आरोग्य पत्रिका देणारी प्रयोगशाळा माझ्या ठिकाणाजवळ शोधा.,Soil Lab,Yes,26815933009
+कोल्हापुरात सिंचनाच्या पाण्याची गुणवत्ता तपासणारी माती परीक्षण प्रयोगशाळा मिळेल का?,Soil Lab,No,
+आगामी खरीप हंगामासाठी तयारी करण्यास मदत करणारी प्रयोगशाळा मला हवी आहे.,Soil Lab,Yes,62891426784
+बीड आणि जालना जिल्ह्यांसाठी कार्यरत असलेल्या शासकीय प्रयोगशाळेचे ठिकाण शोधा.,Soil Lab,No,
+अकोला येथील माती परीक्षण प्रयोगशाळा कोठे आहे?,Soil Lab,No,
+निकालाचे संपूर्ण स्पष्टीकरण आणि सल्ला मराठीत देणारी प्रयोगशाळा माझ्या शेताजवळ शोधा.,Soil Lab,Yes,26815933009
+ठाणे जिल्ह्यात विशेषतः भाजीपाला उत्पादकांसाठी काही माती परीक्षण प्रयोगशाळा आहेत का?,Soil Lab,No,
+माझ्या तालुक्यात घरपोच नमुना संकलन सुविधा देणारी प्रयोगशाळा शोधा.,Soil Lab,Yes,30230052162
+मातीचा पोत (वाळू/पॉयटा/चिक्कण मातीचे प्रमाण) तपासण्यासाठी सर्वात जवळची प्रयोगशाळा कोणती?,Soil Lab,Yes,15759514812
+Amravati madhe citrus phal shhetkaryansathi kontya soil labs seva detat?,Soil Lab,No,
+Maza plotajolshi lab shodha ji Black Cotton Soil test karte.,Soil Lab,Yes,15759514812
+Gadchiroli jillayat soil testing facility ahe ka?,Soil Lab,No,
+Sabat nikatchi lab shodha jithe mi soil sample status online track karu shakto.,Soil Lab,Yes,26815933009
+Raigad jillayat paddy field analysis sathi kontya soil lab sathi shodha?,Soil Lab,No,
+Maza najikchi lab shodha ji Broad Spectrum nutrient analysis deti.,Soil Lab,Yes,30230052162
+Nashik zila madhe soil testing facilities uplabdh ahet ka?,Soil Lab,No,
+Maza locationajolshi lab shodha ji soil health sudharanyasathi expert consultation deti.,Soil Lab,Yes,15759514812
+Sangli jillayat micronutrient testing kontya government lab madhe milte?,Soil Lab,No,
+Maza gaavajolshi lab shodha ji GPS-based soil fertility mapping sathi seva deti.,Soil Lab,Yes,26815933009
+माझ्या गावाजवळील सर्वात जवळचे कृषी विज्ञान केंद्र कोठे आहे?,KVK,Yes,15759514812
+सोलापूर येथील कृषी विज्ञान केंद्राच्या कार्यालयाचा पत्ता काय आहे?,KVK,No,
+माझ्या जवळच्या केंद्राच्या कार्यक्रम समन्वयकाशी मी संपर्क कसा साधू शकतो?,KVK,Yes,30230052162
+माझ्या जवळील कृषी विज्ञान केंद्राचा संपर्क क्रमांक काय आहे?,KVK,Yes,26815933009
+गडचिरोली जिल्ह्यात कृषी विज्ञान केंद्र कार्यरत आहे का?,KVK,No,
+सिंधुदुर्ग जिल्ह्यातील कृषी विज्ञान केंद्राचे कार्यालय कोठे आहे?,KVK,No,
+रत्नागिरी येथील कृषी विज्ञान केंद्राची संपर्क माहिती मिळवून द्या.,KVK,No,
+मी अकोला येथील कृषी विज्ञान केंद्रातून थेट प्रमाणित बियाणे खरेदी करू शकतो का?,KVK,No,
+नागपूर मध्ये सर्वात जवळचे कृषी विज्ञान केंद्र प्रशिक्षण वसतिगृह कोठे आहे?,KVK,No,
+स्थानिक कृषी विज्ञान केंद्रात फळ रोपवाटिकेचे प्रात्यक्षिक युनिट आहे का?,KVK,Yes,30230052162
+माझ्या नोंदणीकृत जमिनीपासून कृषी विज्ञान केंद्राचे अंतर किती आहे?,KVK,Yes,15759514812
+लातूर येथील कृषी विज्ञान केंद्रात बियाणे प्रक्रिया युनिट आहे का?,KVK,No,
+"दुर्गापूर, अमरावती येथील कृषी विज्ञान केंद्र कोठे आहे?",KVK,No,
+माझ्या जवळील कृषी विज्ञान केंद्रात प्रशिक्षणासाठी वर्गखोल्या उपलब्ध आहेत का?,KVK,Yes,62891426784
+जालना येथील कृषी विज्ञान केंद्रात जैव-खत उत्पादन युनिट आहे का?,KVK,No,
+नाशिक जिल्ह्यातील सर्व कृषी विज्ञान केंद्रांची यादी मिळू शकेल का?,KVK,No,
+हिंगोली येथील कृषी विज्ञान केंद्राचे प्रात्यक्षिक शेत कोठे आहे?,KVK,No,
+नवीन शेती पद्धत प्रत्यक्ष शेतावर करून दाखवतात का?,KVK,Yes,30230052162
+"दुधबर्डी, नागपूर येथील कृषी विज्ञान केंद्रात कुक्कुटपालन उबवणी केंद्र आहे का?",KVK,No,
+माझ्या जवळील कृषी विज्ञान केंद्रात प्रशिक्षण कार्यक्रमासाठी नोंदणी कशी करावी?,KVK,Yes,30230052162
+"फक्त सांगत नाहीत, तर करून दाखवणारी व्यवस्था आहे का?",KVK,Yes,30230052162
+नवीन पद्धतीमुळे उत्पादन वाढते का हे प्रत्यक्ष कसे समजते?,KVK,Yes,15759514812
+पारंपरिक आणि सुधारित पद्धतीत उत्पादनाचा फरक कुठे दिसून येतो?,KVK,Yes,62891426784
+खर्च आणि नफा यातील बदल शेतावर करून दाखवतात का?,KVK,Yes,26815933009
+गोंदिया येथील कृषी विज्ञान केंद्राचे बियाणे साठवण गोदाम कोठे आहे?,KVK,No,
+मी स्थानिक कृषी विज्ञान केंद्र प्रयोगशाळेत माझ्या पानांचे नमुने तपासू शकतो का?,KVK,Yes,15759514812
+खताचा योग्य वापर करून उत्पादनात फरक कसा पडतो हे दाखवतात का?,KVK,Yes,15759514812
+रोग निदानासाठी माझ्या शेताला भेट देऊ शकणारे कृषी विज्ञान केंद्राचे शास्त्रज्ञ उपलब्ध आहेत का?,KVK,Yes,26815933009
+फवारणी कमी करूनही रोग नियंत्रण शक्य आहे का हे प्रत्यक्ष दाखवतात का?,KVK,Yes,30230052162
+नवीन पद्धत वापरण्याआधी धोका कमी करण्यासाठी प्रत्यक्ष उदाहरण दाखवतात का?,KVK,Yes,30230052162
+Majhya javalchya krushi prashikshan kendraatun mala prashikshan pramanpatra milu shakel ka?,KVK,Yes,30230052162
+Tuljapur Osmanabad madhil krushi margadarshan kendra kuthe aahe te shodha.,KVK,No,
+Roha Raigad madhil krushi kendraatun ropnika vikrisathi uplabdh aahe ka?,KVK,No,
+Majhya shetijavalchya krushi margadarshan kendra madhye pashusamvardhan visheshagya aahe ka?,KVK,Yes,15759514812
+Jalgaon madhil kendra madhye polyhouse pradarshan unit aahe ka?,KVK,No,
+Parbhani madhil krushi vignan karyalay shanivar divshi bhetisathi ughade aste ka?,KVK,No,
+Majhya sadyachya sthananaval krushi pradarshan shet pahanyachi parvangi aahe ka?,KVK,Yes,62891426784
+Kolhapur madhil krushi seva kendra chi prashaskiya imarat kuthe aahe?,KVK,No,
+Narayangaon Pune madhil krushi margadarshan kendra cha purna pata kay aahe?,KVK,No,
+माझ्या जवळचे CHC सेवा केंद्र कोठे आहे?,CHC,Yes,30230052162
+माझ्या सध्याच्या ठिकाणापासून सर्वात जवळचे CHC केंद्र कोठे आहे?,CHC,Yes,30230052162
+ट्रॉली भाड्याने घेण्यासाठी माझ्या गावातील सर्वात जवळचे केंद्र कोणते?,CHC,Yes,62891426784
+रोटाव्हेटर भाड्याने घेण्यासाठी माझ्या शेताच्या सर्वात जवळची सोय कोठे आहे?,CHC,Yes,15759514812
+माझ्या परिसराजवळ बूम स्प्रेअर भाड्याने देणारे केंद्र कोठे मिळेल?,CHC,Yes,30230052162
+पालघरमध्ये पॉवर वीडर भाड्याने देणारी काही सेवा केंद्रे आहेत का?,CHC,No,
+नांदेड जवळ काही CHC केंद्र उपलब्ध आहेत का?,CHC,No,
+पुण्याजवळ लेझर लँड लेव्हलर देणारे केंद्र आहे का?,CHC,No,
+माझ्या विशिष्ट तालुक्यात भाड्याने देण्यासाठी कोणती यंत्रे उपलब्ध आहेत?,CHC,Yes,26815933009
+माझ्या गावातील केंद्रांवर कोणती शेती यंत्रे भाड्याने मिळतात?,CHC,Yes,30230052162
+माझ्या तालुक्यात माझ्या जमिनीसाठी रोटाव्हेटर भाड्याने मिळण्याचे ठिकाण आहे का?,CHC,Yes,62891426784
+माझ्या शेताजवळ ड्रोन सेवा देणारे केंद्र मला मिळू शकते का?,CHC,Yes,15759514812
+या हंगामासाठी माझ्या जिल्ह्यात भात लावणी यंत्र (Paddy Transplanter) कोणत्या केंद्रात मिळेल?,CHC,Yes,30230052162
+माझ्या तालुक्यातील केंद्रावरून मी कीटकनाशक फवारणीसाठी ड्रोन भाड्याने घेऊ शकतो का?,CHC,Yes,15759514812
+माझ्या गावाजवळील कोणत्या केंद्रात मल्टी-क्रॉप थ्रेशर (मळणी यंत्र) उपलब्ध आहे?,CHC,Yes,26815933009
+माझ्या तालुक्यात प्लास्टिक मल्चिंग पेपर टाकण्याचे यंत्र देणारे ठिकाण आहे का?,CHC,Yes,15759514812
+माझ्या तालुक्यात ब्रश कटर देणारे सेवा केंद्र कोणते आहे?,CHC,Yes,30230052162
+माझ्या जिल्ह्यातील कोणत्या केंद्रावरून मी गहू काढणीसाठी रीपर भाड्याने घेऊ शकतो?,CHC,Yes,26815933009
+बुलढाण्यातील कोणत्या केंद्रात युरिया फवारणीसाठी ड्रोन आहेत?,CHC,No,
+सोलापूरमध्ये ऊस तोडणी यंत्रासाठी काही केंद्रे आहेत का?,CHC,No,
+साताऱ्यात बटाटा लागवड यंत्र देणारे केंद्र आहे का?,CHC,No,
+अकोल्यातील केंद्रे कापूस वेचणी यंत्र (Cotton Picker) भाड्याने देतात का?,CHC,No,
+गोंदियात भात काढणीच्या विशेष यंत्रांसाठी काही सोयी आहेत का?,CHC,No,
+धुळ्यातील कोणत्या केंद्रात झिरो-टिल सीड ड्रिल (पेरणी यंत्र) उपलब्ध आहे?,CHC,No,
+लातूरमध्ये पॉवर टिलर भाड्याने घेण्यासाठी काही केंद्रे आहेत का?,CHC,No,
+रत्नागिरीतील कोणती केंद्रे आंबा छाटणीसाठी उपकरणे पुरवतात?,CHC,No,
+अहमदनगरमध्ये कंबाईन हार्वेस्टर भाड्याने देणारी केंद्रे आहेत का?,CHC,No,
+परभणीत जमीन सपाटीकरण सेवा देणारी काही सोय आहे का?,CHC,No,
+गडचिरोलीतील कोणते केंद्र हाताने चालवायचे पेरणी यंत्र पुरवते?,CHC,No,
+वाशिममध्ये हरभरा काढणी यंत्र भाड्याने देणारे केंद्र आहे का?,CHC,No,
+नाशिकमधील कोणती केंद्रे द्राक्ष छाटणीसाठी विशेष उपकरणे देतात?,CHC,No,
+कोल्हापुरात 'हॅपी सीडर' भाड्याने देणारी काही केंद्रे आहेत का?,CHC,No,
+उस्मानाबादमध्ये पाण्याचे टँकर भाड्याने देणारी केंद्रे आहेत का?,CHC,No,
+वर्ध्यात माती परीक्षण उपकरणे देणारे केंद्र कोठे आहे?,CHC,No,
+मला माझ्या बागेसाठी मिनी-ट्रॅक्टर हवा आहे; सर्वात जवळचे केंद्र कोणते?,CHC,Yes,62891426784
+मी माझ्या शेतासाठी केंद्रातून सौर-ऊर्जा पंप भाड्याने घेऊ शकतो का?,CHC,Yes,15759514812
+जळगाव जवळ केळीच्या बागांसाठी हाय-कॅपेसिटी स्प्रेअर देणारे केंद्र कोणते?,CHC,No,
+पेंढा जाळणे टाळण्यासाठी भाताचा पेंढा कापण्याचे यंत्र (Paddy Straw Chopper) माझ्या शेताजवळ कोठे मिळेल?,CHC,Yes,30230052162
+मी माझ्या भागातील केंद्रातून भाजीपाला लावणी यंत्र भाड्याने घेऊ शकतो का?,CHC,Yes,15759514812
+Majhya javalchya kendraatun makka sukan yantra bhadyane milu shakel ka?,CHC,Yes,26815933009
+Majhya shetijaval bhadyane subsoilar milnyachi suvidha aahe ka?,CHC,Yes,62891426784
+Taranbandi sathi khadde khodnyache yantra majhya javalchya kendraatun bhadyane milu shakel ka?,CHC,Yes,62891426784
+Majhya gavatil seva kendracha vyavasthapak kashya prakare sampark karu shakto?,CHC,Yes,30230052162
+Javalchya kendraatun 35 ashvashakti tractor sathi bhadyache dar kay ahet?,CHC,Yes,62891426784
+Majhya bhagatil kendraatun bhadyane ghetlelya yantranchi dekhbhal seva milte ka?,CHC,Yes,15759514812
+Javalchya seva kendraatun bee perni yantra kasa book karava?,CHC,Yes,62891426784
+Amravati madhil kendraat uplabdh yantranchi yadi konti aahe?,CHC,No,
+Yavatmal madhil kendramadhye tractor bhadyavar indhanachi suvidha milte ka?,CHC,No,
+Sangli madhye halad prakriya karnyache kendra aahe ka?,CHC,No,
+Nagpur javal pidanantarche pik avshesh vyavasthapan sathi kendra aahe ka?,CHC,No,
+Mala ulat-sulat nanger hava aahe; majhya jilhya madhil javalche kendra konte?,CHC,Yes,30230052162
+Kapanichya kalat 24 taas suru asnare seva kendra majhya talukyatil aahe ka?,CHC,Yes,62891426784
+कापसातील गुलाबी बोंडअळीची लक्षणे काय आहेत?,Advisory,Yes,30230052162
+टोमॅटोमधील फळ पोखरणाऱ्या अळीचे नियंत्रण कसे करावे?,Advisory,No,
+भेंडीवरील मावा किडीसाठी सेंद्रिय कीटकनाशके सुचवा.,Advisory,No,
+द्राक्ष बागेतील केवडा (Downy Mildew) रोग कसा ओळखावा?,Advisory,No,
+तुरीवरील मर रोगावर काय उपाय आहेत?,Advisory,No,
+मक्यावरील लष्करी अळीसाठी रासायनिक नियंत्रणाची यादी द्या.,Advisory,No,
+आल्यावरील कंदकुज व्याधीचे व्यवस्थापन कसे करावे?,Advisory,No,
+भात पिकावरील करपा रोगाची चिन्हे काय आहेत?,Advisory,No,
+लिंबू झाडावरील सायट्रस कॅन्कर कसा रोखावा?,Advisory,No,
+सोयाबीनवरील पांढऱ्या माशीच्या नियंत्रणाचे उपाय सांगा.,Advisory,No,
+कांदा पिकातील फुलकिडे (Thrips) कसे हाताळावे?,Advisory,No,
+मिरचीतील चुरडा-मुरडा (Leaf Curl) कशामुळे होतो आणि तो कसा दुरुस्त करावा?,Advisory,No,
+भातावरील खोडकिडा कसा नियंत्रित करावा?,Advisory,No,
+भुईमुगावरील टिक्का रोगासाठी प्रतिबंधात्मक उपाय काय आहेत?,Advisory,No,
+उसावरील तांबेरा रोग कसा ओळखावा आणि त्यावर उपचार काय?,Advisory,No,
+सीताफळावरील पिठ्या ढेकूण (Mealybugs) साठी जैविक नियंत्रण सुचवा.,Advisory,No,
+मुगावरील भुरी रोगाचे व्यवस्थापन कसे करावे?,Advisory,No,
+रोपवाटिकेतील 'रोप कोलमडणे' (Damping Off) साठी घरगुती उपाय काय आहेत?,Advisory,No,
+नारळाच्या झाडावरील शेंडाकुज व्याधीवर काय उपचार करावेत?,Advisory,No,
+गव्हाच्या शेतातील उंदरांचा बंदोबस्त करण्याचा सर्वोत्तम मार्ग कोणता?,Advisory,No,
+हरभरा पेरणीची योग्य वेळ कोणती आहे?,Advisory,Yes,26815933009
+एक एकर गव्हासाठी बियाण्याचे प्रमाण किती लागते?,Advisory,Yes,26815933009
+बी.टी. कापसासाठी खतांचे वेळापत्रक सुचवा.,Advisory,No,
+हळद लागवडीसाठी दोन रोपांमधील अंतराची सर्वोत्तम पद्धत कोणती?,Advisory,No,
+कांद्याच्या रोपांसाठी गादीवाफा कसा तयार करावा?,Advisory,No,
+डाळिंबाला फुलधारणा काळात पाण्याची गरज किती असते?,Advisory,No,
+उसासोबत घेता येणारी आंतरपिके सुचवा.,Advisory,No,
+सोयाबीनसाठी बीजप्रक्रिया कशी करावी?,Advisory,No,
+आंबा लागवडीसाठी जमिनीचा सामू (pH) किती असावा?,Advisory,No,
+गव्हाला पहिले पाणी कधी द्यावे?,Advisory,No,
+टरबूज पिकात जास्तीत जास्त फुले लागण्यासाठी काय करावे?,Advisory,No,
+द्राक्ष छाटणीची योग्य पद्धत कोणती आहे?,Advisory,Yes,15759514812
+लसूण शेतातील तण व्यवस्थापन कसे करावे?,Advisory,No,
+कोरडवाहू शेतीसाठी बाजरीचे सर्वोत्तम वाण सुचवा.,Advisory,No,
+केळीचा घड कापणीसाठी तयार आहे हे कसे ओळखावे?,Advisory,No,
+पपईमध्ये आच्छादन (Mulching) करण्याचे फायदे काय आहेत?,Advisory,Yes,30230052162
+भात शेतात युरियाचा कार्यक्षम वापर कसा करावा?,Advisory,No,
+हरभऱ्यामध्ये शेंडे खुडण्याचे तंत्र काय आहे?,Advisory,No,
+काढणीनंतर बटाट्याची सुरक्षित साठवणूक कशी करावी?,Advisory,No,
+संत्र्यामध्ये बहार धरण्याची योग्य वेळ कोणती?,Advisory,No,
+हिरवळीच्या खताचा वापर करून जमिनीचा पोत कसा सुधारावा?,Advisory,No,
+मक्यामध्ये नत्राच्या कमतरतेची चिन्हे काय आहेत?,Advisory,No,
+प्रति हेक्टरी किती झिंक सल्फेट वापरावे?,Advisory,Yes,26815933009
+जमिनीतील सेंद्रिय कर्ब वाढवण्यासाठी सेंद्रिय मार्ग सुचवा.,Advisory,Yes,30230052162
+उसातील 'केवडा' (लोह कमतरता) कसा सुधारावा?,Advisory,Yes,30230052162
+शेतीत जीवामृताचा वापर करण्याचे फायदे काय आहेत?,Advisory,No,
+तेलबिया पिकांना स्फुरद (Phosphorus) कसे द्यावे?,Advisory,No,
+केळीमध्ये पालाशच्या (Potassium) कमतरतेची लक्षणे काय आहेत?,Advisory,No,
+जमिनीच्या आरोग्यासाठी निंबोळी पेंडीचा वापर कसा करावा?,Advisory,No,
+ठिबक सिंचनाद्वारे सूक्ष्म अन्नद्रव्ये देण्याची सर्वोत्तम पद्धत कोणती?,Advisory,No,
+भातातील Gall Midge कसा ओळखावा आणि त्याचे नियंत्रण कसे करावे?,Advisory,No,
+जसवंदावरील पुंड्यां ढेणकून चे नैसर्गिक शत्रू कोणते आहेत?,Advisory,No,
+वांग्यावरील शेंडा आणि फळी पोकळणाऱ्या अडिसाठी कामगंधपाश कसे वापरावे?,Advisory,No,
+भाजीपाला पिकातील सुतरकृमीचे व्यवस्थापन कसे करावे?,Advisory,No,
+सोयाबीनमधील पिवळा मोसेक ची लक्षणे काय आहेत?,Advisory,No,
+केळी बागेतील करपा रोग कसा रोखावा?,Advisory,No,
+बटाट्यावरिल लवकर येणारा करपा साठी उपाय सुचवा.,Advisory,No,
+ज्वारीमधील कानी रोग कसा ओळखावा?,Advisory,No,
+कोबीमधील काळा कूजु साठी व्यवस्थापन धोरण काय आहे?,Advisory,No,
+टोमॅटो रोपांच्या पुनर्लागवडीसाठी योग्य वय किती असावे?,Advisory,No,
+थीट पेरणी झालेल्या भातात बियूशानिंग कसे करावे?,Advisory,No,
+बोऱ्याच्या झाडांच्या छाटणीसाठी सर्वोत्तम वेळ सांगा.,Advisory,No,
+संकरित मक्क्याच्या उत्पादनात तुर काढणे ची पद्धत काय आहे?,Advisory,No,
+सगण आंबा बागेचे व्यवस्थापन कसे करावे?,Advisory,No,
+जाई-जुईमध्ये ऑफ सीझन मध्ये फुले कशी आणावी?,Advisory,No,
+डाळिंबाची फळे तडकण्याची कारणे काय आहेत?,Advisory,No,
+Nagpur santryasathi sarvottam khunt suchava.,Advisory,No,
+Mashaagatiche upaye karun drakshancha rang kasa sudharava?,Advisory,No,
+Perumadhye gutikalama karnyachi paddhat kay aahe?,Advisory,No,
+Fulkobimadhye Boron chi kamtarta kashi olakhavi?,Advisory,No,
+Liquid Seaweed Extract vaparnache fayde kay ahet?,Advisory,No,
+Gahumadhye Azotobacter sarakhi jaivik khat kashi vaparavit?,Advisory,No,
+Suryaphulasathi Sulfur cha shifaras kelela dose kiti aahe?,Advisory,No,
+Thibak sinchanat kshar sachne kase thambvave?,Advisory,No,
+Mohari pikasathi panichi atyant garaj asleli avastha konati?,Advisory,No,
+Greenhouse madhil adrata kashi niyantrit karavi?,Advisory,No,
+Kandyachi kadhni jhalyanantar honare nuksan kase kami karave?,Advisory,No,
+Naisargik hava khelti rahnarya polyhouse sathi sarvottam aachchhadan sahitya konate?,Advisory,No,
+Shetimadhye agnihotra rakheche fayde konte ahet?,Advisory,No,
+Savali-jali gruhamadhil pandharya mashiche niyantran kashi karavi?,Advisory,No,
+Mruda sanrakshanasaathi samantar bandh kase bandhavet?,Advisory,No,
+Andi denarya kombdyansathi santulit aahar kasa tayar karava?,Advisory,No,
+Zendu ani tomatyamadhye phasa pik paddhat kashi vaparavi?,Advisory,No,
+Mendhyammadhye farya (laaj) ya rogachi lakshane konti ahet?,Advisory,No,
+Pavsalyasathi shelyancha kami kharchatla nivara kasa banvava?,Advisory,No,
+Shetavar kachya dudhachi tikaupan kshamata kashi vadhavavi?,Advisory,No,
+Atirikt rasayanik khatanchya vaparacha jaminitalya sukshmajivavar kay parinam hoto?,Advisory,No,
+Vasranche jantunirmulan karnyachi yogya paddhat konti aahe?,Advisory,No,
+Chunyacha vapar karun amli jamin kashi sudharavi?,Advisory,No,
+Mirchicha rang tikavnyasathi unhat vaulvanyachi yogya paddhat konti?,Advisory,No,
+Bee ani khat ekatra perni yantrachi dekhbhal kashi karavi?,Advisory,No,
+Tannashak fawarnisathi pathivar ghenyachya fawarni yantrache mojmap kase karave?,Advisory,No,
+How to prevent Mastitis in high-yielding cows?,Advisory,No,
+What is the treatment for Milk Fever in buffaloes?,Advisory,No,
+When should deworming be done for newborn calves?,Advisory,No,
+My buffalo's milk production has dropped due to humidity; what should I change in its diet?,Advisory,No,
+"गायीला ताप आणि खाणे बंद झाले आहे, काय करावे?",Advisory,No,
+वासरांना पहिली लस कधी द्यावी?,Advisory,No,
+कोणती शेळीची जात जास्त वाढते?,Advisory,No,
+What is the best way to disinfect the floor of the cattle shed after yesterday's rain?,Advisory,No,
+Can I replace soybean meal with crushed cottonseed in my poultry feed today,Advisory,No,
+Paramparik nangaracha tulanet phirtya kulavache fayde konte ahet?,Advisory,No,
+लातूर मंडीत आज सोयाबीनचा भाव किती आहे?,Mandi Price,No,
+नागपूर बाजारात कापसाचा जास्तीत जास्त दर किती मिळतोय?,Mandi Price,No,
+अकोला मंडीत तुरीचा किमान भाव किती चालू आहे?,Mandi Price,No,
+लासलगाव बाजारात कांद्याचे आजचे दर काय आहेत?,Mandi Price,No,
+पुणे मंडीत गव्हाचा सध्याचा भाव किती आहे?,Mandi Price,No,
+अमरावती बाजारात मका विकायला चांगला भाव मिळतोय का?,Mandi Price,No,
+जळगाव मंडीत हरभऱ्याचे दर कसे चाललेत?,Mandi Price,No,
+नाशिक बाजारात द्राक्षांचा आजचा भाव किती आहे?,Mandi Price,No,
+सांगली मंडीत ज्वारीचा दर किती आहे?,Mandi Price,No,
+सोलापूर बाजारात बाजरीचा भाव आज किती आहे?,Mandi Price,No,
+कोल्हापूर मंडीत भाताला किती दर मिळतोय?,Mandi Price,No,
+बीड बाजारात सोयाबीन विकायला आत्ताची वेळ योग्य आहे का?,Mandi Price,No,
+परभणी मंडीत तूर विकावी की थोडे दिवस थांबावे?,Mandi Price,No,
+अहमदनगर बाजारात गहू सध्या किती भावाने चालतोय?,Mandi Price,No,
+धुळे मंडीत मका साठवावा की विकावा?,Mandi Price,No,
+नांदेड बाजारात कापसाचे दर वाढतायत का?,Mandi Price,No,
+यवतमाळ मंडीत सोयाबीनचे दर आज कसे आहेत?,Mandi Price,No,
+सातारा बाजारात कांद्याला चांगला भाव मिळतोय का?,Mandi Price,No,
+बुलढाणा मंडीत हरभऱ्याचा सध्याचा दर किती आहे?,Mandi Price,No,
+अहिल्यानगर बाजारात ज्वारीचा आजचा भाव किती आहे?,Mandi Price,No,
+माझ्या जवळच्या मंडीत सोयाबीनचा सध्याचा दर किती आहे?,Mandi Price,Yes,15759514812
+आज माझ्या भागात कांदा विकायला चांगला भाव आहे का?,Mandi Price,Yes,62891426784
+जवळच्या बाजारात गहू विकल्यास किती दर मिळेल?,Mandi Price,Yes,26815933009
+सध्या माझ्या परिसरात तुरीला जास्त भाव कुठे आहे?,Mandi Price,Yes,62891426784
+माझ्या भागात कापसाचे बाजारभाव कसे चाललेत?,Mandi Price,Yes,15759514812
+आत्ता मका विकावा की काही दिवस थांबावे?,Mandi Price,Yes,30230052162
+माझ्या जवळच्या मंडीत हरभऱ्याचा दर किती आहे?,Mandi Price,Yes,26815933009
+सध्या माझ्या परिसरात ज्वारीचे भाव वाढतायत का?,Mandi Price,Yes,30230052162
+आज माझ्या भागात भात विकायला फायदा होईल का?,Mandi Price,Yes,26815933009
+जवळच्या बाजारात बाजरीला किती दर मिळतोय?,Mandi Price,Yes,62891426784
+सध्या सोयाबीन विकण्यासाठी वेळ योग्य आहे का?,Mandi Price,Yes,30230052162
+माझ्या भागात कांद्याचे भाव अजून वाढतील का?,Mandi Price,Yes,15759514812
+जवळच्या मंडीत गव्हाचा दर कमी आहे की जास्त?,Mandi Price,Yes,62891426784
+माझ्या परिसरात मका साठवून ठेवावा का विकावा?,Mandi Price,Yes,40881321091
+सध्या माझ्या भागात कापूस विकायला योग्य वेळ आहे का?,Mandi Price,Yes,30230052162
+माझ्या जवळच्या बाजारात तुरीचा आजचा भाव किती आहे?,Mandi Price,Yes,26815933009
+आज माझ्या परिसरात हरभरा विकणे फायदेशीर आहे का?,Mandi Price,Yes,30230052162
+जवळच्या मंडीत ज्वारी विकल्यास किती भाव मिळेल?,Mandi Price,Yes,15759514812
+सध्या माझ्या भागात बाजरीचे दर कसे आहेत?,Mandi Price,Yes,62891426784
+माझ्या जवळच्या बाजारात भात विकायला चांगला भाव आहे का?,Mandi Price,Yes,40881321091
+Latur mandi madhe aaj soyabean cha bhav kiti aahe?,Mandi Price,No,
+Nagpur market madhe cotton la jasta dar miltoy ka?,Mandi Price,No,
+Lasalgaon madhe kanda cha sadhya dar kiti aahe?,Mandi Price,No,
+Pune mandi madhe gahu vikayla changla bhav aahe ka?,Mandi Price,No,
+Akola mandi madhe tur cha kiman dar kiti aahe?,Mandi Price,No,
+Majhya jawalchya mandit soyabean cha aajcha dar kiti aahe?,Mandi Price,Yes,26815933009
+Aata makka vikava ki kahi divas thambava?,Mandi Price,Yes,30230052162
+Majhya bhagat kanda vikayla changla bhav miltoy ka?,Mandi Price,Yes,62891426784
+Jawalchya market madhe gahu la kiti dar milto?,Mandi Price,Yes,15759514812
+Sadhya cotton viknyasathi vel yogya aahe ka?,Mandi Price,Yes,62891426784
+माझ्या भागात सध्या नवीन कापूस पेरणीसाठी पुरेसा पाऊस झाला आहे का?,Weather Historical,Yes,40881321091
+नाशिक भागात गेल्या दोन दिवसांत द्राक्ष बागेवर परिणाम होईल इतकी थंडी होती का?,Weather Historical,No,
+काल दुपारी सुटलेल्या वाऱ्यामुळे संत्रा बागेत फळगळ झाली असेल का?,Weather Historical,Yes,40881321091
+जळगाव जिल्ह्यात गेल्या 2 दिवसांत उष्णतेची लाट आली होती का?,Weather Historical,No,
+काल रात्री पडलेल्या धुक्यामुळे हरभरा पिकाचे नुकसान झाले असेल का?,Weather Historical,Yes,30230052162
+सोलापूर भागात कालचे तापमान डाळिंब बागेसाठी योग्य होते का?,Weather Historical,No,
+माझ्या गावात गेल्या ३ दिवसांत सरासरी तापमान किती °C नोंदले आहे?,Weather Historical,Yes,15759514812
+पुणे जिल्ह्यात कालचे तापमान कांदा काढणीसाठी पोषक होते का?,Weather Historical,No,
+कोकण भागात गेल्या 3 दिवसांत थंडी पडली आहे का?,Weather Historical,No,
+अकोला जिल्ह्यात गेल्या काही दिवसांत एकूण किती वाऱ्याचा वेग नोंद झाली आहे?,Weather Historical,No,
+कापसावर औषध फवारणी करण्यासाठी काल दुपारचा वाऱ्याचा वेग खूप जास्त होता का?,Weather Historical,Yes,26815933009
+लातूर भागात गेल्या दोन रात्रींमध्ये तापमानात मोठी घट झाली होती का?,Weather Historical,No,
+कालच्या कडक उन्हामुळे मिरचीच्या पिकात फुलगळ होण्याइतपत उष्णता होती का?,Weather Historical,Yes,40881321091
+माझ्या गावात गेल्या ३ दिवसांत पिकाच्या वाढीसाठी पुरेसा सूर्यप्रकाश मिळाला का?,Weather Historical,Yes,15759514812
+सांगली जिल्ह्यात काल हवेतील ओलाव्याचे (आर्द्रता) प्रमाण किती होते?,Weather Historical,No,
+माझ्या शिवारात कालपासून झालेला पाऊस आजचे पाणी देणे टाळण्यासाठी पुरेसा आहे का?,Weather Historical,Yes,62891426784
+बुलढाणा भागात गेल्या 2 दिवसांत कुठे गारपिटीची नोंद झाली आहे का?,Weather Historical,No,
+काल रात्रीच्या दमट हवेमुळे माझ्या शेतात कीड लागण्यासाठी पोषक वातावरण तयार झाले आहे का?,Weather Historical,Yes,40881321091
+Yavatmal jilhyat gelya teen divasat sarasari kiti thandi ahe?,Weather Historical,No,
+Bhat lavni sathi tapman anukul aahe ka?,Weather Historical,Yes,40881321091
+Mazya gavacha havaman mule perni sathi puresa vafsa (olava) aahe ka?,Weather Historical,Yes,50396788689
+माझ्या योजनेच्या अर्जाची सध्याची स्थिती काय आहे?,MahaDBT,Yes,26815933009
+माझ्या सर्व प्रलंबित सरकारी योजनांच्या अर्जांची स्थिती दाखवा.,MahaDBT,Yes,50396788689
+"माझ्या कोणत्याही योजनेचा अर्ज ‘रद्द’ म्हणून चिन्हांकित केला आहे का? असल्यास, कारण काय आहे?",MahaDBT,Yes,40881321091
+"माझं अनुदान मंजूर झालं आहे का? झालं असल्यास, ते माझ्या खात्यात कधी येईल?",MahaDBT,Yes,40881321091
+माझ्या अर्जात कोणती कागदपत्रे राहिली आहेत आणि ती कधीपर्यंत द्यावी लागतील?,MahaDBT,Yes,30230052162
+माझ्या अर्जावर शेवटचा अपडेट कधी झाला आणि अधिकाऱ्यांनी काय टिप्पणी केली आहे ते दाखवा.,MahaDBT,Yes,50396788689
+माझी योजना मंजूर झाली असेल तर त्याचं पेमेंट कुठपर्यंत आलं आहे ते दाखवा.,MahaDBT,Yes,26815933009
+माझ्या योजनेचा अर्ज ‘Submitted’ वरून ‘Approved’ स्थितीत गेला आहे का ते तपासा.,MahaDBT,Yes,50396788689
+"माझी अनुदानाची रक्कम मंजूर झाली आहे का? असल्यास, ती माझ्या बँक खात्यात कधी जमा होईल?",MahaDBT,Yes,40881321091
+माझ्या सर्व प्रलंबित सरकारी योजनांच्या अर्जांची स्थिती दाखवा.,MahaDBT,Yes,26815933009
+Why is my application for the scheme showing as 'Waiting List'?,MahaDBT,Yes,50396788689
+मी कोणत्या योजनेसाठी पात्र आहे?,Scheme,Yes,50396788689
+पशुपालनासाठी कोणत्या शासकीय योजना आहेत?,Scheme,No,
+what are the schemes for purchasing a milk milking machine?,Scheme,No,
+माझ्या पिकासाठी कोणती शासकीय योजना आहे?,Scheme,Yes,26815933009
+डाळिंब किंवा मका लागवडीसाठी शासकीय योजना उपलब्ध आहेत का?,Scheme,No,
+माझ्या शेतासाठी ट्रॅक्टर किंवा हातमुद्रक यंत्रासाठी कोणत्या शासकीय योजनेचा लाभ मिळेल?,Scheme,Yes,50396788689
+पिकांच्या लागवडीसाठी शेतकरी मशीनरीसाठी कोणत्या अनुदान योजना उपलब्ध आहेत?,Scheme,No,
+शेतासाठी हार्वेस्टर घेण्यास कोणती योजना मदत करते?,Scheme,No,
+माझ्या गावात काही पीक सुधारणा योजनेची नोंदणी कशी करावी?,Scheme,Yes,50396788689
+माझ्या बटाट्याच्या पिकासाठी कोणत्या योजनांमध्ये मी अर्ज करू शकतो?,Scheme,Yes,50396788689
+"मी नवीन शेतकरी आहे, कोणत्या योजना माझ्यासाठी सर्वप्रथम उपलब्ध आहेत?",Scheme,Yes,40881321091
+"मी सोयाबीन आणि कापूस दोन्ही पिकतो, कोणत्या योजनेत अर्ज करणे फायदेशीर आहे?",Scheme,Yes,40881321091
+सेंद्रिय शेतीसाठी कोणती योजना उपलब्ध आहे?,Scheme,Yes,30230052162
+लहान शेतकऱ्यांसाठी कोणत्या योजनांमध्ये अनुदान जास्त मिळते?,Scheme,Yes,62891426784
+केळी बागेसाठी कोणत्या सरकारी योजनेचा लाभ मिळू शकतो?,Scheme,Yes,40881321091
+पिक विमा योजनांचा अर्ज कसा करावा आणि कोणत्या पिकांसाठी आहे?,Scheme,Yes,30230052162
+माझ्या शेतात नवीन ड्रिप प्रणाली बसवण्यासाठी अर्ज कसा करावा?,Scheme,Yes,30230052162
+माझ्या जमिनीच्या आकारानुसार PM-KISAN मध्ये किती रक्कम मिळेल?,Scheme,Yes,40881321091
+मी PM-KISAN साठी पात्र आहे का,Scheme,Yes,30230052162
+सोयाबीन पिकासाठी PMFBY विमा कव्हरेज किती आहे?,Scheme,Yes,40881321091
+कापूस पिकासाठी RWBCIS विमा कव्हरेज किती आहे,Scheme,Yes,40881321091
+Me PDMC yojana la eligible ahe ka?,Scheme,Yes,62891426784
+मी माझ्या शेतामध्ये कापसाची लागवड करण्याची योजना आखत आहे. यासाठी मी पात्र असलेल्या कोणत्याही शासकीय योजना आहेत का?,Scheme,Yes,Vittal
+मी कोणकोणत्या योजनांसाठी पात्र आहे?,Scheme,Yes,30230052162
+माझ्या शेतात ठिबक सिंचन (ड्रिप इरिगेशन) आणि तुषार सिंचन (स्प्रिंकलर) बसवण्यासाठी कोणती योजना उपलब्ध आहे का?,Scheme,Yes,62891426784
+माझ्या शेतात कापूस लागवड करायची आहे. त्यासाठी मला मदत मिळू शकेल अशा कोणत्या शासकीय योजनांची माहिती द्या.,Scheme,Yes,40881321091
+माझ्या शेतातील फळे आणि फुलांचे नुकसान झाले आहे. त्या नुकसानीसाठी कोणती मदत किंवा योजना उपलब्ध आहे का?,Scheme,Yes,40881321091
+मी MIDH पात्र आहे का,Scheme,Yes,26815933009
+माझ्या गावातील कृषी अधिकार्‍यांचा संपर्क,Agri Assistant Contact,Yes,26815933009
+माझ्या भागातील अधिकारी काय सेवा देतात?,Agri Assistant Contact,Yes,26815933009
+हिंगणघाट गावात कृषी अधिकारी कोण आहेत?,Agri Assistant Contact,No,
+मोरगाव गावात कृषी अधिकारी कोण आहेत,Agri Assistant Contact,No,
+मळशिरस गावात कृषी अधिकारी कोण आहेत,Agri Assistant Contact,No,
+कोपरगाव गावात कृषी अधिकारी कोण आहेत,Agri Assistant Contact,No,
+महाड गावात कृषी अधिकारी कोण आहेत?,Agri Assistant Contact,No,
+रायगड गावात कृषी अधिकारी कोण आहेत,Agri Assistant Contact,No,
+गावेरी गावात कृषी अधिकारी कोण आहेत,Agri Assistant Contact,No,
+वाशी गावात कृषी अधिकारी कोण आहेत,Agri Assistant Contact,No,
+माझ्या भागातील अधिकारी काय सेवा देतात?,Agri Assistant Contact,Yes,50396788689
+"घोगळी, नागपूर येथे उपलब्ध असलेल्या शासकीय कृषी कर्मचाऱ्यांचे संपर्क तपशील आहेत का?",Agri Assistant Contact,No,
+माझे शेत ज्या ठिकाणी आहे त्या ठिकाणच्या तालुका कृषी अधिकाऱ्यांशी (TAO) मी कसा संपर्क साधू शकतो?,Agri Assistant Contact,Yes,30230052162
+माझ्या नोंदणीकृत जमिनींसाठी कृषी सहाय्यकांचा मोबाईल क्रमांक मला हवा आहे.,Agri Assistant Contact,Yes,30230052162
+माझ्या अर्जाच्या स्थितीबाबत समस्या असल्यास मी कोणत्या शासकीय अधिकाऱ्यांशी संपर्क साधावा?,Agri Assistant Contact,Yes,30230052162
+लातूरमध्ये किडीव्यवस्थापन सल्ल्यासाठी स्थानिक कृषी सहाय्यक उपलब्ध आहे का?,Agri Assistant Contact,Yes,30230052162
+माझ्या पीक विम्याबद्दल चर्चा करण्यासाठी सोलापूरमधील कृषी सहाय्यकांचे संपर्क तपशील मला हवेत.,Agri Assistant Contact,Yes,30230052162
+शेतातील खतवापर किंवा पिकसल्ल्यासाठी स्थानिक कृषी सहाय्यकांचा फोन नंबर मला हवा आहे.,Agri Assistant Contact,Yes,26815933009
+कोल्हापूर तालुक्यात पीक रक्षण आणि कीटकनियंत्रणासाठी स्थानिक कृषी सहाय्यक उपलब्ध आहेत का?,Agri Assistant Contact,No,
+माझ्या अर्जाच्या मंजुरीबाबत विलंब झाला असल्यास मी कोणत्या अधिकाऱ्यांशी संपर्क करू शकतो?,Agri Assistant Contact,Yes,26815933009
