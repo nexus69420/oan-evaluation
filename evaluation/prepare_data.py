@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 
 ## Model name to be evaluated
-model_name = "openai/gpt-oss-20b"
+model_name = "Qwen/Qwen3-14b"
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,11 +40,13 @@ model = OpenAIChatModel(
 )
 
 settings = OpenAIChatModelSettings(
-    temperature=1.0,
-    # top_k=100,
-    top_p=1.0,
-    openai_reasoning_effort='medium',
-    parallel_tool_calls=True
+    temperature=0.7,
+    min_p=0.01,
+    top_k=20,
+    top_p=0.8,
+    # openai_reasoning_effort='medium',
+    parallel_tool_calls=True,
+    extra_body={"chat_template_kwargs": {"enable_thinking": False}}
     )
 
 async def get_response(q, target_lang='mr', farmer_id=None):

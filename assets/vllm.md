@@ -27,6 +27,12 @@ To do that, we need to pass this to the model settings:
 "extra_body": {"chat_template_kwargs": {"enable_thinking": False}}
 ```
 
+## Qwen/Qwen3-14b
+
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve Qwen/Qwen3-14b --enable-auto-tool-choice --reasoning-parser deepseek_r1 --ternsor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager > vllm_qwen3.out 2>&1 &
+```
+
 ## Qwen/Qwen3-30B-A3B
 
 
