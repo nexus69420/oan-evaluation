@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 
 ## Model name to be evaluated
-model_name = "gpt-4.1"
+model_name = "mistralai/Mistral-Small-3.2-24B-Instruct-2506"
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,9 +30,9 @@ from pydantic_ai.providers.openai import OpenAIProvider
 from pydantic_ai.models.openai import OpenAIChatModel, OpenAIChatModelSettings
 
 provider = OpenAIProvider(
-    #base_url="http://216.48.185.71:8080/v1",
-    #api_key="dummy",  # vLLM doesn't need it, but some clients require a value
-    api_key=os.getenv("OPENAI_API_KEY"),
+    base_url="http://216.48.185.71:8080/v1",
+    api_key="dummy",  # vLLM doesn't need it, but some clients require a value
+    # api_key=os.getenv("OPENAI_API_KEY"),
 )
 model = OpenAIChatModel(
     model_name,
@@ -40,7 +40,7 @@ model = OpenAIChatModel(
 )
 
 settings = OpenAIChatModelSettings(
-    # temperature=0.15,
+    temperature=0.15,
     # top_k=100,
     # top_p=1.0,
     # openai_reasoning_effort='medium',
