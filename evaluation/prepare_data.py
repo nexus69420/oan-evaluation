@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 
 ## Model name to be evaluated
-model_name = "mistralai/Mistral-Small-3.2-24B-Instruct-2506"
+model_name = "openai/gpt-oss-20b"
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,10 +40,10 @@ model = OpenAIChatModel(
 )
 
 settings = OpenAIChatModelSettings(
-    temperature=0.15,
+    temperature=1.0,
     # top_k=100,
-    # top_p=1.0,
-    # openai_reasoning_effort='medium',
+    top_p=1.0,
+    openai_reasoning_effort='medium',
     parallel_tool_calls=True
     )
 
