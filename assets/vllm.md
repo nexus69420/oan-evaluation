@@ -30,17 +30,25 @@ To do that, we need to pass this to the model settings:
 ## Qwen/Qwen3-14b
 
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve Qwen/Qwen3-14b --enable-auto-tool-choice --reasoning-parser deepseek_r1 --ternsor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager > vllm_qwen3.out 2>&1 &
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve Qwen/Qwen3-14b --enable-auto-tool-choice --reasoning-parser deepseek_r1 --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager > vllm_qwen3.out 2>&1 &
 ```
 
 ## Qwen/Qwen3-30B-A3B
 
 
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve Qwen/Qwen3-30B-A3B --enable-auto-tool-choice --tool-call-parser hermes --reasoning-parser deepseek_r1 --ternsor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager > vllm_qwen3.out 2>&1 &
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve Qwen/Qwen3-30B-A3B --enable-auto-tool-choice --tool-call-parser hermes --reasoning-parser deepseek_r1 --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager > vllm_qwen3.out 2>&1 &
 ```
 
 ## Qwen/Qwen3-32B
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve Qwen/Qwen3-32B --enable-auto-tool-choice --tool-call-parser hermes --reasoning-parser deepseek_r1 --ternsor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager > vllm_qwen3.out 2>&1 &
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve Qwen/Qwen3-32B --enable-auto-tool-choice --tool-call-parser hermes --reasoning-parser deepseek_r1 --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager > vllm_qwen3.out 2>&1 &
+```
+
+
+---
+
+### Finetuned Qwen3 14b
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve kenpath/mhv_vistaar_qwen3-14b_v0.1 --enable-auto-tool-choice --tool-call-parser hermes --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager > vllm_qwen3.out 2>&1 &
 ```

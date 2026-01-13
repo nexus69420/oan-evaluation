@@ -8,6 +8,10 @@ import numpy as np
 
 ## Model name to be evaluated
 model_name = "Qwen/Qwen3-14b"
+# model_name = "kenpath/mhv_vistaar_qwen3-14b_v0.1"
+
+## Number of concurrent workers for parallel processing
+NUM_WORKERS = 8
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -46,8 +50,10 @@ settings = OpenAIChatModelSettings(
     top_p=0.8,
     # openai_reasoning_effort='medium',
     parallel_tool_calls=True,
+    timeout=120,
+    request_limit=10,
     extra_body={"chat_template_kwargs": {"enable_thinking": False}}
-    )
+)
 
 async def get_response(q, target_lang='mr', farmer_id=None):
     deps = FarmerContext(
@@ -66,23 +72,47 @@ async def get_response(q, target_lang='mr', farmer_id=None):
         'agent_turns': internal_messages, 
     }
 
-async def main():
-    questions_df = pd.read_csv(PATH_TO_QUESTIONS_DATA).replace({np.nan: None})
-    questions_df['farmer_id'] = questions_df['farmer_id'].apply(lambda x: str(int(x)) if x is not None else None)
-    results = []
-    for idx, row in tqdm(questions_df.iterrows(), desc="Processing questions"):
+async def process_row(row, semaphore):
+    async with semaphore:
         for _ in range(3):
             try:
-                question     = row['question']
+                question = row['question']
                 farmer_id = row['farmer_id']
                 result = await get_response(question, target_lang='mr', farmer_id=farmer_id)
-                result_dict = {**row.to_dict(), **result}
-                results.append(result_dict)
-                break
+                return {**row.to_dict(), **result}
             except Exception as e:
                 print(f"Error: {e}")
                 continue
-    return results
+        return None
+
+async def main():
+    questions_df = pd.read_csv(PATH_TO_QUESTIONS_DATA).replace({np.nan: None})
+    questions_df['farmer_id'] = questions_df['farmer_id'].apply(lambda x: str(int(x)) if x is not None else None)
+    
+    # Load existing answers if data.json exists
+    data_file = os.path.join(MODEL_DATA_PATH, "data.json")
+    existing_results = []
+    answered_questions = set()
+    if os.path.exists(data_file):
+        with open(data_file, "r", encoding="utf-8") as f:
+            existing_results = json.load(f)
+            answered_questions = {r['question'] for r in existing_results}
+    
+    # Filter to only unanswered questions
+    questions_df = questions_df[~questions_df['question'].isin(answered_questions)]
+    
+    if questions_df.empty:
+        print("All questions already answered. Nothing to process.")
+        return existing_results
+    
+    print(f"Processing {len(questions_df)} new questions (skipping {len(answered_questions)} already answered)")
+    
+    semaphore = asyncio.Semaphore(NUM_WORKERS)
+    tasks = [process_row(row, semaphore) for _, row in questions_df.iterrows()]
+    results = await tqdm.gather(*tasks, desc="Processing questions")
+    
+    # Merge existing + new results
+    return existing_results + [r for r in results if r is not None]
 
 if __name__ == "__main__":
     results = asyncio.run(main())
