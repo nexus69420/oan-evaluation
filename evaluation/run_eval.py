@@ -5,12 +5,15 @@ import warnings
 warnings.filterwarnings('ignore')
 from tqdm.asyncio import tqdm
 from dotenv import load_dotenv
-from evaluator import evaluation_agent, format_agent_turns_to_markdown
+from evaluator import evaluation_agent, format_agent_record, EvaluationDeps
 
 load_dotenv()
 
-#model_name  = "gpt-4.1"
-model_name ="mistralai/Mistral-Small-3.2-24B-Instruct-2506"
+#model_name  = "gpt-4.1-mini"
+#model_name ="Qwen/Qwen3-14b"
+#model_name = "mistralai_Mistral-Small-3.2-24B-Instruct-2506"
+#model_name ="kenpath/mhv_vistaar_qwen3-14b_v0.2"
+model_name = "openai/gpt-oss-20b"
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_DATA_PATH = os.path.join(current_dir, "data", "models", model_name.replace("/", "_"))
 json_file = os.path.join(MODEL_DATA_PATH, "data.json")
@@ -36,26 +39,20 @@ semaphore = asyncio.Semaphore(MAX_CONCURRENT)
 
 async def evaluate_item(item):
     """Evaluate a single item with concurrency control."""
-    async with semaphore:
-        question = item.get("question", "")
-        
+    async with semaphore:        
         # Format message
-        agent_turns = format_agent_turns_to_markdown(item.get("agent_turns", []))
-        message = "\n\n".join([
-            "*User Question:* " + question,
-            "*Category:* " + item.get("category", ""),
-            "*Agristack Required:* " + item.get("agristack_required", "No"),
-            "*Agent Turns:*\n" + agent_turns,
-            "*Final Response:*\n" + item.get("answer", "")
-        ])
-        
+        category = item.get("category", "")
+        message = format_agent_record(item)            
         # Evaluate
         try:
-            eval_result = await evaluation_agent.run(message)
-            item['evaluation'] = eval_result.output.model_dump()
+            eval_result = await evaluation_agent.run(
+                message,
+                deps=EvaluationDeps(category=category)
+            )
+            item['evaluation'] = eval_result.output.to_eval_dict()
             return item
         except Exception as e:
-            print(f"Error: {question[:50]}... - {e}")
+            print(f"Error: {item.get('question', '')[:50]}... - {e}")
             return None
 
 async def main():

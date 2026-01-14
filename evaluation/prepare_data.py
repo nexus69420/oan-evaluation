@@ -7,8 +7,9 @@ import pandas as pd
 import numpy as np
 
 ## Model name to be evaluated
-model_name = "Qwen/Qwen3-14b"
-# model_name = "kenpath/mhv_vistaar_qwen3-14b_v0.1"
+#model_name = "Qwen/Qwen3-14b"
+#model_name = "kenpath/mhv_vistaar_qwen3-14b_v0.2"
+model_name = 'openai/gpt-oss-20b'
 
 ## Number of concurrent workers for parallel processing
 NUM_WORKERS = 8
@@ -44,15 +45,15 @@ model = OpenAIChatModel(
 )
 
 settings = OpenAIChatModelSettings(
-    temperature=0.7,
-    min_p=0.01,
-    top_k=20,
-    top_p=0.8,
-    # openai_reasoning_effort='medium',
+    temperature=1.0,
+    #min_p=0.01,
+    top_k=100,
+    top_p=1.0,
+    openai_reasoning_effort='medium',
     parallel_tool_calls=True,
     timeout=120,
     request_limit=10,
-    extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+#    extra_body={"chat_template_kwargs": {"enable_thinking": False}}
 )
 
 async def get_response(q, target_lang='mr', farmer_id=None):
