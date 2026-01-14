@@ -309,8 +309,15 @@ class EvaluationResult(BaseModel):
             }
         }
         
-        dim_averages = [d["average"] for d in dimensions.values() if d["average"] is not None]
-        overall_average = round(sum(dim_averages) / len(dim_averages), 2) if dim_averages else None
+        # Calculate overall average from all valid sub-dimension scores (equal weight per sub-dimension)
+        all_scores = []
+        for dimension in [self.process_fidelity, self.factual_grounding, 
+                          self.response_usefulness, self.marathi_quality]:
+            for field_name in dimension.model_fields:
+                sub_dim: SubDimensionScore = getattr(dimension, field_name)
+                if sub_dim.score is not None:
+                    all_scores.append(sub_dim.score.value)
+        overall_average = round(sum(all_scores) / len(all_scores), 2) if all_scores else None
         
         critical_failures = self._get_critical_failures()
         

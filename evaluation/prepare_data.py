@@ -9,7 +9,7 @@ import numpy as np
 ## Model name to be evaluated
 #model_name = "Qwen/Qwen3-14b"
 #model_name = "kenpath/mhv_vistaar_qwen3-14b_v0.2"
-model_name = 'openai/gpt-oss-20b'
+model_name = 'openai/gpt-oss-120b'
 
 ## Number of concurrent workers for parallel processing
 NUM_WORKERS = 8

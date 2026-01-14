@@ -13,7 +13,7 @@ load_dotenv()
 #model_name ="Qwen/Qwen3-14b"
 #model_name = "mistralai_Mistral-Small-3.2-24B-Instruct-2506"
 #model_name ="kenpath/mhv_vistaar_qwen3-14b_v0.2"
-model_name = "openai/gpt-oss-20b"
+model_name = "openai/gpt-oss-120b"
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_DATA_PATH = os.path.join(current_dir, "data", "models", model_name.replace("/", "_"))
 json_file = os.path.join(MODEL_DATA_PATH, "data.json")
