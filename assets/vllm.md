@@ -52,3 +52,12 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve Qwen/Qwen3-32B --enable-au
 ```
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve kenpath/mhv_vistaar_qwen3-14b_v0.2 --enable-auto-tool-choice --tool-call-parser hermes --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager > vllm_qwen3.out 2>&1 &
 ```
+
+
+### Llama 4
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve meta-llama/Llama-4-Scout-17B-16E-Instruct --enable-auto-tool-choice --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager --max-model-len 128000   --tool-call-parser llama4_json
+```
+
+
+### Llama 3.3 70b

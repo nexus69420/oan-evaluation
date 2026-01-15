@@ -1,0 +1,14 @@
+{
+    "provider_name": "openai",
+    "provider_base_url": "http://216.48.185.71:8080/v1/",
+    "model_name": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+    "model_settings": {
+        "temperature": 0.6,
+        "min_p": 0.01,
+        "top_p": 0.9,
+        "parallel_tool_calls": true,
+        "timeout": 120,
+        "request_limit": 10
+    },
+    "date": "2026-01-15 14:29:07"
+}

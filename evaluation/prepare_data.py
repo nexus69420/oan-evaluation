@@ -9,7 +9,8 @@ import numpy as np
 ## Model name to be evaluated
 #model_name = "Qwen/Qwen3-14b"
 #model_name = "kenpath/mhv_vistaar_qwen3-14b_v0.2"
-model_name = 'openai/gpt-oss-120b'
+# model_name = 'openai/gpt-oss-120b'
+model_name = 'meta-llama/Llama-4-Scout-17B-16E-Instruct'
 
 ## Number of concurrent workers for parallel processing
 NUM_WORKERS = 8
@@ -45,11 +46,11 @@ model = OpenAIChatModel(
 )
 
 settings = OpenAIChatModelSettings(
-    temperature=1.0,
-    #min_p=0.01,
-    top_k=100,
-    top_p=1.0,
-    openai_reasoning_effort='medium',
+    temperature=0.6,
+    min_p=0.01,
+    #top_k=100,
+    top_p=0.9,
+    #openai_reasoning_effort='medium',
     parallel_tool_calls=True,
     timeout=120,
     request_limit=10,
