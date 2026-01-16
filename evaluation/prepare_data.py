@@ -10,10 +10,12 @@ import numpy as np
 #model_name = "Qwen/Qwen3-14b"
 #model_name = "kenpath/mhv_vistaar_qwen3-14b_v0.2"
 # model_name = 'openai/gpt-oss-120b'
-model_name = 'meta-llama/Llama-4-Scout-17B-16E-Instruct'
+# model_name = 'meta-llama/Llama-4-Scout-17B-16E-Instruct'
+# model_name = 'kenpath/mhv_vistaar_gpt-oss-20b_v0.1'
+model_name = 'meta-llama/Llama-3.3-70B-Instruct'
 
 ## Number of concurrent workers for parallel processing
-NUM_WORKERS = 8
+NUM_WORKERS = 1
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -47,10 +49,10 @@ model = OpenAIChatModel(
 
 settings = OpenAIChatModelSettings(
     temperature=0.6,
-    min_p=0.01,
-    #top_k=100,
+    # min_p=0.,
+    # top_k=100,
     top_p=0.9,
-    #openai_reasoning_effort='medium',
+    #openai_reasoning_effort='low',
     parallel_tool_calls=True,
     timeout=120,
     request_limit=10,

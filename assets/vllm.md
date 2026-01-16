@@ -61,3 +61,18 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve meta-llama/Llama-4-Scout-17B-16E
 
 
 ### Llama 3.3 70b
+
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve meta-llama/Llama-3.3-70B-Instruct --enable-auto-tool-choice --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager --max-model-len 128000 --tool-call-parser llama3_json
+```
+
+### Finetuned GPT OSS 20b
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve kenpath/mhv_vistaar_gpt-oss-20b_v0.1 --enable-auto-tool-choice --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager --max-model-len 128000 --tool-call-parser openai
+```
+
+### Run from locally saved merged model
+
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve /home/jovyan/oan-finetuning/fine-tuning/models/merged_16bit --served-model-name kenpath/mhv_vistaar_gpt-oss-20b_v0.1 --enable-auto-tool-choice --tensor-parallel-size 8 --gpu-memory-utilization 0.9 --port 8080 --enforce-eager --max-model-len 128000 --tool-call-parser openai
+```
