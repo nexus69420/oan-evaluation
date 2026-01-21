@@ -68,7 +68,20 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve meta-llama/Llama-3.3-70B-Instruc
 
 ### Finetuned GPT OSS 20b
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve kenpath/mhv_vistaar_gpt-oss-20b_v0.1 --enable-auto-tool-choice --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager --max-model-len 128000 --tool-call-parser openai
+# Force FlashInfer for the EXPERTS ONLY, while letting Attention use FlashAttention
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve kenpath/mhv_fsdp-vistaar_gpt-oss-120b_v0.5 \
+    --tensor-parallel-size 8 \
+    --gpu-memory-utilization 0.9 \
+    --max-model-len 128000 \
+    --trust-remote-code \
+    --enable-auto-tool-choice \
+    --tool-call-parser openai \
+    --reasoning-parser openai_gptoss \
+    --port 8080 \
+    --compilation-config '{"cudagraph_mode": "PIECEWISE"}' \
+    --disable-custom-all-reduce \
+    --chat-template /home/jovyan/chat_templates/gptoss_unsloth_chat_template.jinja
+
 ```
 
 ### Run from locally saved merged model
@@ -76,3 +89,29 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve kenpath/mhv_vistaar_gpt-oss-20b_
 ```
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve /home/jovyan/oan-finetuning/fine-tuning/models/merged_16bit --served-model-name kenpath/mhv_vistaar_gpt-oss-20b_v0.1 --enable-auto-tool-choice --tensor-parallel-size 8 --gpu-memory-utilization 0.9 --port 8080 --enforce-eager --max-model-len 128000 --tool-call-parser openai
 ```
+
+
+### Nemotron
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8 \
+  --tensor-parallel-size 8 \
+  --max-model-len 128000 \
+  --port 8080 \
+  --trust-remote-code \
+  --enable-auto-tool-choice \
+  --tool-call-parser qwen3_coder \
+  --reasoning-parser-plugin nano_v3_reasoning_parser.py \
+  --reasoning-parser nano_v3
+  --gpu-memory-utilization 0.9
+```
+
+
+### GPT OSS 20b without thinking
+
+```
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve openai/gpt-oss-20b --tool-call-parser openai --enable-auto-tool-choice  --tensor-parallel-size 4 --gpu-memory-utilization 0.8  --port 8080 --enforce-eager --chat-template oan-finetuning/assets/chat_templates/openai_non_thinking.jinja --served-model-name openai/gpt-oss-20b_non_thinking
+```
+
+
+
+

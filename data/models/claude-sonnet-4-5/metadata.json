@@ -1,0 +1,7 @@
+{
+    "provider_name": "anthropic",
+    "provider_base_url": "https://api.anthropic.com",
+    "model_name": "claude-sonnet-4-5",
+    "model_settings": {},
+    "date": "2026-01-20 12:54:06"
+}
