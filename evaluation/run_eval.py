@@ -15,8 +15,8 @@ load_dotenv()
 #model_name ="kenpath/mhv_vistaar_qwen3-14b_v0.2"
 #model_name = "openai/gpt-oss-120b"
 #model_name = "kenpath/mhv_fsdp-vistaar_gpt-oss-20b_v0.5"
-model_name = "meta-llama/Llama-4-Scout-17B-16E-Instruct"
-# model_name = "claude-opus-4-5"
+#model_name = "meta-llama/Llama-4-Scout-17B-16E-Instruct"
+model_name = "claude-haiku-4-5"
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_DATA_PATH = os.path.join(current_dir, "data", "models", model_name.replace("/", "_"))
 json_file = os.path.join(MODEL_DATA_PATH, "data.json")

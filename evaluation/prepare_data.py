@@ -12,7 +12,7 @@ import numpy as np
 # model_name = 'openai/gpt-oss-120b'
 # model_name = 'meta-llama/Llama-4-Scout-17B-16E-Instruct'
 # model_name = 'kenpath/mhv_vistaar_gpt-oss-20b_v0.5'
-model_name = "claude-opus-4-5"
+model_name = "claude-haiku-4-5"
 #model_name = 'meta-llama/Llama-3.3-70B-Instruct'
 # model_name = 'nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8'
 # model_name = "openai/gpt-oss-20b_non_thinking"
