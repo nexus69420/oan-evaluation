@@ -7,7 +7,7 @@ from enum import IntEnum
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent, RunContext
-from pydantic_ai.models.openai import OpenAIChatModelSettings
+from pydantic_ai.models.openai import OpenAIResponsesModel, OpenAIResponsesModelSettings
 from dotenv import load_dotenv
 load_dotenv()
 import logfire
@@ -108,7 +108,7 @@ class SubDimensionScore(BaseModel):
     )
     evidence: str = Field(
         ..., 
-        description="Brief justification with reasoning and supporting snippets"
+        description="Brief justification in English with reasoning; may quote Marathi snippets as supporting evidence"
     )
 
 # =============================================================================
@@ -233,7 +233,7 @@ class EvaluationResult(BaseModel):
     - Response Usefulness: Completeness, actionability, clarity
     - Marathi Quality: Grammar, terminology, fluency
     
-    Critical failures (score=1) in safety_compliance, no_fabrication, or 
+    Critical failures (score=UNACCEPTABLE) in safety_compliance, no_fabrication, or 
     source_alignment result in overall_pass=False regardless of other scores.
     """
     
@@ -244,7 +244,7 @@ class EvaluationResult(BaseModel):
     
     summary: str = Field(
         ..., 
-        description="2-3 sentences: key strength + top improvement area"
+        description="2-3 sentences in English: key strength + top improvement area"
     )
 
     def _calculate_dimension_average(self, dimension: BaseModel) -> Optional[float]:
@@ -257,7 +257,7 @@ class EvaluationResult(BaseModel):
         return round(sum(scores) / len(scores), 2) if scores else None
 
     def _get_critical_failures(self) -> List[str]:
-        """Identify critical failures (score=1) in safety-critical sub-dimensions."""
+        """Identify critical failures (score=UNACCEPTABLE) in safety-critical sub-dimensions."""
         critical_fields = [
             ("factual_grounding", "safety_compliance"),
             ("factual_grounding", "no_fabrication"),
@@ -336,12 +336,13 @@ evaluation_agent = Agent(
     model='gpt-5',
     name="Evaluation Agent",
     deps_type=EvaluationDeps,
-    instrument=True,
+    instrument=False,
     output_type=EvaluationResult,
     retries=3,
-    model_settings=OpenAIChatModelSettings(
+    model_settings=OpenAIResponsesModelSettings(
         temperature=0.0,
-        openai_reasoning_effort='medium',
+        timeout=120,
+        openai_reasoning_effort='low',
     )
 )
 

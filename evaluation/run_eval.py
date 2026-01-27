@@ -10,13 +10,24 @@ from evaluator import evaluation_agent, format_agent_record, EvaluationDeps
 load_dotenv()
 
 #model_name  = "gpt-4.1-mini"
-#model_name ="Qwen/Qwen3-14b"
+# model_name ="Qwen/Qwen3-14b"
 #model_name = "mistralai_Mistral-Small-3.2-24B-Instruct-2506"
-#model_name ="kenpath/mhv_vistaar_qwen3-14b_v0.2"
+# model_name ="kenpath/mhv_vistaar_qwen3-14b_v0.2"
 #model_name = "openai/gpt-oss-120b"
-#model_name = "kenpath/mhv_fsdp-vistaar_gpt-oss-20b_v0.5"
-#model_name = "meta-llama/Llama-4-Scout-17B-16E-Instruct"
-model_name = "claude-haiku-4-5"
+model_name = "kenpath/mhv_fsdp-vistaar_gpt-oss-120b_v0.5"
+# model_name = "meta-llama/Llama-4-Scout-17B-16E-Instruct"
+#model_name = "Qwen/Qwen3-32B"
+#model_name = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+#model_name = "kenpath/mhv_vistaar_all_qwen3-32b_v0.2"
+# model_name = "openai/gpt-oss-20b"
+#model_name = "kenpath/mhv_vistaar_qwen3-32b_v0.2"
+# model_name = "kenpath/mhv_vistaar_all_qwen3-30b-a3b-instruct-2507_v0.1"
+# model_name = "KissanAI/Dhenu2-In-Llama3.1-8B-Instruct"
+# model_name  = "kenpath/mhv_vistaar_all_qwen3-30b-a3b-instruct-2507_v0.1"
+#model_name = "kenpath/mhv_vistaar_all_mhv_vistaar_all_qwen3-32b_v0.2_v0.2.1"
+#model_name = "gpt-4.1"
+#model_name = "claude-haiku-4-5"
+
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_DATA_PATH = os.path.join(current_dir, "data", "models", model_name.replace("/", "_"))
 json_file = os.path.join(MODEL_DATA_PATH, "data.json")

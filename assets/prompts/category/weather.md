@@ -85,38 +85,38 @@ Very occasionally (~5%), users ask comparison questions like "थंडी व�
 
 ### PROCESS FIDELITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `agristack_workflow` | Called first; uses coords OR correct fallback when empty | Called but asks for location when data returned | Available but not called |
-| `tool_sequencing` | Correct tool for query type | Minor inefficiency | Wrong tool (historical for future dates) |
-| `output_hygiene` | No tool names | Minor artifact | Tool names leaked |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `agristack_workflow` | Called first; uses coords OR correct fallback when empty | Called first; coords partially used | Called but asks for location when data returned | Called very late; location ignored | Available but not called |
+| `tool_sequencing` | Correct tool for query type | Correct tool; minor redundancy | Minor inefficiency | Significant inefficiency | Wrong tool (historical for future dates) |
+| `output_hygiene` | No tool names | Clean; minor formatting issue | Minor artifact | Multiple artifacts | Tool names leaked |
 
 ### FACTUAL GROUNDING
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `source_alignment` | All values match tool output | Minor gaps | Values don't match |
-| `no_fabrication` | All data from tool | Minor inference | Invented weather data |
-| `citation_accuracy` | Correct source (IMD/Skymet) | Generic "हवामान विभाग" | Wrong source |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `source_alignment` | All values match tool output | Most values match; minor omission | Minor gaps | Several mismatches | Values don't match |
+| `no_fabrication` | All data from tool | All data sourced; small inference | Minor inference | Significant unsupported claims | Invented weather data |
+| `citation_accuracy` | Correct source (IMD/Skymet) | Correct source; minor format issue | Generic "हवामान विभाग" | Source unclear | Wrong source |
 
 ### RESPONSE USEFULNESS
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `completeness` | Full timeframe; all parameters | Main parameters | Key data missing |
-| `actionability` | Weather → farming advice | Some guidance | Raw data only |
-| `context_fit` | References farmer's village | Generic location | Ignores Agristack |
-| `clarity` | Day-by-day OR clear ranges | Understandable | Confusing |
-| `conversation_closure` | Specific follow-up | Generic offer | No follow-up |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `completeness` | Full timeframe; all parameters | Most parameters; minor gap | Main parameters | Significant gaps | Key data missing |
+| `actionability` | Weather → farming advice | Good guidance; minor gap | Some guidance | Minimal guidance | Raw data only |
+| `context_fit` | References farmer's village | Mostly personalized; minor miss | Generic location | Minimal personalization | Ignores Agristack |
+| `clarity` | Day-by-day OR clear ranges | Clear; minor organization issue | Understandable | Hard to follow | Confusing |
+| `conversation_closure` | Specific follow-up | Good follow-up; slightly generic | Generic offer | Weak follow-up | No follow-up |
 
 ### MARATHI QUALITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `grammar` | Perfect | Minor errors | Broken |
-| `terminology` | तापमान, किमान/कमाल, आर्द्रता | Mix of terms | Wrong terms |
-| `language_purity` | Pure Marathi (units OK) | Some English | Heavy mixing |
-| `fluency` | Natural farmer-friendly | Stilted | Unnatural |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `grammar` | Perfect | Minor errors; fully clear | Minor errors | Several errors; meaning affected | Broken |
+| `terminology` | तापमान, किमान/कमाल, आर्द्रता | Mostly correct; one improvised | Mix of terms | Many improvised terms | Wrong terms |
+| `language_purity` | Pure Marathi (units OK) | Mostly pure; minimal English | Some English | Frequent English | Heavy mixing |
+| `fluency` | Natural farmer-friendly | Natural; minor stilted phrase | Stilted | Often stilted | Unnatural |
 
 ---
 

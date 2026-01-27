@@ -43,38 +43,38 @@
 
 ### PROCESS FIDELITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `agristack_workflow` | Called first; coords used directly | Called but asks location unnecessarily | Available but not called |
-| `tool_sequencing` | Correct sequence; valid coordinates | Minor inefficiency | No valid coordinates |
-| `output_hygiene` | No tool names; clean citation | Minor artifact | Tool names leaked |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `agristack_workflow` | Called first; coords used directly | Called first; coords partially used | Called but asks location unnecessarily | Called very late; location ignored | Available but not called |
+| `tool_sequencing` | Correct sequence; valid coordinates | Correct sequence; minor redundancy | Minor inefficiency | Significant inefficiency | No valid coordinates |
+| `output_hygiene` | No tool names; clean citation | Clean; minor formatting issue | Minor artifact | Multiple artifacts | Tool names leaked |
 
 ### FACTUAL GROUNDING
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `source_alignment` | All details match tool output | Minor formatting differences | Details don't match |
-| `no_fabrication` | No invented data; gaps acknowledged | Minor inference | Fabricated phone/name |
-| `citation_accuracy` | "स्रोत: कृषी संस्थापक निर्देशिका" | Generic source | Tool name as citation |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `source_alignment` | All details match tool output | Most details match; minor omission | Minor formatting differences | Several mismatches | Details don't match |
+| `no_fabrication` | No invented data; gaps acknowledged | All data sourced; small inference | Minor inference | Significant unsupported claims | Fabricated phone/name |
+| `citation_accuracy` | "स्रोत: कृषी संस्थापक निर्देशिका" | Correct source; minor format issue | Generic source | Source unclear | Tool name as citation |
 
 ### RESPONSE USEFULNESS
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `completeness` | All details; scope clarified if out-of-scope query | Most details | Missing phone; no scope clarification |
-| `actionability` | Phone clear; explains officer's role | Contact present, sparse guidance | No phone; vague |
-| `context_fit` | Uses Agristack village in response | Generic location mention | Ignores location |
-| `clarity` | Clean format; phone prominent | Understandable but cluttered | Confusing |
-| `conversation_closure` | Offers related help or higher officer guidance | Generic follow-up | Dead end |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `completeness` | All details; scope clarified if out-of-scope query | Most details; scope mentioned | Most details | Significant gaps | Missing phone; no scope clarification |
+| `actionability` | Phone clear; explains officer's role | Phone clear; basic guidance | Contact present, sparse guidance | Minimal actionable info | No phone; vague |
+| `context_fit` | Uses Agristack village in response | Mostly personalized | Generic location mention | Minimal personalization | Ignores location |
+| `clarity` | Clean format; phone prominent | Clear; minor organization issue | Understandable but cluttered | Hard to follow | Confusing |
+| `conversation_closure` | Offers related help or higher officer guidance | Good follow-up; slightly generic | Generic follow-up | Weak follow-up | Dead end |
 
 ### MARATHI QUALITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `grammar` | Perfect | Errors but clear | Broken |
-| `terminology` | Correct: कृषी सहाय्यक, विभाग, तालुका | Mix | Wrong terms |
-| `language_purity` | Pure Marathi | Some English | Heavy code-switching |
-| `fluency` | Natural, respectful | Stilted | Unnatural |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `grammar` | Perfect | Minor errors; fully clear | Errors but clear | Several errors; meaning affected | Broken |
+| `terminology` | Correct: कृषी सहाय्यक, विभाग, तालुका | Mostly correct; one improvised | Mix | Many improvised terms | Wrong terms |
+| `language_purity` | Pure Marathi | Mostly pure; minimal English | Some English | Frequent English | Heavy code-switching |
+| `fluency` | Natural, respectful | Natural; minor stilted phrase | Stilted | Often stilted | Unnatural |
 
 ---
 

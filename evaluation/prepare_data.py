@@ -12,13 +12,20 @@ import numpy as np
 # model_name = 'openai/gpt-oss-120b'
 # model_name = 'meta-llama/Llama-4-Scout-17B-16E-Instruct'
 # model_name = 'kenpath/mhv_vistaar_gpt-oss-20b_v0.5'
-model_name = "claude-haiku-4-5"
+# model_name = "claude-haiku-4-5"
+# model_name = "Qwen/Qwen3-32B"
+# model_name = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+# model_name = "kenpath/mhv_vistaar_all_qwen3-32b_v0.2"
+# model_name = "kenpath/mhv_vistaar_all_mhv_vistaar_all_qwen3-32b_v0.2_v0.2.1"
+model_name = "kenpath/mhv_vistaar_last_qwen3-30b-a3b-instruct-2507_v0.2"
+# model_name = "kenpath/mhv_vistaar_all_qwen3-30b-a3b-instruct-2507_v0.1"
+# model_name   = "KissanAI/Dhenu2-In-Llama3.1-8B-Instruct"
 #model_name = 'meta-llama/Llama-3.3-70B-Instruct'
 # model_name = 'nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-FP8'
 # model_name = "openai/gpt-oss-20b_non_thinking"
 
 ## Number of concurrent workers for parallel processing
-NUM_WORKERS = 8
+NUM_WORKERS = 1
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,34 +50,28 @@ from pydantic_ai.models.openai import OpenAIResponsesModel , OpenAIResponsesMode
 from pydantic_ai.models.anthropic import AnthropicModel
 #, AnthropicChatModelSettings
 from pydantic_ai.providers.anthropic import AnthropicProvider
-#provider = OpenAIProvider(
-provider = AnthropicProvider(
-    #base_url="http://216.48.185.71:8080/v1",
-    api_key=os.getenv("ANTHROPIC_API_KEY"),
-    #api_key="dummy",  # vLLM doesn't need it, but some clients require a value
+provider = OpenAIProvider(
+# provider = AnthropicProvider(
+    base_url="http://216.48.185.71:8080/v1",
+    #api_key=os.getenv("ANTHROPIC_API_KEY"),
+    api_key="dummy",  # vLLM doesn't need it, but some clients require a value
     # api_key=os.getenv("OPENAI_API_KEY"),
-)
-model = AnthropicModel(
+ )
+model = OpenAIChatModel(
     model_name,
     provider=provider,
 )
 
-# settings = AnthropicChatModelSettings(
-#     #temperature=1.0,
-#     #temperature=,
-#     #openai_send_reasoning_ids=True,
-#     #openai_reasoning_generate_summary="detailed",
-#     #openai_reasoning_summary="auto",
-#     #min_p=0.01,
-#     #top_k=100,
-#     #top_p=1.0,
-#     # max_tokens=1000,c
-#     #openai_reasoning_effort='low',
-#     parallel_tool_calls=True,
-#     timeout=15,
-#     request_limit=10,
-#     # extra_body={"chat_template_kwargs": {"enable_thinking": True}}
-# )
+settings = OpenAIChatModelSettings(
+    temperature=0.7,
+    min_p=0.01,
+    top_k=20,
+    top_p=0.8,
+    parallel_tool_calls=True,
+    timeout=60,
+    request_limit=10,
+#    extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+)
 
 async def get_response(q, target_lang='mr', farmer_id=None):
     deps = FarmerContext(
@@ -84,7 +85,7 @@ async def get_response(q, target_lang='mr', farmer_id=None):
                                     deps=deps, 
                                     model=model, 
                                     builtin_tools=[],
-                                    #model_settings=settings,
+                                    model_settings=settings,
     )
     # assert isinstance(res.output, str) and res.output.strip() != "", "Response is empty"
     answer = res.output    
@@ -111,18 +112,16 @@ async def process_row(row, semaphore):
 async def main():
     questions_df = pd.read_csv(PATH_TO_QUESTIONS_DATA).replace({np.nan: None})
     questions_df['farmer_id'] = questions_df['farmer_id'].apply(lambda x: str(int(x)) if x is not None else None)
-    # Shuffle the questions
-    # questions_df = questions_df.sample(frac=1).reset_index(drop=True)
-    # questions_df = questions_df[questions_df.category!='Advisory']
-    
+
     # Load existing answers if data.json exists
     data_file = os.path.join(MODEL_DATA_PATH, "data.json")
     # Test model metadata is available:
+    print(f"Settings: {settings}")
     metadata = {
     "provider_name": provider.name,
     "provider_base_url": provider.base_url,
     "model_name": model.model_name,
-    "model_settings": {},
+    "model_settings": settings,
     "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
     print(f"Metadata: {metadata}")

@@ -19,41 +19,41 @@
 
 ### PROCESS FIDELITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `agristack_workflow` | Called first when available; data used in response | Called but late or data unused | Available but not called; or fabricates profile data | Not marked available |
-| `term_identification` | All query terms searched via `search_terms` before documents | Some terms searched; minor gaps | No `search_terms`; jumped to documents | — |
-| `tool_sequencing` | Perfect order: Agristack → Terms → Documents | Mostly correct; minor inefficiency | Wrong sequence; major steps skipped | — |
-| `search_quality` | Concise 2-5 word English queries; relevant results | Reasonable but gaps | Wrong language; irrelevant results | No search used |
-| `output_hygiene` | No tool names, no artifacts, clean citations | Minor artifact | Tool names leaked in response | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `agristack_workflow` | Called first when available; data used in response | Called first; data partially used | Called but late or data unused | Called very late; data ignored | Available but not called; or fabricates profile data | Not marked available |
+| `term_identification` | All query terms searched via `search_terms` before documents | Most terms searched; one minor gap | Some terms searched; minor gaps | Few terms searched; significant gaps | No `search_terms`; jumped to documents | — |
+| `tool_sequencing` | Perfect order: Agristack → Terms → Documents | Correct order with minor redundancy | Mostly correct; minor inefficiency | Order issues affecting quality | Wrong sequence; major steps skipped | — |
+| `search_quality` | Concise 2-5 word English queries; relevant results | Good queries; mostly relevant results | Reasonable but gaps | Poor queries; limited relevance | Wrong language; irrelevant results | No search used |
+| `output_hygiene` | No tool names, no artifacts, clean citations | Clean; minor formatting issue | Minor artifact | Multiple artifacts; partial leakage | Tool names leaked in response | — |
 
 ### FACTUAL GROUNDING
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `source_alignment` | All claims traceable to tool output | Some claims unsourced but plausible | Claims contradict or don't match retrieved docs | — |
-| `no_fabrication` | All from tools; gaps acknowledged | Minor inferential leap | Invented data, varieties, or statistics | — |
-| `citation_accuracy` | Farmer-friendly source name matching doc | Generic but acceptable | Tool name used as citation | — |
-| `safety_compliance` | Correct dosages; safe chemicals (no banned pesticides); PPE and waiting periods mentioned | Correct but missing safety context | Banned chemicals (Endosulfan, etc.), dangerous dosages, no waiting periods | No chemicals/safety involved |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `source_alignment` | All claims traceable to tool output | Most claims sourced; minor inference | Some claims unsourced but plausible | Several unsourced claims | Claims contradict or don't match retrieved docs | — |
+| `no_fabrication` | All from tools; gaps acknowledged | Small inference from data | Minor inferential leap | Significant unsupported extrapolation | Invented data, varieties, or statistics | — |
+| `citation_accuracy` | Farmer-friendly source name matching doc | Correct source; minor format issue | Generic but acceptable | Source unclear or partially wrong | Tool name used as citation | — |
+| `safety_compliance` | Correct dosages; safe chemicals; PPE and waiting periods mentioned | Correct dosages; minor safety gap | Correct but missing safety context | Dosages unclear; safety issues | Banned chemicals, dangerous dosages, no waiting periods | No chemicals/safety involved |
 
 ### RESPONSE USEFULNESS
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `completeness` | All query parts addressed | Core answered; gaps on secondary parts | Doesn't address actual query | — |
-| `actionability` | Specific varieties, dosages, timing | Mix of specific and generic | Completely generic; no specifics | Purely informational query |
-| `context_fit` | Uses Agristack data to personalize | Mentions but doesn't integrate | Ignores or contradicts known context | No Agristack data |
-| `clarity` | Well-structured; easy to follow | Understandable but disorganized | Confusing or incomprehensible | — |
-| `conversation_closure` | Specific, relevant follow-up question | Present but generic | No follow-up or inappropriate | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `completeness` | All query parts addressed | Most parts addressed; minor gap | Core answered; gaps on secondary parts | Significant gaps; partial answer | Doesn't address actual query | — |
+| `actionability` | Specific varieties, dosages, timing | Mostly specific; one generic area | Mix of specific and generic | Mostly generic; few specifics | Completely generic; no specifics | Purely informational query |
+| `context_fit` | Uses Agristack data to personalize | Mostly personalized; minor miss | Mentions but doesn't integrate | Minimal personalization | Ignores or contradicts known context | No Agristack data |
+| `clarity` | Well-structured; easy to follow | Clear; minor organization issue | Understandable but disorganized | Hard to follow; confusing structure | Confusing or incomprehensible | — |
+| `conversation_closure` | Specific, relevant follow-up question | Good follow-up; slightly generic | Present but generic | Weak or partially relevant | No follow-up or inappropriate | — |
 
 ### MARATHI QUALITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `grammar` | Perfect grammar; complete sentences | Errors but meaning clear | Broken; hard to understand | — |
-| `terminology` | Correct Marathi agricultural terms | Mix of correct and improvised | Wrong terms causing confusion | — |
-| `language_purity` | Pure Marathi; English only for chemical/scientific names | Several unnecessary English words | Heavy code-switching | — |
-| `fluency` | Natural; appropriate for rural audience | Stilted but understandable | Unnatural; machine-like | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `grammar` | Perfect grammar; complete sentences | Minor errors; meaning fully clear | Errors but meaning clear | Several errors; meaning affected | Broken; hard to understand | — |
+| `terminology` | Correct Marathi agricultural terms | Mostly correct; one improvised term | Mix of correct and improvised | Many improvised terms | Wrong terms causing confusion | — |
+| `language_purity` | Pure Marathi; English only for chemical/scientific names | Mostly pure; minimal English | Several unnecessary English words | Frequent unnecessary English | Heavy code-switching | — |
+| `fluency` | Natural; appropriate for rural audience | Natural; minor stilted phrase | Stilted but understandable | Often stilted or awkward | Unnatural; machine-like | — |
 
 ---
 

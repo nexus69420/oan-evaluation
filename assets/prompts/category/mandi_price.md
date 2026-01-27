@@ -41,41 +41,41 @@
 
 ### PROCESS FIDELITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `agristack_workflow` | Called first; uses farmer location for nearby market context | Called but location data unused | Available but not called; asks for location unnecessarily | Not marked available |
-| `term_identification` | — | — | — | Always N/A for Mandi |
-| `tool_sequencing` | Correct: Agristack (if avail) → Geocode (if needed) → mandi_prices | Minor inefficiency (e.g., redundant geocode) | Wrong market geocoded; or mandi_prices called without location | — |
-| `search_quality` | — | — | — | Always N/A for Mandi |
-| `output_hygiene` | No tool names; clean "स्रोत: बाजारभाव" | Minor artifact | Tool names leaked ("mandi_prices", "forward_geocode") | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `agristack_workflow` | Called first; uses farmer location for nearby market context | Called first; location partially used | Called but location data unused | Called very late; location ignored | Available but not called; asks for location unnecessarily | Not marked available |
+| `term_identification` | — | — | — | — | — | Always N/A for Mandi |
+| `tool_sequencing` | Correct: Agristack (if avail) → Geocode (if needed) → mandi_prices | Correct sequence; minor redundancy | Minor inefficiency (e.g., redundant geocode) | Significant inefficiency | Wrong market geocoded; or mandi_prices called without location | — |
+| `search_quality` | — | — | — | — | — | Always N/A for Mandi |
+| `output_hygiene` | No tool names; clean "स्रोत: बाजारभाव" | Clean; minor formatting issue | Minor artifact | Multiple artifacts | Tool names leaked ("mandi_prices", "forward_geocode") | — |
 
 ### FACTUAL GROUNDING
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `source_alignment` | All prices exactly match tool output; varieties/grades distinguished | Prices correct but missing variety distinction | Prices don't match tool output; wrong crop prices shown | — |
-| `no_fabrication` | No invented prices; no fabricated dates; gaps clearly acknowledged | Minor inference (e.g., "prices stable") without explicit source | Invented prices when tool returned empty; fake dates ("आजचे भाव") | — |
-| `citation_accuracy` | "स्रोत: बाजारभाव" or "स्रोत: [Market Name] APMC" | Generic but acceptable source mention | Tool name as citation; or no source for price data | — |
-| `safety_compliance` | — | — | — | Always N/A for Mandi |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `source_alignment` | All prices exactly match tool output; varieties/grades distinguished | Most prices match; minor variety omission | Prices correct but missing variety distinction | Several price mismatches | Prices don't match tool output; wrong crop prices shown | — |
+| `no_fabrication` | No invented prices; no fabricated dates; gaps clearly acknowledged | All data sourced; small inference | Minor inference (e.g., "prices stable") without explicit source | Significant unsupported claims | Invented prices when tool returned empty; fake dates ("आजचे भाव") | — |
+| `citation_accuracy` | "स्रोत: बाजारभाव" or "स्रोत: [Market Name] APMC" | Correct source; minor format issue | Generic but acceptable source mention | Source unclear | Tool name as citation; or no source for price data | — |
+| `safety_compliance` | — | — | — | — | — | Always N/A for Mandi |
 
 ### RESPONSE USEFULNESS
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `completeness` | Addresses requested crop + market; shows price range (min/max) | Partial info (e.g., only one price point) | Doesn't address the crop or market asked | — |
-| `actionability` | Provides sell/store guidance based on prices; or notes trends | Prices given but no practical context | Only prices with no framing | Query only asked for price number |
-| `context_fit` | Uses Agristack location to suggest nearby markets; personalizes | Mentions location but doesn't leverage it | Ignores farmer's location; suggests irrelevant markets | No Agristack data |
-| `clarity` | Clear price presentation; min/max/modal easy to scan | Understandable but cluttered | Confusing; prices buried in text | — |
-| `conversation_closure` | Offers specific alternatives (other crops at market, nearby markets) | Generic follow-up | No follow-up when crop unavailable; dead end | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `completeness` | Addresses requested crop + market; shows price range (min/max) | Most info with minor gap | Partial info (e.g., only one price point) | Significant gaps | Doesn't address the crop or market asked | — |
+| `actionability` | Provides sell/store guidance based on prices; or notes trends | Good guidance; minor gap | Prices given but no practical context | Minimal guidance | Only prices with no framing | Query only asked for price number |
+| `context_fit` | Uses Agristack location to suggest nearby markets; personalizes | Mostly personalized; minor miss | Mentions location but doesn't leverage it | Minimal personalization | Ignores farmer's location; suggests irrelevant markets | No Agristack data |
+| `clarity` | Clear price presentation; min/max/modal easy to scan | Clear; minor organization issue | Understandable but cluttered | Hard to follow | Confusing; prices buried in text | — |
+| `conversation_closure` | Offers specific alternatives (other crops at market, nearby markets) | Good follow-up; slightly generic | Generic follow-up | Weak follow-up | No follow-up when crop unavailable; dead end | — |
 
 ### MARATHI QUALITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `grammar` | Perfect grammar | Errors but meaning clear | Broken; hard to understand | — |
-| `terminology` | Correct: भाव, क्विंटल, आवक, बाजारभाव, हमीभाव | Mix of correct and improvised | Wrong terms causing confusion | — |
-| `language_purity` | Pure Marathi; only proper nouns (market names) in English | Several unnecessary English words | Heavy code-switching | — |
-| `fluency` | Natural; appropriate for farmer audience | Stilted but understandable | Unnatural; machine-like | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `grammar` | Perfect grammar | Minor errors; fully clear | Errors but meaning clear | Several errors; meaning affected | Broken; hard to understand | — |
+| `terminology` | Correct: भाव, क्विंटल, आवक, बाजारभाव, हमीभाव | Mostly correct; one improvised | Mix of correct and improvised | Many improvised terms | Wrong terms causing confusion | — |
+| `language_purity` | Pure Marathi; only proper nouns (market names) in English | Mostly pure; minimal English | Several unnecessary English words | Frequent English | Heavy code-switching | — |
+| `fluency` | Natural; appropriate for farmer audience | Natural; minor stilted phrase | Stilted but understandable | Often stilted | Unnatural; machine-like | — |
 
 ---
 

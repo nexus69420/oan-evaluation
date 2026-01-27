@@ -84,39 +84,39 @@ All `ndksp-*` schemes require PoCRA village:
 
 ### PROCESS FIDELITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `agristack_workflow` | Eligibility query → fetches Agristack → personalized assessment with PoCRA check | General info without Agristack (acceptable); OR eligibility query with general conditions only | Recommends PoCRA scheme to non-PoCRA farmer; OR fabricates eligibility without data |
-| `term_identification` | Correctly maps user query to scheme code(s) | Minor mismatch but corrects | Wrong scheme selected; no correction |
-| `tool_sequencing` | get_scheme_codes → get_multiple_schemes_info (for 2+ schemes) | get_scheme_codes → multiple get_scheme_info calls (works, less efficient) | Skips get_scheme_codes; guesses scheme_code |
-| `output_hygiene` | No tool names; clean response | Minor artifact | "get_scheme_info tool नुसार" leaked |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `agristack_workflow` | Eligibility query → fetches Agristack → personalized assessment with PoCRA check | Fetches Agristack; mostly personalized | General info without Agristack (acceptable); OR eligibility query with general conditions only | Agristack fetched but largely ignored | Recommends PoCRA scheme to non-PoCRA farmer; OR fabricates eligibility without data |
+| `term_identification` | Correctly maps user query to scheme code(s) | Correct mapping; minor terminology gap | Minor mismatch but corrects | Significant mismatch; partial correction | Wrong scheme selected; no correction |
+| `tool_sequencing` | get_scheme_codes → get_multiple_schemes_info (for 2+ schemes) | Correct sequence; minor redundancy | get_scheme_codes → multiple get_scheme_info calls (works, less efficient) | Inefficient but works | Skips get_scheme_codes; guesses scheme_code |
+| `output_hygiene` | No tool names; clean response | Clean; minor formatting issue | Minor artifact | Multiple artifacts | "get_scheme_info tool नुसार" leaked |
 
 ### FACTUAL GROUNDING
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `source_alignment` | Benefits, eligibility, documents exactly match tool output | Minor paraphrasing | Invented details not in tool output |
-| `no_fabrication` | No invented schemes, benefits, timelines, subsidy guarantees | — | Fabricated scheme; promised "40% नक्की मिळेल"; invented deadlines |
-| `citation_accuracy` | "स्रोत: शासकीय योजना माहिती" | Generic source | Tool name as citation |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `source_alignment` | Benefits, eligibility, documents exactly match tool output | Most details match; minor omission | Minor paraphrasing | Several mismatches | Invented details not in tool output |
+| `no_fabrication` | No invented schemes, benefits, timelines, subsidy guarantees | All data sourced; small inference | Minor inference | Significant unsupported claims | Fabricated scheme; promised "40% नक्की मिळेल"; invented deadlines |
+| `citation_accuracy` | "स्रोत: शासकीय योजना माहिती" | Correct source; minor format issue | Generic source | Source unclear | Tool name as citation |
 
 ### RESPONSE USEFULNESS
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `completeness` | All relevant schemes listed; benefits, eligibility, documents, portal, process covered; State/Central distinguished | Main scheme covered; some related schemes or details missed | Only partial info; major schemes omitted; key eligibility missing |
-| `actionability` | Portal URL, documents list, step-by-step process clear | Some guidance | No next steps; vague "कार्यालयात जा" |
-| `context_fit` | PoCRA requirement stated; caste-based subsidy differences noted; personalized if Agristack ✅ | General conditions stated | Wrong scheme for farmer's context |
-| `clarity` | State vs Central clear; scheme purpose distinct | Understandable | Confusing; schemes conflated |
-| `conversation_closure` | Offers related schemes or further assistance | Generic follow-up | Dead end |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `completeness` | All relevant schemes listed; benefits, eligibility, documents, portal, process covered; State/Central distinguished | Most schemes and details; minor gap | Main scheme covered; some related schemes or details missed | Significant gaps | Only partial info; major schemes omitted; key eligibility missing |
+| `actionability` | Portal URL, documents list, step-by-step process clear | Clear guidance; minor gap | Some guidance | Minimal guidance | No next steps; vague "कार्यालयात जा" |
+| `context_fit` | PoCRA requirement stated; caste-based subsidy differences noted; personalized if Agristack ✅ | Mostly personalized; minor miss | General conditions stated | Minimal personalization | Wrong scheme for farmer's context |
+| `clarity` | State vs Central clear; scheme purpose distinct | Clear; minor organization issue | Understandable | Hard to follow | Confusing; schemes conflated |
+| `conversation_closure` | Offers related schemes or further assistance | Good follow-up; slightly generic | Generic follow-up | Weak follow-up | Dead end |
 
 ### MARATHI QUALITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `grammar` | Perfect | Minor errors | Broken |
-| `terminology` | योजना, अनुदान, पात्रता, लाभ, अर्ज प्रक्रिया | Mix | Wrong terms |
-| `language_purity` | Pure Marathi; scheme names in English acceptable | Some English | Heavy code-switching |
-| `fluency` | Natural | Stilted | Robotic |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `grammar` | Perfect | Minor errors; fully clear | Minor errors | Several errors; meaning affected | Broken |
+| `terminology` | योजना, अनुदान, पात्रता, लाभ, अर्ज प्रक्रिया | Mostly correct; one improvised | Mix | Many improvised terms | Wrong terms |
+| `language_purity` | Pure Marathi; scheme names in English acceptable | Mostly pure; minimal English | Some English | Frequent English | Heavy code-switching |
+| `fluency` | Natural | Natural; minor stilted phrase | Stilted | Often stilted | Robotic |
 
 ---
 

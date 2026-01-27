@@ -58,37 +58,37 @@
 
 ### PROCESS FIDELITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `agristack_workflow` | Direct get_scheme_status (no Agristack call) | Calls Agristack first (unnecessary but works) | Agristack ❌ but tries get_scheme_status anyway |
-| `tool_sequencing` | Single get_scheme_status call | Minor inefficiency | Wrong tool; or no tool when Agristack ✅ |
-| `output_hygiene` | No tool names; IDs stay masked (***3214) | Minor artifact | Tool names leaked; or unmasked full application ID |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `agristack_workflow` | Direct get_scheme_status (no Agristack call) | Efficient call with minimal overhead | Calls Agristack first (unnecessary but works) | Significant inefficiency | Agristack ❌ but tries get_scheme_status anyway |
+| `tool_sequencing` | Single get_scheme_status call | Correct with minor redundancy | Minor inefficiency | Significant inefficiency | Wrong tool; or no tool when Agristack ✅ |
+| `output_hygiene` | No tool names; IDs stay masked (***3214) | Clean; minor formatting issue | Minor artifact | Multiple artifacts | Tool names leaked; or unmasked full application ID |
 
 ### FACTUAL GROUNDING
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `source_alignment` | Status, ID, year exactly match tool output | Minor formatting | Details don't match tool output |
-| `no_fabrication` | No invented data; "Unknown Scheme" kept as-is; no timeline promises | Minor inference | Invented scheme name, status, timeline, or unmasked ID |
-| `citation_accuracy` | "स्रोत: महाडीबीटी अर्ज स्थिती" | Generic source | Tool name as citation |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `source_alignment` | Status, ID, year exactly match tool output | Most details match; minor omission | Minor formatting | Several mismatches | Details don't match tool output |
+| `no_fabrication` | No invented data; "Unknown Scheme" kept as-is; no timeline promises | All data sourced; small inference | Minor inference | Significant unsupported claims | Invented scheme name, status, timeline, or unmasked ID |
+| `citation_accuracy` | "स्रोत: महाडीबीटी अर्ज स्थिती" | Correct source; minor format issue | Generic source | Source unclear | Tool name as citation |
 
 ### RESPONSE USEFULNESS
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `completeness` | All applications listed; empty results clearly stated | Most info present | Missing applications; or fabricates when empty |
-| `actionability` | Clear next steps (contact कृषी कार्यालय, check portal) | Some guidance | No guidance; or false promises ("2 सप्ताहात मिळेल") |
-| `clarity` | Status prominent; financial year clear; masked ID shown | Understandable | Confusing; buried info |
-| `conversation_closure` | Offers related help (scheme info, other queries) | Generic follow-up | Dead end |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `completeness` | All applications listed; empty results clearly stated | Most info with minor gap | Most info present | Significant gaps | Missing applications; or fabricates when empty |
+| `actionability` | Clear next steps (contact कृषी कार्यालय, check portal) | Clear guidance; minor gap | Some guidance | Minimal guidance | No guidance; or false promises ("2 सप्ताहात मिळेल") |
+| `clarity` | Status prominent; financial year clear; masked ID shown | Clear; minor organization issue | Understandable | Hard to follow | Confusing; buried info |
+| `conversation_closure` | Offers related help (scheme info, other queries) | Good follow-up; slightly generic | Generic follow-up | Weak follow-up | Dead end |
 
 ### MARATHI QUALITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE |
-|---------------|-----------|------------|--------------|
-| `grammar` | Perfect | Errors but clear | Broken |
-| `terminology` | Correct: प्रतीक्षा यादी, अर्ज रद्द, निधी वितरण | Mix | Wrong terms |
-| `language_purity` | Pure Marathi; MahaDBT/portal acceptable | Some English | Heavy code-switching |
-| `fluency` | Natural | Stilted | Unnatural |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `grammar` | Perfect | Minor errors; fully clear | Errors but clear | Several errors; meaning affected | Broken |
+| `terminology` | Correct: प्रतीक्षा यादी, अर्ज रद्द, निधी वितरण | Mostly correct; one improvised | Mix | Many improvised terms | Wrong terms |
+| `language_purity` | Pure Marathi; MahaDBT/portal acceptable | Mostly pure; minimal English | Some English | Frequent English | Heavy code-switching |
+| `fluency` | Natural | Natural; minor stilted phrase | Stilted | Often stilted | Unnatural |
 
 ---
 

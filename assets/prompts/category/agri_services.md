@@ -55,41 +55,41 @@
 
 ### PROCESS FIDELITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `agristack_workflow` | Called first; coords used directly for agri_services | Called but then asks for location unnecessarily | Available but not called; or fabricates location | Not marked available |
-| `term_identification` | — | — | — | Always N/A for pure service queries |
-| `tool_sequencing` | Correct: Agristack → agri_services OR Geocode → agri_services; correct category_code | Minor inefficiency (e.g., redundant geocode) | Wrong category_code; or agri_services without coordinates | — |
-| `search_quality` | — | — | — | Always N/A for service queries |
-| `output_hygiene` | No tool names; clean "स्रोत: कृषी सेवा माहिती" | Minor artifact | Tool names leaked ("agri_services", "forward_geocode") | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `agristack_workflow` | Called first; coords used directly for agri_services | Called first; coords partially used | Called but then asks for location unnecessarily | Called very late; location ignored | Available but not called; or fabricates location | Not marked available |
+| `term_identification` | — | — | — | — | — | Always N/A for pure service queries |
+| `tool_sequencing` | Correct: Agristack → agri_services OR Geocode → agri_services; correct category_code | Correct sequence; minor redundancy | Minor inefficiency (e.g., redundant geocode) | Significant inefficiency | Wrong category_code; or agri_services without coordinates | — |
+| `search_quality` | — | — | — | — | — | Always N/A for service queries |
+| `output_hygiene` | No tool names; clean "स्रोत: कृषी सेवा माहिती" | Clean; minor formatting issue | Minor artifact | Multiple artifacts | Tool names leaked ("agri_services", "forward_geocode") | — |
 
 ### FACTUAL GROUNDING
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `source_alignment` | All facilities, contacts, distances exactly match tool output | Minor formatting differences | Facilities or contacts don't match tool output | — |
-| `no_fabrication` | No invented data; "N/A" phones acknowledged; gaps stated clearly | Minor inference (e.g., "जवळच्या") without explicit source | Invented phone numbers; fabricated facilities; fake contacts | — |
-| `citation_accuracy` | "स्रोत: कृषी सेवा माहिती" or similar farmer-friendly citation | Generic but acceptable source mention | Tool name as citation; or no source for service data | — |
-| `safety_compliance` | — | — | — | Always N/A for service queries |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `source_alignment` | All facilities, contacts, distances exactly match tool output | Most details match; minor omission | Minor formatting differences | Several mismatches | Facilities or contacts don't match tool output | — |
+| `no_fabrication` | No invented data; "N/A" phones acknowledged; gaps stated clearly | All data sourced; small inference | Minor inference (e.g., "जवळच्या") without explicit source | Significant unsupported claims | Invented phone numbers; fabricated facilities; fake contacts | — |
+| `citation_accuracy` | "स्रोत: कृषी सेवा माहिती" or similar farmer-friendly citation | Correct source; minor format issue | Generic but acceptable source mention | Source unclear | Tool name as citation; or no source for service data | — |
+| `safety_compliance` | — | — | — | — | — | Always N/A for service queries |
 
 ### RESPONSE USEFULNESS
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `completeness` | All returned facilities listed with full details; empty results explained well | Most facilities listed; some details missing | Missing most facilities; or no acknowledgment of empty results | — |
-| `actionability` | Phone numbers, addresses, distances clear; practical advice (call ahead, bring samples) | Contact info present but sparse guidance | No actionable contact info; vague directions | — |
-| `context_fit` | Uses Agristack village/district in response; recommends nearest facility | Mentions location but doesn't leverage it | Ignores farmer's location; shows irrelevant facilities | No Agristack data |
-| `clarity` | Numbered list; distances in Marathi numerals; contacts prominent | Understandable but cluttered | Confusing; facilities buried in text | — |
-| `conversation_closure` | Specific follow-up (related services, sample preparation, equipment availability) | Generic follow-up | No follow-up; dead-end response | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `completeness` | All returned facilities listed with full details; empty results explained well | Most facilities with details; minor gap | Most facilities listed; some details missing | Significant gaps | Missing most facilities; or no acknowledgment of empty results | — |
+| `actionability` | Phone numbers, addresses, distances clear; practical advice (call ahead, bring samples) | Contact info clear; basic guidance | Contact info present but sparse guidance | Minimal actionable info | No actionable contact info; vague directions | — |
+| `context_fit` | Uses Agristack village/district in response; recommends nearest facility | Mostly personalized; minor miss | Mentions location but doesn't leverage it | Minimal personalization | Ignores farmer's location; shows irrelevant facilities | No Agristack data |
+| `clarity` | Numbered list; distances in Marathi numerals; contacts prominent | Clear; minor organization issue | Understandable but cluttered | Hard to follow | Confusing; facilities buried in text | — |
+| `conversation_closure` | Specific follow-up (related services, sample preparation, equipment availability) | Good follow-up; slightly generic | Generic follow-up | Weak follow-up | No follow-up; dead-end response | — |
 
 ### MARATHI QUALITY
 
-| Sub-dimension | EXCELLENT | ACCEPTABLE | UNACCEPTABLE | N/A |
-|---------------|-----------|------------|--------------|-----|
-| `grammar` | Perfect grammar; complete sentences | Errors but meaning clear | Broken; hard to understand | — |
-| `terminology` | Correct: मृदा परीक्षण प्रयोगशाळा, कृषी विज्ञान केंद्र, गोदाम, औजार बँक | Mix of correct and improvised | Wrong terms causing confusion | — |
-| `language_purity` | Pure Marathi; only proper nouns (MSWC, KVK abbreviation) in English | Several unnecessary English words | Heavy code-switching ("warehouse manager" instead of गोदाम व्यवस्थापक) | — |
-| `fluency` | Natural; appropriate for rural farmer audience | Stilted but understandable | Unnatural; machine-like | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
+|---------------|-----------|------|------------|------|--------------|-----|
+| `grammar` | Perfect grammar; complete sentences | Minor errors; fully clear | Errors but meaning clear | Several errors; meaning affected | Broken; hard to understand | — |
+| `terminology` | Correct: मृदा परीक्षण प्रयोगशाळा, कृषी विज्ञान केंद्र, गोदाम, औजार बँक | Mostly correct; one improvised | Mix of correct and improvised | Many improvised terms | Wrong terms causing confusion | — |
+| `language_purity` | Pure Marathi; only proper nouns (MSWC, KVK abbreviation) in English | Mostly pure; minimal English | Several unnecessary English words | Frequent English | Heavy code-switching ("warehouse manager" instead of गोदाम व्यवस्थापक) | — |
+| `fluency` | Natural; appropriate for rural farmer audience | Natural; minor stilted phrase | Stilted but understandable | Often stilted | Unnatural; machine-like | — |
 
 ---
 
