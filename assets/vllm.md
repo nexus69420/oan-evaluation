@@ -67,7 +67,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve kenpath/mhv_vistaar_all_mhv_vist
 
 ### Finetuned Qwen3 14b
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 nohup vllm serve kenpath/mhv_vistaar_qwen3-14b_v0.2 --enable-auto-tool-choice --tool-call-parser hermes --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager > vllm_qwen3.out 2>&1 &
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 vllm serve kenpath/mhv_vistaar_all_mhv_vistaar_all_qwen3-32b_v0.2_v0.2.1 --enable-auto-tool-choice --tool-call-parser hermes --reasoning-parser qwen3 --tensor-parallel-size 8 --gpu-memory-utilization 0.9  --port 8080 --enforce-eager
 ```
 
 
