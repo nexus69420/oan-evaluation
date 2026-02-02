@@ -19,7 +19,7 @@ project_dir = "/Users/adityachhabra/Github/sunbird-va-api"
 os.chdir(project_dir)
 sys.path.append(project_dir)
 
-PATH_TO_QUESTIONS_DATA = os.path.join(current_dir, "data", "evaluation_questions_v2.csv")
+PATH_TO_QUESTIONS_DATA = os.path.join(current_dir, "data", "evaluation_questions_v3.csv")
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -33,9 +33,9 @@ from pydantic_ai.models.openai import OpenAIResponsesModel , OpenAIResponsesMode
 
 
 provider = OpenAIProvider(
-    #api_key=os.getenv("OPENAI_API_KEY_V1"),
+    # api_key=os.getenv("OPENAI_API_KEY_V1"),
     base_url="http://216.48.185.71:8080/v1",
-    # api_key="dummy",  # vLLM doesn't need it, but some clients require a value
+    api_key="dummy",  # vLLM doesn't need it, but some clients require a value
  )
 model = OpenAIChatModel(
     model_name,
