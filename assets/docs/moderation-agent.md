@@ -1,13 +1,13 @@
 ---
 language:
 - en
-- mr
+- hi
 license: other
 license_name: restricted-access
 task_categories:
 - text-classification
 - question-answering
-pretty_name: MahaVistaar Moderation Agent Dataset
+pretty_name: BharatVistaar Moderation Agent Dataset
 tags:
 - moderation
 - content-classification
@@ -15,40 +15,40 @@ tags:
 - safety
 - conversational-ai
 - multilingual
-- marathi
+- hindi
 ---
 
-# MahaVistaar Moderation Agent Dataset
+# BharatVistaar Moderation Agent Dataset
 
 ## Dataset Description
 
-This dataset contains real query classification logs from the **MahaVistaar Moderation Agent**, a query validation system for MAHA-VISTAAR (Maharashtra Virtually Integrated System to Access Agricultural Resources). The dataset captures how the moderation agent classifies user queries to ensure safe, relevant, and helpful agricultural advisory responses.
+This dataset contains real query classification logs from the **BharatVistaar Moderation Agent**, a query validation system for BHARAT-VISTAAR (Bharat Virtually Integrated System to Access Agricultural Resources). The dataset captures how the moderation agent classifies user queries to ensure safe, relevant, and helpful agricultural advisory responses.
 
 ### Dataset Summary
 
 - **Total Records**: {TOTAL_RECORDS}
 - **Date Range**: {MIN_DATE} to {MAX_DATE}
 - **Last Updated**: {LAST_UPDATED}
-- **Languages**: Marathi (mr), English (en), and other Indian languages
+- **Languages**: Hindi (hi), English (en), and other Indian languages
 - **Format**: Query-classification pairs with contextual conversation history
 - **Agent Version**: Moderation Agent v1.0
 
-### About MahaVistaar Moderation Agent
+### About BharatVistaar Moderation Agent
 
-The **MahaVistaar Moderation Agent** is a query validation system designed to ensure that MAHA-VISTAAR responds safely and effectively to farmer queries. Developed for the Maharashtra agricultural advisory platform by OpenAgriNet, Government of Maharashtra, it serves as the first line of defense in maintaining platform integrity.
+The **BharatVistaar Moderation Agent** is a query validation system designed to ensure that BHARAT-VISTAAR responds safely and effectively to farmer queries. Developed for the Bharat agricultural advisory platform by OpenAgriNet, Government of India, it serves as the first line of defense in maintaining platform integrity.
 
 #### Key Responsibilities:
 
 - ✅ **Validate Agricultural Queries**: Approve genuine farming-related questions
 - 🚫 **Detect Manipulation Attempts**: Flag role obfuscation and jailbreak attempts
 - 🛡️ **Content Safety**: Identify unsafe, illegal, or politically controversial content
-- 🌐 **Language Policy Enforcement**: Ensure response language compliance (English/Marathi only)
+- 🌐 **Language Policy Enforcement**: Ensure response language compliance (English/Hindi only)
 - 🔄 **Context Awareness**: Maintain conversation context across multi-turn interactions
 
 #### Classification Categories:
 
 **Valid Queries:**
-- `valid_agricultural` - Genuine farming, livestock, weather, market, or rural development queries
+- `valid_agricultural` - Genuine farming, livestock, weather, market, scheme, or rural development queries
 
 **Invalid Queries:**
 - `invalid_non_agricultural` - No clear link to farming or agriculture
@@ -102,7 +102,7 @@ The dataset includes examples of all classification categories:
 - **Invalid Queries**: Non-agricultural topics, external references, mixed content, language policy violations
 - **Safety Issues**: Illegal substance queries, political content, role manipulation attempts
 - **Contextual Follow-ups**: Short responses ("Yes", "Tell me more") in agricultural conversations
-- **Multilingual Queries**: Marathi, English, and other Indian language queries with proper classification
+- **Multilingual Queries**: Hindi, English, and other Indian language queries with proper classification
 
 ## Usage
 
@@ -112,7 +112,7 @@ The dataset includes examples of all classification categories:
 from datasets import load_dataset
 
 # Load the dataset
-dataset = load_dataset("kenpath/mh-moderation-agent")
+dataset = load_dataset("kenpath/bh-moderation-agent")
 
 # Access a sample
 sample = dataset['train'][0]
@@ -148,7 +148,7 @@ This dataset can be used for:
 
 ## Moderation Philosophy
 
-The MahaVistaar Moderation Agent follows a **farmer-first philosophy**:
+The BharatVistaar Moderation Agent follows a **farmer-first philosophy**:
 
 - **Generous by Default**: Prioritizes helping farmers over blocking queries
 - **Intent Over Form**: Focuses on what farmers want to know, not how they ask

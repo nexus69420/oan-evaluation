@@ -1,61 +1,60 @@
 ---
 language:
 - en
-- mr
+- hi
 license: other
 license_name: restricted-access
 task_categories:
 - question-answering
 - text-generation
-pretty_name: MahaVistaar Agent Conversation Dataset
+pretty_name: BharatVistaar Agent Conversation Dataset
 tags:
 - agriculture
 - ai-agent
 - conversational-ai
 - multilingual
-- marathi
+- hindi
 - digital-public-infrastructure
 ---
 
-# MahaVistaar Agent Conversation Dataset
+# BharatVistaar Agent Conversation Dataset
 
 ## Dataset Description
 
-This dataset contains real conversation logs from the **MahaVistaar AI Agent**, Maharashtra's first AI-powered agricultural advisory and information system. The dataset captures authentic farmer interactions with the agent, including queries about crops, weather, market prices, government schemes, and agricultural best practices.
+This dataset contains real conversation logs from the **BharatVistaar AI Agent**, India's first AI-powered agricultural advisory and information system. The dataset captures authentic farmer interactions with the agent, including queries about crops, weather, market prices, government schemes, and agricultural best practices.
 
 ### Dataset Summary
 
 - **Total Records**: {TOTAL_RECORDS}
 - **Date Range**: {MIN_DATE} to {MAX_DATE}
 - **Last Updated**: {LAST_UPDATED}
-- **Languages**: Marathi (mr), English (en)
+- **Languages**: Hindi (mr), English (en)
 - **Format**: Conversational turns with tool usage traces
 - **Agent Version**: Vistaar Agent v1.0
 
-### About MahaVistaar
+### About BharatVistaar
 
-**MahaVistaar** is a Digital Public Infrastructure (DPI) powered by Artificial Intelligence, designed to bring expert agricultural knowledge to every farmer in clear, simple language. As the first AI-powered agricultural advisory and information system in Maharashtra, it helps farmers grow better, reduce risks, and make informed choices.
+**BharatVistaar** is a Digital Public Infrastructure (DPI) powered by Artificial Intelligence, designed to bring expert agricultural knowledge to every farmer in clear, simple language. As the first AI-powered agricultural advisory and information system in India, it helps farmers grow better, reduce risks, and make informed choices.
 
 This initiative is developed in collaboration with:
-- **PoCRA** (Nanaji Deshmukh Krishi Sanjivani Prakalp)
 - **VISTAAR** (Virtually Integrated System To Access Agricultural Resources) – a national open network for agricultural advisory under the Ministry of Agriculture & Farmers Welfare
-- **Maharashtra Department of Agriculture**
+<!-- - **Maharashtra Department of Agriculture** -->
 
-#### What MahaVistaar Helps Farmers With:
+#### What BharatVistaar Helps Farmers With:
 
-- 📊 Location-based market prices for crops
+- 📊 Location-based commodity prices for crops
 - 🌤️ Current and upcoming weather forecasts
-- 🏢 Nearest storage facilities and warehouses
 - 🌾 Crop selection guidance for specific regions
 - 🐛 Pest and disease management advice
 - 📚 Best practices for specific crops
 - 💰 Government agriculture schemes and subsidies information
-- 🏫 Nearby Krishi Vigyan Kendra (KVK) centers, soil testing labs, and agricultural service centers
-- 📞 Contact information for agricultural officers
+- 🏦 Check eligibility, application, and payment status for central schemes such as PM-KISAN, PMFBY, and SHC
+- 📝 File and track grievances for PM Kisan benefits
+- 🧬 Soil health data and advisory
 
 #### Benefits for Farmers:
 
-- ✅ Information in their own language (Marathi or English)
+- ✅ Information in their own language (Hindi or English)
 - ⏰ Available 24/7, accessible from mobile or computer
 - 🔗 Combines knowledge from multiple trusted sources
 - 🎯 Personalized advice based on location and land holdings
@@ -63,14 +62,12 @@ This initiative is developed in collaboration with:
 
 #### Data Sources
 
-MahaVistaar integrates information from verified, domain-authenticated repositories:
+BharatVistaar integrates information from verified, domain-authenticated repositories:
 - **Agricultural Knowledge**: Package of Practices from agricultural universities and research institutions
-- **Weather Data**: India Meteorological Department (IMD) forecasts and Skymet historical data
+- **Weather Data**: India Meteorological Department (IMD) forecasts.
 - **Market Prices**: APMC (Agricultural Produce Market Committees) data
-- **Infrastructure**: Registered warehouses, KVK centers, soil labs, Custom Hiring Centers (CHC)
-- **Farmer Profiles**: Agristack digital farmer database (PII masked)
 - **Government Schemes**: Ministry of Agriculture and State Government databases
-- **Application Status**: MahaDBT scheme application status
+- **Application Status**: PM-Kisan, PMFBY, and Soil Health Card status via central government APIs
 
 ## Dataset Structure
 
@@ -106,7 +103,7 @@ Each record in the dataset contains:
 from datasets import load_dataset
 
 # Load the dataset
-dataset = load_dataset("kenpath/mh-vistaar-agent")
+dataset = load_dataset("kenpath/bh-vistaar-agent")
 
 # Access a sample
 sample = dataset['train'][0]
@@ -150,7 +147,7 @@ print(tool_calls)
 This dataset can be used for:
 
 1. **Fine-tuning Agricultural AI Assistants**: Train models to handle farmer queries with appropriate tool usage
-2. **Multilingual NLP Research**: Study code-switching and transliteration in Marathi-English agricultural contexts
+2. **Multilingual NLP Research**: Study code-switching and transliteration in Hindi-English agricultural contexts
 3. **Tool-Use Learning**: Understand when and how AI agents invoke external APIs
 4. **Agricultural Domain Analysis**: Study common farmer information needs and query patterns
 5. **Conversational AI Evaluation**: Benchmark agent performance on real-world agricultural queries
@@ -159,6 +156,6 @@ This dataset can be used for:
 
 - ✅ **PII Protection**: All Personally Identifiable Information has been masked or removed
 - ✅ **Farmer Consent**: Data collection follows appropriate consent protocols
-- ✅ **Data Anonymization**: Agristack farmer profiles are anonymized with PII masked
+- ✅ **Data Anonymization**: Personal details such as phone numbers, registration numbers, and Aadhaar are masked in all records
 - ⚠️ **Restricted Access**: This dataset is private and access is limited to authorized users
 - ⚠️ **Agricultural Context**: Information should be validated before application in real farming scenarios
