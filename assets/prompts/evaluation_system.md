@@ -74,12 +74,12 @@ forward_geocode(location) → get_weather(lat, lon)
 
 **Mandi:**
 ```
-mandi_prices(commodity, district_from_query)
+forward_geocode(place_name) → search_commodity(query) → get_mandi_prices(latitude, longitude, commodity_code)
 ```
 
 **Scheme Info:**
 ```
-get_scheme_codes() → get_scheme_info(code) OR get_multiple_schemes_info([codes])
+get_scheme_info()
 ```
 
 ### Dimension 2: FACTUAL GROUNDING
@@ -96,8 +96,8 @@ get_scheme_codes() → get_scheme_info(code) OR get_multiple_schemes_info([codes
 
 | Use Case | Expected Citation |
 |----------|-------------------|
-| Weather | स्रोत: IMD |
-| Mandi | स्रोत: APMC |
+| Weather | स्रोत: स्रोत: मौसम पूर्वानुमान (IMD) |
+| Mandi | स्रोत: स्रोत: मंडी भाव |
 | Advisory | स्रोत: NPSS Pest Advisory |
 | Scheme | स्रोत: सरकारी योजना जानकारी |
 
@@ -161,7 +161,7 @@ get_scheme_codes() → get_scheme_info(code) OR get_multiple_schemes_info([codes
 
 | Acceptable English | Avoid |
 |--------------------|-------|
-| PM-KISAN, PMFBY, KCC, SHC | "weather forecast" (use हवामान अंदाज) |
+| PM-KISAN, PMFBY, KCC, SHC | "weather forecast" (use मौसम का पूर्वानुमान) |
 | Scheme names (PMFBY) | "commodity" (use पीक/माल) |
 |Source names from tools (ICAR, PoP)	| "eligible" (use पात्र) |
 | Portal URLs | "temperature" (use तापमान) |
@@ -184,7 +184,7 @@ get_scheme_codes() → get_scheme_info(code) OR get_multiple_schemes_info([codes
 **Critical:** Commodity + location matching; multiple mandis for comparison
 
 3. Crop & Agricultural Advisory (कृषि सलाह)
-**Purpose**: Crop info, seed selection, farming practices, livestock health
+**Purpose**: Crop info, seed selection, farming practices.
 **Key Tools**: search_terms, search_documents
 **Critical:** Term identification in Hindi; document relevance; no diagnosis fabrication
 
@@ -201,7 +201,7 @@ get_scheme_codes() → get_scheme_info(code) OR get_multiple_schemes_info([codes
 6.PMFBY Status (फसल बीमा स्थिति)
 **Purpose**: Crop insurance policy and claim status for farmers
 **Key Tools**: initiate_pmfby_status_check, check_pmfby_status_with_otp
-**Critical**: Two-step OTP flow; 6-digit OTP; reuse phone+OTP for policy↔claim second check
+**Critical**: Two-step OTP flow; 4-digit OTP; reuse phone+OTP for policy↔claim second check
 
 7. PM-Kisan Status (PM किसान स्थिति)
 **Purpose**: PM Kisan installment and beneficiary status
@@ -222,12 +222,6 @@ get_scheme_codes() → get_scheme_info(code) OR get_multiple_schemes_info([codes
 
 ## Common Pitfalls
 
-### Process Failures
-| Pitfall | Impact |
-|---------|--------|
-| Skipping get_scheme_codes before get_scheme_info | Invalid scheme_code likely |
-| Not using forward_geocode when Agristack empty | No coordinates available |
-| Unnecessary Agristack fetch for public info | Inefficiency |
 
 ### Factual Failures
 | Pitfall | Impact |
@@ -271,7 +265,7 @@ get_scheme_codes() → get_scheme_info(code) OR get_multiple_schemes_info([codes
 3. **Clarify scope** - If tool can't help, explain what it covers
 4. **Offer next steps** - Make responses actionable
 5. **Handle empty results gracefully** - Suggest alternatives
-6. **Use correct Marathi** - Agricultural terminology matters
+6. **Use correct Hindi** - Agricultural terminology matters
 
 ---
 
@@ -289,7 +283,7 @@ You MUST output valid JSON matching this exact schema. All fields are required u
     "process_fidelity": {
       "scores": {
         "intent_accuracy": {"score": 3, "evidence": "string"},
-        "model_complience": {"score": 3, "evidence": "string"},
+        "model_compliance": {"score": 3, "evidence": "string"},
         "tool_sequencing": {"score": 2, "evidence": "string"},
         "tool_usage": {"score": null, "evidence": "string"},
         "output_hygiene": {"score": 3, "evidence": "string"}
@@ -347,7 +341,7 @@ You MUST output valid JSON matching this exact schema. All fields are required u
 |-------|----------|-------|
 | `summary` | **YES** | Always provide 1-2 sentence assessment |
 | `dimensions` | **YES** | All 4 dimensions with all sub-scores |
-| `score` | **YES** | Must be 1, 2, 3, or null |
+| `score` | **YES** | Must be 1, 2, 3, 4, 5 or null |
 | `evidence` | **YES** | Specific evidence from trace/response |
 | `critical_failures` | **YES** | Array of sub-dimension names where score=1 |
 | `overall_pass` | **YES** | `false` if any critical_failures, else `true` |
