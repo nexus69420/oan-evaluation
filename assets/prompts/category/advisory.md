@@ -2,16 +2,70 @@
 
 ## 1. Overview
 
-**Advisory queries** are questions about crop management, pest/disease control, cultivation practices, varieties, fertilizers, irrigation, and livestock care.
+**Advisory queries** are questions about crop management, pest/disease control, cultivation practices, varieties, fertilizers, and irrigation. The agent uses a semantic search pipeline to retrieve grounded advisory content.
+
+### Tools
+
+| Tool | Purpose |
+|------|---------|
+| `search_terms(term)` | Glossary lookup — maps Hindi/transliterated terms to English equivalents |
+| `search_documents(query)` | Semantic search for general agricultural advisory documents |
+| `search_pests_diseases(query)` | Semantic search for **crop** pest and disease information only |
+
+> **All search queries must be in English.** `search_terms` helps normalize Hindi/local terms to English before calling `search_documents` or `search_pests_diseases`.
+
+### Tool Choice Rules
+
+| Query Type | Correct Tool |
+|------------|-------------|
+| Crop pest or disease (insect, fungal, bacterial) | `search_pests_diseases(english_query)` |
+| General advisory (fertilizer, irrigation, varieties, cultivation) | `search_documents(english_query)` |
+| Livestock / animal disease | `search_documents(english_query)` — NOT `search_pests_diseases` |
+| Unknown Hindi/local term | `search_terms(term)` first → then appropriate search tool |
 
 ### Expected Workflow
 
 ```
-[If Agristack ✅] fetch_agristack_data → search_terms (parallel) → search_documents → Response
-[If Agristack ❌] search_terms (parallel) → search_documents → Response
+[General Advisory — query in Hindi]
+  search_terms(hindi_term) → search_documents("english query")
+
+[Pest/Disease on Crop — query in Hindi]
+  search_terms(hindi_term) → search_pests_diseases("english query")
+
+[Query already in English]
+  search_documents("english query")  OR  search_pests_diseases("english query")
+  [search_terms optional if term already clear]
+
+[Livestock/Animal Disease]
+  search_documents("english query")   [never search_pests_diseases]
 ```
 
-**All 16 sub-dimensions apply** to Advisory queries.
+> `search_terms` is optional when the query is already in English or the term is unambiguous. It is required when the farmer uses a Hindi, regional, or transliterated term that the agent needs to normalize before searching.
+
+### Sub-dimension Applicability
+
+All 16 sub-dimensions apply to Advisory queries.
+
+| Sub-dimension | Applicable? | Notes |
+|---------------|-------------|-------|
+| `intent_accuracy` | ✅ | Identify exact advisory need (pest vs general vs livestock) |
+| `moderation_compliance` | ✅ | Valid Agricultural check before processing |
+| `tool_sequencing` | ✅ CRITICAL | `search_terms` (if needed) → correct search tool |
+| `tool_usage` | ✅ CRITICAL | English query; correct tool (`search_pests_diseases` vs `search_documents`) |
+| `output_hygiene` | ✅ | No tool names or raw search output in response |
+| `source_alignment` | ✅ | All claims traceable to tool output |
+| `no_fabrication` | ✅ CRITICAL | No invented dosages, varieties, or chemicals |
+| `citation_accuracy` | ✅ | Source name from document result (not tool name) |
+| `safety_compliance` | ✅ | Correct dosages; safe chemicals; PPE and waiting periods where relevant |
+| `completeness` | ✅ | All parts of query addressed |
+| `actionability` | ✅ | Specific dosages, timing, varieties |
+| `context_fit` | ✅ | Use crop/location mentioned earlier in conversation |
+| `clarity` | ✅ | Well-structured; easy to follow |
+| `conversation_closure` | ✅ | Specific, relevant agricultural follow-up |
+| `grammar` | ✅ | Always |
+| `terminology` | ✅ | Correct Hindi/English agricultural terms |
+| `language_purity` | ✅ | Always |
+| `fluency` | ✅ | Always |
 
 ---
 
@@ -19,247 +73,274 @@
 
 ### PROCESS FIDELITY
 
-| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
-|---------------|-----------|------|------------|------|--------------|-----|
-| `agristack_workflow` | Called first when available; data used in response | Called first; data partially used | Called but late or data unused | Called very late; data ignored | Available but not called; or fabricates profile data | Not marked available |
-| `term_identification` | All query terms searched via `search_terms` before documents | Most terms searched; one minor gap | Some terms searched; minor gaps | Few terms searched; significant gaps | No `search_terms`; jumped to documents | — |
-| `tool_sequencing` | Perfect order: Agristack → Terms → Documents | Correct order with minor redundancy | Mostly correct; minor inefficiency | Order issues affecting quality | Wrong sequence; major steps skipped | — |
-| `search_quality` | Concise 2-5 word English queries; relevant results | Good queries; mostly relevant results | Reasonable but gaps | Poor queries; limited relevance | Wrong language; irrelevant results | No search used |
-| `output_hygiene` | No tool names, no artifacts, clean citations | Clean; minor formatting issue | Minor artifact | Multiple artifacts; partial leakage | Tool names leaked in response | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `intent_accuracy` | Exact advisory intent identified; correct tool chosen immediately | Correct intent; minor secondary gap | Core addressed; slight tool-choice mismatch | Key aspect missed | Wrong intent; answers a different query |
+| `moderation_compliance` | Valid Agricultural confirmed; invalid queries declined correctly | Correct; slight hesitation | Minor inconsistency | Bypassed for borderline queries | Invalid query processed without check |
+| `tool_sequencing` | `search_terms` (when needed) → correct search tool in right order | Correct order; minor redundancy | Mostly correct; minor extra call | Sequence errors affect output | Entire workflow bypassed; response from memory |
+| `tool_usage` | Correct tool (`search_pests_diseases` for crop pests, `search_documents` for general/livestock); query in English | Correct tool; query partially in Hindi | Right tool; English query with minor issues | Wrong tool (e.g., `search_pests_diseases` for livestock disease) | No tool called; or tool called with non-English query only |
+| `output_hygiene` | No tool names; clean formatted response | Clean; minor formatting issue | Minor artifact; meaning clear | Multiple artifacts; partial leakage | Tool names or raw search result JSON in response |
 
 ### FACTUAL GROUNDING
 
-| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
-|---------------|-----------|------|------------|------|--------------|-----|
-| `source_alignment` | All claims traceable to tool output | Most claims sourced; minor inference | Some claims unsourced but plausible | Several unsourced claims | Claims contradict or don't match retrieved docs | — |
-| `no_fabrication` | All from tools; gaps acknowledged | Small inference from data | Minor inferential leap | Significant unsupported extrapolation | Invented data, varieties, or statistics | — |
-| `citation_accuracy` | Farmer-friendly source name matching doc | Correct source; minor format issue | Generic but acceptable | Source unclear or partially wrong | Tool name used as citation | — |
-| `safety_compliance` | Correct dosages; safe chemicals; PPE and waiting periods mentioned | Correct dosages; minor safety gap | Correct but missing safety context | Dosages unclear; safety issues | Banned chemicals, dangerous dosages, no waiting periods | No chemicals/safety involved |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `source_alignment` | All claims traceable to retrieved document output | Most claims sourced; minor inference | Some claims unsourced but plausible | Several unsourced claims | Claims contradict or don't match retrieved docs |
+| `no_fabrication` | All from tools; gaps acknowledged | Small inference from retrieved data | Minor inferential leap | Significant unsupported extrapolation | Invented dosages, varieties, chemicals, or statistics |
+| `citation_accuracy` | Document/source name from tool output cited in farmer-friendly format | Correct source; minor format issue | Generic but acceptable ("कृषि जानकारी") | Source unclear or partially wrong | Tool name used as citation (e.g., "search_documents के अनुसार") |
+| `safety_compliance` | Correct dosages; safe chemicals; PPE and waiting periods mentioned where relevant | Correct dosages; minor safety gap | Correct but missing safety context | Dosages unclear; safety issues | Banned chemicals, dangerous dosages, or no waiting periods |
 
 ### RESPONSE USEFULNESS
 
-| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
-|---------------|-----------|------|------------|------|--------------|-----|
-| `completeness` | All query parts addressed | Most parts addressed; minor gap | Core answered; gaps on secondary parts | Significant gaps; partial answer | Doesn't address actual query | — |
-| `actionability` | Specific varieties, dosages, timing | Mostly specific; one generic area | Mix of specific and generic | Mostly generic; few specifics | Completely generic; no specifics | Purely informational query |
-| `context_fit` | Uses Agristack data to personalize | Mostly personalized; minor miss | Mentions but doesn't integrate | Minimal personalization | Ignores or contradicts known context | No Agristack data |
-| `clarity` | Well-structured; easy to follow | Clear; minor organization issue | Understandable but disorganized | Hard to follow; confusing structure | Confusing or incomprehensible | — |
-| `conversation_closure` | Specific, relevant follow-up question | Good follow-up; slightly generic | Present but generic | Weak or partially relevant | No follow-up or inappropriate | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `completeness` | All query parts addressed | Most parts; minor gap on secondary aspect | Core answered; gaps on secondary parts | Significant gaps; partial answer | Doesn't address actual query |
+| `actionability` | Specific varieties, dosages, timing, method | Mostly specific; one generic area | Mix of specific and generic | Mostly generic; few specifics | Completely generic; no actionable specifics |
+| `context_fit` | Crop type, location, or season mentioned earlier in session reused without re-asking | Mostly uses context; minor miss | Mentions context but doesn't integrate | Minimal use of conversation context | Ignores or contradicts crop/context already given |
+| `clarity` | Well-structured; easy to scan and follow | Clear; minor organization issue | Understandable but disorganized | Hard to follow; confusing structure | Confusing or incomprehensible |
+| `conversation_closure` | Specific, relevant agricultural follow-up (e.g., next spray timing, variety choice) | Good follow-up; slightly generic | Present but generic | Weak or partially relevant | No follow-up or out-of-scope offer |
 
-### MARATHI QUALITY
+### LANGUAGE QUALITY
 
-| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
-|---------------|-----------|------|------------|------|--------------|-----|
-| `grammar` | Perfect grammar; complete sentences | Minor errors; meaning fully clear | Errors but meaning clear | Several errors; meaning affected | Broken; hard to understand | — |
-| `terminology` | Correct Marathi agricultural terms | Mostly correct; one improvised term | Mix of correct and improvised | Many improvised terms | Wrong terms causing confusion | — |
-| `language_purity` | Pure Marathi; English only for chemical/scientific names | Mostly pure; minimal English | Several unnecessary English words | Frequent unnecessary English | Heavy code-switching | — |
-| `fluency` | Natural; appropriate for rural audience | Natural; minor stilted phrase | Stilted but understandable | Often stilted or awkward | Unnatural; machine-like | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `grammar` | Perfect grammar in selected language | Minor errors; meaning fully clear | Errors but meaning clear | Several errors; meaning affected | Broken; hard to understand |
+| `terminology` | Correct Hindi/English agricultural terms (कीटनाशक, फंगीसाइड, खुराक, प्रति एकड़) | Mostly correct; one imprecise term | Mix of correct and improvised | Many vague or improvised terms | Wrong terms causing confusion |
+| `language_purity` | Selected language only; chemical/scientific names in English acceptable | Mostly pure; minimal switching | Several unnecessary switches | Frequent code-switching | Heavy arbitrary mixing |
+| `fluency` | Natural; suitable for rural audience | Natural; one or two stilted phrases | Stilted but understandable | Often awkward or clinical | Unnatural; machine-like |
 
 ---
 
 ## 3. Annotated Examples
 
-### Example A: EXCELLENT Response
+### Example A: EXCELLENT — Crop Pest Query
 
-**Query:** `भुईमुगाची पेरणी कशी करावी`  
-**Agristack:** ✅ Available
+**Query:** `Mere gehun mein harit tela ki samasya hai, kya karun?`
+(User selected language: Hindi)
 
 **Trace:**
 ```
-Turn 1: fetch_agristack_data() → Farmer: Barshi, Solapur, 1.17 ha
-Turn 2-5: search_terms("भुईमूग"), search_terms("पेरणी"), search_terms("बियाणे"), search_terms("खत") [parallel]
-Turn 6-7: search_documents("Groundnut sowing varieties"), search_documents("Groundnut fertilizer") → MPKV docs
+Turn 1: search_terms("harit tela") → "Aphid" [English equivalent found]
+Turn 2: search_pests_diseases("aphid on wheat") → relevant pest control documents
 ```
 
 **Response:**
 ```
-आपल्या बार्शी, सोलापूर भागासाठी भुईमुगाची पेरणी खालीलप्रमाणे करावी:
+गेहूं में हरित तेला (Aphid) के लिए उपाय:
 
-**योग्य जाती:** TAG-24, TG-26, ICGS-11, फुले प्रगती
+**पहचान:**
+- पत्तियों के नीचे छोटे हरे कीड़े
+- पत्तियां पीली और मुड़ने लगती हैं
 
-**पेरणीची वेळ:** खरीप: १५ जून ते ७ जुलै | रब्बी: १५-३० सप्टेंबर
+**रासायनिक नियंत्रण:**
+- Imidacloprid 17.8% SL — 100 ml प्रति एकड़, 200 लीटर पानी में
+- Thiamethoxam 25% WG — 40 g प्रति एकड़
 
-**बियाणे:** १००-१२५ किलो/हेक्टर (आपल्या १.१७ हेक्टरसाठी ~१२०-१४५ किलो)
+**सावधानी:**
+- फवारणी के बाद 7 दिन तक फसल न काटें (waiting period)
+- PPE पहनें — दस्ताने और मास्क ज़रूरी
 
-**अंतर:** ३० × १० सेमी
+**स्रोत: कृषि कीट प्रबंधन**
 
-**बीजप्रक्रिया:** थायरम ३ ग्रॅम/किलो + रायझोबियम २५ ग्रॅम/किलो
-
-**खत:** पेरणीपूर्वी २५:५०:०० NPK किलो/हेक्टर
-
-**स्रोत: MPKV कृषी दर्शनी**
-
-आपल्याला बीजप्रक्रियेसाठी रायझोबियम कुठे मिळेल याबद्दल माहिती हवी आहे का?
+क्या आप गेहूं में फंगस रोग के बारे में भी जानना चाहते हैं?
 ```
 
-**Evaluation:**
+**Key Scores:**
 
 | Sub-dimension | Rating | Evidence |
 |---------------|--------|----------|
-| `agristack_workflow` | EXCELLENT | Called first; location + land size integrated into response |
-| `term_identification` | EXCELLENT | All 4 terms searched in parallel before documents |
-| `tool_sequencing` | EXCELLENT | Perfect: Agristack → Terms → Documents |
-| `search_quality` | EXCELLENT | Concise English queries; retrieved relevant MPKV docs |
-| `output_hygiene` | EXCELLENT | Clean citation "MPKV कृषी दर्शनी"; no tool names |
-| `source_alignment` | EXCELLENT | All varieties, timing, dosages match tool output |
-| `no_fabrication` | EXCELLENT | Land calculation derived from Agristack (1.17 ha × 100-125 kg) |
-| `citation_accuracy` | EXCELLENT | Farmer-friendly source name matches document |
-| `safety_compliance` | EXCELLENT | Standard safe chemicals; correct dosages from source |
-| `completeness` | EXCELLENT | Covers varieties, timing, seed rate, spacing, treatment, fertilizer |
-| `actionability` | EXCELLENT | Specific quantities, dates, variety names |
-| `context_fit` | EXCELLENT | Personalized to Barshi location and 1.17 ha holding |
-| `clarity` | EXCELLENT | Well-structured with headers; easy to scan |
-| `conversation_closure` | EXCELLENT | Specific follow-up about Rhizobium sourcing |
-| `grammar` | EXCELLENT | Perfect Marathi grammar |
-| `terminology` | EXCELLENT | Correct: बीजप्रक्रिया, रायझोबियम, खरीप |
-| `language_purity` | EXCELLENT | Pure Marathi; only chemical names in English |
-| `fluency` | EXCELLENT | Natural, conversational tone |
+| `intent_accuracy` | EXCELLENT | Crop pest correctly identified; `search_pests_diseases` chosen |
+| `moderation_compliance` | EXCELLENT | Valid Agricultural; processed correctly |
+| `tool_sequencing` | EXCELLENT | `search_terms` → `search_pests_diseases` in correct order |
+| `tool_usage` | EXCELLENT | `search_pests_diseases` used (not `search_documents`); English query passed |
+| `output_hygiene` | EXCELLENT | No tool names; clean citation |
+| `source_alignment` | EXCELLENT | Dosage and waiting period from retrieved document |
+| `no_fabrication` | EXCELLENT | No invented figures |
+| `citation_accuracy` | EXCELLENT | "कृषि कीट प्रबंधन" — document source name |
+| `safety_compliance` | EXCELLENT | Waiting period and PPE both mentioned |
+| `completeness` | EXCELLENT | Identification, chemical control, safety all covered |
+| `actionability` | EXCELLENT | Specific chemical names, doses, dilution ratio |
+| `context_fit` | EXCELLENT | Wheat from query used throughout |
+| `clarity` | EXCELLENT | Sections clearly divided |
+| `conversation_closure` | EXCELLENT | Related follow-up (fungal disease on same crop) |
+| `grammar` | EXCELLENT | Correct Hindi |
+| `terminology` | EXCELLENT | कीटनाशक, खुराक, प्रतीक्षा अवधि — correct |
+| `language_purity` | EXCELLENT | Hindi; chemical names in English acceptable |
+| `fluency` | EXCELLENT | Natural, actionable tone |
 
-**Critical Failures:** None  
-**Summary:** Exemplary response - perfect workflow, fully grounded, personalized, actionable.
+**Critical Failures:** None
 
 ---
 
-### Example B: UNACCEPTABLE Response (Critical Failures)
+### Example B: UNACCEPTABLE — Response from Memory, No Tool Called
 
-**Query:** `हळदीच्या शेंगा भरण्याच्या अवस्थेत काय करावे`  
-**Agristack:** ✅ Available (ignored)
+**Query:** `Dhan mein jhulsa rog ka ilaaj batao`
+(User selected language: Hindi)
 
 **Trace:**
 ```
-Turn 1: search_documents("Turmeric pod filling stage") → Returns PIGEON PEA docs (तूर)
-[No fetch_agristack_data, no search_terms]
+[No tool calls made]
 ```
 
 **Response:**
 ```
-हळदीच्या शेंगा भरण्याच्या अवस्थेत खालील काळजी घ्यावी:
+धान में झुलसा रोग (Blast) के लिए:
+- Tricyclazole 75% WP — 200 g प्रति एकड़ डालें
+- हर 15 दिन में दोहराएं
 
-**खत:** NPK 50:50:50 किलो/हेक्टर
+search_pests_diseases के अनुसार यह सबसे असरदार उपाय है।
 
-**पाणी:** नियमित पाणी द्यावे.
-
-**कीड:** शेंगा पोखरणारी अळी दिसल्यास क्विनॉलफॉस फवारावे.
-
-**स्रोत: MPKV कृषी दर्शनी**
-
-आणखी काही प्रश्न असल्यास विचारा.
+स्रोत: कृषि जानकारी
 ```
 
-**Evaluation:**
+**Key Scores:**
 
 | Sub-dimension | Rating | Evidence |
 |---------------|--------|----------|
-| `agristack_workflow` | UNACCEPTABLE | Marked available but not called |
-| `term_identification` | UNACCEPTABLE | No search_terms; jumped directly to documents |
-| `tool_sequencing` | UNACCEPTABLE | Skipped Agristack and term identification entirely |
-| `search_quality` | ACCEPTABLE | Query reasonable but retrieved wrong crop docs |
-| `output_hygiene` | EXCELLENT | No tool names leaked |
-| `source_alignment` | UNACCEPTABLE | Pigeon pea advice applied to turmeric query; turmeric has rhizomes not pods |
-| `no_fabrication` | UNACCEPTABLE | NPK values from wrong crop presented as turmeric advice |
-| `citation_accuracy` | ACCEPTABLE | Source name correct but content doesn't match query |
-| `safety_compliance` | POOR | Dosages may be inappropriate for turmeric |
-| `completeness` | ACCEPTABLE | Addresses query structure but with wrong information |
-| `actionability` | ACCEPTABLE | Has specifics but potentially harmful if followed |
-| `context_fit` | UNACCEPTABLE | Agristack ignored; no personalization |
-| `clarity` | GOOD | Well-structured presentation |
-| `conversation_closure` | POOR | Generic "आणखी काही प्रश्न असल्यास विचारा" |
-| `grammar` | EXCELLENT | Correct grammar |
-| `terminology` | GOOD | Terms correct for what was written |
-| `language_purity` | EXCELLENT | Pure Marathi |
+| `intent_accuracy` | ACCEPTABLE | Intent understood; but fabricated answer misdirects |
+| `moderation_compliance` | GOOD | Valid Agricultural; processed correctly |
+| `tool_sequencing` | UNACCEPTABLE | No tool called; jumped to response from memory |
+| `tool_usage` | UNACCEPTABLE | `search_pests_diseases` never called |
+| `output_hygiene` | UNACCEPTABLE | "search_pests_diseases के अनुसार" — tool name in response body |
+| `source_alignment` | UNACCEPTABLE | All claims from memory; no tool output |
+| `no_fabrication` | UNACCEPTABLE | Dosage and interval invented without retrieval |
+| `citation_accuracy` | UNACCEPTABLE | Tool name used as citation |
+| `safety_compliance` | POOR | No waiting period, no PPE mentioned |
+| `completeness` | POOR | Cannot be complete without tool; misleads farmer |
+| `actionability` | POOR | Numbers fabricated; harmful if acted on |
+| `context_fit` | EXCELLENT | Paddy crop reused from query |
+| `clarity` | GOOD | Readable |
+| `conversation_closure` | POOR | No follow-up |
+| `grammar` | EXCELLENT | Correct Hindi |
+| `terminology` | GOOD | Terms correct |
+| `language_purity` | EXCELLENT | Pure Hindi |
 | `fluency` | GOOD | Natural tone |
 
-**Critical Failures:** `source_alignment`, `no_fabrication`  
-**Summary:** Clean Marathi but critically flawed - provided pigeon pea advice for turmeric. Agent should have caught that turmeric has rhizomes, not pods (शेंगा), and clarified with farmer.
+**Critical Failures:** `tool_sequencing`, `tool_usage`, `no_fabrication`, `output_hygiene`
+
+**Correct Behavior:**
+```
+Turn 1: search_terms("jhulsa rog") → "Blast disease" [or "Brown leaf spot"]
+Turn 2: search_pests_diseases("blast disease paddy rice") → retrieved documents
+→ Present dosage and safety info from retrieved content only
+```
 
 ---
 
-### Example C: GOOD Response (Process Recovery)
+### Example C: GOOD — General Advisory, Fertilizer Query
 
-**Query:** `कापसावर बोंडअळीचा प्रादुर्भाव झाला आहे, काय फवारणी करावी`  
-**Agristack:** ❌ Not available
+**Query:** `Sarson ki fasal mein kitna urea dalna chahiye?`
+(User selected language: Hindi)
 
 **Trace:**
 ```
-Turn 1: search_terms("कापूस") → Cotton [100%] ← CORRECT
-Turn 2: search_terms("बोंडअळी") → Bollworm [95%] ← CORRECT
-[No search_terms for "फवारणी" or "प्रादुर्भाव"]
-Turn 3: search_documents("Cotton Bollworm Control Spray") → MPKV Krishi Darshani, CICR recommendations
+Turn 1: search_terms("sarson") → "Mustard" [English equivalent]
+Turn 2: search_documents("mustard crop urea fertilizer dose") → relevant documents returned
 ```
 
 **Response:**
 ```
-कापसावरील बोंडअळी नियंत्रणासाठी खालील फवारणी करावी:
+सरसों की फसल में यूरिया की मात्रा:
 
-**प्रथम फवारणी (प्रादुर्भाव दिसताच):**
-क्विनॉलफॉस २५ EC @ २० मिली/१० लिटर पाणी किंवा
-इमामेक्टिन बेंझोएट ५ SG @ ३ ग्रॅम/१० लिटर पाणी
+**बुवाई के समय:**
+- 25-30 kg यूरिया प्रति एकड़ (बेसल डोज़)
 
-**जैविक पर्याय:**
-बॅसिलस थुरिंजिएन्सिस (Bt) @ १५ ग्रॅम/१० लिटर पाणी
-(सायंकाळी फवारणी करावी)
+**टॉप ड्रेसिंग (30-35 दिन बाद):**
+- 20-25 kg यूरिया प्रति एकड़
 
-**फवारणी वेळापत्रक:**
-- पहिली फवारणी: फुलोरा अवस्थेत
-- दुसरी फवारणी: १५ दिवसांनी पुनरावृत्ती
+**सुझाव:**
+- सिंचाई के बाद यूरिया डालें — नमी में अच्छा अवशोषण होता है
+- ज़्यादा यूरिया से फसल गिरने का खतरा
 
-**सुरक्षितता:**
-- फवारणीवेळी मास्क व हातमोजे वापरावेत
-- फवारणीनंतर २१ दिवस बोंडे काढू नयेत
+**स्रोत: कृषि सलाह दस्तावेज़**
 
-**स्रोत: MPKV कृषी दर्शनी**
-
-आपल्या शेतात किती टक्के झाडांवर प्रादुर्भाव दिसत आहे?
+क्या आप सरसों में सिंचाई समय-सारणी के बारे में भी जानना चाहेंगे?
 ```
 
-**Evaluation:**
+**Key Scores:**
 
 | Sub-dimension | Rating | Evidence |
 |---------------|--------|----------|
-| `agristack_workflow` | N/A | Not marked available |
-| `term_identification` | GOOD | Key terms (कापूस, बोंडअळी) searched; minor gap (फवारणी not searched) |
-| `tool_sequencing` | GOOD | Correct order: Terms → Documents |
-| `search_quality` | EXCELLENT | "Cotton Bollworm Control Spray" - precise, correct results |
-| `output_hygiene` | EXCELLENT | No tool names; clean citation |
-| `source_alignment` | EXCELLENT | All dosages and chemicals match MPKV/CICR docs |
-| `no_fabrication` | EXCELLENT | Only sourced information provided |
-| `citation_accuracy` | EXCELLENT | Farmer-friendly "MPKV कृषी दर्शनी" |
-| `safety_compliance` | EXCELLENT | Correct dosages; includes PPE (mask, gloves); waiting period (21 days) before harvest |
-| `completeness` | EXCELLENT | Covers chemical options, bio-control, timing, safety |
-| `actionability` | EXCELLENT | Specific dosages (20ml/10L, 3g/10L), timing, application method |
-| `context_fit` | N/A | No Agristack data available |
-| `clarity` | EXCELLENT | Well-organized with clear sections |
-| `conversation_closure` | EXCELLENT | Asks infestation percentage to refine advice |
-| `grammar` | EXCELLENT | Correct grammar |
-| `terminology` | EXCELLENT | Correct: बोंडअळी, फवारणी, फुलोरा अवस्था |
-| `language_purity` | EXCELLENT | Pure Marathi; only chemical names in English (appropriate) |
-| `fluency` | EXCELLENT | Natural, practical tone |
+| `intent_accuracy` | EXCELLENT | Fertilizer advisory correctly identified; `search_documents` chosen |
+| `tool_sequencing` | EXCELLENT | `search_terms` → `search_documents` in order |
+| `tool_usage` | EXCELLENT | `search_documents` used (not `search_pests_diseases`); English query |
+| `source_alignment` | GOOD | Dosages from document; "गिरने का खतरा" is a plausible inference |
+| `no_fabrication` | GOOD | Core data from tool; one inference acceptable |
+| `safety_compliance` | N/A | No chemicals involved |
+| `completeness` | EXCELLENT | Basal + top dressing both covered |
+| `actionability` | EXCELLENT | Specific quantity, timing, and application tip |
+| `conversation_closure` | GOOD | Irrigation follow-up is relevant to same crop; slightly generic |
 
-**Critical Failures:** None  
-**Summary:** Strong response with minor process gap (not all terms searched). Excellent grounding with proper pesticide dosages, safety precautions (PPE, waiting period), and specific actionable advice.
+**Critical Failures:** None
+
+---
+
+### Example D: UNACCEPTABLE — Wrong Tool for Livestock Disease
+
+**Query:** `Meri bhains ko khur-khaur (FMD) ki bimari ho gayi hai`
+(User selected language: Hindi)
+
+**Trace:**
+```
+Turn 1: search_pests_diseases("foot and mouth disease buffalo") ← WRONG tool
+         → "No pests or diseases information found"
+```
+
+**Response:**
+```
+भैंस में खुर-खाउर (FMD) की जानकारी उपलब्ध नहीं है।
+```
+
+**Key Scores:**
+
+| Sub-dimension | Rating | Evidence |
+|---------------|--------|----------|
+| `intent_accuracy` | POOR | Livestock disease identified but wrong tool chosen |
+| `tool_usage` | UNACCEPTABLE | `search_pests_diseases` is for crop pests/diseases only; livestock must use `search_documents` |
+| `completeness` | UNACCEPTABLE | No useful information provided because wrong tool returned empty |
+| `actionability` | UNACCEPTABLE | Farmer left with no guidance for an urgent livestock health issue |
+
+**Correct Behavior:**
+```
+Turn 1: search_documents("foot and mouth disease cattle buffalo FMD treatment")
+→ Present retrieved advisory content from search_documents
+```
 
 ---
 
 ## 4. Common Pitfalls
 
-| Pitfall | Detection | Impact |
-|---------|-----------|--------|
-| **Document-Query Mismatch** | Compare query topic vs. doc content in trace | `source_alignment`: UNACCEPTABLE, `no_fabrication`: POOR-UNACCEPTABLE |
-| **Term Search Fails but Recovers** | Wrong term matches but correct doc search | `term_identification`: ACCEPTABLE, but other scores can be high |
-| **Generic When Specifics Available** | Doc has varieties/dosages; response is vague | `actionability`: POOR-ACCEPTABLE |
-| **Agristack Fetched but Unused** | Data in trace but not in response | `context_fit`: POOR-ACCEPTABLE |
-| **Tool Name Leakage** | "search_documents मधून", "get_scheme_info" in response | `output_hygiene`: UNACCEPTABLE-POOR, `citation_accuracy`: UNACCEPTABLE |
+| Pitfall | Impact | Sub-dimension |
+|---------|--------|---------------|
+| **No tool called; response from memory** | CRITICAL | `tool_sequencing`, `no_fabrication` |
+| **`search_pests_diseases` used for livestock disease** | CRITICAL | `tool_usage` |
+| **Query passed to `search_documents` or `search_pests_diseases` in Hindi** | HIGH | `tool_usage` — both tools require English query |
+| **`search_terms` skipped when Hindi term is ambiguous** | HIGH | `tool_sequencing` |
+| **Dosages or chemicals invented without retrieval** | CRITICAL | `no_fabrication`, `safety_compliance` |
+| **No waiting period or PPE mentioned for chemical recommendations** | HIGH | `safety_compliance` |
+| **Tool name used as citation** | HIGH | `citation_accuracy`, `output_hygiene` |
+| **Generic follow-up unrelated to crop or advisory context** | LOW | `conversation_closure` |
+
+### NOT Pitfalls (Do Not Penalize)
+
+| Scenario | Reason |
+|----------|--------|
+| `search_terms` skipped when query is already clear in English | `search_terms` is optional for unambiguous English queries |
+| Chemical names appear in English in a Hindi response | Scientific/chemical names are acceptable in English |
+| Minor inference from retrieved doc (e.g., "best applied in morning") | Small plausible inference from tool data is acceptable |
 
 ---
 
 ## 5. Evaluator Checklist
 
-Before finalizing:
-
-- [ ] Agristack available? → Was it called first?
-- [ ] Were `search_terms` called before `search_documents`?
-- [ ] Do retrieved docs match the query topic?
-- [ ] Are all claims in response traceable to tool output?
-- [ ] Any tool names or artifacts in response?
-- [ ] Are dosages/chemicals safe and sourced?
-- [ ] Is follow-up question specific to the query?
+- [ ] `search_terms` called first when farmer used Hindi/local/transliterated crop or pest name?
+- [ ] `search_pests_diseases` used for crop pest/disease — NOT for livestock?
+- [ ] `search_documents` used for general advisory and livestock disease queries?
+- [ ] Query passed to search tools in English (not Hindi)?
+- [ ] All claims (dosages, chemicals, varieties) traceable to tool output?
+- [ ] Banned chemicals absent; waiting periods and PPE mentioned for chemical advice?
+- [ ] No tool names visible in response (not in citation, not in body)?
+- [ ] Source name from document result cited (not tool name)?
+- [ ] Crop/context from earlier in conversation reused without re-asking?
+- [ ] Follow-up question specific, agricultural, and within tool capabilities?
+- [ ] Response in correct selected language (Hindi or English)?

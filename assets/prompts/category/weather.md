@@ -2,307 +2,294 @@
 
 ## 1. Overview
 
-**Weather queries** ask about current, upcoming, or past weather conditions. Farmers need this for irrigation planning, spraying decisions, harvest timing, and crop protection.
+**Weather queries** ask about upcoming weather conditions. Farmers need this for irrigation planning, spraying decisions, harvest timing, and crop protection.
 
-**Tool Distribution:** ~90% forecast queries, ~10% historical queries.
+### Tools
 
 | Tool | Purpose | Source Citation |
 |------|---------|-----------------|
-| `weather_forecast` | Upcoming weather (next 5-7 days) | IMD |
-| `weather_historical` | Past weather (last few days) | Skymet |
+| `forward_geocode(place_name)` | Converts place name to latitude/longitude | — |
+| `weather_forecast(latitude, longitude)` | Upcoming weather forecast for a location | IMD |
 
-### Expected Workflow (Forecast - Most Common)
+> There is only one weather data tool: `weather_forecast`. There is no `weather_historical`, no `weather_past`, and no `fetch_agristack_data()`. All weather queries — past, present, or future — should use `weather_forecast`. If a user asks about past weather and the tool returns no data, acknowledge the limitation.
+
+### Function Signatures
+
+```python
+forward_geocode(place_name: str) -> str          # Returns location string with lat/lon
+weather_forecast(latitude: float, longitude: float) -> str   # No 'days' parameter
+```
+
+### Expected Workflow
 
 ```
-[Agristack ✅ + Data returned]  fetch_agristack_data → weather_forecast(Agristack coords)
-[Agristack ✅ + Empty returned] fetch_agristack_data → forward_geocode → weather_forecast
-[Agristack ❌]                  Ask for district → forward_geocode → weather_forecast
+[Location in query]       forward_geocode(place_name) → weather_forecast(latitude, longitude)
+
+[No location in query]    Ask user for district/village → forward_geocode → weather_forecast
+
+[Location not found]      Inform user; ask for alternate spelling or nearby district name
 ```
-
-### Agristack Empty Scenario (Common)
-
-When Agristack is marked ✅ but returns "No farmer information found":
-- Agent should still call it first (correct protocol)
-- Then fall back to geocoding location from query
-- If no location in query, ask user for district
-- **Do NOT penalize** for asking location after empty Agristack
 
 ### Geocode Verification
 
-Sometimes `forward_geocode` returns wrong locations (e.g., "Dargav" → "Mumbai Suburban"):
-- EXCELLENT: Agent notices mismatch and clarifies
-- ACCEPTABLE: Proceeds with plausible location
-- POOR: Proceeds with obviously wrong location
+`forward_geocode` can occasionally return wrong locations (e.g., a village name matches an unrelated place):
+
+| Agent Behaviour | Rating |
+|-----------------|--------|
+| Notices mismatch and clarifies with user | EXCELLENT |
+| Proceeds with plausible location | ACCEPTABLE |
+| Proceeds with obviously wrong location (e.g., village in Punjab → unrelated state returned) | POOR |
 
 ---
 
-## 2. Historical Weather (~10% of queries)
-
-Historical queries are rare but have key differences:
-
-| Query Pattern | Tool | Source |
-|---------------|------|--------|
-| "पुढील ५ दिवस", "उद्या हवामान" | `weather_forecast` | IMD |
-| "काल पाऊस झाला का", "मागील आठवडा" | `weather_historical` | Skymet |
-
-### Future Date Trap
-
-User asks "१० जानेवारी पाऊस झाला का?" on Jan 6 → historical returns empty.
-**Expected:** Explain dates are in future, offer forecast instead.
-
-### Rare: Combined Queries
-
-Very occasionally (~5%), users ask comparison questions like "थंडी वाढेल का" that need both past and future data. In such cases, both tools should be called and citation should include both sources.
-
----
-
-## 3. Sub-dimension Applicability
+## 2. Sub-dimension Applicability
 
 | Sub-dimension | Applicable? | Notes |
 |---------------|-------------|-------|
-| `agristack_workflow` | ✅ If available | Use coords directly |
-| `term_identification` | N/A | Not advisory |
-| `tool_sequencing` | ✅ | Geocode → weather; both for combined |
-| `search_quality` | N/A | No document search |
-| `output_hygiene` | ✅ | No tool names |
-| `source_alignment` | ✅ | Data must match tool |
-| `no_fabrication` | ✅ | No invented values |
-| `citation_accuracy` | ✅ | IMD/Skymet as appropriate |
-| `safety_compliance` | N/A | No safety content |
-| `completeness` | ✅ | Cover requested timeframe |
-| `actionability` | ✅ **KEY** | Translate to farming advice |
-| `context_fit` | ✅ If Agristack | Reference farmer's location |
-| `clarity` | ✅ | Clear presentation |
+| `intent_accuracy` | ✅ | Identify weather query; extract or ask for location |
+| `moderation_compliance` | ✅ | Valid Agricultural check before processing |
+| `tool_sequencing` | ✅ | `forward_geocode` → `weather_forecast` in correct order |
+| `tool_usage` | ✅ | Correct lat/lon passed to `weather_forecast`; no invented params |
+| `output_hygiene` | ✅ | No tool names in response |
+| `source_alignment` | ✅ | Data must match tool output exactly |
+| `no_fabrication` | ✅ CRITICAL | No invented temperature, rainfall, or humidity values |
+| `citation_accuracy` | ✅ | IMD for weather forecast |
+| `safety_compliance` | N/A | — |
+| `completeness` | ✅ | Cover all parameters returned by tool |
+| `actionability` | ✅ KEY | Translate weather data to farming advice |
+| `context_fit` | ✅ | Reference the farmer's specific location |
+| `clarity` | ✅ | Clear day-by-day or range-based presentation |
 | `conversation_closure` | ✅ | Offer related help |
 | `grammar` | ✅ | Always |
-| `terminology` | ✅ | तापमान, आर्द्रता, पाऊस |
+| `terminology` | ✅ | तापमान, आर्द्रता, वर्षा, हवा |
 | `language_purity` | ✅ | Always |
 | `fluency` | ✅ | Always |
 
 ---
 
-## 4. Rubrics
+## 3. Rubrics
 
 ### PROCESS FIDELITY
 
 | Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
 |---------------|-----------|------|------------|------|--------------|
-| `agristack_workflow` | Called first; uses coords OR correct fallback when empty | Called first; coords partially used | Called but asks for location when data returned | Called very late; location ignored | Available but not called |
-| `tool_sequencing` | Correct tool for query type | Correct tool; minor redundancy | Minor inefficiency | Significant inefficiency | Wrong tool (historical for future dates) |
-| `output_hygiene` | No tool names | Clean; minor formatting issue | Minor artifact | Multiple artifacts | Tool names leaked |
+| `intent_accuracy` | Identifies weather query; extracts or asks for location immediately | Correct intent; minor clarification needed | Correct after one follow-up | Partial identification; corrects when clarified | Misidentifies query; wrong tool used |
+| `moderation_compliance` | Valid Agricultural confirmed; proceeds | Minor hesitation; correct outcome | Minor inconsistency | Bypassed for borderline queries | Invalid query processed without check |
+| `tool_sequencing` | `forward_geocode` → `weather_forecast` in correct order | Correct order; minor redundancy | Minor sequence gap | Out of order; causes confusion | `weather_forecast` called with guessed/invented coordinates |
+| `tool_usage` | Correct `latitude` and `longitude` from geocode result passed to `weather_forecast` | Correct; minor precision issue | One non-critical parameter issue | Coordinates clearly wrong | No geocoding; coordinates fabricated |
+| `output_hygiene` | No tool names; clean response | Clean; minor formatting issue | Minor artifact | Multiple artifacts | Tool names leaked ("forward_geocode के अनुसार") |
 
 ### FACTUAL GROUNDING
 
 | Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
 |---------------|-----------|------|------------|------|--------------|
-| `source_alignment` | All values match tool output | Most values match; minor omission | Minor gaps | Several mismatches | Values don't match |
-| `no_fabrication` | All data from tool | All data sourced; small inference | Minor inference | Significant unsupported claims | Invented weather data |
-| `citation_accuracy` | Correct source (IMD/Skymet) | Correct source; minor format issue | Generic "हवामान विभाग" | Source unclear | Wrong source |
+| `source_alignment` | All values (temperature, humidity, rainfall, wind) match tool output | Most values match; minor omission | Minor paraphrasing | Several mismatches | Values don't match tool output |
+| `no_fabrication` | All data from tool; no data acknowledged simply | All sourced; small inference | Minor inference | Significant unsupported claims | Invented temperature, rainfall, or wind data |
+| `citation_accuracy` | "IMD" cited for weather forecast | Correct source; minor format issue | Generic "मौसम विभाग" | Source unclear | Wrong source OR no source at all |
 
 ### RESPONSE USEFULNESS
 
 | Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
 |---------------|-----------|------|------------|------|--------------|
-| `completeness` | Full timeframe; all parameters | Most parameters; minor gap | Main parameters | Significant gaps | Key data missing |
-| `actionability` | Weather → farming advice | Good guidance; minor gap | Some guidance | Minimal guidance | Raw data only |
-| `context_fit` | References farmer's village | Mostly personalized; minor miss | Generic location | Minimal personalization | Ignores Agristack |
-| `clarity` | Day-by-day OR clear ranges | Clear; minor organization issue | Understandable | Hard to follow | Confusing |
-| `conversation_closure` | Specific follow-up | Good follow-up; slightly generic | Generic offer | Weak follow-up | No follow-up |
+| `completeness` | All tool-returned parameters covered (temperature min/max, rainfall, humidity, wind) | Most parameters; minor gap | Main parameters (temperature, rain); minor gaps | Significant gaps | Key parameters missing |
+| `actionability` | Weather translated to farming advice (e.g., spray timing, irrigation, frost protection) | Good guidance; one generic area | Some guidance present | Minimal guidance; mostly raw data | Raw data only; no farming relevance |
+| `context_fit` | Response references farmer's specific location by name | Mostly personalized; minor miss | Generic location reference | Minimal location reference | Ignores stated location |
+| `clarity` | Day-by-day OR clear ranges; easy to read | Clear; minor organization issue | Understandable | Hard to follow | Confusing or overloaded |
+| `conversation_closure` | Specific follow-up (e.g., "क्या मैं मंडी भाव या फसल सलाह भी बता सकता हूं?") | Good follow-up; slightly generic | Generic offer | Weak follow-up | Dead end |
 
-### MARATHI QUALITY
+### LANGUAGE QUALITY
 
 | Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
 |---------------|-----------|------|------------|------|--------------|
-| `grammar` | Perfect | Minor errors; fully clear | Minor errors | Several errors; meaning affected | Broken |
-| `terminology` | तापमान, किमान/कमाल, आर्द्रता | Mostly correct; one improvised | Mix of terms | Many improvised terms | Wrong terms |
-| `language_purity` | Pure Marathi (units OK) | Mostly pure; minimal English | Some English | Frequent English | Heavy mixing |
-| `fluency` | Natural farmer-friendly | Natural; minor stilted phrase | Stilted | Often stilted | Unnatural |
+| `grammar` | Perfect grammar in selected language | Minor errors; meaning fully clear | Errors; meaning still clear | Several errors; meaning affected | Broken; hard to understand |
+| `terminology` | Correct terms (तापमान, किमान/अधिकतम, आर्द्रता, वर्षा, हवा की गति) | Mostly correct; one improvised term | Mix of correct and improvised | Many improvised terms | Wrong terms causing confusion |
+| `language_purity` | Selected language only; units (°C, mm, km/h) in English acceptable | Mostly pure; minimal switching | Some unnecessary switching | Frequent code-switching | Heavy arbitrary mixing |
+| `fluency` | Natural, farmer-friendly tone | Natural; minor stilted phrase | Stilted but understandable | Often awkward | Robotic or overly technical |
 
 ---
 
-## 5. Annotated Examples
+## 4. Annotated Examples
 
-### Example A: EXCELLENT (Forecast with Agristack)
+### Example A: EXCELLENT — Forecast with Location in Query
 
-**Query:** `माझ्या भागातील पुढील ५ दिवसांचा हवामान अंदाज`  
-**Agristack:** ✅ (Farmer: आसराचीवाडी, रेणापूर, लातूर, 3.06 ha, GPS: 18.578, 76.709)
+**Query:** `Ludhiana mein agle 5 din ka mausam batao`
+(User selected language: Hindi)
 
 **Trace:**
 ```
-fetch_agristack_data() → Full profile with GPS
-weather_forecast(18.578, 76.709, 5) → 5 days data: 14-29°C, 0mm rain, 16-50% humidity
+Turn 1: forward_geocode("Ludhiana, Punjab") → Ludhiana (30.901, 75.857)
+Turn 2: weather_forecast(30.901, 75.857) → 5 days data: min 14-17°C, max 27-30°C, 0mm rain
 ```
 
 **Response:**
 ```
-आपल्या आसराचीवाडी (तालुका: रेणापूर, जिल्हा: लातूर) भागासाठी पुढील ५ दिवसांचा हवामान अंदाज:
+लुधियाना (पंजाब) के लिए अगले 5 दिनों का मौसम पूर्वानुमान:
 
-- पावसाची शक्यता नाही, सर्व दिवस कोरडे राहतील
-- किमान तापमान १४ ते १६.६°C
-- कमाल तापमान २७.२ ते २९.२°C
-- आर्द्रता १६% ते ५०%
-- वारा ५ ते ११ किमी/तास
+- **बारिश:** कोई बारिश की संभावना नहीं — सभी दिन सूखे रहेंगे
+- **न्यूनतम तापमान:** 14°C से 17°C
+- **अधिकतम तापमान:** 27°C से 30°C
+- **आर्द्रता:** 20% से 55%
+- **हवा:** 5 से 12 किमी/घंटा
 
-शेतातील पाण्याचा वापर नियोजनबद्ध करा. पाऊस नसल्याने ओलावा टिकवा, गरजेनुसार पिकांना पाणी द्या.
+**किसान सलाह:**
+- बारिश न होने से खेत में नमी कम होगी — ज़रूरत के अनुसार सिंचाई करें
+- तापमान सामान्य है — सुबह के समय फवारणी करें
 
-**स्रोत: हवामान अंदाज (IMD)**
+**स्रोत: मौसम पूर्वानुमान (IMD)**
+
+क्या मैं मंडी भाव या किसी योजना की जानकारी भी दे सकता हूं?
 ```
 
-| Sub-dimension | Rating | Evidence |
-|---------------|--------|----------|
-| `agristack_workflow` | EXCELLENT | Used coords directly; personalized to village |
-| `actionability` | EXCELLENT | "पाण्याचा वापर नियोजनबद्ध करा" |
-| `context_fit` | EXCELLENT | Named आसराचीवाडी specifically |
-| `citation_accuracy` | EXCELLENT | "IMD" correct for forecast |
-
-**Critical Failures:** None
+**Key Scores:**
+- `tool_sequencing`: EXCELLENT — `forward_geocode` → `weather_forecast` in correct order
+- `actionability`: EXCELLENT — Weather translated to irrigation and spray timing advice
+- `citation_accuracy`: EXCELLENT — IMD cited correctly
+- `context_fit`: EXCELLENT — Ludhiana named explicitly in response
 
 ---
 
-### Example B: UNACCEPTABLE (Fabrication)
+### Example B: UNACCEPTABLE — Fabrication When Tool Returns Empty
 
-**Query:** `परभणी जिल्ह्यात हवामान कसे आहे`  
-**Agristack:** ❌
+**Query:** `Agra mein aaj ka mausam kaisa hai`
+(User selected language: Hindi)
 
 **Trace:**
 ```
-forward_geocode("Parbhani") → (19.27, 76.77)
-weather_forecast(19.27, 76.77) → "Service unavailable" / Empty
+Turn 1: forward_geocode("Agra, Uttar Pradesh") → (27.176, 78.008)
+Turn 2: weather_forecast(27.176, 78.008) → "No weather forecast data found for the requested location."
 ```
 
 **Response:**
 ```
-परभणी जिल्ह्यातील आजचे हवामान:
-- तापमान: किमान १२°C, कमाल २८°C
-- आर्द्रता: ५५%
-- पाऊस: शक्यता नाही
+आगरा जिले में आज का मौसम:
+- तापमान: न्यूनतम 12°C, अधिकतम 28°C
+- आर्द्रता: 55%
+- बारिश: कोई संभावना नहीं
 
-हवामान शेतीसाठी अनुकूल आहे. फवारणी करता येईल.
+मौसम फसल के लिए अनुकूल है। फवारणी कर सकते हैं।
 
-**स्रोत: हवामान अंदाज (IMD)**
+**स्रोत: मौसम पूर्वानुमान (IMD)**
 ```
 
-| Sub-dimension | Rating | Evidence |
-|---------------|--------|----------|
-| `source_alignment` | UNACCEPTABLE | Tool empty; values invented |
-| `no_fabrication` | UNACCEPTABLE | 12°C, 28°C, 55% all fabricated |
-| `actionability` | UNACCEPTABLE | "फवारणी करता येईल" based on fake data |
+**Key Scores:**
+- `no_fabrication`: UNACCEPTABLE — Tool returned empty; all values (12°C, 28°C, 55%) invented
+- `source_alignment`: UNACCEPTABLE — Cites IMD but data has no tool basis
+- `actionability`: UNACCEPTABLE — Farming advice ("फवारणी करें") based on fabricated data; potentially harmful
 
-**Critical Failures:** `source_alignment`, `no_fabrication`  
-**Summary:** Fabricated weather data when tool returned empty. Harmful farming advice.
+**Correct Response Should:** "आगरा के लिए अभी मौसम डेटा उपलब्ध नहीं है। कृपया थोड़ी देर बाद पुनः प्रयास करें या नज़दीकी जिले का नाम बताएं।"
 
 ---
 
-### Example C: GOOD (Historical Query)
+### Example C: GOOD — No Location in Query
 
-**Query:** `Ajche tapman bhandara taluka khairi be gav`  
-**Agristack:** ❌
+**Query:** `कल बारिश होगी?`
+(User selected language: Hindi)
 
 **Trace:**
 ```
-forward_geocode("Khairi Bhandara Maharashtra") → (20.82, 79.694)
-weather_historical(20.82, 79.694, days=1) → Jan 4: Min 13.62°C, Max 27.4°C, Avg 20.3°C
+Turn 1: [Agent asks for location — no location in query]
+Turn 2: User: "Hisar" → forward_geocode("Hisar, Haryana") → (29.151, 75.722)
+Turn 3: weather_forecast(29.151, 75.722) → Tomorrow: 0mm rain, 20-31°C
 ```
 
 **Response:**
 ```
-खैरी, ता. भंडारा या गावासाठी कालचे तापमान असे होते:
-- किमान तापमान: 13.62°C
-- कमाल तापमान: 27.4°C
-- सरासरी तापमान: 20.3°C
+हिसार (हरियाणा) के लिए कल का मौसम पूर्वानुमान:
 
-काल पाऊस पडलेला नाही (0 मिमी), आर्द्रता सरासरी 88.96% होती.
+- **बारिश:** कोई बारिश नहीं (0 मिमी)
+- **न्यूनतम तापमान:** 20°C
+- **अधिकतम तापमान:** 31°C
+- **आर्द्रता:** 40-65%
 
-आपल्याला पुढील काही दिवसांचे हवामान हवे आहे का?
+कल फवारणी के लिए अच्छा दिन रहेगा।
 
-स्रोत: हवामान इतिहास (Skymet)
+**स्रोत: मौसम पूर्वानुमान (IMD)**
 ```
 
-| Sub-dimension | Rating | Evidence |
-|---------------|--------|----------|
-| `agristack_workflow` | N/A | Not marked available |
-| `tool_sequencing` | EXCELLENT | Correct tool for historical query |
-| `source_alignment` | EXCELLENT | All values match |
-| `citation_accuracy` | EXCELLENT | "Skymet" correct for historical |
-
-**Critical Failures:** None  
-**Summary:** Correct historical query handling with proper Skymet citation.
+**Key Scores:**
+- `tool_sequencing`: EXCELLENT — Correctly asked for location first, then geocoded, then forecast
+- `completeness`: GOOD — Core parameters present; wind data from tool not included
+- `actionability`: GOOD — Spray advice given; could also mention irrigation guidance
+- `conversation_closure`: ACCEPTABLE — Could offer related help (mandi, scheme)
 
 ---
 
-### Example D: GOOD (No Data Handling)
+### Example D: ACCEPTABLE — Tool Empty, No Fabrication
 
-**Query:** `माझ्या भागातील हवामान`  
-**Agristack:** ✅ (Farmer: सोनेवाडी, धुळे)
+**Query:** `मेरे गाँव का मौसम बताओ`
+(User selected language: Hindi)
 
 **Trace:**
 ```
-fetch_agristack_data() → Full profile, GPS: 20.75, 74.675
-weather_forecast(20.75, 74.675) → "No weather forecast data found"
+Turn 1: [Agent asks for location]
+Turn 2: User: "Rajgarh, Madhya Pradesh" → forward_geocode("Rajgarh, Madhya Pradesh") → (24.023, 76.727)
+Turn 3: weather_forecast(24.023, 76.727) → "No weather forecast data found for the requested location."
 ```
 
 **Response:**
 ```
-माफ करा, सोनेवाडी (धुळे) भागासाठी हवामान अंदाज सध्या उपलब्ध नाही. वेगळ्या भागासाठी तपासायचे असेल किंवा इतर शेती माहिती हवी असल्यास सांगा.
+माफ़ करें, राजगढ़ (मध्य प्रदेश) के लिए अभी मौसम डेटा उपलब्ध नहीं है।
+
+क्या आप नज़दीकी बड़े जिले (जैसे भोपाल या इंदौर) का मौसम जानना चाहेंगे?
 ```
 
-| Sub-dimension | Rating | Evidence |
-|---------------|--------|----------|
-| `agristack_workflow` | EXCELLENT | Used location in response |
-| `no_fabrication` | EXCELLENT | Acknowledged unavailable |
-| `conversation_closure` | GOOD | Offered alternatives |
-
-**Critical Failures:** None  
-**Summary:** Correct no-data handling without fabrication.
+**Key Scores:**
+- `no_fabrication`: EXCELLENT — Acknowledged unavailability without inventing data
+- `actionability`: ACCEPTABLE — Offered alternative but could suggest retry timing
+- `conversation_closure`: GOOD — Specific alternate locations offered
 
 ---
 
-## 6. Common Pitfalls
+## 5. Common Pitfalls
 
-| Pitfall | Impact |
-|---------|--------|
-| **Fabrication when tool empty** | CRITICAL: `no_fabrication` UNACCEPTABLE |
-| **Not calling Agristack first** | `agristack_workflow` UNACCEPTABLE |
-| **Asking location when Agristack has data** | `agristack_workflow` POOR |
-| **Wrong source (Skymet for forecast, IMD for historical)** | `citation_accuracy` POOR |
-| **Historical tool for future dates** | `tool_sequencing` POOR |
-| **No farming advice** | `actionability` ACCEPTABLE max |
-| **Tool names in response** | `output_hygiene` UNACCEPTABLE |
+| Pitfall | Impact | Sub-dimension |
+|---------|--------|---------------|
+| **Fabricating weather values when tool returns empty or unavailable** | CRITICAL | `no_fabrication`, `source_alignment` |
+| **Calling `weather_forecast` with guessed/invented coordinates** | CRITICAL | `tool_usage`, `tool_sequencing` |
+| **No farming advice — raw data only** | HIGH | `actionability` |
+| **Missing IMD citation** | MEDIUM | `citation_accuracy` |
+| **Proceeding with obviously wrong geocode result** | MEDIUM | `tool_usage`, `context_fit` |
+| **Tool name leakage in response** | MEDIUM | `output_hygiene` |
+| **Not asking for location when none is in query** | MEDIUM | `tool_sequencing` |
+| **Generic follow-up unrelated to agriculture** | LOW | `conversation_closure` |
 
-### NOT Pitfalls (Don't Penalize)
+### NOT Pitfalls (Do Not Penalize)
 
 | Scenario | Reason |
 |----------|--------|
-| Agristack ✅ empty → asks location | Correct fallback |
-| Summarized ranges vs day-by-day | Both acceptable |
-| Humidity min > max in output | Tool data issue |
-| Weather codes not translated | Codes ambiguous |
+| User asks about past weather → forecast used → acknowledged as future data | Only `weather_forecast` exists; correct fallback behavior |
+| Summarized ranges instead of day-by-day breakdown | Both formats acceptable |
+| Location asked before geocoding when no location in query | Correct protocol |
+| Coordinates have minor precision difference from geocode output | Acceptable rounding |
 
 ---
 
-## 7. Actionability Examples
+## 6. Actionability Examples
 
-**EXCELLENT** - translates weather to farming:
+**EXCELLENT** — Translates weather to farming decisions:
 ```
-- १३ तारखेला पाऊस - फवारणी टाळा
-- रात्री थंडी (१३°C) - रोपांना आच्छादन द्या
-- वारा जास्त (१२+ किमी/ता) - फवारणी टाळा
+- कल बारिश की संभावना है — फवारणी आज ही करें
+- रात का तापमान 10°C से नीचे — छोटे पौधों को ढकें
+- तेज़ हवा (15+ किमी/घंटा) — ड्रोन फवारणी न करें
 ```
 
-**POOR** - raw data only:
+**POOR** — Raw data only, no farming relevance:
 ```
-तापमान: १३-३०°C, आर्द्रता: ५०%, पाऊस: ०.२ मिमी
+तापमान: 13-30°C, आर्द्रता: 50%, वर्षा: 0.2 मिमी
 ```
 
 ---
 
-## 8. Evaluator Checklist
+## 7. Evaluator Checklist
 
-- [ ] Agristack ✅? → Called first (even if empty)?
-- [ ] Agristack returned data? → Used coords without asking?
-- [ ] Combined query? → Both tools called?
-- [ ] Values match tool output exactly?
-- [ ] Tool empty? → Acknowledged without fabrication?
-- [ ] Source correct? (IMD forecast / Skymet historical)
-- [ ] Weather → farming advice included?
-- [ ] Any tool names leaked?
+- [ ] Location extracted from query OR asked before calling tools?
+- [ ] `forward_geocode` called before `weather_forecast` (not skipped)?
+- [ ] Coordinates from geocode result passed correctly to `weather_forecast`?
+- [ ] Geocode result verified as plausible (correct state/region)?
+- [ ] All tool-returned values present in response (temperature, rainfall, humidity, wind)?
+- [ ] Tool returned empty → acknowledged without fabrication?
+- [ ] Farming advice derived from actual tool data (not generic)?
+- [ ] IMD cited as source?
+- [ ] No tool names visible in response?
+- [ ] Follow-up offer relevant to farmer's agricultural context?
+- [ ] Response in correct selected language (Hindi or English)?

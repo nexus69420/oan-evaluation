@@ -4,34 +4,79 @@
 
 **Mandi/Market Price queries** are questions about commodity prices at agricultural markets (APMCs). Farmers ask about current prices for their crops to make sell/store decisions.
 
+### Tools
+
+| Tool | Purpose |
+|------|---------|
+| `search_commodity(query)` | Fuzzy-matches commodity name (any language/script) → returns integer commodity code |
+| `forward_geocode(place_name)` | Converts place name to latitude/longitude |
+| `get_mandi_prices(latitude, longitude, commodity_code, days_back=30)` | Fetches mandi price data for a commodity near a location |
+
+> `get_mandi_prices` **requires a `commodity_code` (integer)**. The agent must always call `search_commodity` first to find the correct code. Skipping this step and passing an invented or guessed code is a critical failure.
+
+### Function Signatures
+
+```python
+search_commodity(query: str, max_results: int = 5) -> str         # Returns matched commodity codes
+forward_geocode(place_name: str) -> str                            # Returns location with lat/lon
+get_mandi_prices(latitude: float, longitude: float,
+                 commodity_code: int, days_back: int = 30) -> str  # Fetches mandi prices
+```
+
 ### Expected Workflow
 
 ```
-[If Agristack ✅ + Same location] fetch_agristack_data → mandi_prices(Agristack coords)
-[If Agristack ✅ + Different market] fetch_agristack_data → forward_geocode(requested market) → mandi_prices
-[If Agristack ❌] forward_geocode(location) → mandi_prices
+[Location + commodity in query]
+  search_commodity(commodity_name) + forward_geocode(place_name)  [parallel]
+  → get_mandi_prices(latitude, longitude, commodity_code)
+
+[No location in query]
+  search_commodity(commodity_name) → Ask for location
+  → forward_geocode(place_name) → get_mandi_prices(...)
+
+[Commodity not found by search_commodity]
+  Acknowledge → Ask farmer to clarify crop name
 ```
 
-### Sub-dimension Applicability for Mandi
+### Tool Sequencing Rules
+
+| Step | Action | Notes |
+|------|--------|-------|
+| 1 | `search_commodity(crop_name)` | Always required; provides integer `commodity_code` |
+| 2 | `forward_geocode(place_name)` | Required if location not already known; can run parallel with step 1 |
+| 3 | `get_mandi_prices(lat, lon, code)` | Only after steps 1 and 2 complete |
+
+### Date in Tool Output
+
+The tool converts arrival dates to **relative time strings** automatically:
+- "today", "1 day ago", "10 days ago", etc.
+
+| Tool Output | Correct Agent Response | Incorrect Agent Response |
+|-------------|----------------------|--------------------------|
+| "1 day ago" | "कल के भाव: ₹5,000" or just show price | "आज के भाव: ₹5,000" |
+| "10 days ago" | "10 दिन पहले के भाव: ₹4,800" | "ताजे भाव: ₹5,000" |
+| No date in output | Show price without date claim | "आजचे भाव: ₹5,000" |
+
+### Sub-dimension Applicability
 
 | Sub-dimension | Applicable? | Notes |
 |---------------|-------------|-------|
-| `agristack_workflow` | ✅ If available | Use for farmer's location/nearby markets |
-| `term_identification` | N/A | Not advisory query |
-| `tool_sequencing` | ✅ | Geocode → mandi_prices |
-| `search_quality` | N/A | No document search |
-| `output_hygiene` | ✅ | No tool names |
+| `intent_accuracy` | ✅ | Identify commodity and location from query |
+| `moderation_compliance` | ✅ | Valid Agricultural check before processing |
+| `tool_sequencing` | ✅ CRITICAL | `search_commodity` → `forward_geocode` → `get_mandi_prices` in order |
+| `tool_usage` | ✅ CRITICAL | Correct commodity_code (integer) from `search_commodity`; no invented codes |
+| `output_hygiene` | ✅ | No tool names in response |
 | `source_alignment` | ✅ | Prices must match tool output exactly |
-| `no_fabrication` | ✅ **CRITICAL** | No invented prices or dates |
-| `citation_accuracy` | ✅ | "स्रोत: बाजारभाव" or "स्रोत: APMC" |
-| `safety_compliance` | N/A | No safety-related content |
-| `completeness` | ✅ | Address requested crop + market |
+| `no_fabrication` | ✅ CRITICAL | No invented prices, dates, or arrival volumes |
+| `citation_accuracy` | ✅ | "स्रोत: मंडी भाव" or market name from tool output |
+| `safety_compliance` | N/A | — |
+| `completeness` | ✅ | Address requested crop + market; show min/modal/max |
 | `actionability` | ✅ | Sell/store guidance if appropriate |
-| `context_fit` | ✅ If Agristack | Reference farmer's location/nearby markets |
+| `context_fit` | ✅ | Reference the farmer's stated location |
 | `clarity` | ✅ | Clear price presentation |
-| `conversation_closure` | ✅ | Offer alternatives/other markets |
+| `conversation_closure` | ✅ | Offer alternatives or nearby markets |
 | `grammar` | ✅ | Always |
-| `terminology` | ✅ | Market terms (क्विंटल, भाव, आवक) |
+| `terminology` | ✅ | क्विंटल, भाव, आवक, मॉडल प्राइस |
 | `language_purity` | ✅ | Always |
 | `fluency` | ✅ | Always |
 
@@ -41,255 +86,221 @@
 
 ### PROCESS FIDELITY
 
-| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
-|---------------|-----------|------|------------|------|--------------|-----|
-| `agristack_workflow` | Called first; uses farmer location for nearby market context | Called first; location partially used | Called but location data unused | Called very late; location ignored | Available but not called; asks for location unnecessarily | Not marked available |
-| `term_identification` | — | — | — | — | — | Always N/A for Mandi |
-| `tool_sequencing` | Correct: Agristack (if avail) → Geocode (if needed) → mandi_prices | Correct sequence; minor redundancy | Minor inefficiency (e.g., redundant geocode) | Significant inefficiency | Wrong market geocoded; or mandi_prices called without location | — |
-| `search_quality` | — | — | — | — | — | Always N/A for Mandi |
-| `output_hygiene` | No tool names; clean "स्रोत: बाजारभाव" | Clean; minor formatting issue | Minor artifact | Multiple artifacts | Tool names leaked ("mandi_prices", "forward_geocode") | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `intent_accuracy` | Correctly identifies commodity and location; proceeds immediately | Correct intent; minor clarification needed | Correct after one follow-up | Partial identification; corrects when clarified | Wrong commodity or location assumed; never corrects |
+| `moderation_compliance` | Valid Agricultural confirmed; proceeds | Minor hesitation; correct outcome | Minor inconsistency | Bypassed for borderline queries | Invalid query processed without check |
+| `tool_sequencing` | `search_commodity` + `forward_geocode` (parallel) → `get_mandi_prices` in correct order | Correct order; minor redundancy | Sequential instead of parallel (works, less efficient) | Out of order; `get_mandi_prices` before commodity code obtained | `get_mandi_prices` called without `search_commodity`; code invented or guessed |
+| `tool_usage` | Correct integer `commodity_code` from `search_commodity` passed to `get_mandi_prices` | Correct; minor precision issue in coordinates | One non-critical parameter issue | Clearly wrong commodity code used | No `search_commodity` called; code fabricated |
+| `output_hygiene` | No tool names; clean response | Clean; minor formatting issue | Minor artifact | Multiple artifacts | Tool names leaked ("search_commodity के अनुसार", "get_mandi_prices") |
 
 ### FACTUAL GROUNDING
 
-| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
-|---------------|-----------|------|------------|------|--------------|-----|
-| `source_alignment` | All prices exactly match tool output; varieties/grades distinguished | Most prices match; minor variety omission | Prices correct but missing variety distinction | Several price mismatches | Prices don't match tool output; wrong crop prices shown | — |
-| `no_fabrication` | No invented prices; no fabricated dates; gaps clearly acknowledged | All data sourced; small inference | Minor inference (e.g., "prices stable") without explicit source | Significant unsupported claims | Invented prices when tool returned empty; fake dates ("आजचे भाव") | — |
-| `citation_accuracy` | "स्रोत: बाजारभाव" or "स्रोत: [Market Name] APMC" | Correct source; minor format issue | Generic but acceptable source mention | Source unclear | Tool name as citation; or no source for price data | — |
-| `safety_compliance` | — | — | — | — | — | Always N/A for Mandi |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `source_alignment` | All prices (min/modal/max) exactly match tool output; variety/grade distinctions preserved | Most prices match; minor omission | Prices correct; variety distinction missing | Several mismatches | Prices don't match tool output |
+| `no_fabrication` | No invented prices; no fabricated dates; gaps clearly acknowledged | All sourced; small inference (e.g., "prices stable") | Minor inference without explicit source | Significant unsupported claims | Invented prices when tool returned empty; fake "आज के भाव" |
+| `citation_accuracy` | "स्रोत: मंडी भाव" or market name from tool output | Correct source; minor format issue | Generic but acceptable ("बाजार भाव") | Source unclear | Tool name as citation OR no source for price data |
 
 ### RESPONSE USEFULNESS
 
-| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
-|---------------|-----------|------|------------|------|--------------|-----|
-| `completeness` | Addresses requested crop + market; shows price range (min/max) | Most info with minor gap | Partial info (e.g., only one price point) | Significant gaps | Doesn't address the crop or market asked | — |
-| `actionability` | Provides sell/store guidance based on prices; or notes trends | Good guidance; minor gap | Prices given but no practical context | Minimal guidance | Only prices with no framing | Query only asked for price number |
-| `context_fit` | Uses Agristack location to suggest nearby markets; personalizes | Mostly personalized; minor miss | Mentions location but doesn't leverage it | Minimal personalization | Ignores farmer's location; suggests irrelevant markets | No Agristack data |
-| `clarity` | Clear price presentation; min/max/modal easy to scan | Clear; minor organization issue | Understandable but cluttered | Hard to follow | Confusing; prices buried in text | — |
-| `conversation_closure` | Offers specific alternatives (other crops at market, nearby markets) | Good follow-up; slightly generic | Generic follow-up | Weak follow-up | No follow-up when crop unavailable; dead end | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `completeness` | Requested commodity + market; min/modal/max shown; arrival date relative time preserved | Most info; minor gap | Partial info (only one price point) | Significant gaps | Doesn't address requested crop or market |
+| `actionability` | Prices translated to sell/store guidance; or notes trend | Good guidance; one generic area | Prices given; minimal practical context | Minimal guidance | Raw data only; no framing |
+| `context_fit` | Response references farmer's specific location by name | Mostly personalized; minor miss | Generic location reference | Minimal location reference | Ignores stated location entirely |
+| `clarity` | Clear price table; min/modal/max easy to scan | Clear; minor organization issue | Understandable but cluttered | Hard to follow | Confusing; prices buried in text |
+| `conversation_closure` | Offers nearby markets or related commodity prices | Good follow-up; slightly generic | Generic follow-up | Weak follow-up | Dead end when crop unavailable |
 
-### MARATHI QUALITY
+### LANGUAGE QUALITY
 
-| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE | N/A |
-|---------------|-----------|------|------------|------|--------------|-----|
-| `grammar` | Perfect grammar | Minor errors; fully clear | Errors but meaning clear | Several errors; meaning affected | Broken; hard to understand | — |
-| `terminology` | Correct: भाव, क्विंटल, आवक, बाजारभाव, हमीभाव | Mostly correct; one improvised | Mix of correct and improvised | Many improvised terms | Wrong terms causing confusion | — |
-| `language_purity` | Pure Marathi; only proper nouns (market names) in English | Mostly pure; minimal English | Several unnecessary English words | Frequent English | Heavy code-switching | — |
-| `fluency` | Natural; appropriate for farmer audience | Natural; minor stilted phrase | Stilted but understandable | Often stilted | Unnatural; machine-like | — |
+| Sub-dimension | EXCELLENT | GOOD | ACCEPTABLE | POOR | UNACCEPTABLE |
+|---------------|-----------|------|------------|------|--------------|
+| `grammar` | Perfect grammar in selected language | Minor errors; meaning fully clear | Errors; meaning still clear | Several errors; meaning affected | Broken; hard to understand |
+| `terminology` | Correct terms (भाव, क्विंटल, आवक, मॉडल प्राइस, न्यूनतम/अधिकतम) | Mostly correct; one improvised | Mix of correct and improvised | Many improvised terms | Wrong terms causing confusion |
+| `language_purity` | Selected language only; market names/units in English acceptable | Mostly pure; minimal switching | Some unnecessary switching | Frequent code-switching | Heavy arbitrary mixing |
+| `fluency` | Natural, farmer-friendly tone | Natural; minor stilted phrase | Stilted but understandable | Often awkward | Robotic or overly technical |
 
 ---
 
 ## 3. Annotated Examples
 
-### Example A: EXCELLENT Response (Crop Available)
+### Example A: EXCELLENT — Crop Available
 
-**Query:** `ठाणे बाजारात रताळ्याचा भाव काय आहे`  
-**Agristack:** ✅ Available (Farmer from Achalpur, Amravati)
+**Query:** `Ludhiana mandi mein gehun ka bhav kya hai`
+(User selected language: Hindi)
 
 **Trace:**
 ```
-Turn 1: fetch_agristack_data() → Farmer: Achalpur, Amravati, 2.5 ha
-Turn 2: forward_geocode("Thane") → (19.2183, 72.9781)
-Turn 3: mandi_prices(19.2183, 72.9781) → 
-        Sweet Potato: Not available
-        Potato: ₹1000-1100/quintal (Jyoti), ₹700-800/quintal (Local)
-        Onion: ₹800-1200/quintal
-        Tomato: ₹1500-2000/quintal
+Turn 1: search_commodity("gehun") → Wheat, code: 27
+         forward_geocode("Ludhiana, Punjab") → (30.901, 75.857)  [parallel]
+Turn 2: get_mandi_prices(30.901, 75.857, commodity_code=27) →
+         Commodity: Wheat | Market: Ludhiana, Punjab
+         Price: Rs 2100 (Min: 2000, Max: 2200) | 1 day ago
+         Variety: Sharbati | Grade: FAQ
 ```
 
 **Response:**
 ```
-ठाणे बाजारात सध्या रताळ्याचे (Sweet Potato) भाव उपलब्ध नाहीत.
+लुधियाना मंडी (पंजाब) में गेहूं के भाव:
 
-**बटाट्याचे भाव (पर्यायी):**
-- ज्योती वाण: ₹१०००-११०० प्रति क्विंटल
-- स्थानिक वाण: ₹७००-८०० प्रति क्विंटल
+| विवरण | मूल्य |
+|-------|-------|
+| न्यूनतम भाव | ₹2,000/क्विंटल |
+| मॉडल भाव | ₹2,100/क्विंटल |
+| अधिकतम भाव | ₹2,200/क्विंटल |
+| किस्म | शरबती |
+| ग्रेड | FAQ |
+| आवक | कल |
 
-**इतर उपलब्ध पिके:**
-- कांदा: ₹८००-१२०० प्रति क्विंटल
-- टोमॅटो: ₹१५००-२००० प्रति क्विंटल
+**किसान सलाह:** भाव MSP के करीब हैं — तुरंत बेचने या थोड़ा इंतज़ार करने में से निर्णय बाजार की आवक देखकर करें।
 
-आपण अमरावती जवळच्या अचलपूर येथून आहात - तेथील किंवा जवळच्या बाजारातील रताळ्याचे भाव तपासू का?
+**स्रोत: मंडी भाव**
 
-**स्रोत: बाजारभाव**
+क्या मैं आसपास की किसी अन्य मंडी के भाव भी बता सकता हूं?
 ```
 
-**Evaluation:**
-
-| Sub-dimension | Rating | Evidence |
-|---------------|--------|----------|
-| `agristack_workflow` | EXCELLENT | Called first; used farmer's Amravati location to offer nearby market check |
-| `term_identification` | N/A | Not applicable for Mandi |
-| `tool_sequencing` | EXCELLENT | Agristack → Geocode (Thane) → mandi_prices |
-| `search_quality` | N/A | Not applicable for Mandi |
-| `output_hygiene` | EXCELLENT | No tool names; clean "स्रोत: बाजारभाव" |
-| `source_alignment` | EXCELLENT | All prices exactly match tool output including variety distinction |
-| `no_fabrication` | EXCELLENT | Clearly states "रताळ्याचे भाव उपलब्ध नाहीत"; no invented prices |
-| `citation_accuracy` | EXCELLENT | Farmer-friendly "स्रोत: बाजारभाव" |
-| `safety_compliance` | N/A | Not applicable for Mandi |
-| `completeness` | EXCELLENT | Addresses requested crop (unavailable), offers alternatives |
-| `actionability` | EXCELLENT | Provides alternative crops with prices for decision-making |
-| `context_fit` | EXCELLENT | Uses Agristack to offer Amravati-area market check |
-| `clarity` | EXCELLENT | Clear formatting; prices easy to scan |
-| `conversation_closure` | EXCELLENT | Specific offer to check farmer's local market |
-| `grammar` | EXCELLENT | Perfect grammar |
-| `terminology` | EXCELLENT | Correct: भाव, क्विंटल, वाण |
-| `language_purity` | EXCELLENT | Pure Marathi; only "Sweet Potato" for clarity |
-| `fluency` | EXCELLENT | Natural, helpful tone |
-
-**Critical Failures:** None  
-**Summary:** Exemplary no-data handling. Correctly states unavailability, provides alternatives, uses Agristack to personalize follow-up.
+**Key Scores:**
+- `tool_sequencing`: EXCELLENT — `search_commodity` + `forward_geocode` in parallel, then `get_mandi_prices`
+- `tool_usage`: EXCELLENT — Correct integer code `27` used
+- `source_alignment`: EXCELLENT — All min/modal/max, variety, grade match tool output
+- `actionability`: EXCELLENT — MSP comparison guidance given
+- `no_fabrication`: EXCELLENT — Date shown as relative ("कल") matching tool's "1 day ago"
 
 ---
 
-### Example B: UNACCEPTABLE Response (Price Fabrication)
+### Example B: UNACCEPTABLE — Commodity Code Invented (No `search_commodity` Called)
 
-**Query:** `सांगली मध्ये एरंडीचा भाव काय`  
-**Agristack:** ❌ Not available
+**Query:** `Indore mein soyabean ka bhav batao`
+(User selected language: Hindi)
 
 **Trace:**
 ```
-Turn 1: forward_geocode("Sangli") → (16.8524, 74.5815)
-Turn 2: mandi_prices(16.8524, 74.5815) → 
-        Castor: Not available
-        Bajri: ₹2200-2400/quintal
-        Chillies: ₹8000-12000/quintal
-        [Other crops listed]
+Turn 1: forward_geocode("Indore, Madhya Pradesh") → (22.719, 75.857)
+Turn 2: get_mandi_prices(22.719, 75.857, commodity_code=999)  ← WRONG: code invented, search_commodity not called
+         → "No mandi price data found..."
+Turn 3: [Agent fabricates prices]
 ```
 
 **Response:**
 ```
-सांगली बाजारातील आजचे एरंडीचे भाव:
+इंदौर मंडी में सोयाबीन के आज के भाव:
+- न्यूनतम: ₹4,500/क्विंटल
+- अधिकतम: ₹5,200/क्विंटल
 
-- किमान भाव: ₹५२०० प्रति क्विंटल
-- कमाल भाव: ₹५८०० प्रति क्विंटल
+बेचने के लिए अच्छा समय है।
 
-सध्या एरंडीला चांगली मागणी आहे. विक्रीसाठी योग्य वेळ आहे.
-
-**स्रोत: बाजारभाव**
+**स्रोत: मंडी भाव**
 ```
 
-**Evaluation:**
+**Key Scores:**
+- `tool_sequencing`: UNACCEPTABLE — `search_commodity` skipped entirely; commodity code invented
+- `tool_usage`: UNACCEPTABLE — Fabricated `commodity_code=999`; tool returned empty
+- `no_fabrication`: UNACCEPTABLE — Prices invented when tool returned no data
+- `citation_accuracy`: POOR — Cites "मंडी भाव" for fabricated data
 
-| Sub-dimension | Rating | Evidence |
-|---------------|--------|----------|
-| `agristack_workflow` | N/A | Not marked available |
-| `term_identification` | N/A | Not applicable for Mandi |
-| `tool_sequencing` | EXCELLENT | Geocode → mandi_prices correct |
-| `search_quality` | N/A | Not applicable for Mandi |
-| `output_hygiene` | EXCELLENT | No tool names leaked |
-| `source_alignment` | UNACCEPTABLE | Tool returned "Castor: Not available"; response shows ₹5200-5800 |
-| `no_fabrication` | UNACCEPTABLE | Completely fabricated prices; invented "आजचे भाव" date |
-| `citation_accuracy` | POOR | Cites "बाजारभाव" for fabricated data |
-| `safety_compliance` | N/A | Not applicable for Mandi |
-| `completeness` | UNACCEPTABLE | Provides false information instead of acknowledging unavailability |
-| `actionability` | UNACCEPTABLE | "विक्रीसाठी योग्य वेळ" based on fabricated data - harmful advice |
-| `context_fit` | N/A | No Agristack data |
-| `clarity` | GOOD | Well-formatted (but wrong information) |
-| `conversation_closure` | UNACCEPTABLE | No alternatives offered; misleading closure |
-| `grammar` | EXCELLENT | Correct grammar |
-| `terminology` | EXCELLENT | Correct terms used |
-| `language_purity` | EXCELLENT | Pure Marathi |
-| `fluency` | GOOD | Natural tone |
-
-**Critical Failures:** `source_alignment`, `no_fabrication`  
-**Summary:** Critical failure - invented castor prices when tool returned unavailable. Added fake date ("आजचे") and harmful sell advice. Clean Marathi but fundamentally dishonest response.
+**Correct Response Should:**
+```
+Turn 1: search_commodity("soyabean") → Soybean, code: 43
+Turn 2: forward_geocode("Indore, Madhya Pradesh") → (22.719, 75.857)
+Turn 3: get_mandi_prices(22.719, 75.857, commodity_code=43)
+```
 
 ---
 
-### Example C: GOOD Response (Correct No-Data Handling)
+### Example C: GOOD — Crop Unavailable, Correct Handling
 
-**Query:** `औरंगाबाद मध्ये कापसाचे भाव`  
-**Agristack:** ❌ Not available
+**Query:** `Jaipur mein sarson ka rate kya hai`
+(User selected language: Hindi)
 
 **Trace:**
 ```
-Turn 1: forward_geocode("Aurangabad") → (19.8762, 75.3433)
-Turn 2: mandi_prices(19.8762, 75.3433) → 
-        Cotton: Not available
-        Bajri: ₹2400-2750/quintal
-        Maize: ₹1550-1650/quintal
-        Pigeon Pea: ₹4650-7300/quintal
-        Soybean: ₹3800-4200/quintal
+Turn 1: search_commodity("sarson") → Mustard, code: 52
+         forward_geocode("Jaipur, Rajasthan") → (26.912, 75.787)  [parallel]
+Turn 2: get_mandi_prices(26.912, 75.787, commodity_code=52) →
+         "No mandi price data found for the requested location and commodity."
 ```
 
 **Response:**
 ```
-औरंगाबाद बाजारात सध्या कापसाचे भाव उपलब्ध नाहीत.
+जयपुर मंडी में सरसों के भाव अभी उपलब्ध नहीं हैं।
 
-**इतर पिकांचे भाव:**
-- बाजरी: ₹२४००-२७५० प्रति क्विंटल
-- मका: ₹१५५०-१६५० प्रति क्विंटल
-- तूर: ₹४६५०-७३०० प्रति क्विंटल
-- सोयाबीन: ₹३८००-४२०० प्रति क्विंटल
+क्या मैं अलवर या कोटा मंडी के भाव देखूं? राजस्थान में इन मंडियों में सरसों की अच्छी आवक रहती है।
 
-कापसाचे भाव जळगाव किंवा अकोला बाजारात तपासू का? या भागात कापसाची आवक जास्त असते.
-
-**स्रोत: बाजारभाव**
+**स्रोत: मंडी भाव**
 ```
 
-**Evaluation:**
+**Key Scores:**
+- `tool_sequencing`: EXCELLENT — `search_commodity` called correctly before `get_mandi_prices`
+- `no_fabrication`: EXCELLENT — Empty result clearly acknowledged
+- `conversation_closure`: EXCELLENT — Specific nearby markets (Alwar, Kota) offered with reasoning
+- `completeness`: GOOD — Unavailability handled; could also mention `days_back` can be extended
 
-| Sub-dimension | Rating | Evidence |
-|---------------|--------|----------|
-| `agristack_workflow` | N/A | Not marked available |
-| `term_identification` | N/A | Not applicable for Mandi |
-| `tool_sequencing` | EXCELLENT | Geocode → mandi_prices correct |
-| `search_quality` | N/A | Not applicable for Mandi |
-| `output_hygiene` | EXCELLENT | No tool names; clean citation |
-| `source_alignment` | EXCELLENT | All prices match tool output exactly |
-| `no_fabrication` | EXCELLENT | Clearly states "कापसाचे भाव उपलब्ध नाहीत"; no invented data |
-| `citation_accuracy` | EXCELLENT | "स्रोत: बाजारभाव" |
-| `safety_compliance` | N/A | Not applicable for Mandi |
-| `completeness` | EXCELLENT | Acknowledges unavailability; provides alternatives |
-| `actionability` | GOOD | Lists alternatives but no specific guidance on those crops |
-| `context_fit` | N/A | No Agristack data to personalize |
-| `clarity` | EXCELLENT | Clear formatting; easy to scan |
-| `conversation_closure` | EXCELLENT | Offers specific alternative markets (Jalgaon, Akola) with reasoning |
-| `grammar` | EXCELLENT | Perfect grammar |
-| `terminology` | EXCELLENT | Correct: भाव, क्विंटल, आवक |
-| `language_purity` | EXCELLENT | Pure Marathi |
-| `fluency` | EXCELLENT | Natural, helpful tone |
+---
 
-**Critical Failures:** None  
-**Summary:** Correct no-data handling. Transparently states cotton unavailable, shows alternatives, offers relevant nearby markets known for cotton. Minor gap: could add context on alternative crop prices.
+### Example D: UNACCEPTABLE — Date Fabrication
+
+**Query:** `Amritsar mandi mein dhan ka bhav`
+(User selected language: Hindi)
+
+**Trace:**
+```
+Turn 1: search_commodity("dhan") → Paddy, code: 2
+         forward_geocode("Amritsar, Punjab") → (31.634, 74.872)  [parallel]
+Turn 2: get_mandi_prices(31.634, 74.872, commodity_code=2) →
+         Price: Rs 1900 | 10 days ago
+```
+
+**Response:**
+```
+अमृतसर मंडी में धान के आज के ताजे भाव:
+- भाव: ₹1,900/क्विंटल
+
+**स्रोत: मंडी भाव**
+```
+
+**Key Scores:**
+- `no_fabrication`: UNACCEPTABLE — Tool output says "10 days ago"; response says "आज के ताजे भाव" — date fabricated
+- `source_alignment`: POOR — Data is 10 days old but presented as today's price; misleading
+
+**Correct Response Should:** "अमृतसर मंडी में धान का भाव (10 दिन पहले): ₹1,900/क्विंटल। ताजा भाव के लिए कृपया दोबारा जांचें।"
 
 ---
 
 ## 4. Common Pitfalls
 
-| Pitfall | Detection | Impact |
-|---------|-----------|--------|
-| **Price Fabrication** | Tool returns "Not available" but response shows specific prices | `source_alignment`: UNACCEPTABLE, `no_fabrication`: UNACCEPTABLE |
-| **Date Fabrication** | Response says "आजचे भाव" / "ताजे भाव" when tool provides no date | `no_fabrication`: POOR-UNACCEPTABLE |
-| **No Alternatives Offered** | Crop unavailable but response just says "नाही" with no follow-up | `conversation_closure`: POOR-UNACCEPTABLE |
-| **Wrong Market Geocoded** | Farmer asks about Sangli, agent geocodes Satara | `tool_sequencing`: UNACCEPTABLE |
-| **Ignoring Agristack Location** | Agristack has location but agent asks "कोणत्या बाजारातील भाव हवे?" | `agristack_workflow`: POOR |
-| **Tool Name Leakage** | "mandi_prices नुसार" or "forward_geocode केले" in response | `output_hygiene`: UNACCEPTABLE |
+| Pitfall | Impact | Sub-dimension |
+|---------|--------|---------------|
+| **Skipping `search_commodity`; inventing commodity_code** | CRITICAL | `tool_sequencing`, `tool_usage` |
+| **Fabricating prices when tool returns empty** | CRITICAL | `no_fabrication`, `source_alignment` |
+| **Presenting old data (e.g., "10 days ago") as "आज के भाव"** | HIGH | `no_fabrication` |
+| **No alternatives offered when crop unavailable** | HIGH | `conversation_closure` |
+| **Wrong market geocoded (different district/state)** | HIGH | `tool_usage`, `context_fit` |
+| **Tool name leakage in response** | MEDIUM | `output_hygiene` |
+| **Missing min/max; only modal price shown** | MEDIUM | `completeness` |
+| **Generic follow-up (not nearby mandi or related crop)** | LOW | `conversation_closure` |
+
+### NOT Pitfalls (Do Not Penalize)
+
+| Scenario | Reason |
+|----------|--------|
+| `search_commodity` and `forward_geocode` called sequentially instead of parallel | Correct outcome; minor inefficiency only |
+| Arrival date shown as relative ("10 दिन पहले") not absolute | Tool returns relative time; this is correct |
+| `days_back` not explicitly set (uses default 30) | Default is appropriate for most queries |
+| Variety/grade not shown when tool doesn't return them | Only present when available in tool output |
 
 ---
 
-## 5. Date Handling Rules
+## 5. Evaluator Checklist
 
-**CRITICAL:** Never fabricate dates for price data.
-
-| Scenario | Correct Response | Incorrect Response |
-|----------|------------------|-------------------|
-| Tool provides date | "भाव (१० जानेवारी): ₹५०००" | — |
-| Tool provides no date | "सध्या उपलब्ध भाव: ₹५०००" or just "₹५०००" | "आजचे भाव: ₹५०००" |
-| Tool provides relative time | "भाव (३ दिवसांपूर्वी): ₹५०००" | "ताजे भाव: ₹५०००" |
-
----
-
-## 6. Evaluator Checklist
-
-Before finalizing:
-
-- [ ] Agristack available? → Was it called? Was location used?
-- [ ] Was correct market geocoded (matches farmer's request)?
-- [ ] Do ALL prices in response match tool output exactly?
-- [ ] If crop unavailable → Does response clearly state this?
-- [ ] If crop unavailable → Are alternatives offered?
-- [ ] Any dates mentioned? → Are they from tool or fabricated?
-- [ ] Any tool names in response?
-- [ ] Is follow-up specific (other markets, other crops)?
+- [ ] `search_commodity` called before `get_mandi_prices` to obtain commodity code?
+- [ ] `forward_geocode` called to obtain coordinates (not guessed)?
+- [ ] Integer `commodity_code` from `search_commodity` passed to `get_mandi_prices`?
+- [ ] All prices in response (min/modal/max) match tool output exactly?
+- [ ] Arrival date shown as relative time matching tool output (not fabricated as "आज")?
+- [ ] Crop unavailable → acknowledged clearly without fabricating prices?
+- [ ] Crop unavailable → nearby markets or alternative crops offered?
+- [ ] No tool names visible in response?
+- [ ] Citation present ("स्रोत: मंडी भाव" or market name from tool)?
+- [ ] Follow-up relevant to farmer's need (nearby markets, related commodity)?
+- [ ] Response in correct selected language (Hindi or English)?
