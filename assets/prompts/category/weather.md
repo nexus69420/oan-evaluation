@@ -11,13 +11,11 @@
 | `forward_geocode(place_name)` | Converts place name to latitude/longitude | — |
 | `weather_forecast(latitude, longitude)` | Upcoming weather forecast for a location | IMD |
 
-> There is only one weather data tool: `weather_forecast`. There is no `weather_historical`, no `weather_past`, and no `fetch_agristack_data()`. All weather queries — past, present, or future — should use `weather_forecast`. If a user asks about past weather and the tool returns no data, acknowledge the limitation.
-
 ### Function Signatures
 
 ```python
-forward_geocode(place_name: str) -> str          # Returns location string with lat/lon
-weather_forecast(latitude: float, longitude: float) -> str   # No 'days' parameter
+forward_geocode(place_name: str) -> str         
+weather_forecast(latitude: float, longitude: float) -> str  
 ```
 
 ### Expected Workflow

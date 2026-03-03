@@ -1,0 +1,24 @@
+{"use_case": "pmkisan_status", "language": "hi", "user_turns": ["पीएम-किसान का स्टेटस जानना है।", "48392838365", "6130", "धन्यवाद; बस इतना ही।"]}
+{"use_case": "pmkisan_status", "language": "en", "user_turns": ["I want to check my PM-KISAN status.", "48392838365", "6130", "Thank you!"]}
+{"use_case": "pmkisan_status", "language": "hinglish", "user_turns": ["पीएम-किसान का स्टेटस जानना है।", "48392838365", "6130", "धन्यवाद, बस इतना ही।"]}
+{"use_case": "pmfby_status", "language": "hi", "user_turns": ["मुझे पीएमएफबीवाई का स्टेटस जानना है।", "8825339464", "986294", "Kharif 2023", "धन्यवाद, बस इतना ही।"]}
+{"use_case": "pmfby_status", "language": "en", "user_turns": ["I want to check my PMFBY status.", "8825339464", "986294", "Kharif 2023", "Thank you, that's all I needed."]}
+{"use_case": "pmfby_status", "language": "hinglish", "user_turns": ["PMFBY ka status check karna hai.", "8825339464", "986294", "Kharif 2023", "धन्यवाद, बस इतना ही।"]}
+{"use_case": "shc_status", "language": "hi", "user_turns": ["मुझे मिट्टी स्वास्थ्य कार्ड का स्टेटस जानना है।", "9004044280", "2023-24", "मुझे अपने Soil Health Card का स्टेटस जानना है।"]}
+{"use_case": "shc_status", "language": "en", "user_turns": ["I want to check my Soil Health Card status.", "9004044280", "2023-24", "I want to know the status of my Soil Health Card."]}
+{"use_case": "shc_status", "language": "hinglish", "user_turns": ["मुझे मिट्टी स्वास्थ्य कार्ड का स्टेटस जानना है।", "9004044280", "2023-24", "मुझे अपना मोबाइल नंबर चाहिए।"]}
+{"use_case": "grievance", "language": "hi", "user_turns": ["मुझे शिकायत दर्ज करवानी है।", "मेरा पीएम-किसान पंजीकरण नंबर 97719941018 है।", "मुझे पीएम-किसान योजना में समस्या है।", "धन्यवाद।"]}
+{"use_case": "grievance", "language": "en", "user_turns": ["I want to register a grievance.", "My PM-KISAN registration number is 97719941018.", "I want to register a grievance regarding the delay in my subsidy payment.", "Thank you for your help."]}
+{"use_case": "grievance", "language": "hinglish", "user_turns": ["मुझे शिकायत दर्ज करानी है।", "मेरा पीएम-किसान रजिस्ट्रेशन नंबर 97719941018 है।", "मुझे पीएम-किसान योजना में कुछ समस्या है।", "धन्यवाद!"]}
+{"use_case": "scheme_info", "language": "hi", "user_turns": ["पीएम-किसान योजना के बारे में जानकारी चाहिए।", "पीएम-किसान योजना के बारे में जानना है।", "हाँ, पात्रता के बारे में बताइए।", "धन्यवाद, जानकारी देने के लिए।"]}
+{"use_case": "scheme_info", "language": "en", "user_turns": ["I want to know about the PM-Kisan scheme.", "I want to know about the PM-Kisan scheme.", "Yes, please tell me about the eligibility details for the scheme.", "Thank you for the information."]}
+{"use_case": "scheme_info", "language": "hinglish", "user_turns": ["PM-KISAN ke baare mein jaanana hai.", "पीएम-किसान योजना के बारे में जानना है।", "Haan, eligibility details bataiye.", "धन्यवाद, जानकारी के लिए।"]}
+{"use_case": "mandi", "language": "hi", "user_turns": ["मंडी का भाव जानना है।", "मैं इंदौर मंडी के बारे में जानना चाहता हूँ।", "मुझे मंडी के भाव जानने हैं।", "अभी बेचूं या थोड़ा रुकूं?"]}
+{"use_case": "mandi", "language": "en", "user_turns": ["I want to check the mandi prices.", "I am referring to the mandi in my district, which is —.", "Thank you for the information!", "I want to know the current price of wheat in Indore."]}
+{"use_case": "mandi", "language": "hinglish", "user_turns": ["मंडी में फसल का भाव जानना है।", "मैं इंदौर मंडी के बारे में बात कर रहा हूँ।", "मंडी में गेहूं का भाव क्या है?", "अभी बेचूं या थोड़ा रुकूं?"]}
+{"use_case": "weather", "language": "hi", "user_turns": ["आगे मौसम कैसा रहेगा?", "मुझे अपने गाँव का मौसम जानना है, जो कि — है।", "धन्यवाद, मौसम की जानकारी के लिए।", "कल स्प्रे कर सकता हूँ?"]}
+{"use_case": "weather", "language": "en", "user_turns": ["I want to know the weather forecast for my area.", "I want the forecast for my village in district —.", "Thank you for the forecast details.", "Can I spray tomorrow?"]}
+{"use_case": "weather", "language": "hinglish", "user_turns": ["आगे मौसम कैसा रहेगा?", "मुझे अपने गाँव का मौसम जानना है, गाँव का नाम — है।", "धन्यवाद, मौसम की जानकारी के लिए।", "क्या कल स्प्रे कर सकता हूँ?"]}
+{"use_case": "advisory", "language": "hi", "user_turns": ["मुझे सलाह चाहिए।", "गेहूं में पीली पत्ती आ रही है।", "अभी बोआई के बाद।", "धन्यवाद, मैं इसे आजमाऊँगा।", "धन्यवाद, लेकिन मुझे सिर्फ सलाह चाहिए।"]}
+{"use_case": "advisory", "language": "en", "user_turns": ["I want to check my PM-KISAN status.", "I have yellow leaf disease in my wheat crop, what should I do?", "The crop is flowering now.", "Thank you for the treatment recommendation.", "Thank you, but I just need help with the pest issue in my wheat."]}
+{"use_case": "advisory", "language": "hinglish", "user_turns": ["मुझे सलाह लेनी है।", "मेरे गेहूं में पीली पत्ती आ रही है।", "अभी बोआई के बाद है।", "कब लगाना है ये इलाज?", "धन्यवाद, बस इतना ही।"]}
