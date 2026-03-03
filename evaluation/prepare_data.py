@@ -17,7 +17,11 @@ import numpy as np
 # model_name = "Qwen/Qwen3-30B-A3B-Instruct-2507"
 # model_name = "kenpath/mhv_vistaar_all_qwen3-32b_v0.2"
 # model_name = "kenpath/mhv_vistaar_all_mhv_vistaar_all_qwen3-32b_v0.2_v0.2.1"
-model_name = "kenpath/mhv_vistaar_last_qwen3-30b-a3b-instruct-2507_v0.2"
+# model_name = "Qwen/Qwen3.5-27B"
+model_name   = "Qwen/Qwen3.5-122B-A10B"
+# model_name = "Qwen/Qwen3.5-9B"
+# model_name = "Qwen/Qwen3.5-397B-A17B"
+# model_name = "kenpath/mhv_vistaar_last_qwen3-30b-a3b-instruct-2507_v0.2"
 # model_name = "kenpath/mhv_vistaar_all_qwen3-30b-a3b-instruct-2507_v0.1"
 # model_name   = "KissanAI/Dhenu2-In-Llama3.1-8B-Instruct"
 #model_name = 'meta-llama/Llama-3.3-70B-Instruct'
@@ -25,7 +29,7 @@ model_name = "kenpath/mhv_vistaar_last_qwen3-30b-a3b-instruct-2507_v0.2"
 # model_name = "openai/gpt-oss-20b_non_thinking"
 
 ## Number of concurrent workers for parallel processing
-NUM_WORKERS = 1
+NUM_WORKERS = 4
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -62,15 +66,19 @@ model = OpenAIChatModel(
     provider=provider,
 )
 
+# temperature=0.7, top_p=0.8, top_k=20, min_p=0.0, presence_penalty=1.5, repetition_penalty=1.0
+
 settings = OpenAIChatModelSettings(
     temperature=0.7,
-    min_p=0.01,
+    min_p=0.0,
+    presence_penalty=1.5,
+    repetition_penalty=1.0,
     top_k=20,
     top_p=0.8,
     parallel_tool_calls=True,
     timeout=60,
     request_limit=10,
-#    extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+    extra_body={"chat_template_kwargs": {"enable_thinking": False}}
 )
 
 async def get_response(q, target_lang='mr', farmer_id=None):
@@ -87,7 +95,8 @@ async def get_response(q, target_lang='mr', farmer_id=None):
                                     builtin_tools=[],
                                     model_settings=settings,
     )
-    # assert isinstance(res.output, str) and res.output.strip() != "", "Response is empty"
+    assert len(res.all_messages()) > 3, "No internal messages"
+    assert isinstance(res.output, str) and res.output.strip() != "", "Response is empty"
     answer = res.output    
     all_messages = json.loads(res.all_messages_json())
     internal_messages = all_messages[1:-1]
