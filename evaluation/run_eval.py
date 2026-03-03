@@ -5,7 +5,7 @@ import warnings
 warnings.filterwarnings('ignore')
 from tqdm.asyncio import tqdm
 from dotenv import load_dotenv
-from evaluator import evaluation_agent, format_agent_record, EvaluationDeps
+from evaluator import evaluation_agent, format_conversation_record, EvaluationDeps
 
 load_dotenv()
 
@@ -28,79 +28,77 @@ model_name = "kenpath/mhv_fsdp-vistaar_gpt-oss-120b_v0.5"
 #model_name = "gpt-4.1"
 #model_name = "claude-haiku-4-5"
 
+
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_DATA_PATH = os.path.join(current_dir, "data", "models", model_name.replace("/", "_"))
 json_file = os.path.join(MODEL_DATA_PATH, "data.json")
-eval_json_file = os.path.join(MODEL_DATA_PATH, "evaluation.json")   
+eval_json_file = os.path.join(MODEL_DATA_PATH, "evaluation.json")
 
-# Load data
-with open(json_file, 'r', encoding='utf-8') as f:
-    data = json.load(f)
+# json_file = json_file = os.path.join("D:/Kenpath/oan-evaluation/data/synthetic/conversations_20260301_121121.jsonl")
+# eval_jsonl_file = os.path.join("D:/Kenpath/oan-evaluation/data/synthetic/evaluation/conversations_20260301_121121_evaluation.jsonl")
 
-# Load existing evaluations
+data = []
+with open(json_file, "r", encoding="utf-8") as f:
+    for line in f:
+        if line.strip():  # skip empty lines
+            data.append(json.loads(line))
+
 existing = {}
 if os.path.exists(eval_json_file):
-    with open(eval_json_file, 'r', encoding='utf-8') as f:
+    with open(eval_json_file, "r", encoding="utf-8") as f:
         for item in json.load(f):
-            q = item.get("question", "")
-            if q and "evaluation" in item:
-                existing[q] = item
-    print(f"Loaded {len(existing)} existing evaluations")
+            conv_id = item.get("id")
+            if conv_id and "evaluation" in item:
+                existing[conv_id] = item
 
-# Semaphore to limit concurrent requests
 MAX_CONCURRENT = 20
 semaphore = asyncio.Semaphore(MAX_CONCURRENT)
 
+# ------------------ EVALUATION FUNCTION ------------------
 async def evaluate_item(item):
-    """Evaluate a single item with concurrency control."""
-    async with semaphore:        
-        # Format message
-        category = item.get("category", "")
-        message = format_agent_record(item)            
-        # Evaluate
+    async with semaphore:
         try:
-            eval_result = await evaluation_agent.run(
+            category = item.get("category", "")
+            message = format_conversation_record(item)
+
+            result = await evaluation_agent.run(
                 message,
                 deps=EvaluationDeps(category=category)
             )
-            item['evaluation'] = eval_result.output.to_eval_dict()
+
+            item["evaluation"] = result.output.to_eval_dict()
             return item
+
         except Exception as e:
-            print(f"Error: {item.get('question', '')[:50]}... - {e}")
+            print(f"Error evaluating conversation {item.get('id')} - {e}")
             return None
 
+# ------------------ MAIN ------------------
 async def main():
-    # Separate items into already evaluated and to-be-evaluated
     results = []
     tasks = []
-    
+
     for item in data:
-        question = item.get("question", "")
-        
-        # Skip if already evaluated
-        if question in existing:
-            results.append(existing[question])
+        conv_id = item.get("id")
+
+        if conv_id in existing:
+            results.append(existing[conv_id])
         else:
             tasks.append(evaluate_item(item))
-    
+
     print(f"Skipping {len(results)} already evaluated items")
-    print(f"Evaluating {len(tasks)} items in parallel (max {MAX_CONCURRENT} concurrent)...")
-    
-    # Run all evaluations in parallel with progress bar
+    print(f"Evaluating {len(tasks)} conversations...")
+
     if tasks:
         completed = await tqdm.gather(*tasks, desc="Evaluating")
-        
-        # Add successful evaluations to results
-        for result in completed:
-            if result is not None:
-                results.append(result)
-    
-    # Save all results
-    with open(eval_json_file, 'w', encoding='utf-8') as f:
+        for r in completed:
+            if r:
+                results.append(r)
+
+    with open(eval_json_file, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=4)
-    
-    return results
+
+    print("Evaluation Done!")
 
 if __name__ == "__main__":
     asyncio.run(main())
-    print("Evaluation Done!")

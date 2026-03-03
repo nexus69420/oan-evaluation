@@ -25,9 +25,9 @@ from helpers.utils import get_prompt
 class EvaluationDeps:
     category: str
 
-def format_agent_record(record):
+def format_conversation_record(record):
     """
-    Formats a Type-2 'Agent Record' (with separated question/answer/turns)
+    Formats a Type-2 'Conversation Record' (with separated question/answer/turns)
     into the same clean transcript format.
     Includes 'thinking' traces.
     """
@@ -36,11 +36,7 @@ def format_agent_record(record):
     # --- 1. Context Header ---
     cat = record.get('category', 'Unknown')
     
-    # Map 'agristack_required' to Icon
-    agristack_val = record.get('agristack_required', 'No')
-    agristack_icon = "✅" if agristack_val == 'Yes' else "❌"
-    
-    lines.append(f"🏷️  Context: [{cat}] | Agristack: {agristack_icon}")
+    lines.append(f"🏷️  Context: [{cat}]")
     lines.append("=" * 60)
     lines.append("")
 
@@ -90,7 +86,7 @@ def format_agent_record(record):
     return "\n".join(lines)
 
 
-
+# =========================================================================
 class Rating(IntEnum):
     """Likert-scale rating for evaluation sub-dimensions."""
     UNACCEPTABLE = 1  # Critical failure - harmful, fabricated, or complete breakdown
@@ -108,7 +104,7 @@ class SubDimensionScore(BaseModel):
     )
     evidence: str = Field(
         ..., 
-        description="Brief justification in English with reasoning; may quote Marathi snippets as supporting evidence"
+        description="Brief justification in English with reasoning; may quote Hindi snippets as supporting evidence"
     )
 
 # =============================================================================
@@ -118,21 +114,21 @@ class SubDimensionScore(BaseModel):
 class ProcessFidelity(BaseModel):
     """Evaluates whether the agent followed prescribed workflows and maintained output hygiene."""
     
-    agristack_workflow: SubDimensionScore = Field(
+    intent_accuracy: SubDimensionScore = Field(
         ..., 
-        description="Called fetch_agristack_data first when marked available"
+        description="Correctly identifies the intent of the user's query"
     )
-    term_identification: SubDimensionScore = Field(
+    moderation_compliance: SubDimensionScore = Field(
         ..., 
-        description="Used search_terms before search_documents for advisory queries"
+        description="Valid Agricultural confirmed; invalid queries declined correctly"
     )
     tool_sequencing: SubDimensionScore = Field(
         ..., 
         description="Correct tool order (geocode→service, scheme_codes→scheme_info)"
     )
-    search_quality: SubDimensionScore = Field(
+    tool_usage: SubDimensionScore = Field(
         ..., 
-        description="Effective 2-5 word English queries with relevant terms"
+        description="Correct tool (search_terms→search_pests_diseases, search_documents→search_documents)"
     )
     output_hygiene: SubDimensionScore = Field(
         ..., 
@@ -198,8 +194,8 @@ class ResponseUsefulness(BaseModel):
 # DIMENSION 4: MARATHI LINGUISTIC QUALITY
 # =============================================================================
 
-class MarathiQuality(BaseModel):
-    """Evaluates Marathi language correctness, terminology, and naturalness."""
+class LanguageQuality(BaseModel):
+    """Evaluates Hindi language correctness, terminology, and naturalness."""
     
     grammar: SubDimensionScore = Field(
         ..., 
@@ -207,11 +203,11 @@ class MarathiQuality(BaseModel):
     )
     terminology: SubDimensionScore = Field(
         ..., 
-        description="Uses proper Marathi agricultural terms from glossary"
+        description="Uses proper Hindi agricultural terms from glossary"
     )
     language_purity: SubDimensionScore = Field(
         ..., 
-        description="No inappropriate English-Marathi mixing within sentences"
+        description="No inappropriate English-Hindi mixing within sentences"
     )
     fluency: SubDimensionScore = Field(
         ..., 
@@ -231,7 +227,7 @@ class EvaluationResult(BaseModel):
     - Process Fidelity: Workflow compliance and output hygiene
     - Factual Grounding: Source alignment, no fabrication, safety
     - Response Usefulness: Completeness, actionability, clarity
-    - Marathi Quality: Grammar, terminology, fluency
+    - Language Quality: Grammar, terminology, fluency
     
     Critical failures (score=UNACCEPTABLE) in safety_compliance, no_fabrication, or 
     source_alignment result in overall_pass=False regardless of other scores.
@@ -240,7 +236,7 @@ class EvaluationResult(BaseModel):
     process_fidelity: ProcessFidelity
     factual_grounding: FactualGrounding
     response_usefulness: ResponseUsefulness
-    marathi_quality: MarathiQuality
+    language_quality: LanguageQuality
     
     summary: str = Field(
         ..., 
@@ -303,16 +299,16 @@ class EvaluationResult(BaseModel):
                 "scores": self._dimension_to_dict(self.response_usefulness),
                 "average": self._calculate_dimension_average(self.response_usefulness)
             },
-            "marathi_quality": {
-                "scores": self._dimension_to_dict(self.marathi_quality),
-                "average": self._calculate_dimension_average(self.marathi_quality)
+            "language_quality": {
+                "scores": self._dimension_to_dict(self.language_quality),
+                "average": self._calculate_dimension_average(self.language_quality)
             }
         }
         
         # Calculate overall average from all valid sub-dimension scores (equal weight per sub-dimension)
         all_scores = []
         for dimension in [self.process_fidelity, self.factual_grounding, 
-                          self.response_usefulness, self.marathi_quality]:
+                          self.response_usefulness, self.language_quality]:
             for field_name in dimension.model_fields:
                 sub_dim: SubDimensionScore = getattr(dimension, field_name)
                 if sub_dim.score is not None:
@@ -351,14 +347,5 @@ evaluation_agent = Agent(
 def system_prompt(ctx: RunContext) -> str:
     """Generate a dynamic system prompt based on the category."""
     category = ctx.deps.category
-    category_normalized = category.lower().replace(' ', '_')    
-    # For agri_services we can combine:
-    if category_normalized in ['kvk','soil_lab','warehouse','chc']:
-        category_prompt = get_prompt('category/agri_services')
-    elif category_normalized in ['weather_historical','weather_forecast']:
-        category_prompt = get_prompt('category/weather')        
-    else:
-        category_prompt = get_prompt('category/' + category_normalized)
-
     master_prompt = get_prompt('evaluation_system')
-    return master_prompt + "\n\n" + category_prompt
+    return master_prompt + "\n\n" + category

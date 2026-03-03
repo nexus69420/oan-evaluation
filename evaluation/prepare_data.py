@@ -30,7 +30,9 @@ NUM_WORKERS = 1
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Change path to the project root
-project_dir = "/Users/adityachhabra/Github/sunbird-va-api"
+# project_dir = "/Users/adityachhabra/Github/sunbird-va-api"
+project_dir = "D:/Kenpath/bharat-oan-api"
+
 os.chdir(project_dir)
 sys.path.append(project_dir)
 
@@ -47,15 +49,15 @@ from agents.deps import FarmerContext
 from pydantic_ai.providers.openai import OpenAIProvider
 from pydantic_ai.models.openai import OpenAIChatModel , OpenAIChatModelSettings
 from pydantic_ai.models.openai import OpenAIResponsesModel , OpenAIResponsesModelSettings
-from pydantic_ai.models.anthropic import AnthropicModel
+from pydantic_ai.models.anthropic import AnthropicModel 
 #, AnthropicChatModelSettings
 from pydantic_ai.providers.anthropic import AnthropicProvider
 provider = OpenAIProvider(
 # provider = AnthropicProvider(
-    base_url="http://216.48.185.71:8080/v1",
+    # base_url="http://216.48.185.71:8080/v1",
     #api_key=os.getenv("ANTHROPIC_API_KEY"),
-    api_key="dummy",  # vLLM doesn't need it, but some clients require a value
-    # api_key=os.getenv("OPENAI_API_KEY"),
+    # api_key="dummy",  # vLLM doesn't need it, but some clients require a value
+    api_key=os.getenv("OPENAI_API_KEY"),
  )
 model = OpenAIChatModel(
     model_name,
@@ -73,7 +75,7 @@ settings = OpenAIChatModelSettings(
 #    extra_body={"chat_template_kwargs": {"enable_thinking": False}}
 )
 
-async def get_response(q, target_lang='mr', farmer_id=None):
+async def get_response(q, target_lang='hi', farmer_id=None):
     deps = FarmerContext(
             query=q,
             lang_code=target_lang,
@@ -102,7 +104,7 @@ async def process_row(row, semaphore):
             try:
                 question = row['question']
                 farmer_id = row['farmer_id']
-                result = await get_response(question, target_lang='mr', farmer_id=farmer_id)
+                result = await get_response(question, target_lang='hi', farmer_id=farmer_id)
                 return {**row.to_dict(), **result}
             except Exception as e:
                 print(f"Error: {e}")
