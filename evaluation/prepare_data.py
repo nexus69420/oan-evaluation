@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import asyncio
+import random
 from datetime import datetime
 import pandas as pd
 import numpy as np
@@ -29,7 +30,8 @@ model_name   = "Qwen/Qwen3.5-122B-A10B"
 # model_name = "openai/gpt-oss-20b_non_thinking"
 
 ## Number of concurrent workers for parallel processing
-NUM_WORKERS = 4
+NUM_WORKERS = 24
+NUM_SAMPLE  = 128
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -76,7 +78,7 @@ settings = OpenAIChatModelSettings(
     top_k=20,
     top_p=0.8,
     parallel_tool_calls=True,
-    timeout=60,
+    timeout=120,
     request_limit=10,
     extra_body={"chat_template_kwargs": {"enable_thinking": False}}
 )
@@ -147,6 +149,9 @@ async def main():
     if questions_df.empty:
         print("All questions already answered. Nothing to process.")
         return existing_results
+    
+    if NUM_SAMPLE is not None and NUM_SAMPLE < len(questions_df):
+        questions_df = questions_df.sample(n=NUM_SAMPLE, random_state=random.randint(0, 2**32 - 1))
     
     print(f"Processing {len(questions_df)} new questions (skipping {len(answered_questions)} already answered)")
     
