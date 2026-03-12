@@ -19,7 +19,8 @@ import numpy as np
 # model_name = "kenpath/mhv_vistaar_all_qwen3-32b_v0.2"
 # model_name = "kenpath/mhv_vistaar_all_mhv_vistaar_all_qwen3-32b_v0.2_v0.2.1"
 # model_name = "Qwen/Qwen3.5-27B"
-model_name   = "Qwen/Qwen3.5-122B-A10B"
+model_name = "kenpath/mhv_mhv-_all_qwen3.5-27b_v0.3"
+#model_name   = "Qwen/Qwen3.5-122B-A10B"
 # model_name = "Qwen/Qwen3.5-9B"
 # model_name = "Qwen/Qwen3.5-397B-A17B"
 # model_name = "kenpath/mhv_vistaar_last_qwen3-30b-a3b-instruct-2507_v0.2"
@@ -30,8 +31,8 @@ model_name   = "Qwen/Qwen3.5-122B-A10B"
 # model_name = "openai/gpt-oss-20b_non_thinking"
 
 ## Number of concurrent workers for parallel processing
-NUM_WORKERS = 24
-NUM_SAMPLE  = 128
+NUM_WORKERS = 50
+NUM_SAMPLE  = 200
 
 # Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
