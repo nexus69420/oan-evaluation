@@ -4,6 +4,8 @@ import json
 import asyncio
 import random
 from datetime import datetime
+from pydantic_ai import UsageLimits
+from pydantic_ai.settings import ModelSettings
 import pandas as pd
 import numpy as np
 
@@ -19,7 +21,8 @@ import numpy as np
 # model_name = "kenpath/mhv_vistaar_all_qwen3-32b_v0.2"
 # model_name = "kenpath/mhv_vistaar_all_mhv_vistaar_all_qwen3-32b_v0.2_v0.2.1"
 # model_name = "Qwen/Qwen3.5-27B"
-model_name = "kenpath/mhv_mhv-_all_qwen3.5-27b_v0.3"
+model_name = "kenpath/mhv_synthetic_qwen3.5_v0.3"
+# model_name = "kenpath/mhv_mhv-_all_qwen3.5-27b_v0.3"
 #model_name   = "Qwen/Qwen3.5-122B-A10B"
 # model_name = "Qwen/Qwen3.5-9B"
 # model_name = "Qwen/Qwen3.5-397B-A17B"
@@ -69,19 +72,24 @@ model = OpenAIChatModel(
     provider=provider,
 )
 
-# temperature=0.7, top_p=0.8, top_k=20, min_p=0.0, presence_penalty=1.5, repetition_penalty=1.0
 
-settings = OpenAIChatModelSettings(
-    temperature=0.7,
-    min_p=0.0,
+settings = ModelSettings(
+    temperature=1.0,
+    top_p=0.95,
     presence_penalty=1.5,
-    repetition_penalty=1.0,
-    top_k=20,
-    top_p=0.8,
+    #max_tokens=81920,
     parallel_tool_calls=True,
-    timeout=120,
+    timeout=60,
+    usage_limits=UsageLimits(
     request_limit=10,
-    extra_body={"chat_template_kwargs": {"enable_thinking": False}}
+    tool_calls_limit=15,
+    total_tokens_limit=100_000),
+    extra_body={
+        "top_k": 20,
+        "min_p": 0.0,
+        "repetition_penalty": 1.0,
+        "chat_template_kwargs": {"enable_thinking": False}
+    },
 )
 
 async def get_response(q, target_lang='mr', farmer_id=None):
@@ -91,14 +99,14 @@ async def get_response(q, target_lang='mr', farmer_id=None):
             farmer_id=farmer_id
     )
     # NOTE: Forcing Positive Moderation - This is a hack to ensure the query is valid and not banned.
-    deps.update_moderation_str("**Moderation Recommendation:** Proceed with the query (Valid Agricultural)")
+    deps.update_moderation_str("**Moderation Compliance:** ✅ Proceed with the query (Valid Agricultural)")
     res = await agrinet_agent.run(deps.get_user_message(), 
                                     deps=deps, 
-                                    model=model, 
-                                    builtin_tools=[],
+                                    model=model,
                                     model_settings=settings,
     )
     assert len(res.all_messages()) > 3, "No internal messages"
+    assert len(res.all_messages()) < 20, "Too many internal messages"
     assert isinstance(res.output, str) and res.output.strip() != "", "Response is empty"
     answer = res.output    
     all_messages = json.loads(res.all_messages_json())

@@ -16,7 +16,13 @@ load_dotenv()
 #model_name = "openai/gpt-oss-120b"
 # model_name = "kenpath/mhv_fsdp-vistaar_gpt-oss-120b_v0.5"
 #model_name = "Qwen/Qwen3.5-27B"
-model_name = "kenpath/mhv_mhv-_all_qwen3.5-27b_v0.3"
+model_name = "kenpath/mhv_synthetic_qwen3.5_v0.3"
+
+NUM_SAMPLES    = 90
+# Semaphore to limit concurrent requests
+MAX_CONCURRENT = 30
+
+# model_name = "kenpath/mhv_mhv-_all_qwen3.5-27b_v0.3"
 # model_name = "Qwen/Qwen3.5-122B-A10B"
 # model_name = "meta-llama/Llama-4-Scout-17B-16E-Instruct"
 #model_name = "Qwen/Qwen3-32B"
@@ -50,8 +56,6 @@ if os.path.exists(eval_json_file):
                 existing[q] = item
     print(f"Loaded {len(existing)} existing evaluations")
 
-# Semaphore to limit concurrent requests
-MAX_CONCURRENT = 20
 semaphore = asyncio.Semaphore(MAX_CONCURRENT)
 
 async def evaluate_item(item):
@@ -85,6 +89,9 @@ async def main():
             results.append(existing[question])
         else:
             tasks.append(evaluate_item(item))
+    
+    if NUM_SAMPLES is not None:
+        tasks = tasks[:NUM_SAMPLES]
     
     print(f"Skipping {len(results)} already evaluated items")
     print(f"Evaluating {len(tasks)} items in parallel (max {MAX_CONCURRENT} concurrent)...")

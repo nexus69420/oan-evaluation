@@ -341,7 +341,7 @@ evaluation_agent = Agent(
     retries=3,
     model_settings=OpenAIResponsesModelSettings(
         temperature=0.0,
-        timeout=120,
+        timeout=60,
         openai_reasoning_effort='low',
     )
 )

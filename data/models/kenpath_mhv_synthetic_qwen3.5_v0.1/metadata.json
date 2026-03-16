@@ -1,0 +1,7 @@
+{
+    "provider_name": "openai",
+    "provider_base_url": "http://216.48.185.71:8080/v1/",
+    "model_name": "kenpath/mhv_synthetic_qwen3.5_v0.1",
+    "model_settings": {},
+    "date": "2026-03-15 23:05:32"
+}
