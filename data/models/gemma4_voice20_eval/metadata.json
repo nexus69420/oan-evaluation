@@ -1,0 +1,5 @@
+{
+  "model_name": "gemma4_voice20_eval",
+  "source_csv": "D:\\COSS\\common_evals_local\\oan-evaluation\\data\\Gemma4_testing_20.csv",
+  "rows": 20
+}

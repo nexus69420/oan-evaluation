@@ -90,13 +90,41 @@ def format_agent_record(record):
     return "\n".join(lines)
 
 
-async def evaluate_record_with_judge(record: Dict[str, Any]) -> Dict[str, Any]:
+def build_evaluation_agent(llm: Dict[str, Any]) -> Agent:
+    """
+    Build an evaluation agent.
+
+    `llm` is passed through directly as kwargs to `pydantic_ai.Agent`.
+    No hidden defaults are applied; invalid/missing payload should fail fast.
+    """
+    if not isinstance(llm, dict):
+        raise ValueError("Missing/invalid llm config: expected a dict of Agent kwargs.")
+
+    merged = dict(llm)
+    merged["name"] = "Evaluation Agent"
+    merged["deps_type"] = EvaluationDeps
+    merged["instrument"] = False
+    merged["output_type"] = EvaluationResult
+    agent = Agent(**merged)
+
+    @agent.system_prompt(dynamic=True)
+    def dynamic_system_prompt(ctx: RunContext) -> str:
+        return _build_system_prompt(ctx.deps.category)
+
+    return agent
+
+
+async def evaluate_record_with_judge(
+    record: Dict[str, Any],
+    llm: Dict[str, Any],
+) -> Dict[str, Any]:
     """
     Thin reusable wrapper around the current judge flow.
     """
     category = record.get("category", "")
     message = format_agent_record(record)
-    eval_result = await evaluation_agent.run(
+    runtime_agent = build_evaluation_agent(llm)
+    eval_result = await runtime_agent.run(
         message,
         deps=EvaluationDeps(category=category),
     )
@@ -359,10 +387,7 @@ evaluation_agent = Agent(
 )
 
 
-@evaluation_agent.system_prompt(dynamic=True)
-def system_prompt(ctx: RunContext) -> str:
-    """Generate a dynamic system prompt based on the category."""
-    category = ctx.deps.category
+def _build_system_prompt(category: str) -> str:
     category_normalized = category.lower().replace(' ', '_')    
     # For agri_services we can combine:
     if category_normalized in ['kvk','soil_lab','warehouse','chc']:
@@ -374,3 +399,9 @@ def system_prompt(ctx: RunContext) -> str:
 
     master_prompt = get_prompt('evaluation_system')
     return master_prompt + "\n\n" + category_prompt
+
+
+@evaluation_agent.system_prompt(dynamic=True)
+def system_prompt(ctx: RunContext) -> str:
+    """Generate a dynamic system prompt based on the category."""
+    return _build_system_prompt(ctx.deps.category)
