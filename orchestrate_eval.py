@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import argparse
 import asyncio
 import importlib
+import importlib.util
 import json
 from dataclasses import asdict, is_dataclass
 from pathlib import Path
@@ -10,7 +12,6 @@ from typing import Any, Dict, List, Tuple
 from dotenv import load_dotenv
 from tqdm.asyncio import tqdm
 
-from config.pipeline_config import CONFIG
 from metrics.base import MetricResult
 
 
@@ -21,6 +22,27 @@ def _load_class(class_path: str):
     module_name, class_name = class_path.rsplit(".", 1)
     module = importlib.import_module(module_name)
     return getattr(module, class_name)
+
+
+def _load_config(config_ref: str):
+    """
+    Load pipeline CONFIG from either:
+    - module path: config.pipeline_config
+    - file path:   D:/.../pipeline_config.py
+    """
+    if config_ref.endswith(".py"):
+        config_path = Path(config_ref).resolve()
+        spec = importlib.util.spec_from_file_location("runtime_pipeline_config", config_path)
+        if spec is None or spec.loader is None:
+            raise ValueError(f"Unable to load config file: {config_ref}")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+    else:
+        module = importlib.import_module(config_ref)
+
+    if not hasattr(module, "CONFIG"):
+        raise ValueError(f"Config module {config_ref} must define CONFIG")
+    return module.CONFIG
 
 
 def _ensure_metric_result(payload: Any, metric_name: str) -> Dict[str, Any]:
@@ -72,7 +94,7 @@ async def _run_metric_for_row(
             }
 
 
-async def main() -> List[Dict[str, Any]]:
+async def run_pipeline(CONFIG) -> List[Dict[str, Any]]:
     repo_root = Path(__file__).resolve().parent
     CONFIG.resolve_paths(repo_root)
 
@@ -114,33 +136,39 @@ async def main() -> List[Dict[str, Any]]:
             or CONFIG.model_evaluation.metric_configs.get(metric_name)
             or {}
         )
-        # Share global LLM kwargs with every metric by default (pass-through dict).
         if "llm" not in metric_config:
             metric_config["llm"] = CONFIG.model_evaluation.llm
         metric_instances.append((metric_name, metric_obj, metric_config))
 
     semaphore = asyncio.Semaphore(CONFIG.max_concurrent)
+    batch_size = max(1, int(getattr(CONFIG, "batch_size", len(row_bundles) or 1)))
 
-    for metric_name, metric_obj, metric_config in metric_instances:
-        tasks = [
-            _run_metric_for_row(
-                semaphore=semaphore,
-                metric_obj=metric_obj,
-                metric_name=metric_name,
-                metric_config=metric_config,
-                row_bundle=row_bundle,
-                fail_open=CONFIG.fail_open,
+    for batch_start in range(0, len(row_bundles), batch_size):
+        batch_rows = row_bundles[batch_start : batch_start + batch_size]
+        batch_num = (batch_start // batch_size) + 1
+
+        for metric_name, metric_obj, metric_config in metric_instances:
+            tasks = [
+                _run_metric_for_row(
+                    semaphore=semaphore,
+                    metric_obj=metric_obj,
+                    metric_name=metric_name,
+                    metric_config=metric_config,
+                    row_bundle=row_bundle,
+                    fail_open=CONFIG.fail_open,
+                )
+                for row_bundle in batch_rows
+            ]
+            results = await tqdm.gather(
+                *tasks,
+                desc=f"Batch {batch_num} metric: {metric_name}",
             )
-            for row_bundle in row_bundles
-        ]
-        results = await tqdm.gather(*tasks, desc=f"Running metric: {metric_name}")
 
-        for row_bundle, metric_result in zip(row_bundles, results):
-            row_bundle["metrics"].append(metric_result)
-            # Compatibility bridge: any metric can provide top-level evaluation payload.
-            eval_payload = metric_result.get("metadata", {}).get("evaluation")
-            if eval_payload:
-                row_bundle["evaluation"] = eval_payload
+            for row_bundle, metric_result in zip(batch_rows, results):
+                row_bundle["metrics"].append(metric_result)
+                eval_payload = metric_result.get("metadata", {}).get("evaluation")
+                if eval_payload:
+                    row_bundle["evaluation"] = eval_payload
 
     with output_path.open("w", encoding="utf-8") as f:
         final_rows: List[Dict[str, Any]] = []
@@ -158,6 +186,20 @@ async def main() -> List[Dict[str, Any]]:
     return final_rows
 
 
+async def main(config_ref: str) -> List[Dict[str, Any]]:
+    CONFIG = _load_config(config_ref)
+    return await run_pipeline(CONFIG)
+
+
 if __name__ == "__main__":
-    asyncio.run(main())
-    print("Config-driven evaluation done.")
+    parser = argparse.ArgumentParser(description="Config-driven evaluation orchestrator")
+    parser.add_argument(
+        "--config",
+        type=str,
+        default="config.pipeline_config",
+        help="Config module path or python file path that exposes CONFIG",
+    )
+    args = parser.parse_args()
+
+    asyncio.run(main(args.config))
+

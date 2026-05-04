@@ -1,33 +1,39 @@
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Dict, Optional
 
 from pydantic_ai import Agent
-from pydantic_ai.models.openai import OpenAIResponsesModelSettings
 
 
 async def llm_call(
     *,
     prompt: str,
-    model_name: str = "gpt-5",
+    llm: Dict[str, Any],
     system_prompt: Optional[str] = None,
-    temperature: float = 0.0,
-    timeout: int = 60,
-    reasoning_effort: str = "low",
-) -> str:
+) -> Dict[str, Any]:
+    """Common LLM helper used by metric plugins.
+
+    The `llm` dict is passed through as Agent kwargs (strict mode).
     """
-    Generic async LLM helper for metric-level calls.
-    """
-    agent = Agent(
-        model=model_name,
-        output_type=str,
-        system_prompt=system_prompt,
-        model_settings=OpenAIResponsesModelSettings(
-            temperature=temperature,
-            timeout=timeout,
-            openai_reasoning_effort=reasoning_effort,
-        ),
-        instrument=False,
-    )
+    if not isinstance(llm, dict):
+        raise ValueError("llm config must be a dict of Agent kwargs")
+
+    agent_kwargs = dict(llm)
+    agent_kwargs.setdefault("output_type", str)
+    agent_kwargs.setdefault("instrument", False)
+
+    if system_prompt is not None and "system_prompt" not in agent_kwargs:
+        agent_kwargs["system_prompt"] = system_prompt
+
+    agent = Agent(**agent_kwargs)
     result = await agent.run(prompt)
-    return result.output
+    usage = result.usage()
+    return {
+        "text": result.output,
+        "usage": {
+            "input_tokens": usage.input_tokens,
+            "output_tokens": usage.output_tokens,
+            "total_tokens": usage.total_tokens,
+            "details": dict(usage.details),
+        },
+    }

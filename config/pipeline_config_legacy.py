@@ -32,46 +32,20 @@ class ModelEvaluationConfig:
         metric_configs: Optional[Dict[str, Dict[str, Any]]] = None,
         llm: Optional[Dict[str, Any]] = None,
     ) -> None:
+        # Legacy path: only the old evaluator flow.
         self.metric_classes = metric_classes or [
-            "metrics.llm_metrics.CitationComprehensivenessMetric",
-            "metrics.llm_metrics.NoFabricationMetric",
-            "metrics.llm_metrics.CitationAccuracyMetric",
-            "metrics.llm_metrics.CompletenessMetric",
-            "metrics.llm_metrics.ActionabilityMetric",
-            "metrics.llm_metrics.SafetyComplianceMetric",
-            "metrics.llm_metrics.ContextFitMetric",
-            "metrics.llm_metrics.ConversationClosureMetric",
-            "metrics.llm_metrics.GrammarMetric",
-            "metrics.llm_metrics.TerminologyMetric",
-            "metrics.llm_metrics.LanguagePurityMetric",
-            "metrics.llm_metrics.FluencyMetric",
-            "metrics.llm_metrics.TranslationMetric",
-            "metrics.llm_metrics.VoiceComprehensivenessMetric",
-            "metrics.llm_metrics.ToneMetric",
-            "metrics.llm_metrics.TermIdentificationMetric",
-            "metrics.llm_metrics.BrevityMetric",
-            "metrics.llm_metrics.VoiceReadyMetric",
-            "metrics.llm_metrics.ElapsedSecondsMetric",
-            "metrics.llm_metrics.TTFBMetric",
-            "metrics.llm_metrics.WordCountMetric",
-            "metrics.llm_metrics.TokenUsageInputMetric",
-            "metrics.llm_metrics.TokenUsageOutputMetric",
-            "metrics.llm_metrics.ErrorMetric",
-            "metrics.llm_metrics.AgristackWorkflowMetric",
-            "metrics.llm_metrics.ToolSequencingMetric",
-            "metrics.llm_metrics.SearchQualityMetric",
-            "metrics.llm_metrics.OutputHygieneMetric",
+            "metrics.agri_eval_metrics.AgriEvalMetrics",
         ]
         self.metric_configs = metric_configs or {}
         self.llm = llm or {
-            "model": "gpt-5.4-mini",
+            "model": "gpt-4.1",
             "retries": 3,
             "model_settings": {
                 "temperature": 0.0,
                 "timeout": 60,
             },
-            "input_token_cost_per_1m": 0.75,
-            "output_token_cost_per_1m": 4.5,
+            "input_token_cost_per_1m": 2.0,
+            "output_token_cost_per_1m": 8.0,
         }
 
 
@@ -82,7 +56,7 @@ class PipelineConfig:
         input_path: Optional[str] = None,
         output_path: Optional[str] = None,
         num_samples: Optional[int] = 90,
-        max_concurrent: int = 20,
+        max_concurrent: int = 30,
         batch_size: int = 20,
         fail_open: bool = True,
         data_transform: Optional[DataTransformConfig] = None,
@@ -103,7 +77,7 @@ class PipelineConfig:
         if not self.input_path:
             self.input_path = str(model_dir / "data.json")
         if not self.output_path:
-            self.output_path = str(model_dir / "evaluation.json")
+            self.output_path = str(model_dir / "evaluation_legacy.json")
 
 
 CONFIG = PipelineConfig()
