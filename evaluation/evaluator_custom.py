@@ -101,6 +101,10 @@ def build_evaluation_agent(llm: Dict[str, Any]) -> Agent:
         raise ValueError("Missing/invalid llm config: expected a dict of Agent kwargs.")
 
     merged = dict(llm)
+    # Pricing fields are for reporting/cost estimation and are not valid
+    # pydantic-ai Agent constructor kwargs.
+    merged.pop("input_token_cost_per_1m", None)
+    merged.pop("output_token_cost_per_1m", None)
     merged["name"] = "Evaluation Agent"
     merged["deps_type"] = EvaluationDeps
     merged["instrument"] = False

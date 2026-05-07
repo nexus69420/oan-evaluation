@@ -19,6 +19,10 @@ async def llm_call(
         raise ValueError("llm config must be a dict of Agent kwargs")
 
     agent_kwargs = dict(llm)
+    # Keep pricing metadata in llm config for downstream reporting, but do not
+    # forward it to pydantic-ai Agent constructor kwargs.
+    agent_kwargs.pop("input_token_cost_per_1m", None)
+    agent_kwargs.pop("output_token_cost_per_1m", None)
     agent_kwargs.setdefault("output_type", str)
     agent_kwargs.setdefault("instrument", False)
 
