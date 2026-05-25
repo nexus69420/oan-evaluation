@@ -7,7 +7,7 @@ import importlib.util
 import json
 from dataclasses import asdict, is_dataclass
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from dotenv import load_dotenv
 from tqdm.asyncio import tqdm
@@ -63,6 +63,95 @@ def _ensure_metric_result(payload: Any, metric_name: str) -> Dict[str, Any]:
         "reason": "Metric returned unsupported result type.",
         "metadata": {"raw_type": str(type(payload))},
     }
+
+
+def _print_cost_summary(final_rows: List[Dict[str, Any]]) -> None:
+    total_cost = 0.0
+    metric_entries = 0
+    costed_entries = 0
+
+    for row in final_rows:
+        metrics = row.get("metrics", [])
+        if not isinstance(metrics, list):
+            continue
+        for metric in metrics:
+            metric_entries += 1
+            metadata = metric.get("metadata", {}) if isinstance(metric, dict) else {}
+            cost_estimate = (
+                metadata.get("cost_estimate", {}) if isinstance(metadata, dict) else {}
+            )
+            cost_usd = (
+                cost_estimate.get("cost_usd") if isinstance(cost_estimate, dict) else None
+            )
+            try:
+                if cost_usd is not None:
+                    total_cost += float(cost_usd)
+                    costed_entries += 1
+            except (TypeError, ValueError):
+                continue
+
+    print(
+        f"Cost summary: total_usd=${total_cost:.6f} "
+        f"(costed_entries={costed_entries}/{metric_entries})"
+    )
+
+
+def _parse_metric_class_item(item: Any) -> Tuple[str, Optional[str]]:
+    """
+    Normalize a metric_classes entry to (class_path, optional_llm_profile_name).
+
+    Supported forms:
+    - str: class path only; profile comes from metric_configs or default.
+    - (class_path, profile_name): bind this metric to a named llm profile.
+    - {"class": class_path, "llm_profile": ...}  (``llm`` alias accepted for profile key)
+    """
+    if isinstance(item, str):
+        return item, None
+    if isinstance(item, (tuple, list)):
+        if len(item) != 2:
+            raise ValueError(
+                "metric_classes tuple/list entries must be (class_path, llm_profile_name); "
+                f"got length {len(item)}: {item!r}"
+            )
+        return str(item[0]), str(item[1])
+    if isinstance(item, dict):
+        if "class" not in item:
+            raise ValueError(f'metric_classes dict entries must include a "class" key: {item!r}')
+        if "llm_profile" in item:
+            profile = item["llm_profile"]
+        elif "llm" in item:
+            profile = item["llm"]
+        else:
+            profile = None
+        if profile is None:
+            return str(item["class"]), None
+        profile_s = str(profile).strip()
+        if not profile_s:
+            return str(item["class"]), None
+        return str(item["class"]), profile_s
+    raise ValueError(f"Unsupported metric_classes entry type {type(item)}: {item!r}")
+
+
+def _resolve_llm_for_metric(
+    model_evaluation: Any,
+    metric_config: Dict[str, Any],
+    class_level_profile: Optional[str],
+) -> None:
+    """Set metric_config[\"llm\"] from profiles unless the caller supplied a full llm dict."""
+    if "llm" in metric_config:
+        return
+    profile_key = (
+        metric_config.get("llm_profile")
+        or class_level_profile
+        or model_evaluation.default_llm_profile
+    )
+    profiles = model_evaluation.llm_profiles
+    if profile_key not in profiles:
+        raise ValueError(
+            f"Unknown llm_profile {profile_key!r} for metric config {metric_config!r}; "
+            f"defined profiles: {sorted(profiles)}"
+        )
+    metric_config["llm"] = profiles[profile_key]
 
 
 async def _run_metric_for_row(
@@ -127,7 +216,8 @@ async def run_pipeline(CONFIG) -> List[Dict[str, Any]]:
         )
 
     metric_instances: List[Tuple[str, Any, Dict[str, Any]]] = []
-    for metric_class_path in CONFIG.model_evaluation.metric_classes:
+    for item in CONFIG.model_evaluation.metric_classes:
+        metric_class_path, class_level_profile = _parse_metric_class_item(item)
         metric_cls = _load_class(metric_class_path)
         metric_obj = metric_cls()
         metric_name = getattr(metric_obj, "metric_name", metric_class_path)
@@ -136,8 +226,11 @@ async def run_pipeline(CONFIG) -> List[Dict[str, Any]]:
             or CONFIG.model_evaluation.metric_configs.get(metric_name)
             or {}
         )
-        if "llm" not in metric_config:
-            metric_config["llm"] = CONFIG.model_evaluation.llm
+        _resolve_llm_for_metric(
+            CONFIG.model_evaluation,
+            metric_config,
+            class_level_profile,
+        )
         metric_instances.append((metric_name, metric_obj, metric_config))
 
     semaphore = asyncio.Semaphore(CONFIG.max_concurrent)
@@ -183,6 +276,7 @@ async def run_pipeline(CONFIG) -> List[Dict[str, Any]]:
 
         json.dump(final_rows, f, ensure_ascii=False, indent=2)
 
+    _print_cost_summary(final_rows)
     return final_rows
 
 

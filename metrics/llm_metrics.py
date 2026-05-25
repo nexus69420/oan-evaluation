@@ -4,7 +4,7 @@ import json
 from typing import Any, Dict
 
 from .base import BaseMetric, MetricResult
-from .llm_metric_utils import run_llm_metric
+from .llm_metric_utils import run_llm_metric, run_llm_compare_metric
 
 
 class _LlmMetricBase(BaseMetric):
@@ -34,6 +34,17 @@ class CitationComprehensivenessMetric(_LlmMetricBase):
     prompt_file = "citation_comprehensiveness.md"
 
 
+class CitationComprehensivenessSourcesMetric(_LlmMetricBase):
+    """
+    Goldenset / retrieval rubric: 1–4 on whether retrieved sources alone suffice
+    for the question (not whether the model answer is good). Uses
+    ``retrieved_sources`` from the row (e.g. CSV search_results_*).
+    """
+
+    metric_name = "citation_comprehensiveness"
+    prompt_file = "citation_comprehensiveness_sources_retrieved.md"
+
+
 class NoFabricationMetric(_LlmMetricBase):
     metric_name = "no_fabrication"
     prompt_file = "no_fabrication.md"
@@ -44,14 +55,39 @@ class CitationAccuracyMetric(_LlmMetricBase):
     prompt_file = "citation_accuracy.md"
 
 
-class CompletenessMetric(_LlmMetricBase):
-    metric_name = "completeness"
-    prompt_file = "completeness.md"
+class AccuracyCompletenessMetric(_LlmMetricBase):
+    metric_name = "accuracy_completeness"
+    prompt_file = "accuracy_completeness.md"
 
 
 class ActionabilityMetric(_LlmMetricBase):
     metric_name = "actionability"
     prompt_file = "actionability.md"
+
+
+class ConversationClosureMetric(_LlmMetricBase):
+    metric_name = "conversation_closure"
+    prompt_file = "conversation_closure.md"
+
+
+class SourceDataComprehensivenessMetric(_LlmMetricBase):
+    metric_name = "source_data_comprehensiveness"
+    prompt_file = "source_data_comprehensiveness.md"
+
+
+class TranslationAccuracyMetric(_LlmMetricBase):
+    metric_name = "translation_accuracy"
+    prompt_file = "translation.md"
+
+
+class GrammarFluencyMetric(_LlmMetricBase):
+    metric_name = "grammar_fluency"
+    prompt_file = "grammar_fluency.md"
+
+
+class LanguagePurityMetric(_LlmMetricBase):
+    metric_name = "language_purity"
+    prompt_file = "language_purity.md"
 
 
 class SafetyComplianceMetric(_LlmMetricBase):
@@ -64,34 +100,9 @@ class ContextFitMetric(_LlmMetricBase):
     prompt_file = "context_fit.md"
 
 
-class ConversationClosureMetric(_LlmMetricBase):
-    metric_name = "conversation_closure"
-    prompt_file = "conversation_closure.md"
-
-
-class GrammarMetric(_LlmMetricBase):
-    metric_name = "grammar"
-    prompt_file = "grammar.md"
-
-
 class TerminologyMetric(_LlmMetricBase):
     metric_name = "terminology"
     prompt_file = "terminology.md"
-
-
-class LanguagePurityMetric(_LlmMetricBase):
-    metric_name = "language_purity"
-    prompt_file = "language_purity.md"
-
-
-class FluencyMetric(_LlmMetricBase):
-    metric_name = "fluency"
-    prompt_file = "fluency.md"
-
-
-class TranslationMetric(_LlmMetricBase):
-    metric_name = "translation"
-    prompt_file = "translation.md"
 
 
 class VoiceComprehensivenessMetric(_LlmMetricBase):
@@ -109,32 +120,87 @@ class TermIdentificationMetric(_LlmMetricBase):
     prompt_file = "term_identification.md"
 
 
-# Non-LLM metrics
-class BrevityMetric(BaseMetric):
+# LLM-backed voice metrics
+class BrevityMetric(_LlmMetricBase):
     metric_name = "brevity"
-
-    async def evaluate(self, *, row_json: Dict[str, Any], transformed_json: Dict[str, Any], variables: Dict[str, Any], config: Dict[str, Any]) -> MetricResult:
-        answer = str(variables.get("answer") or transformed_json.get("answer") or row_json.get("answer") or "")
-        wc = len(answer.split())
-        limit = int(config.get("max_words", 120))
-        score = 1.0 if wc <= limit else 0.0
-        reason = f"word_count={wc}, max_words={limit}"
-        return MetricResult(metric_name=self.metric_name, score=score, reason=reason, metadata={"word_count": wc, "max_words": limit})
+    prompt_file = "brevity.md"
 
 
-class VoiceReadyMetric(BaseMetric):
-    metric_name = "voice_ready"
+class VoiceReadyTextMetric(_LlmMetricBase):
+    metric_name = "voice_ready_text"
+    prompt_file = "voice_ready_text.md"
 
-    async def evaluate(self, *, row_json: Dict[str, Any], transformed_json: Dict[str, Any], variables: Dict[str, Any], config: Dict[str, Any]) -> MetricResult:
-        answer = str(variables.get("answer") or transformed_json.get("answer") or row_json.get("answer") or "")
-        artifacts = ["#", "*", "```", "|", "[", "]"]
-        has_artifact = any(a in answer for a in artifacts)
-        return MetricResult(
+
+class _LlmCompareMetricBase(BaseMetric):
+    prompt_file: str = ""
+
+    async def evaluate(
+        self,
+        *,
+        row_json: Dict[str, Any],
+        transformed_json: Dict[str, Any],
+        variables: Dict[str, Any],
+        config: Dict[str, Any],
+    ) -> MetricResult:
+        return await run_llm_compare_metric(
             metric_name=self.metric_name,
-            score=0.0 if has_artifact else 1.0,
-            reason="Contains markdown/text artifacts" if has_artifact else "No obvious text artifacts",
-            metadata={"artifacts_checked": artifacts},
+            prompt_file=self.prompt_file,
+            row_json=row_json,
+            transformed_json=transformed_json,
+            variables=variables,
+            config=config,
         )
+
+
+# Comparative metrics (response_a vs response_b)
+class AccuracyCompletenessCompareMetric(_LlmCompareMetricBase):
+    metric_name = "accuracy_completeness_compare"
+    prompt_file = "accuracy_completeness_compare.md"
+
+
+class ActionabilityCompareMetric(_LlmCompareMetricBase):
+    metric_name = "actionability_compare"
+    prompt_file = "actionability_compare.md"
+
+
+class ConversationClosureCompareMetric(_LlmCompareMetricBase):
+    metric_name = "conversation_closure_compare"
+    prompt_file = "conversation_closure_compare.md"
+
+
+class SourceDataComprehensivenessCompareMetric(_LlmCompareMetricBase):
+    metric_name = "source_data_comprehensiveness_compare"
+    prompt_file = "source_data_comprehensiveness_compare.md"
+
+
+class TranslationAccuracyCompareMetric(_LlmCompareMetricBase):
+    metric_name = "translation_accuracy_compare"
+    prompt_file = "translation_compare.md"
+
+
+class GrammarFluencyCompareMetric(_LlmCompareMetricBase):
+    metric_name = "grammar_fluency_compare"
+    prompt_file = "grammar_fluency_compare.md"
+
+
+class LanguagePurityCompareMetric(_LlmCompareMetricBase):
+    metric_name = "language_purity_compare"
+    prompt_file = "language_purity_compare.md"
+
+
+class NoFabricationCompareMetric(_LlmCompareMetricBase):
+    metric_name = "no_fabrication_compare"
+    prompt_file = "no_fabrication_compare.md"
+
+
+class CitationAccuracyCompareMetric(_LlmCompareMetricBase):
+    metric_name = "citation_accuracy_compare"
+    prompt_file = "citation_accuracy_compare.md"
+
+
+class CitationComprehensivenessCompareMetric(_LlmCompareMetricBase):
+    metric_name = "citation_comprehensiveness_compare"
+    prompt_file = "citation_comprehensiveness_sources_retrieved_compare.md"
 
 
 class ElapsedSecondsMetric(BaseMetric):

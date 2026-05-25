@@ -118,3 +118,47 @@ async def run_llm_metric(
             "cost_estimate": cost,
         },
     )
+
+
+async def run_llm_compare_metric(
+    *,
+    metric_name: str,
+    prompt_file: str,
+    row_json: Dict[str, Any],
+    transformed_json: Dict[str, Any],
+    variables: Dict[str, Any],
+    config: Dict[str, Any],
+) -> MetricResult:
+    """Execution path for comparative (A vs B) LLM metrics."""
+    llm = config["llm"]
+    prompt_dir = config.get("prompt_dir", "assets/prompts/metrics")
+    context = build_context(row_json, transformed_json, variables, config)
+    prompt = render_prompt(prompt_file, context=context, prompt_dir=prompt_dir)
+
+    started_at = time.perf_counter()
+    llm_response = await llm_call(prompt=prompt, llm=llm)
+    elapsed = time.perf_counter() - started_at
+
+    raw_text = str(llm_response.get("text", ""))
+    usage = llm_response.get("usage", {})
+    cost = estimate_cost(usage, llm)
+
+    parsed = parse_json_result(raw_text)
+
+    better = parsed.get("better_response", "")
+    return MetricResult(
+        metric_name=metric_name,
+        score=None,
+        reason=parsed.get("better_response_reason", ""),
+        metadata={
+            "score_a": parsed.get("score_a"),
+            "reason_a": parsed.get("reason_a", ""),
+            "score_b": parsed.get("score_b"),
+            "reason_b": parsed.get("reason_b", ""),
+            "better_response": better,
+            "better_response_reason": parsed.get("better_response_reason", ""),
+            "elapsed_seconds": round(elapsed, 4),
+            "token_usage": usage,
+            "cost_estimate": cost,
+        },
+    )

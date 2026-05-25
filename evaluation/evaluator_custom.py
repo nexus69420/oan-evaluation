@@ -7,7 +7,6 @@ from enum import IntEnum
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent, RunContext
-from pydantic_ai.models.openai import OpenAIResponsesModel, OpenAIResponsesModelSettings
 from dotenv import load_dotenv
 load_dotenv()
 # import logfire
@@ -118,6 +117,41 @@ def build_evaluation_agent(llm: Dict[str, Any]) -> Agent:
     return agent
 
 
+def _usage_to_dict(usage_obj: Any) -> Dict[str, Any]:
+    details = getattr(usage_obj, "details", None) or {}
+    return {
+        "input_tokens": int(getattr(usage_obj, "input_tokens", 0) or 0),
+        "output_tokens": int(getattr(usage_obj, "output_tokens", 0) or 0),
+        "total_tokens": int(getattr(usage_obj, "total_tokens", 0) or 0),
+        "details": dict(details),
+    }
+
+
+def _estimate_cost(usage: Dict[str, Any], llm: Dict[str, Any]) -> Dict[str, Any]:
+    input_rate = llm.get("input_token_cost_per_1m")
+    output_rate = llm.get("output_token_cost_per_1m")
+
+    if input_rate is None or output_rate is None:
+        return {
+            "cost_usd": None,
+            "cost_formula": "Set llm.input_token_cost_per_1m and llm.output_token_cost_per_1m to enable cost estimation",
+        }
+
+    input_tokens = int(usage.get("input_tokens") or 0)
+    output_tokens = int(usage.get("output_tokens") or 0)
+    input_cost = (input_tokens / 1_000_000) * float(input_rate)
+    output_cost = (output_tokens / 1_000_000) * float(output_rate)
+    total_cost = input_cost + output_cost
+
+    return {
+        "cost_usd": round(total_cost, 8),
+        "input_cost_usd": round(input_cost, 8),
+        "output_cost_usd": round(output_cost, 8),
+        "input_token_cost_per_1m": float(input_rate),
+        "output_token_cost_per_1m": float(output_rate),
+    }
+
+
 async def evaluate_record_with_judge(
     record: Dict[str, Any],
     llm: Dict[str, Any],
@@ -132,7 +166,13 @@ async def evaluate_record_with_judge(
         message,
         deps=EvaluationDeps(category=category),
     )
-    return eval_result.output.to_eval_dict()
+    usage_dict = _usage_to_dict(eval_result.usage())
+    eval_dict = eval_result.output.to_eval_dict()
+    eval_dict["runtime"] = {
+        "token_usage": usage_dict,
+        "cost_estimate": _estimate_cost(usage_dict, llm),
+    }
+    return eval_dict
 
 
 
@@ -377,20 +417,6 @@ class EvaluationResult(BaseModel):
             }
         }
 
-evaluation_agent = Agent(
-    model='gpt-5',
-    name="Evaluation Agent",
-    deps_type=EvaluationDeps,
-    instrument=False,
-    output_type=EvaluationResult,
-    retries=3,
-    model_settings=OpenAIResponsesModelSettings(
-        temperature=0.0,
-        timeout=60,
-    )
-)
-
-
 def _build_system_prompt(category: str) -> str:
     category_normalized = category.lower().replace(' ', '_')    
     # For agri_services we can combine:
@@ -403,9 +429,3 @@ def _build_system_prompt(category: str) -> str:
 
     master_prompt = get_prompt('evaluation_system')
     return master_prompt + "\n\n" + category_prompt
-
-
-@evaluation_agent.system_prompt(dynamic=True)
-def system_prompt(ctx: RunContext) -> str:
-    """Generate a dynamic system prompt based on the category."""
-    return _build_system_prompt(ctx.deps.category)

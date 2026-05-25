@@ -28,6 +28,9 @@ class AgriEvalMetrics(BaseMetric):
         eval_dict = await evaluate_record_with_judge(transformed_json, llm=llm)
         score = eval_dict.get("metrics", {}).get("overall_average")
         reason = eval_dict.get("summary", "Evaluation completed via agri eval metrics.")
+        runtime = eval_dict.get("runtime", {}) if isinstance(eval_dict, dict) else {}
+        token_usage = runtime.get("token_usage", {}) if isinstance(runtime, dict) else {}
+        cost_estimate = runtime.get("cost_estimate", {}) if isinstance(runtime, dict) else {}
 
         return MetricResult(
             metric_name=self.metric_name,
@@ -36,5 +39,7 @@ class AgriEvalMetrics(BaseMetric):
             metadata={
                 "category": transformed_json.get("category", row_json.get("category", "")),
                 "evaluation": eval_dict,
+                "token_usage": token_usage,
+                "cost_estimate": cost_estimate,
             },
         )

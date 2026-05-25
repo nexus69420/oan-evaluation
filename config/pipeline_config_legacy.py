@@ -3,8 +3,20 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+from config.llm_profiles import normalize_llm_profiles
 
-DEFAULT_MODEL_NAME = "gemma4_voice20_eval"
+DEFAULT_MODEL_NAME = "goldenset_full_review_v3_legacy"
+
+_DEFAULT_LLM: Dict[str, Any] = {
+    "model": "gpt-4.1",
+    "retries": 3,
+    "model_settings": {
+        "temperature": 0.0,
+        "timeout": 60,
+    },
+    "input_token_cost_per_1m": 2.0,
+    "output_token_cost_per_1m": 8.0,
+}
 
 
 class DataTransformConfig:
@@ -28,25 +40,21 @@ class DataTransformConfig:
 class ModelEvaluationConfig:
     def __init__(
         self,
-        metric_classes: Optional[List[str]] = None,
+        metric_classes: Optional[List[Any]] = None,
         metric_configs: Optional[Dict[str, Dict[str, Any]]] = None,
         llm: Optional[Dict[str, Any]] = None,
+        default_llm_profile: Optional[str] = None,
     ) -> None:
         # Legacy path: only the old evaluator flow.
         self.metric_classes = metric_classes or [
             "metrics.agri_eval_metrics.AgriEvalMetrics",
         ]
         self.metric_configs = metric_configs or {}
-        self.llm = llm or {
-            "model": "gpt-4.1",
-            "retries": 3,
-            "model_settings": {
-                "temperature": 0.0,
-                "timeout": 60,
-            },
-            "input_token_cost_per_1m": 2.0,
-            "output_token_cost_per_1m": 8.0,
-        }
+        self.llm_profiles, self.default_llm_profile, self.llm = normalize_llm_profiles(
+            llm,
+            default_llm_profile=default_llm_profile,
+            single_llm_fallback=_DEFAULT_LLM,
+        )
 
 
 class PipelineConfig:
@@ -55,7 +63,7 @@ class PipelineConfig:
         model_name: str = DEFAULT_MODEL_NAME,
         input_path: Optional[str] = None,
         output_path: Optional[str] = None,
-        num_samples: Optional[int] = 90,
+        num_samples: Optional[int] = 20,
         max_concurrent: int = 30,
         batch_size: int = 20,
         fail_open: bool = True,
