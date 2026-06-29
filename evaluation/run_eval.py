@@ -26,14 +26,14 @@ CSV_FIELDNAMES = [
 
 # Load input data
 data = []
-with open(INPUT_CSV, 'r', encoding='utf-8') as f:
+with open(INPUT_CSV, 'r', encoding='utf-8-sig') as f:
     for row in csv.DictReader(f):
         data.append({"question": row["question"], "answer": row["answer"]})
 
 # Load any existing evaluations so we can skip them on re-run
 existing = {}
 if os.path.exists(OUTPUT_CSV):
-    with open(OUTPUT_CSV, 'r', encoding='utf-8') as f:
+    with open(OUTPUT_CSV, 'r', encoding='utf-8-sig') as f:
         for row in csv.DictReader(f):
             q = row.get("question", "")
             if q and row.get("summary"):
