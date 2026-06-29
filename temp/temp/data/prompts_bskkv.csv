@@ -1,0 +1,433 @@
+Crop,Season,Region,Category,Prompt
+Soyabean,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Soyabean in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Cotton (Lint),Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Cotton (Lint) in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Rice,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Rice in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Tur,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Tur in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Sugarcane,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Sugarcane in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Maize,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Maize in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Bajra,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Bajra in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Udid,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Udid in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Moong,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Moong in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Groundnut,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Groundnut in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Jowar,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Jowar in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Ragi,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Ragi in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Nigerseed,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Nigerseed in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Sesamum,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Sesamum in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Sunflower,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Sunflower in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Onion,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Onion in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Tomato,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Tomato in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Green Chilly,Kharif,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Green Chilly in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Gram,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Gram in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Jowar,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Jowar in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Wheat,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Wheat in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Maize,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Maize in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Safflower,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Safflower in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Mustard,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Mustard in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Linseed,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Linseed in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Sunflower,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Sunflower in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Sesame,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Sesame in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Onion,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Onion in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Tomato,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Tomato in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Green Chilly,Rabi,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Green Chilly in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Mango,,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Mango in , what should I do for Land Preparation (Timing + Practice)"
+Orange ,,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Orange  in , what should I do for Land Preparation (Timing + Practice)"
+Grapes,,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Grapes in , what should I do for Land Preparation (Timing + Practice)"
+Banana,,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Banana in , what should I do for Land Preparation (Timing + Practice)"
+Pomegranate,,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Pomegranate in , what should I do for Land Preparation (Timing + Practice)"
+Mosambi,,BSKKV Dapoli,Land Preparation (Timing + Practice),"I am a farmer in region of BSKKV Dapoli growing Mosambi in , what should I do for Land Preparation (Timing + Practice)"
+Soyabean,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Soyabean in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Cotton (Lint),Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Cotton (Lint) in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Rice,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Rice in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Tur,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Tur in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Sugarcane,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Sugarcane in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Maize,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Maize in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Bajra,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Bajra in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Udid,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Udid in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Moong,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Moong in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Groundnut,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Groundnut in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Jowar,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Jowar in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Ragi,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Ragi in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Nigerseed,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Nigerseed in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Sesamum,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Sesamum in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Sunflower,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Sunflower in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Onion,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Onion in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Tomato,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Tomato in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Green Chilly,Kharif,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Green Chilly in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Gram,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Gram in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Jowar,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Jowar in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Wheat,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Wheat in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Maize,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Maize in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Safflower,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Safflower in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Mustard,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Mustard in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Linseed,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Linseed in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Sunflower,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Sunflower in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Sesame,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Sesame in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Onion,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Onion in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Tomato,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Tomato in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Green Chilly,Rabi,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Green Chilly in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Mango,,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Mango in , what should I do for Sowing (Seed Variety & Practice)"
+Orange ,,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Orange  in , what should I do for Sowing (Seed Variety & Practice)"
+Grapes,,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Grapes in , what should I do for Sowing (Seed Variety & Practice)"
+Banana,,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Banana in , what should I do for Sowing (Seed Variety & Practice)"
+Pomegranate,,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Pomegranate in , what should I do for Sowing (Seed Variety & Practice)"
+Mosambi,,BSKKV Dapoli,Sowing (Seed Variety & Practice),"I am a farmer in region of BSKKV Dapoli growing Mosambi in , what should I do for Sowing (Seed Variety & Practice)"
+Soyabean,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Soyabean, what should i do for seed treatment & preventive measure for pest & diseases"
+Cotton (Lint),Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Cotton (Lint), what should i do for seed treatment & preventive measure for pest & diseases"
+Rice,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Rice, what should i do for seed treatment & preventive measure for pest & diseases"
+Tur,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Tur, what should i do for seed treatment & preventive measure for pest & diseases"
+Sugarcane,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Sugarcane, what should i do for seed treatment & preventive measure for pest & diseases"
+Maize,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Maize, what should i do for seed treatment & preventive measure for pest & diseases"
+Bajra,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Bajra, what should i do for seed treatment & preventive measure for pest & diseases"
+Udid,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Udid, what should i do for seed treatment & preventive measure for pest & diseases"
+Moong,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Moong, what should i do for seed treatment & preventive measure for pest & diseases"
+Groundnut,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Groundnut, what should i do for seed treatment & preventive measure for pest & diseases"
+Jowar,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Jowar, what should i do for seed treatment & preventive measure for pest & diseases"
+Ragi,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Ragi, what should i do for seed treatment & preventive measure for pest & diseases"
+Nigerseed,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Nigerseed, what should i do for seed treatment & preventive measure for pest & diseases"
+Sesamum,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Sesamum, what should i do for seed treatment & preventive measure for pest & diseases"
+Sunflower,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Sunflower, what should i do for seed treatment & preventive measure for pest & diseases"
+Onion,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Onion, what should i do for seed treatment & preventive measure for pest & diseases"
+Tomato,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Tomato, what should i do for seed treatment & preventive measure for pest & diseases"
+Green Chilly,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Kharif in Green Chilly, what should i do for seed treatment & preventive measure for pest & diseases"
+Gram,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Gram, what should i do for seed treatment & preventive measure for pest & diseases"
+Jowar,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Jowar, what should i do for seed treatment & preventive measure for pest & diseases"
+Wheat,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Wheat, what should i do for seed treatment & preventive measure for pest & diseases"
+Maize,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Maize, what should i do for seed treatment & preventive measure for pest & diseases"
+Safflower,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Safflower, what should i do for seed treatment & preventive measure for pest & diseases"
+Mustard,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Mustard, what should i do for seed treatment & preventive measure for pest & diseases"
+Linseed,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Linseed, what should i do for seed treatment & preventive measure for pest & diseases"
+Sunflower,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Sunflower, what should i do for seed treatment & preventive measure for pest & diseases"
+Sesame,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Sesame, what should i do for seed treatment & preventive measure for pest & diseases"
+Onion,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Onion, what should i do for seed treatment & preventive measure for pest & diseases"
+Tomato,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Tomato, what should i do for seed treatment & preventive measure for pest & diseases"
+Green Chilly,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing Rabi in Green Chilly, what should i do for seed treatment & preventive measure for pest & diseases"
+Mango,,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing  in Mango, what should i do for seed treatment & preventive measure for pest & diseases"
+Orange ,,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing  in Orange , what should i do for seed treatment & preventive measure for pest & diseases"
+Grapes,,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing  in Grapes, what should i do for seed treatment & preventive measure for pest & diseases"
+Banana,,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing  in Banana, what should i do for seed treatment & preventive measure for pest & diseases"
+Pomegranate,,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing  in Pomegranate, what should i do for seed treatment & preventive measure for pest & diseases"
+Mosambi,,BSKKV Dapoli,"Pest & Disease Management
+(Preventive)","I am a farmer in region of BSKKV Dapoligrowing  in Mosambi, what should i do for seed treatment & preventive measure for pest & diseases"
+Soyabean,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Soyabean in Kharif, what should I do for Weed Management"
+Cotton (Lint),Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Cotton (Lint) in Kharif, what should I do for Weed Management"
+Rice,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Rice in Kharif, what should I do for Weed Management"
+Tur,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Tur in Kharif, what should I do for Weed Management"
+Sugarcane,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Sugarcane in Kharif, what should I do for Weed Management"
+Maize,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Maize in Kharif, what should I do for Weed Management"
+Bajra,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Bajra in Kharif, what should I do for Weed Management"
+Udid,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Udid in Kharif, what should I do for Weed Management"
+Moong,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Moong in Kharif, what should I do for Weed Management"
+Groundnut,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Groundnut in Kharif, what should I do for Weed Management"
+Jowar,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Jowar in Kharif, what should I do for Weed Management"
+Ragi,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Ragi in Kharif, what should I do for Weed Management"
+Nigerseed,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Nigerseed in Kharif, what should I do for Weed Management"
+Sesamum,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Sesamum in Kharif, what should I do for Weed Management"
+Sunflower,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Sunflower in Kharif, what should I do for Weed Management"
+Onion,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Onion in Kharif, what should I do for Weed Management"
+Tomato,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Tomato in Kharif, what should I do for Weed Management"
+Green Chilly,Kharif,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Green Chilly in Kharif, what should I do for Weed Management"
+Gram,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Gram in Rabi, what should I do for Weed Management"
+Jowar,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Jowar in Rabi, what should I do for Weed Management"
+Wheat,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Wheat in Rabi, what should I do for Weed Management"
+Maize,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Maize in Rabi, what should I do for Weed Management"
+Safflower,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Safflower in Rabi, what should I do for Weed Management"
+Mustard,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Mustard in Rabi, what should I do for Weed Management"
+Linseed,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Linseed in Rabi, what should I do for Weed Management"
+Sunflower,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Sunflower in Rabi, what should I do for Weed Management"
+Sesame,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Sesame in Rabi, what should I do for Weed Management"
+Onion,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Onion in Rabi, what should I do for Weed Management"
+Tomato,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Tomato in Rabi, what should I do for Weed Management"
+Green Chilly,Rabi,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Green Chilly in Rabi, what should I do for Weed Management"
+Mango,,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Mango in , what should I do for Weed Management"
+Orange ,,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Orange  in , what should I do for Weed Management"
+Grapes,,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Grapes in , what should I do for Weed Management"
+Banana,,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Banana in , what should I do for Weed Management"
+Pomegranate,,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Pomegranate in , what should I do for Weed Management"
+Mosambi,,BSKKV Dapoli,Weed Management,"I am a farmer in region of BSKKV Dapoli growing Mosambi in , what should I do for Weed Management"
+Soyabean,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Soyabean, what fertiliser, dosage & quantity should i apply for basal application"
+Cotton (Lint),Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Cotton (Lint), what fertiliser, dosage & quantity should i apply for basal application"
+Rice,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Rice, what fertiliser, dosage & quantity should i apply for basal application"
+Tur,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Tur, what fertiliser, dosage & quantity should i apply for basal application"
+Sugarcane,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Sugarcane, what fertiliser, dosage & quantity should i apply for basal application"
+Maize,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Maize, what fertiliser, dosage & quantity should i apply for basal application"
+Bajra,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Bajra, what fertiliser, dosage & quantity should i apply for basal application"
+Udid,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Udid, what fertiliser, dosage & quantity should i apply for basal application"
+Moong,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Moong, what fertiliser, dosage & quantity should i apply for basal application"
+Groundnut,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Groundnut, what fertiliser, dosage & quantity should i apply for basal application"
+Jowar,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Jowar, what fertiliser, dosage & quantity should i apply for basal application"
+Ragi,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Ragi, what fertiliser, dosage & quantity should i apply for basal application"
+Nigerseed,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Nigerseed, what fertiliser, dosage & quantity should i apply for basal application"
+Sesamum,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Sesamum, what fertiliser, dosage & quantity should i apply for basal application"
+Sunflower,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Sunflower, what fertiliser, dosage & quantity should i apply for basal application"
+Onion,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Onion, what fertiliser, dosage & quantity should i apply for basal application"
+Tomato,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Tomato, what fertiliser, dosage & quantity should i apply for basal application"
+Green Chilly,Kharif,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Kharif in Green Chilly, what fertiliser, dosage & quantity should i apply for basal application"
+Gram,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Gram, what fertiliser, dosage & quantity should i apply for basal application"
+Jowar,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Jowar, what fertiliser, dosage & quantity should i apply for basal application"
+Wheat,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Wheat, what fertiliser, dosage & quantity should i apply for basal application"
+Maize,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Maize, what fertiliser, dosage & quantity should i apply for basal application"
+Safflower,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Safflower, what fertiliser, dosage & quantity should i apply for basal application"
+Mustard,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Mustard, what fertiliser, dosage & quantity should i apply for basal application"
+Linseed,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Linseed, what fertiliser, dosage & quantity should i apply for basal application"
+Sunflower,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Sunflower, what fertiliser, dosage & quantity should i apply for basal application"
+Sesame,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Sesame, what fertiliser, dosage & quantity should i apply for basal application"
+Onion,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Onion, what fertiliser, dosage & quantity should i apply for basal application"
+Tomato,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Tomato, what fertiliser, dosage & quantity should i apply for basal application"
+Green Chilly,Rabi,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing Rabi in Green Chilly, what fertiliser, dosage & quantity should i apply for basal application"
+Mango,,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing  in Mango, what fertiliser, dosage & quantity should i apply for basal application"
+Orange ,,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing  in Orange , what fertiliser, dosage & quantity should i apply for basal application"
+Grapes,,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing  in Grapes, what fertiliser, dosage & quantity should i apply for basal application"
+Banana,,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing  in Banana, what fertiliser, dosage & quantity should i apply for basal application"
+Pomegranate,,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing  in Pomegranate, what fertiliser, dosage & quantity should i apply for basal application"
+Mosambi,,BSKKV Dapoli,"Fertiliser 
+(Basal Application)","I am a farmer in region of BSKKV Dapoli growing  in Mosambi, what fertiliser, dosage & quantity should i apply for basal application"
+Soyabean,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Soyabean, what fertiliser, dosage & quantity should i apply for top dressing"
+Cotton (Lint),Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Cotton (Lint), what fertiliser, dosage & quantity should i apply for top dressing"
+Rice,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Rice, what fertiliser, dosage & quantity should i apply for top dressing"
+Tur,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Tur, what fertiliser, dosage & quantity should i apply for top dressing"
+Sugarcane,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Sugarcane, what fertiliser, dosage & quantity should i apply for top dressing"
+Maize,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Maize, what fertiliser, dosage & quantity should i apply for top dressing"
+Bajra,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Bajra, what fertiliser, dosage & quantity should i apply for top dressing"
+Udid,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Udid, what fertiliser, dosage & quantity should i apply for top dressing"
+Moong,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Moong, what fertiliser, dosage & quantity should i apply for top dressing"
+Groundnut,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Groundnut, what fertiliser, dosage & quantity should i apply for top dressing"
+Jowar,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Jowar, what fertiliser, dosage & quantity should i apply for top dressing"
+Ragi,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Ragi, what fertiliser, dosage & quantity should i apply for top dressing"
+Nigerseed,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Nigerseed, what fertiliser, dosage & quantity should i apply for top dressing"
+Sesamum,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Sesamum, what fertiliser, dosage & quantity should i apply for top dressing"
+Sunflower,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Sunflower, what fertiliser, dosage & quantity should i apply for top dressing"
+Onion,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Onion, what fertiliser, dosage & quantity should i apply for top dressing"
+Tomato,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Tomato, what fertiliser, dosage & quantity should i apply for top dressing"
+Green Chilly,Kharif,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Kharif in Green Chilly, what fertiliser, dosage & quantity should i apply for top dressing"
+Gram,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Gram, what fertiliser, dosage & quantity should i apply for top dressing"
+Jowar,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Jowar, what fertiliser, dosage & quantity should i apply for top dressing"
+Wheat,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Wheat, what fertiliser, dosage & quantity should i apply for top dressing"
+Maize,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Maize, what fertiliser, dosage & quantity should i apply for top dressing"
+Safflower,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Safflower, what fertiliser, dosage & quantity should i apply for top dressing"
+Mustard,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Mustard, what fertiliser, dosage & quantity should i apply for top dressing"
+Linseed,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Linseed, what fertiliser, dosage & quantity should i apply for top dressing"
+Sunflower,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Sunflower, what fertiliser, dosage & quantity should i apply for top dressing"
+Sesame,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Sesame, what fertiliser, dosage & quantity should i apply for top dressing"
+Onion,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Onion, what fertiliser, dosage & quantity should i apply for top dressing"
+Tomato,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Tomato, what fertiliser, dosage & quantity should i apply for top dressing"
+Green Chilly,Rabi,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing Rabi in Green Chilly, what fertiliser, dosage & quantity should i apply for top dressing"
+Mango,,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing  in Mango, what fertiliser, dosage & quantity should i apply for top dressing"
+Orange ,,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing  in Orange , what fertiliser, dosage & quantity should i apply for top dressing"
+Grapes,,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing  in Grapes, what fertiliser, dosage & quantity should i apply for top dressing"
+Banana,,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing  in Banana, what fertiliser, dosage & quantity should i apply for top dressing"
+Pomegranate,,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing  in Pomegranate, what fertiliser, dosage & quantity should i apply for top dressing"
+Mosambi,,BSKKV Dapoli,"Fertiliser 
+(Top Dressing)","I am a farmer in region of BSKKV Dapoli growing  in Mosambi, what fertiliser, dosage & quantity should i apply for top dressing"
+Soyabean,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Soyabean, what pests & diseases can occur, what are the symptoms & remedial measures"
+Cotton (Lint),Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Cotton (Lint), what pests & diseases can occur, what are the symptoms & remedial measures"
+Rice,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Rice, what pests & diseases can occur, what are the symptoms & remedial measures"
+Tur,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Tur, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sugarcane,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Sugarcane, what pests & diseases can occur, what are the symptoms & remedial measures"
+Maize,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Maize, what pests & diseases can occur, what are the symptoms & remedial measures"
+Bajra,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Bajra, what pests & diseases can occur, what are the symptoms & remedial measures"
+Udid,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Udid, what pests & diseases can occur, what are the symptoms & remedial measures"
+Moong,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Moong, what pests & diseases can occur, what are the symptoms & remedial measures"
+Groundnut,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Groundnut, what pests & diseases can occur, what are the symptoms & remedial measures"
+Jowar,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Jowar, what pests & diseases can occur, what are the symptoms & remedial measures"
+Ragi,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Ragi, what pests & diseases can occur, what are the symptoms & remedial measures"
+Nigerseed,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Nigerseed, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sesamum,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Sesamum, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sunflower,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Sunflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+Onion,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Onion, what pests & diseases can occur, what are the symptoms & remedial measures"
+Tomato,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Tomato, what pests & diseases can occur, what are the symptoms & remedial measures"
+Green Chilly,Kharif,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Kharif in Green Chilly, what pests & diseases can occur, what are the symptoms & remedial measures"
+Gram,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Gram, what pests & diseases can occur, what are the symptoms & remedial measures"
+Jowar,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Jowar, what pests & diseases can occur, what are the symptoms & remedial measures"
+Wheat,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Wheat, what pests & diseases can occur, what are the symptoms & remedial measures"
+Maize,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Maize, what pests & diseases can occur, what are the symptoms & remedial measures"
+Safflower,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Safflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+Mustard,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Mustard, what pests & diseases can occur, what are the symptoms & remedial measures"
+Linseed,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Linseed, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sunflower,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Sunflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sesame,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Sesame, what pests & diseases can occur, what are the symptoms & remedial measures"
+Onion,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Onion, what pests & diseases can occur, what are the symptoms & remedial measures"
+Tomato,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Tomato, what pests & diseases can occur, what are the symptoms & remedial measures"
+Green Chilly,Rabi,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing Rabi in Green Chilly, what pests & diseases can occur, what are the symptoms & remedial measures"
+Mango,,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing  in Mango, what pests & diseases can occur, what are the symptoms & remedial measures"
+Orange ,,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing  in Orange , what pests & diseases can occur, what are the symptoms & remedial measures"
+Grapes,,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing  in Grapes, what pests & diseases can occur, what are the symptoms & remedial measures"
+Banana,,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing  in Banana, what pests & diseases can occur, what are the symptoms & remedial measures"
+Pomegranate,,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing  in Pomegranate, what pests & diseases can occur, what are the symptoms & remedial measures"
+Mosambi,,BSKKV Dapoli,"Pest & Disease Management
+(Remedial)","I am a farmer in region of BSKKV Dapoli growing  in Mosambi, what pests & diseases can occur, what are the symptoms & remedial measures"
+Soyabean,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Soyabean in Kharif, what should I do for Post Harvest - Storage Management"
+Cotton (Lint),Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Cotton (Lint) in Kharif, what should I do for Post Harvest - Storage Management"
+Rice,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Rice in Kharif, what should I do for Post Harvest - Storage Management"
+Tur,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Tur in Kharif, what should I do for Post Harvest - Storage Management"
+Sugarcane,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Sugarcane in Kharif, what should I do for Post Harvest - Storage Management"
+Maize,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Maize in Kharif, what should I do for Post Harvest - Storage Management"
+Bajra,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Bajra in Kharif, what should I do for Post Harvest - Storage Management"
+Udid,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Udid in Kharif, what should I do for Post Harvest - Storage Management"
+Moong,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Moong in Kharif, what should I do for Post Harvest - Storage Management"
+Groundnut,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Groundnut in Kharif, what should I do for Post Harvest - Storage Management"
+Jowar,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Jowar in Kharif, what should I do for Post Harvest - Storage Management"
+Ragi,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Ragi in Kharif, what should I do for Post Harvest - Storage Management"
+Nigerseed,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Nigerseed in Kharif, what should I do for Post Harvest - Storage Management"
+Sesamum,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Sesamum in Kharif, what should I do for Post Harvest - Storage Management"
+Sunflower,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Sunflower in Kharif, what should I do for Post Harvest - Storage Management"
+Onion,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Onion in Kharif, what should I do for Post Harvest - Storage Management"
+Tomato,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Tomato in Kharif, what should I do for Post Harvest - Storage Management"
+Green Chilly,Kharif,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Green Chilly in Kharif, what should I do for Post Harvest - Storage Management"
+Gram,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Gram in Rabi, what should I do for Post Harvest - Storage Management"
+Jowar,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Jowar in Rabi, what should I do for Post Harvest - Storage Management"
+Wheat,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Wheat in Rabi, what should I do for Post Harvest - Storage Management"
+Maize,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Maize in Rabi, what should I do for Post Harvest - Storage Management"
+Safflower,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Safflower in Rabi, what should I do for Post Harvest - Storage Management"
+Mustard,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Mustard in Rabi, what should I do for Post Harvest - Storage Management"
+Linseed,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Linseed in Rabi, what should I do for Post Harvest - Storage Management"
+Sunflower,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Sunflower in Rabi, what should I do for Post Harvest - Storage Management"
+Sesame,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Sesame in Rabi, what should I do for Post Harvest - Storage Management"
+Onion,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Onion in Rabi, what should I do for Post Harvest - Storage Management"
+Tomato,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Tomato in Rabi, what should I do for Post Harvest - Storage Management"
+Green Chilly,Rabi,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Green Chilly in Rabi, what should I do for Post Harvest - Storage Management"
+Mango,,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Mango in , what should I do for Post Harvest - Storage Management"
+Orange ,,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Orange  in , what should I do for Post Harvest - Storage Management"
+Grapes,,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Grapes in , what should I do for Post Harvest - Storage Management"
+Banana,,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Banana in , what should I do for Post Harvest - Storage Management"
+Pomegranate,,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Pomegranate in , what should I do for Post Harvest - Storage Management"
+Mosambi,,BSKKV Dapoli,Post Harvest - Storage Management,"I am a farmer in region of BSKKV Dapoli growing Mosambi in , what should I do for Post Harvest - Storage Management"

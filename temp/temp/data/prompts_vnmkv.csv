@@ -1,0 +1,433 @@
+Crop,Season,Region,Category,Prompt
+Soyabean,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Soyabean in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Cotton (Lint),Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Cotton (Lint) in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Rice,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Rice in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Tur,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Tur in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Sugarcane,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Sugarcane in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Maize,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Maize in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Bajra,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Bajra in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Udid,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Udid in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Moong,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Moong in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Groundnut,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Groundnut in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Jowar,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Jowar in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Ragi,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Ragi in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Nigerseed,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Nigerseed in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Sesamum,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Sesamum in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Sunflower,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Sunflower in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Onion,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Onion in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Tomato,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Tomato in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Green Chilly,Kharif,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Green Chilly in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Gram,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Gram in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Jowar,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Jowar in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Wheat,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Wheat in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Maize,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Maize in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Safflower,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Safflower in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Mustard,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Mustard in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Linseed,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Linseed in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Sunflower,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Sunflower in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Sesame,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Sesame in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Onion,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Onion in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Tomato,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Tomato in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Green Chilly,Rabi,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Green Chilly in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Mango,,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Mango in , what should I do for Land Preparation (Timing + Practice)"
+Orange ,,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Orange  in , what should I do for Land Preparation (Timing + Practice)"
+Grapes,,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Grapes in , what should I do for Land Preparation (Timing + Practice)"
+Banana,,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Banana in , what should I do for Land Preparation (Timing + Practice)"
+Pomegranate,,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Pomegranate in , what should I do for Land Preparation (Timing + Practice)"
+Mosambi,,VNMKV Parbhani,Land Preparation (Timing + Practice),"I am a farmer in region of VNMKV Parbhani growing Mosambi in , what should I do for Land Preparation (Timing + Practice)"
+Soyabean,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Soyabean in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Cotton (Lint),Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Cotton (Lint) in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Rice,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Rice in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Tur,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Tur in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Sugarcane,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Sugarcane in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Maize,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Maize in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Bajra,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Bajra in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Udid,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Udid in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Moong,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Moong in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Groundnut,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Groundnut in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Jowar,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Jowar in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Ragi,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Ragi in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Nigerseed,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Nigerseed in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Sesamum,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Sesamum in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Sunflower,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Sunflower in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Onion,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Onion in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Tomato,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Tomato in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Green Chilly,Kharif,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Green Chilly in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Gram,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Gram in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Jowar,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Jowar in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Wheat,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Wheat in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Maize,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Maize in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Safflower,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Safflower in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Mustard,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Mustard in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Linseed,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Linseed in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Sunflower,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Sunflower in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Sesame,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Sesame in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Onion,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Onion in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Tomato,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Tomato in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Green Chilly,Rabi,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Green Chilly in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Mango,,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Mango in , what should I do for Sowing (Seed Variety & Practice)"
+Orange ,,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Orange  in , what should I do for Sowing (Seed Variety & Practice)"
+Grapes,,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Grapes in , what should I do for Sowing (Seed Variety & Practice)"
+Banana,,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Banana in , what should I do for Sowing (Seed Variety & Practice)"
+Pomegranate,,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Pomegranate in , what should I do for Sowing (Seed Variety & Practice)"
+Mosambi,,VNMKV Parbhani,Sowing (Seed Variety & Practice),"I am a farmer in region of VNMKV Parbhani growing Mosambi in , what should I do for Sowing (Seed Variety & Practice)"
+Soyabean,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Soyabean, what should i do for seed treatment & preventive measure for pest & diseases"
+Cotton (Lint),Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Cotton (Lint), what should i do for seed treatment & preventive measure for pest & diseases"
+Rice,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Rice, what should i do for seed treatment & preventive measure for pest & diseases"
+Tur,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Tur, what should i do for seed treatment & preventive measure for pest & diseases"
+Sugarcane,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Sugarcane, what should i do for seed treatment & preventive measure for pest & diseases"
+Maize,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Maize, what should i do for seed treatment & preventive measure for pest & diseases"
+Bajra,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Bajra, what should i do for seed treatment & preventive measure for pest & diseases"
+Udid,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Udid, what should i do for seed treatment & preventive measure for pest & diseases"
+Moong,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Moong, what should i do for seed treatment & preventive measure for pest & diseases"
+Groundnut,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Groundnut, what should i do for seed treatment & preventive measure for pest & diseases"
+Jowar,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Jowar, what should i do for seed treatment & preventive measure for pest & diseases"
+Ragi,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Ragi, what should i do for seed treatment & preventive measure for pest & diseases"
+Nigerseed,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Nigerseed, what should i do for seed treatment & preventive measure for pest & diseases"
+Sesamum,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Sesamum, what should i do for seed treatment & preventive measure for pest & diseases"
+Sunflower,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Sunflower, what should i do for seed treatment & preventive measure for pest & diseases"
+Onion,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Onion, what should i do for seed treatment & preventive measure for pest & diseases"
+Tomato,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Tomato, what should i do for seed treatment & preventive measure for pest & diseases"
+Green Chilly,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Kharif in Green Chilly, what should i do for seed treatment & preventive measure for pest & diseases"
+Gram,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Gram, what should i do for seed treatment & preventive measure for pest & diseases"
+Jowar,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Jowar, what should i do for seed treatment & preventive measure for pest & diseases"
+Wheat,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Wheat, what should i do for seed treatment & preventive measure for pest & diseases"
+Maize,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Maize, what should i do for seed treatment & preventive measure for pest & diseases"
+Safflower,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Safflower, what should i do for seed treatment & preventive measure for pest & diseases"
+Mustard,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Mustard, what should i do for seed treatment & preventive measure for pest & diseases"
+Linseed,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Linseed, what should i do for seed treatment & preventive measure for pest & diseases"
+Sunflower,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Sunflower, what should i do for seed treatment & preventive measure for pest & diseases"
+Sesame,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Sesame, what should i do for seed treatment & preventive measure for pest & diseases"
+Onion,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Onion, what should i do for seed treatment & preventive measure for pest & diseases"
+Tomato,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Tomato, what should i do for seed treatment & preventive measure for pest & diseases"
+Green Chilly,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing Rabi in Green Chilly, what should i do for seed treatment & preventive measure for pest & diseases"
+Mango,,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing  in Mango, what should i do for seed treatment & preventive measure for pest & diseases"
+Orange ,,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing  in Orange , what should i do for seed treatment & preventive measure for pest & diseases"
+Grapes,,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing  in Grapes, what should i do for seed treatment & preventive measure for pest & diseases"
+Banana,,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing  in Banana, what should i do for seed treatment & preventive measure for pest & diseases"
+Pomegranate,,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing  in Pomegranate, what should i do for seed treatment & preventive measure for pest & diseases"
+Mosambi,,VNMKV Parbhani,"Pest & Disease Management
+(Preventive)","I am a farmer in region of VNMKV Parbhanigrowing  in Mosambi, what should i do for seed treatment & preventive measure for pest & diseases"
+Soyabean,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Soyabean in Kharif, what should I do for Weed Management"
+Cotton (Lint),Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Cotton (Lint) in Kharif, what should I do for Weed Management"
+Rice,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Rice in Kharif, what should I do for Weed Management"
+Tur,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Tur in Kharif, what should I do for Weed Management"
+Sugarcane,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Sugarcane in Kharif, what should I do for Weed Management"
+Maize,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Maize in Kharif, what should I do for Weed Management"
+Bajra,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Bajra in Kharif, what should I do for Weed Management"
+Udid,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Udid in Kharif, what should I do for Weed Management"
+Moong,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Moong in Kharif, what should I do for Weed Management"
+Groundnut,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Groundnut in Kharif, what should I do for Weed Management"
+Jowar,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Jowar in Kharif, what should I do for Weed Management"
+Ragi,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Ragi in Kharif, what should I do for Weed Management"
+Nigerseed,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Nigerseed in Kharif, what should I do for Weed Management"
+Sesamum,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Sesamum in Kharif, what should I do for Weed Management"
+Sunflower,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Sunflower in Kharif, what should I do for Weed Management"
+Onion,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Onion in Kharif, what should I do for Weed Management"
+Tomato,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Tomato in Kharif, what should I do for Weed Management"
+Green Chilly,Kharif,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Green Chilly in Kharif, what should I do for Weed Management"
+Gram,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Gram in Rabi, what should I do for Weed Management"
+Jowar,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Jowar in Rabi, what should I do for Weed Management"
+Wheat,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Wheat in Rabi, what should I do for Weed Management"
+Maize,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Maize in Rabi, what should I do for Weed Management"
+Safflower,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Safflower in Rabi, what should I do for Weed Management"
+Mustard,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Mustard in Rabi, what should I do for Weed Management"
+Linseed,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Linseed in Rabi, what should I do for Weed Management"
+Sunflower,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Sunflower in Rabi, what should I do for Weed Management"
+Sesame,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Sesame in Rabi, what should I do for Weed Management"
+Onion,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Onion in Rabi, what should I do for Weed Management"
+Tomato,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Tomato in Rabi, what should I do for Weed Management"
+Green Chilly,Rabi,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Green Chilly in Rabi, what should I do for Weed Management"
+Mango,,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Mango in , what should I do for Weed Management"
+Orange ,,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Orange  in , what should I do for Weed Management"
+Grapes,,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Grapes in , what should I do for Weed Management"
+Banana,,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Banana in , what should I do for Weed Management"
+Pomegranate,,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Pomegranate in , what should I do for Weed Management"
+Mosambi,,VNMKV Parbhani,Weed Management,"I am a farmer in region of VNMKV Parbhani growing Mosambi in , what should I do for Weed Management"
+Soyabean,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Soyabean, what fertiliser, dosage & quantity should i apply for basal application"
+Cotton (Lint),Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Cotton (Lint), what fertiliser, dosage & quantity should i apply for basal application"
+Rice,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Rice, what fertiliser, dosage & quantity should i apply for basal application"
+Tur,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Tur, what fertiliser, dosage & quantity should i apply for basal application"
+Sugarcane,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Sugarcane, what fertiliser, dosage & quantity should i apply for basal application"
+Maize,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Maize, what fertiliser, dosage & quantity should i apply for basal application"
+Bajra,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Bajra, what fertiliser, dosage & quantity should i apply for basal application"
+Udid,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Udid, what fertiliser, dosage & quantity should i apply for basal application"
+Moong,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Moong, what fertiliser, dosage & quantity should i apply for basal application"
+Groundnut,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Groundnut, what fertiliser, dosage & quantity should i apply for basal application"
+Jowar,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Jowar, what fertiliser, dosage & quantity should i apply for basal application"
+Ragi,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Ragi, what fertiliser, dosage & quantity should i apply for basal application"
+Nigerseed,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Nigerseed, what fertiliser, dosage & quantity should i apply for basal application"
+Sesamum,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Sesamum, what fertiliser, dosage & quantity should i apply for basal application"
+Sunflower,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Sunflower, what fertiliser, dosage & quantity should i apply for basal application"
+Onion,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Onion, what fertiliser, dosage & quantity should i apply for basal application"
+Tomato,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Tomato, what fertiliser, dosage & quantity should i apply for basal application"
+Green Chilly,Kharif,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Kharif in Green Chilly, what fertiliser, dosage & quantity should i apply for basal application"
+Gram,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Gram, what fertiliser, dosage & quantity should i apply for basal application"
+Jowar,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Jowar, what fertiliser, dosage & quantity should i apply for basal application"
+Wheat,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Wheat, what fertiliser, dosage & quantity should i apply for basal application"
+Maize,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Maize, what fertiliser, dosage & quantity should i apply for basal application"
+Safflower,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Safflower, what fertiliser, dosage & quantity should i apply for basal application"
+Mustard,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Mustard, what fertiliser, dosage & quantity should i apply for basal application"
+Linseed,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Linseed, what fertiliser, dosage & quantity should i apply for basal application"
+Sunflower,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Sunflower, what fertiliser, dosage & quantity should i apply for basal application"
+Sesame,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Sesame, what fertiliser, dosage & quantity should i apply for basal application"
+Onion,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Onion, what fertiliser, dosage & quantity should i apply for basal application"
+Tomato,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Tomato, what fertiliser, dosage & quantity should i apply for basal application"
+Green Chilly,Rabi,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing Rabi in Green Chilly, what fertiliser, dosage & quantity should i apply for basal application"
+Mango,,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing  in Mango, what fertiliser, dosage & quantity should i apply for basal application"
+Orange ,,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing  in Orange , what fertiliser, dosage & quantity should i apply for basal application"
+Grapes,,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing  in Grapes, what fertiliser, dosage & quantity should i apply for basal application"
+Banana,,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing  in Banana, what fertiliser, dosage & quantity should i apply for basal application"
+Pomegranate,,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing  in Pomegranate, what fertiliser, dosage & quantity should i apply for basal application"
+Mosambi,,VNMKV Parbhani,"Fertiliser 
+(Basal Application)","I am a farmer in region of VNMKV Parbhani growing  in Mosambi, what fertiliser, dosage & quantity should i apply for basal application"
+Soyabean,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Soyabean, what fertiliser, dosage & quantity should i apply for top dressing"
+Cotton (Lint),Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Cotton (Lint), what fertiliser, dosage & quantity should i apply for top dressing"
+Rice,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Rice, what fertiliser, dosage & quantity should i apply for top dressing"
+Tur,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Tur, what fertiliser, dosage & quantity should i apply for top dressing"
+Sugarcane,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Sugarcane, what fertiliser, dosage & quantity should i apply for top dressing"
+Maize,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Maize, what fertiliser, dosage & quantity should i apply for top dressing"
+Bajra,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Bajra, what fertiliser, dosage & quantity should i apply for top dressing"
+Udid,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Udid, what fertiliser, dosage & quantity should i apply for top dressing"
+Moong,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Moong, what fertiliser, dosage & quantity should i apply for top dressing"
+Groundnut,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Groundnut, what fertiliser, dosage & quantity should i apply for top dressing"
+Jowar,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Jowar, what fertiliser, dosage & quantity should i apply for top dressing"
+Ragi,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Ragi, what fertiliser, dosage & quantity should i apply for top dressing"
+Nigerseed,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Nigerseed, what fertiliser, dosage & quantity should i apply for top dressing"
+Sesamum,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Sesamum, what fertiliser, dosage & quantity should i apply for top dressing"
+Sunflower,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Sunflower, what fertiliser, dosage & quantity should i apply for top dressing"
+Onion,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Onion, what fertiliser, dosage & quantity should i apply for top dressing"
+Tomato,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Tomato, what fertiliser, dosage & quantity should i apply for top dressing"
+Green Chilly,Kharif,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Kharif in Green Chilly, what fertiliser, dosage & quantity should i apply for top dressing"
+Gram,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Gram, what fertiliser, dosage & quantity should i apply for top dressing"
+Jowar,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Jowar, what fertiliser, dosage & quantity should i apply for top dressing"
+Wheat,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Wheat, what fertiliser, dosage & quantity should i apply for top dressing"
+Maize,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Maize, what fertiliser, dosage & quantity should i apply for top dressing"
+Safflower,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Safflower, what fertiliser, dosage & quantity should i apply for top dressing"
+Mustard,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Mustard, what fertiliser, dosage & quantity should i apply for top dressing"
+Linseed,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Linseed, what fertiliser, dosage & quantity should i apply for top dressing"
+Sunflower,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Sunflower, what fertiliser, dosage & quantity should i apply for top dressing"
+Sesame,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Sesame, what fertiliser, dosage & quantity should i apply for top dressing"
+Onion,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Onion, what fertiliser, dosage & quantity should i apply for top dressing"
+Tomato,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Tomato, what fertiliser, dosage & quantity should i apply for top dressing"
+Green Chilly,Rabi,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing Rabi in Green Chilly, what fertiliser, dosage & quantity should i apply for top dressing"
+Mango,,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing  in Mango, what fertiliser, dosage & quantity should i apply for top dressing"
+Orange ,,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing  in Orange , what fertiliser, dosage & quantity should i apply for top dressing"
+Grapes,,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing  in Grapes, what fertiliser, dosage & quantity should i apply for top dressing"
+Banana,,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing  in Banana, what fertiliser, dosage & quantity should i apply for top dressing"
+Pomegranate,,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing  in Pomegranate, what fertiliser, dosage & quantity should i apply for top dressing"
+Mosambi,,VNMKV Parbhani,"Fertiliser 
+(Top Dressing)","I am a farmer in region of VNMKV Parbhani growing  in Mosambi, what fertiliser, dosage & quantity should i apply for top dressing"
+Soyabean,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Soyabean, what pests & diseases can occur, what are the symptoms & remedial measures"
+Cotton (Lint),Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Cotton (Lint), what pests & diseases can occur, what are the symptoms & remedial measures"
+Rice,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Rice, what pests & diseases can occur, what are the symptoms & remedial measures"
+Tur,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Tur, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sugarcane,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Sugarcane, what pests & diseases can occur, what are the symptoms & remedial measures"
+Maize,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Maize, what pests & diseases can occur, what are the symptoms & remedial measures"
+Bajra,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Bajra, what pests & diseases can occur, what are the symptoms & remedial measures"
+Udid,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Udid, what pests & diseases can occur, what are the symptoms & remedial measures"
+Moong,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Moong, what pests & diseases can occur, what are the symptoms & remedial measures"
+Groundnut,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Groundnut, what pests & diseases can occur, what are the symptoms & remedial measures"
+Jowar,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Jowar, what pests & diseases can occur, what are the symptoms & remedial measures"
+Ragi,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Ragi, what pests & diseases can occur, what are the symptoms & remedial measures"
+Nigerseed,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Nigerseed, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sesamum,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Sesamum, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sunflower,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Sunflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+Onion,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Onion, what pests & diseases can occur, what are the symptoms & remedial measures"
+Tomato,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Tomato, what pests & diseases can occur, what are the symptoms & remedial measures"
+Green Chilly,Kharif,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Kharif in Green Chilly, what pests & diseases can occur, what are the symptoms & remedial measures"
+Gram,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Gram, what pests & diseases can occur, what are the symptoms & remedial measures"
+Jowar,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Jowar, what pests & diseases can occur, what are the symptoms & remedial measures"
+Wheat,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Wheat, what pests & diseases can occur, what are the symptoms & remedial measures"
+Maize,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Maize, what pests & diseases can occur, what are the symptoms & remedial measures"
+Safflower,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Safflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+Mustard,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Mustard, what pests & diseases can occur, what are the symptoms & remedial measures"
+Linseed,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Linseed, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sunflower,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Sunflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sesame,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Sesame, what pests & diseases can occur, what are the symptoms & remedial measures"
+Onion,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Onion, what pests & diseases can occur, what are the symptoms & remedial measures"
+Tomato,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Tomato, what pests & diseases can occur, what are the symptoms & remedial measures"
+Green Chilly,Rabi,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing Rabi in Green Chilly, what pests & diseases can occur, what are the symptoms & remedial measures"
+Mango,,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing  in Mango, what pests & diseases can occur, what are the symptoms & remedial measures"
+Orange ,,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing  in Orange , what pests & diseases can occur, what are the symptoms & remedial measures"
+Grapes,,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing  in Grapes, what pests & diseases can occur, what are the symptoms & remedial measures"
+Banana,,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing  in Banana, what pests & diseases can occur, what are the symptoms & remedial measures"
+Pomegranate,,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing  in Pomegranate, what pests & diseases can occur, what are the symptoms & remedial measures"
+Mosambi,,VNMKV Parbhani,"Pest & Disease Management
+(Remedial)","I am a farmer in region of VNMKV Parbhani growing  in Mosambi, what pests & diseases can occur, what are the symptoms & remedial measures"
+Soyabean,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Soyabean in Kharif, what should I do for Post Harvest - Storage Management"
+Cotton (Lint),Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Cotton (Lint) in Kharif, what should I do for Post Harvest - Storage Management"
+Rice,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Rice in Kharif, what should I do for Post Harvest - Storage Management"
+Tur,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Tur in Kharif, what should I do for Post Harvest - Storage Management"
+Sugarcane,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Sugarcane in Kharif, what should I do for Post Harvest - Storage Management"
+Maize,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Maize in Kharif, what should I do for Post Harvest - Storage Management"
+Bajra,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Bajra in Kharif, what should I do for Post Harvest - Storage Management"
+Udid,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Udid in Kharif, what should I do for Post Harvest - Storage Management"
+Moong,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Moong in Kharif, what should I do for Post Harvest - Storage Management"
+Groundnut,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Groundnut in Kharif, what should I do for Post Harvest - Storage Management"
+Jowar,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Jowar in Kharif, what should I do for Post Harvest - Storage Management"
+Ragi,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Ragi in Kharif, what should I do for Post Harvest - Storage Management"
+Nigerseed,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Nigerseed in Kharif, what should I do for Post Harvest - Storage Management"
+Sesamum,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Sesamum in Kharif, what should I do for Post Harvest - Storage Management"
+Sunflower,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Sunflower in Kharif, what should I do for Post Harvest - Storage Management"
+Onion,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Onion in Kharif, what should I do for Post Harvest - Storage Management"
+Tomato,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Tomato in Kharif, what should I do for Post Harvest - Storage Management"
+Green Chilly,Kharif,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Green Chilly in Kharif, what should I do for Post Harvest - Storage Management"
+Gram,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Gram in Rabi, what should I do for Post Harvest - Storage Management"
+Jowar,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Jowar in Rabi, what should I do for Post Harvest - Storage Management"
+Wheat,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Wheat in Rabi, what should I do for Post Harvest - Storage Management"
+Maize,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Maize in Rabi, what should I do for Post Harvest - Storage Management"
+Safflower,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Safflower in Rabi, what should I do for Post Harvest - Storage Management"
+Mustard,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Mustard in Rabi, what should I do for Post Harvest - Storage Management"
+Linseed,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Linseed in Rabi, what should I do for Post Harvest - Storage Management"
+Sunflower,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Sunflower in Rabi, what should I do for Post Harvest - Storage Management"
+Sesame,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Sesame in Rabi, what should I do for Post Harvest - Storage Management"
+Onion,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Onion in Rabi, what should I do for Post Harvest - Storage Management"
+Tomato,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Tomato in Rabi, what should I do for Post Harvest - Storage Management"
+Green Chilly,Rabi,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Green Chilly in Rabi, what should I do for Post Harvest - Storage Management"
+Mango,,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Mango in , what should I do for Post Harvest - Storage Management"
+Orange ,,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Orange  in , what should I do for Post Harvest - Storage Management"
+Grapes,,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Grapes in , what should I do for Post Harvest - Storage Management"
+Banana,,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Banana in , what should I do for Post Harvest - Storage Management"
+Pomegranate,,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Pomegranate in , what should I do for Post Harvest - Storage Management"
+Mosambi,,VNMKV Parbhani,Post Harvest - Storage Management,"I am a farmer in region of VNMKV Parbhani growing Mosambi in , what should I do for Post Harvest - Storage Management"

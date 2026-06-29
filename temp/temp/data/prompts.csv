@@ -1,0 +1,433 @@
+#,Crop,Season,Region,Category,Prompt
+1,Soyabean,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Soyabean in Kharif, what should I do for Land Preparation (Timing + Practice)"
+2,Cotton (Lint),Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Cotton (Lint) in Kharif, what should I do for Land Preparation (Timing + Practice)"
+3,Rice,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Rice in Kharif, what should I do for Land Preparation (Timing + Practice)"
+4,Tur,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Tur in Kharif, what should I do for Land Preparation (Timing + Practice)"
+5,Sugarcane,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Sugarcane in Kharif, what should I do for Land Preparation (Timing + Practice)"
+6,Maize,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Maize in Kharif, what should I do for Land Preparation (Timing + Practice)"
+7,Bajra,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Bajra in Kharif, what should I do for Land Preparation (Timing + Practice)"
+8,Udid,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Udid in Kharif, what should I do for Land Preparation (Timing + Practice)"
+9,Moong,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Moong in Kharif, what should I do for Land Preparation (Timing + Practice)"
+10,Groundnut,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Groundnut in Kharif, what should I do for Land Preparation (Timing + Practice)"
+11,Jowar,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Jowar in Kharif, what should I do for Land Preparation (Timing + Practice)"
+12,Ragi,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Ragi in Kharif, what should I do for Land Preparation (Timing + Practice)"
+13,Nigerseed,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Nigerseed in Kharif, what should I do for Land Preparation (Timing + Practice)"
+14,Sesamum,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Sesamum in Kharif, what should I do for Land Preparation (Timing + Practice)"
+15,Sunflower,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Sunflower in Kharif, what should I do for Land Preparation (Timing + Practice)"
+16,Onion,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Onion in Kharif, what should I do for Land Preparation (Timing + Practice)"
+17,Tomato,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Tomato in Kharif, what should I do for Land Preparation (Timing + Practice)"
+18,Green Chilly,Kharif,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Green Chilly in Kharif, what should I do for Land Preparation (Timing + Practice)"
+19,Gram,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Gram in Rabi, what should I do for Land Preparation (Timing + Practice)"
+20,Jowar,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Jowar in Rabi, what should I do for Land Preparation (Timing + Practice)"
+21,Wheat,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Wheat in Rabi, what should I do for Land Preparation (Timing + Practice)"
+22,Maize,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Maize in Rabi, what should I do for Land Preparation (Timing + Practice)"
+23,Safflower,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Safflower in Rabi, what should I do for Land Preparation (Timing + Practice)"
+24,Mustard,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Mustard in Rabi, what should I do for Land Preparation (Timing + Practice)"
+25,Linseed,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Linseed in Rabi, what should I do for Land Preparation (Timing + Practice)"
+26,Sunflower,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Sunflower in Rabi, what should I do for Land Preparation (Timing + Practice)"
+27,Sesame,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Sesame in Rabi, what should I do for Land Preparation (Timing + Practice)"
+28,Onion,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Onion in Rabi, what should I do for Land Preparation (Timing + Practice)"
+29,Tomato,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Tomato in Rabi, what should I do for Land Preparation (Timing + Practice)"
+30,Green Chilly,Rabi,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Green Chilly in Rabi, what should I do for Land Preparation (Timing + Practice)"
+31,Mango,,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Mango in , what should I do for Land Preparation (Timing + Practice)"
+32,Orange ,,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Orange  in , what should I do for Land Preparation (Timing + Practice)"
+33,Grapes,,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Grapes in , what should I do for Land Preparation (Timing + Practice)"
+34,Banana,,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Banana in , what should I do for Land Preparation (Timing + Practice)"
+35,Pomegranate,,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Pomegranate in , what should I do for Land Preparation (Timing + Practice)"
+36,Mosambi,,MPKV Rahuri,Land Preparation (Timing + Practice),"I am a farmer in region of MPKV Rahuri growing Mosambi in , what should I do for Land Preparation (Timing + Practice)"
+1,Soyabean,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Soyabean in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+2,Cotton (Lint),Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Cotton (Lint) in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+3,Rice,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Rice in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+4,Tur,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Tur in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+5,Sugarcane,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Sugarcane in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+6,Maize,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Maize in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+7,Bajra,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Bajra in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+8,Udid,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Udid in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+9,Moong,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Moong in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+10,Groundnut,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Groundnut in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+11,Jowar,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Jowar in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+12,Ragi,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Ragi in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+13,Nigerseed,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Nigerseed in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+14,Sesamum,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Sesamum in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+15,Sunflower,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Sunflower in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+16,Onion,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Onion in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+17,Tomato,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Tomato in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+18,Green Chilly,Kharif,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Green Chilly in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+19,Gram,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Gram in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+20,Jowar,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Jowar in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+21,Wheat,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Wheat in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+22,Maize,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Maize in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+23,Safflower,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Safflower in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+24,Mustard,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Mustard in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+25,Linseed,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Linseed in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+26,Sunflower,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Sunflower in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+27,Sesame,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Sesame in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+28,Onion,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Onion in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+29,Tomato,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Tomato in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+30,Green Chilly,Rabi,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Green Chilly in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+31,Mango,,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Mango in , what should I do for Sowing (Seed Variety & Practice)"
+32,Orange ,,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Orange  in , what should I do for Sowing (Seed Variety & Practice)"
+33,Grapes,,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Grapes in , what should I do for Sowing (Seed Variety & Practice)"
+34,Banana,,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Banana in , what should I do for Sowing (Seed Variety & Practice)"
+35,Pomegranate,,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Pomegranate in , what should I do for Sowing (Seed Variety & Practice)"
+36,Mosambi,,MPKV Rahuri,Sowing (Seed Variety & Practice),"I am a farmer in region of MPKV Rahuri growing Mosambi in , what should I do for Sowing (Seed Variety & Practice)"
+1,Soyabean,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Soyabean, what should i do for seed treatment & preventive measure for pest & diseases"
+2,Cotton (Lint),Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Cotton (Lint), what should i do for seed treatment & preventive measure for pest & diseases"
+3,Rice,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Rice, what should i do for seed treatment & preventive measure for pest & diseases"
+4,Tur,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Tur, what should i do for seed treatment & preventive measure for pest & diseases"
+5,Sugarcane,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Sugarcane, what should i do for seed treatment & preventive measure for pest & diseases"
+6,Maize,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Maize, what should i do for seed treatment & preventive measure for pest & diseases"
+7,Bajra,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Bajra, what should i do for seed treatment & preventive measure for pest & diseases"
+8,Udid,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Udid, what should i do for seed treatment & preventive measure for pest & diseases"
+9,Moong,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Moong, what should i do for seed treatment & preventive measure for pest & diseases"
+10,Groundnut,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Groundnut, what should i do for seed treatment & preventive measure for pest & diseases"
+11,Jowar,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Jowar, what should i do for seed treatment & preventive measure for pest & diseases"
+12,Ragi,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Ragi, what should i do for seed treatment & preventive measure for pest & diseases"
+13,Nigerseed,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Nigerseed, what should i do for seed treatment & preventive measure for pest & diseases"
+14,Sesamum,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Sesamum, what should i do for seed treatment & preventive measure for pest & diseases"
+15,Sunflower,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Sunflower, what should i do for seed treatment & preventive measure for pest & diseases"
+16,Onion,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Onion, what should i do for seed treatment & preventive measure for pest & diseases"
+17,Tomato,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Tomato, what should i do for seed treatment & preventive measure for pest & diseases"
+18,Green Chilly,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Kharif in Green Chilly, what should i do for seed treatment & preventive measure for pest & diseases"
+19,Gram,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Gram, what should i do for seed treatment & preventive measure for pest & diseases"
+20,Jowar,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Jowar, what should i do for seed treatment & preventive measure for pest & diseases"
+21,Wheat,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Wheat, what should i do for seed treatment & preventive measure for pest & diseases"
+22,Maize,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Maize, what should i do for seed treatment & preventive measure for pest & diseases"
+23,Safflower,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Safflower, what should i do for seed treatment & preventive measure for pest & diseases"
+24,Mustard,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Mustard, what should i do for seed treatment & preventive measure for pest & diseases"
+25,Linseed,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Linseed, what should i do for seed treatment & preventive measure for pest & diseases"
+26,Sunflower,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Sunflower, what should i do for seed treatment & preventive measure for pest & diseases"
+27,Sesame,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Sesame, what should i do for seed treatment & preventive measure for pest & diseases"
+28,Onion,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Onion, what should i do for seed treatment & preventive measure for pest & diseases"
+29,Tomato,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Tomato, what should i do for seed treatment & preventive measure for pest & diseases"
+30,Green Chilly,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing Rabi in Green Chilly, what should i do for seed treatment & preventive measure for pest & diseases"
+31,Mango,,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing  in Mango, what should i do for seed treatment & preventive measure for pest & diseases"
+32,Orange ,,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing  in Orange , what should i do for seed treatment & preventive measure for pest & diseases"
+33,Grapes,,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing  in Grapes, what should i do for seed treatment & preventive measure for pest & diseases"
+34,Banana,,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing  in Banana, what should i do for seed treatment & preventive measure for pest & diseases"
+35,Pomegranate,,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing  in Pomegranate, what should i do for seed treatment & preventive measure for pest & diseases"
+36,Mosambi,,MPKV Rahuri,"Pest & Disease Management
+(Preventive)","I am a farmer in region of MPKV Rahurigrowing  in Mosambi, what should i do for seed treatment & preventive measure for pest & diseases"
+1,Soyabean,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Soyabean in Kharif, what should I do for Weed Management"
+2,Cotton (Lint),Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Cotton (Lint) in Kharif, what should I do for Weed Management"
+3,Rice,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Rice in Kharif, what should I do for Weed Management"
+4,Tur,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Tur in Kharif, what should I do for Weed Management"
+5,Sugarcane,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Sugarcane in Kharif, what should I do for Weed Management"
+6,Maize,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Maize in Kharif, what should I do for Weed Management"
+7,Bajra,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Bajra in Kharif, what should I do for Weed Management"
+8,Udid,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Udid in Kharif, what should I do for Weed Management"
+9,Moong,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Moong in Kharif, what should I do for Weed Management"
+10,Groundnut,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Groundnut in Kharif, what should I do for Weed Management"
+11,Jowar,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Jowar in Kharif, what should I do for Weed Management"
+12,Ragi,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Ragi in Kharif, what should I do for Weed Management"
+13,Nigerseed,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Nigerseed in Kharif, what should I do for Weed Management"
+14,Sesamum,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Sesamum in Kharif, what should I do for Weed Management"
+15,Sunflower,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Sunflower in Kharif, what should I do for Weed Management"
+16,Onion,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Onion in Kharif, what should I do for Weed Management"
+17,Tomato,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Tomato in Kharif, what should I do for Weed Management"
+18,Green Chilly,Kharif,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Green Chilly in Kharif, what should I do for Weed Management"
+19,Gram,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Gram in Rabi, what should I do for Weed Management"
+20,Jowar,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Jowar in Rabi, what should I do for Weed Management"
+21,Wheat,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Wheat in Rabi, what should I do for Weed Management"
+22,Maize,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Maize in Rabi, what should I do for Weed Management"
+23,Safflower,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Safflower in Rabi, what should I do for Weed Management"
+24,Mustard,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Mustard in Rabi, what should I do for Weed Management"
+25,Linseed,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Linseed in Rabi, what should I do for Weed Management"
+26,Sunflower,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Sunflower in Rabi, what should I do for Weed Management"
+27,Sesame,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Sesame in Rabi, what should I do for Weed Management"
+28,Onion,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Onion in Rabi, what should I do for Weed Management"
+29,Tomato,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Tomato in Rabi, what should I do for Weed Management"
+30,Green Chilly,Rabi,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Green Chilly in Rabi, what should I do for Weed Management"
+31,Mango,,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Mango in , what should I do for Weed Management"
+32,Orange ,,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Orange  in , what should I do for Weed Management"
+33,Grapes,,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Grapes in , what should I do for Weed Management"
+34,Banana,,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Banana in , what should I do for Weed Management"
+35,Pomegranate,,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Pomegranate in , what should I do for Weed Management"
+36,Mosambi,,MPKV Rahuri,Weed Management,"I am a farmer in region of MPKV Rahuri growing Mosambi in , what should I do for Weed Management"
+1,Soyabean,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Soyabean, what fertiliser, dosage & quantity should i apply for basal application"
+2,Cotton (Lint),Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Cotton (Lint), what fertiliser, dosage & quantity should i apply for basal application"
+3,Rice,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Rice, what fertiliser, dosage & quantity should i apply for basal application"
+4,Tur,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Tur, what fertiliser, dosage & quantity should i apply for basal application"
+5,Sugarcane,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Sugarcane, what fertiliser, dosage & quantity should i apply for basal application"
+6,Maize,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Maize, what fertiliser, dosage & quantity should i apply for basal application"
+7,Bajra,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Bajra, what fertiliser, dosage & quantity should i apply for basal application"
+8,Udid,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Udid, what fertiliser, dosage & quantity should i apply for basal application"
+9,Moong,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Moong, what fertiliser, dosage & quantity should i apply for basal application"
+10,Groundnut,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Groundnut, what fertiliser, dosage & quantity should i apply for basal application"
+11,Jowar,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Jowar, what fertiliser, dosage & quantity should i apply for basal application"
+12,Ragi,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Ragi, what fertiliser, dosage & quantity should i apply for basal application"
+13,Nigerseed,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Nigerseed, what fertiliser, dosage & quantity should i apply for basal application"
+14,Sesamum,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Sesamum, what fertiliser, dosage & quantity should i apply for basal application"
+15,Sunflower,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Sunflower, what fertiliser, dosage & quantity should i apply for basal application"
+16,Onion,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Onion, what fertiliser, dosage & quantity should i apply for basal application"
+17,Tomato,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Tomato, what fertiliser, dosage & quantity should i apply for basal application"
+18,Green Chilly,Kharif,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Kharif in Green Chilly, what fertiliser, dosage & quantity should i apply for basal application"
+19,Gram,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Gram, what fertiliser, dosage & quantity should i apply for basal application"
+20,Jowar,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Jowar, what fertiliser, dosage & quantity should i apply for basal application"
+21,Wheat,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Wheat, what fertiliser, dosage & quantity should i apply for basal application"
+22,Maize,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Maize, what fertiliser, dosage & quantity should i apply for basal application"
+23,Safflower,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Safflower, what fertiliser, dosage & quantity should i apply for basal application"
+24,Mustard,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Mustard, what fertiliser, dosage & quantity should i apply for basal application"
+25,Linseed,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Linseed, what fertiliser, dosage & quantity should i apply for basal application"
+26,Sunflower,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Sunflower, what fertiliser, dosage & quantity should i apply for basal application"
+27,Sesame,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Sesame, what fertiliser, dosage & quantity should i apply for basal application"
+28,Onion,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Onion, what fertiliser, dosage & quantity should i apply for basal application"
+29,Tomato,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Tomato, what fertiliser, dosage & quantity should i apply for basal application"
+30,Green Chilly,Rabi,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing Rabi in Green Chilly, what fertiliser, dosage & quantity should i apply for basal application"
+31,Mango,,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing  in Mango, what fertiliser, dosage & quantity should i apply for basal application"
+32,Orange ,,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing  in Orange , what fertiliser, dosage & quantity should i apply for basal application"
+33,Grapes,,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing  in Grapes, what fertiliser, dosage & quantity should i apply for basal application"
+34,Banana,,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing  in Banana, what fertiliser, dosage & quantity should i apply for basal application"
+35,Pomegranate,,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing  in Pomegranate, what fertiliser, dosage & quantity should i apply for basal application"
+36,Mosambi,,MPKV Rahuri,"Fertiliser 
+(Basal Application)","I am a farmer in region of MPKV Rahuri growing  in Mosambi, what fertiliser, dosage & quantity should i apply for basal application"
+1,Soyabean,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Soyabean, what fertiliser, dosage & quantity should i apply for top dressing"
+2,Cotton (Lint),Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Cotton (Lint), what fertiliser, dosage & quantity should i apply for top dressing"
+3,Rice,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Rice, what fertiliser, dosage & quantity should i apply for top dressing"
+4,Tur,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Tur, what fertiliser, dosage & quantity should i apply for top dressing"
+5,Sugarcane,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Sugarcane, what fertiliser, dosage & quantity should i apply for top dressing"
+6,Maize,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Maize, what fertiliser, dosage & quantity should i apply for top dressing"
+7,Bajra,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Bajra, what fertiliser, dosage & quantity should i apply for top dressing"
+8,Udid,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Udid, what fertiliser, dosage & quantity should i apply for top dressing"
+9,Moong,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Moong, what fertiliser, dosage & quantity should i apply for top dressing"
+10,Groundnut,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Groundnut, what fertiliser, dosage & quantity should i apply for top dressing"
+11,Jowar,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Jowar, what fertiliser, dosage & quantity should i apply for top dressing"
+12,Ragi,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Ragi, what fertiliser, dosage & quantity should i apply for top dressing"
+13,Nigerseed,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Nigerseed, what fertiliser, dosage & quantity should i apply for top dressing"
+14,Sesamum,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Sesamum, what fertiliser, dosage & quantity should i apply for top dressing"
+15,Sunflower,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Sunflower, what fertiliser, dosage & quantity should i apply for top dressing"
+16,Onion,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Onion, what fertiliser, dosage & quantity should i apply for top dressing"
+17,Tomato,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Tomato, what fertiliser, dosage & quantity should i apply for top dressing"
+18,Green Chilly,Kharif,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Kharif in Green Chilly, what fertiliser, dosage & quantity should i apply for top dressing"
+19,Gram,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Gram, what fertiliser, dosage & quantity should i apply for top dressing"
+20,Jowar,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Jowar, what fertiliser, dosage & quantity should i apply for top dressing"
+21,Wheat,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Wheat, what fertiliser, dosage & quantity should i apply for top dressing"
+22,Maize,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Maize, what fertiliser, dosage & quantity should i apply for top dressing"
+23,Safflower,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Safflower, what fertiliser, dosage & quantity should i apply for top dressing"
+24,Mustard,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Mustard, what fertiliser, dosage & quantity should i apply for top dressing"
+25,Linseed,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Linseed, what fertiliser, dosage & quantity should i apply for top dressing"
+26,Sunflower,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Sunflower, what fertiliser, dosage & quantity should i apply for top dressing"
+27,Sesame,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Sesame, what fertiliser, dosage & quantity should i apply for top dressing"
+28,Onion,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Onion, what fertiliser, dosage & quantity should i apply for top dressing"
+29,Tomato,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Tomato, what fertiliser, dosage & quantity should i apply for top dressing"
+30,Green Chilly,Rabi,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing Rabi in Green Chilly, what fertiliser, dosage & quantity should i apply for top dressing"
+31,Mango,,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing  in Mango, what fertiliser, dosage & quantity should i apply for top dressing"
+32,Orange ,,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing  in Orange , what fertiliser, dosage & quantity should i apply for top dressing"
+33,Grapes,,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing  in Grapes, what fertiliser, dosage & quantity should i apply for top dressing"
+34,Banana,,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing  in Banana, what fertiliser, dosage & quantity should i apply for top dressing"
+35,Pomegranate,,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing  in Pomegranate, what fertiliser, dosage & quantity should i apply for top dressing"
+36,Mosambi,,MPKV Rahuri,"Fertiliser 
+(Top Dressing)","I am a farmer in region of MPKV Rahuri growing  in Mosambi, what fertiliser, dosage & quantity should i apply for top dressing"
+1,Soyabean,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Soyabean, what pests & diseases can occur, what are the symptoms & remedial measures"
+2,Cotton (Lint),Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Cotton (Lint), what pests & diseases can occur, what are the symptoms & remedial measures"
+3,Rice,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Rice, what pests & diseases can occur, what are the symptoms & remedial measures"
+4,Tur,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Tur, what pests & diseases can occur, what are the symptoms & remedial measures"
+5,Sugarcane,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Sugarcane, what pests & diseases can occur, what are the symptoms & remedial measures"
+6,Maize,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Maize, what pests & diseases can occur, what are the symptoms & remedial measures"
+7,Bajra,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Bajra, what pests & diseases can occur, what are the symptoms & remedial measures"
+8,Udid,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Udid, what pests & diseases can occur, what are the symptoms & remedial measures"
+9,Moong,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Moong, what pests & diseases can occur, what are the symptoms & remedial measures"
+10,Groundnut,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Groundnut, what pests & diseases can occur, what are the symptoms & remedial measures"
+11,Jowar,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Jowar, what pests & diseases can occur, what are the symptoms & remedial measures"
+12,Ragi,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Ragi, what pests & diseases can occur, what are the symptoms & remedial measures"
+13,Nigerseed,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Nigerseed, what pests & diseases can occur, what are the symptoms & remedial measures"
+14,Sesamum,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Sesamum, what pests & diseases can occur, what are the symptoms & remedial measures"
+15,Sunflower,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Sunflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+16,Onion,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Onion, what pests & diseases can occur, what are the symptoms & remedial measures"
+17,Tomato,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Tomato, what pests & diseases can occur, what are the symptoms & remedial measures"
+18,Green Chilly,Kharif,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Kharif in Green Chilly, what pests & diseases can occur, what are the symptoms & remedial measures"
+19,Gram,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Gram, what pests & diseases can occur, what are the symptoms & remedial measures"
+20,Jowar,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Jowar, what pests & diseases can occur, what are the symptoms & remedial measures"
+21,Wheat,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Wheat, what pests & diseases can occur, what are the symptoms & remedial measures"
+22,Maize,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Maize, what pests & diseases can occur, what are the symptoms & remedial measures"
+23,Safflower,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Safflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+24,Mustard,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Mustard, what pests & diseases can occur, what are the symptoms & remedial measures"
+25,Linseed,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Linseed, what pests & diseases can occur, what are the symptoms & remedial measures"
+26,Sunflower,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Sunflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+27,Sesame,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Sesame, what pests & diseases can occur, what are the symptoms & remedial measures"
+28,Onion,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Onion, what pests & diseases can occur, what are the symptoms & remedial measures"
+29,Tomato,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Tomato, what pests & diseases can occur, what are the symptoms & remedial measures"
+30,Green Chilly,Rabi,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing Rabi in Green Chilly, what pests & diseases can occur, what are the symptoms & remedial measures"
+31,Mango,,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing  in Mango, what pests & diseases can occur, what are the symptoms & remedial measures"
+32,Orange ,,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing  in Orange , what pests & diseases can occur, what are the symptoms & remedial measures"
+33,Grapes,,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing  in Grapes, what pests & diseases can occur, what are the symptoms & remedial measures"
+34,Banana,,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing  in Banana, what pests & diseases can occur, what are the symptoms & remedial measures"
+35,Pomegranate,,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing  in Pomegranate, what pests & diseases can occur, what are the symptoms & remedial measures"
+36,Mosambi,,MPKV Rahuri,"Pest & Disease Management
+(Remedial)","I am a farmer in region of MPKV Rahuri growing  in Mosambi, what pests & diseases can occur, what are the symptoms & remedial measures"
+1,Soyabean,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Soyabean in Kharif, what should I do for Post Harvest - Storage Management"
+2,Cotton (Lint),Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Cotton (Lint) in Kharif, what should I do for Post Harvest - Storage Management"
+3,Rice,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Rice in Kharif, what should I do for Post Harvest - Storage Management"
+4,Tur,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Tur in Kharif, what should I do for Post Harvest - Storage Management"
+5,Sugarcane,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Sugarcane in Kharif, what should I do for Post Harvest - Storage Management"
+6,Maize,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Maize in Kharif, what should I do for Post Harvest - Storage Management"
+7,Bajra,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Bajra in Kharif, what should I do for Post Harvest - Storage Management"
+8,Udid,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Udid in Kharif, what should I do for Post Harvest - Storage Management"
+9,Moong,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Moong in Kharif, what should I do for Post Harvest - Storage Management"
+10,Groundnut,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Groundnut in Kharif, what should I do for Post Harvest - Storage Management"
+11,Jowar,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Jowar in Kharif, what should I do for Post Harvest - Storage Management"
+12,Ragi,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Ragi in Kharif, what should I do for Post Harvest - Storage Management"
+13,Nigerseed,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Nigerseed in Kharif, what should I do for Post Harvest - Storage Management"
+14,Sesamum,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Sesamum in Kharif, what should I do for Post Harvest - Storage Management"
+15,Sunflower,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Sunflower in Kharif, what should I do for Post Harvest - Storage Management"
+16,Onion,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Onion in Kharif, what should I do for Post Harvest - Storage Management"
+17,Tomato,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Tomato in Kharif, what should I do for Post Harvest - Storage Management"
+18,Green Chilly,Kharif,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Green Chilly in Kharif, what should I do for Post Harvest - Storage Management"
+19,Gram,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Gram in Rabi, what should I do for Post Harvest - Storage Management"
+20,Jowar,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Jowar in Rabi, what should I do for Post Harvest - Storage Management"
+21,Wheat,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Wheat in Rabi, what should I do for Post Harvest - Storage Management"
+22,Maize,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Maize in Rabi, what should I do for Post Harvest - Storage Management"
+23,Safflower,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Safflower in Rabi, what should I do for Post Harvest - Storage Management"
+24,Mustard,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Mustard in Rabi, what should I do for Post Harvest - Storage Management"
+25,Linseed,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Linseed in Rabi, what should I do for Post Harvest - Storage Management"
+26,Sunflower,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Sunflower in Rabi, what should I do for Post Harvest - Storage Management"
+27,Sesame,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Sesame in Rabi, what should I do for Post Harvest - Storage Management"
+28,Onion,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Onion in Rabi, what should I do for Post Harvest - Storage Management"
+29,Tomato,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Tomato in Rabi, what should I do for Post Harvest - Storage Management"
+30,Green Chilly,Rabi,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Green Chilly in Rabi, what should I do for Post Harvest - Storage Management"
+31,Mango,,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Mango in , what should I do for Post Harvest - Storage Management"
+32,Orange ,,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Orange  in , what should I do for Post Harvest - Storage Management"
+33,Grapes,,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Grapes in , what should I do for Post Harvest - Storage Management"
+34,Banana,,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Banana in , what should I do for Post Harvest - Storage Management"
+35,Pomegranate,,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Pomegranate in , what should I do for Post Harvest - Storage Management"
+36,Mosambi,,MPKV Rahuri,Post Harvest - Storage Management,"I am a farmer in region of MPKV Rahuri growing Mosambi in , what should I do for Post Harvest - Storage Management"

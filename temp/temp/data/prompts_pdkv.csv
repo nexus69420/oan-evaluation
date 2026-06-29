@@ -1,0 +1,433 @@
+Crop,Season,Region,Category,Prompt
+Soyabean,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Soyabean in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Cotton (Lint),Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Cotton (Lint) in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Rice,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Rice in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Tur,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Tur in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Sugarcane,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Sugarcane in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Maize,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Maize in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Bajra,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Bajra in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Udid,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Udid in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Moong,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Moong in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Groundnut,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Groundnut in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Jowar,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Jowar in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Ragi,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Ragi in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Nigerseed,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Nigerseed in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Sesamum,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Sesamum in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Sunflower,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Sunflower in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Onion,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Onion in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Tomato,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Tomato in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Green Chilly,Kharif,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Green Chilly in Kharif, what should I do for Land Preparation (Timing + Practice)"
+Gram,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Gram in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Jowar,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Jowar in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Wheat,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Wheat in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Maize,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Maize in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Safflower,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Safflower in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Mustard,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Mustard in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Linseed,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Linseed in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Sunflower,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Sunflower in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Sesame,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Sesame in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Onion,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Onion in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Tomato,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Tomato in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Green Chilly,Rabi,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Green Chilly in Rabi, what should I do for Land Preparation (Timing + Practice)"
+Mango,,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Mango in , what should I do for Land Preparation (Timing + Practice)"
+Orange ,,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Orange  in , what should I do for Land Preparation (Timing + Practice)"
+Grapes,,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Grapes in , what should I do for Land Preparation (Timing + Practice)"
+Banana,,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Banana in , what should I do for Land Preparation (Timing + Practice)"
+Pomegranate,,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Pomegranate in , what should I do for Land Preparation (Timing + Practice)"
+Mosambi,,PDKV Akola,Land Preparation (Timing + Practice),"I am a farmer in region of PDKV Akola growing Mosambi in , what should I do for Land Preparation (Timing + Practice)"
+Soyabean,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Soyabean in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Cotton (Lint),Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Cotton (Lint) in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Rice,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Rice in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Tur,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Tur in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Sugarcane,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Sugarcane in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Maize,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Maize in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Bajra,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Bajra in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Udid,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Udid in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Moong,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Moong in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Groundnut,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Groundnut in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Jowar,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Jowar in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Ragi,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Ragi in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Nigerseed,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Nigerseed in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Sesamum,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Sesamum in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Sunflower,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Sunflower in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Onion,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Onion in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Tomato,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Tomato in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Green Chilly,Kharif,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Green Chilly in Kharif, what should I do for Sowing (Seed Variety & Practice)"
+Gram,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Gram in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Jowar,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Jowar in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Wheat,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Wheat in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Maize,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Maize in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Safflower,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Safflower in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Mustard,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Mustard in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Linseed,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Linseed in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Sunflower,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Sunflower in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Sesame,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Sesame in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Onion,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Onion in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Tomato,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Tomato in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Green Chilly,Rabi,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Green Chilly in Rabi, what should I do for Sowing (Seed Variety & Practice)"
+Mango,,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Mango in , what should I do for Sowing (Seed Variety & Practice)"
+Orange ,,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Orange  in , what should I do for Sowing (Seed Variety & Practice)"
+Grapes,,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Grapes in , what should I do for Sowing (Seed Variety & Practice)"
+Banana,,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Banana in , what should I do for Sowing (Seed Variety & Practice)"
+Pomegranate,,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Pomegranate in , what should I do for Sowing (Seed Variety & Practice)"
+Mosambi,,PDKV Akola,Sowing (Seed Variety & Practice),"I am a farmer in region of PDKV Akola growing Mosambi in , what should I do for Sowing (Seed Variety & Practice)"
+Soyabean,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Soyabean, what should i do for seed treatment & preventive measure for pest & diseases"
+Cotton (Lint),Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Cotton (Lint), what should i do for seed treatment & preventive measure for pest & diseases"
+Rice,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Rice, what should i do for seed treatment & preventive measure for pest & diseases"
+Tur,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Tur, what should i do for seed treatment & preventive measure for pest & diseases"
+Sugarcane,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Sugarcane, what should i do for seed treatment & preventive measure for pest & diseases"
+Maize,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Maize, what should i do for seed treatment & preventive measure for pest & diseases"
+Bajra,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Bajra, what should i do for seed treatment & preventive measure for pest & diseases"
+Udid,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Udid, what should i do for seed treatment & preventive measure for pest & diseases"
+Moong,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Moong, what should i do for seed treatment & preventive measure for pest & diseases"
+Groundnut,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Groundnut, what should i do for seed treatment & preventive measure for pest & diseases"
+Jowar,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Jowar, what should i do for seed treatment & preventive measure for pest & diseases"
+Ragi,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Ragi, what should i do for seed treatment & preventive measure for pest & diseases"
+Nigerseed,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Nigerseed, what should i do for seed treatment & preventive measure for pest & diseases"
+Sesamum,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Sesamum, what should i do for seed treatment & preventive measure for pest & diseases"
+Sunflower,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Sunflower, what should i do for seed treatment & preventive measure for pest & diseases"
+Onion,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Onion, what should i do for seed treatment & preventive measure for pest & diseases"
+Tomato,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Tomato, what should i do for seed treatment & preventive measure for pest & diseases"
+Green Chilly,Kharif,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Kharif in Green Chilly, what should i do for seed treatment & preventive measure for pest & diseases"
+Gram,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Gram, what should i do for seed treatment & preventive measure for pest & diseases"
+Jowar,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Jowar, what should i do for seed treatment & preventive measure for pest & diseases"
+Wheat,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Wheat, what should i do for seed treatment & preventive measure for pest & diseases"
+Maize,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Maize, what should i do for seed treatment & preventive measure for pest & diseases"
+Safflower,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Safflower, what should i do for seed treatment & preventive measure for pest & diseases"
+Mustard,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Mustard, what should i do for seed treatment & preventive measure for pest & diseases"
+Linseed,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Linseed, what should i do for seed treatment & preventive measure for pest & diseases"
+Sunflower,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Sunflower, what should i do for seed treatment & preventive measure for pest & diseases"
+Sesame,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Sesame, what should i do for seed treatment & preventive measure for pest & diseases"
+Onion,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Onion, what should i do for seed treatment & preventive measure for pest & diseases"
+Tomato,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Tomato, what should i do for seed treatment & preventive measure for pest & diseases"
+Green Chilly,Rabi,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing Rabi in Green Chilly, what should i do for seed treatment & preventive measure for pest & diseases"
+Mango,,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing  in Mango, what should i do for seed treatment & preventive measure for pest & diseases"
+Orange ,,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing  in Orange , what should i do for seed treatment & preventive measure for pest & diseases"
+Grapes,,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing  in Grapes, what should i do for seed treatment & preventive measure for pest & diseases"
+Banana,,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing  in Banana, what should i do for seed treatment & preventive measure for pest & diseases"
+Pomegranate,,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing  in Pomegranate, what should i do for seed treatment & preventive measure for pest & diseases"
+Mosambi,,PDKV Akola,"Pest & Disease Management
+(Preventive)","I am a farmer in region of PDKV Akolagrowing  in Mosambi, what should i do for seed treatment & preventive measure for pest & diseases"
+Soyabean,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Soyabean in Kharif, what should I do for Weed Management"
+Cotton (Lint),Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Cotton (Lint) in Kharif, what should I do for Weed Management"
+Rice,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Rice in Kharif, what should I do for Weed Management"
+Tur,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Tur in Kharif, what should I do for Weed Management"
+Sugarcane,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Sugarcane in Kharif, what should I do for Weed Management"
+Maize,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Maize in Kharif, what should I do for Weed Management"
+Bajra,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Bajra in Kharif, what should I do for Weed Management"
+Udid,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Udid in Kharif, what should I do for Weed Management"
+Moong,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Moong in Kharif, what should I do for Weed Management"
+Groundnut,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Groundnut in Kharif, what should I do for Weed Management"
+Jowar,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Jowar in Kharif, what should I do for Weed Management"
+Ragi,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Ragi in Kharif, what should I do for Weed Management"
+Nigerseed,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Nigerseed in Kharif, what should I do for Weed Management"
+Sesamum,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Sesamum in Kharif, what should I do for Weed Management"
+Sunflower,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Sunflower in Kharif, what should I do for Weed Management"
+Onion,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Onion in Kharif, what should I do for Weed Management"
+Tomato,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Tomato in Kharif, what should I do for Weed Management"
+Green Chilly,Kharif,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Green Chilly in Kharif, what should I do for Weed Management"
+Gram,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Gram in Rabi, what should I do for Weed Management"
+Jowar,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Jowar in Rabi, what should I do for Weed Management"
+Wheat,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Wheat in Rabi, what should I do for Weed Management"
+Maize,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Maize in Rabi, what should I do for Weed Management"
+Safflower,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Safflower in Rabi, what should I do for Weed Management"
+Mustard,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Mustard in Rabi, what should I do for Weed Management"
+Linseed,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Linseed in Rabi, what should I do for Weed Management"
+Sunflower,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Sunflower in Rabi, what should I do for Weed Management"
+Sesame,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Sesame in Rabi, what should I do for Weed Management"
+Onion,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Onion in Rabi, what should I do for Weed Management"
+Tomato,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Tomato in Rabi, what should I do for Weed Management"
+Green Chilly,Rabi,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Green Chilly in Rabi, what should I do for Weed Management"
+Mango,,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Mango in , what should I do for Weed Management"
+Orange ,,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Orange  in , what should I do for Weed Management"
+Grapes,,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Grapes in , what should I do for Weed Management"
+Banana,,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Banana in , what should I do for Weed Management"
+Pomegranate,,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Pomegranate in , what should I do for Weed Management"
+Mosambi,,PDKV Akola,Weed Management,"I am a farmer in region of PDKV Akola growing Mosambi in , what should I do for Weed Management"
+Soyabean,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Soyabean, what fertiliser, dosage & quantity should i apply for basal application"
+Cotton (Lint),Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Cotton (Lint), what fertiliser, dosage & quantity should i apply for basal application"
+Rice,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Rice, what fertiliser, dosage & quantity should i apply for basal application"
+Tur,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Tur, what fertiliser, dosage & quantity should i apply for basal application"
+Sugarcane,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Sugarcane, what fertiliser, dosage & quantity should i apply for basal application"
+Maize,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Maize, what fertiliser, dosage & quantity should i apply for basal application"
+Bajra,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Bajra, what fertiliser, dosage & quantity should i apply for basal application"
+Udid,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Udid, what fertiliser, dosage & quantity should i apply for basal application"
+Moong,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Moong, what fertiliser, dosage & quantity should i apply for basal application"
+Groundnut,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Groundnut, what fertiliser, dosage & quantity should i apply for basal application"
+Jowar,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Jowar, what fertiliser, dosage & quantity should i apply for basal application"
+Ragi,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Ragi, what fertiliser, dosage & quantity should i apply for basal application"
+Nigerseed,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Nigerseed, what fertiliser, dosage & quantity should i apply for basal application"
+Sesamum,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Sesamum, what fertiliser, dosage & quantity should i apply for basal application"
+Sunflower,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Sunflower, what fertiliser, dosage & quantity should i apply for basal application"
+Onion,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Onion, what fertiliser, dosage & quantity should i apply for basal application"
+Tomato,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Tomato, what fertiliser, dosage & quantity should i apply for basal application"
+Green Chilly,Kharif,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Kharif in Green Chilly, what fertiliser, dosage & quantity should i apply for basal application"
+Gram,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Gram, what fertiliser, dosage & quantity should i apply for basal application"
+Jowar,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Jowar, what fertiliser, dosage & quantity should i apply for basal application"
+Wheat,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Wheat, what fertiliser, dosage & quantity should i apply for basal application"
+Maize,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Maize, what fertiliser, dosage & quantity should i apply for basal application"
+Safflower,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Safflower, what fertiliser, dosage & quantity should i apply for basal application"
+Mustard,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Mustard, what fertiliser, dosage & quantity should i apply for basal application"
+Linseed,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Linseed, what fertiliser, dosage & quantity should i apply for basal application"
+Sunflower,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Sunflower, what fertiliser, dosage & quantity should i apply for basal application"
+Sesame,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Sesame, what fertiliser, dosage & quantity should i apply for basal application"
+Onion,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Onion, what fertiliser, dosage & quantity should i apply for basal application"
+Tomato,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Tomato, what fertiliser, dosage & quantity should i apply for basal application"
+Green Chilly,Rabi,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing Rabi in Green Chilly, what fertiliser, dosage & quantity should i apply for basal application"
+Mango,,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing  in Mango, what fertiliser, dosage & quantity should i apply for basal application"
+Orange ,,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing  in Orange , what fertiliser, dosage & quantity should i apply for basal application"
+Grapes,,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing  in Grapes, what fertiliser, dosage & quantity should i apply for basal application"
+Banana,,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing  in Banana, what fertiliser, dosage & quantity should i apply for basal application"
+Pomegranate,,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing  in Pomegranate, what fertiliser, dosage & quantity should i apply for basal application"
+Mosambi,,PDKV Akola,"Fertiliser 
+(Basal Application)","I am a farmer in region of PDKV Akola growing  in Mosambi, what fertiliser, dosage & quantity should i apply for basal application"
+Soyabean,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Soyabean, what fertiliser, dosage & quantity should i apply for top dressing"
+Cotton (Lint),Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Cotton (Lint), what fertiliser, dosage & quantity should i apply for top dressing"
+Rice,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Rice, what fertiliser, dosage & quantity should i apply for top dressing"
+Tur,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Tur, what fertiliser, dosage & quantity should i apply for top dressing"
+Sugarcane,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Sugarcane, what fertiliser, dosage & quantity should i apply for top dressing"
+Maize,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Maize, what fertiliser, dosage & quantity should i apply for top dressing"
+Bajra,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Bajra, what fertiliser, dosage & quantity should i apply for top dressing"
+Udid,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Udid, what fertiliser, dosage & quantity should i apply for top dressing"
+Moong,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Moong, what fertiliser, dosage & quantity should i apply for top dressing"
+Groundnut,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Groundnut, what fertiliser, dosage & quantity should i apply for top dressing"
+Jowar,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Jowar, what fertiliser, dosage & quantity should i apply for top dressing"
+Ragi,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Ragi, what fertiliser, dosage & quantity should i apply for top dressing"
+Nigerseed,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Nigerseed, what fertiliser, dosage & quantity should i apply for top dressing"
+Sesamum,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Sesamum, what fertiliser, dosage & quantity should i apply for top dressing"
+Sunflower,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Sunflower, what fertiliser, dosage & quantity should i apply for top dressing"
+Onion,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Onion, what fertiliser, dosage & quantity should i apply for top dressing"
+Tomato,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Tomato, what fertiliser, dosage & quantity should i apply for top dressing"
+Green Chilly,Kharif,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Kharif in Green Chilly, what fertiliser, dosage & quantity should i apply for top dressing"
+Gram,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Gram, what fertiliser, dosage & quantity should i apply for top dressing"
+Jowar,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Jowar, what fertiliser, dosage & quantity should i apply for top dressing"
+Wheat,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Wheat, what fertiliser, dosage & quantity should i apply for top dressing"
+Maize,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Maize, what fertiliser, dosage & quantity should i apply for top dressing"
+Safflower,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Safflower, what fertiliser, dosage & quantity should i apply for top dressing"
+Mustard,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Mustard, what fertiliser, dosage & quantity should i apply for top dressing"
+Linseed,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Linseed, what fertiliser, dosage & quantity should i apply for top dressing"
+Sunflower,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Sunflower, what fertiliser, dosage & quantity should i apply for top dressing"
+Sesame,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Sesame, what fertiliser, dosage & quantity should i apply for top dressing"
+Onion,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Onion, what fertiliser, dosage & quantity should i apply for top dressing"
+Tomato,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Tomato, what fertiliser, dosage & quantity should i apply for top dressing"
+Green Chilly,Rabi,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing Rabi in Green Chilly, what fertiliser, dosage & quantity should i apply for top dressing"
+Mango,,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing  in Mango, what fertiliser, dosage & quantity should i apply for top dressing"
+Orange ,,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing  in Orange , what fertiliser, dosage & quantity should i apply for top dressing"
+Grapes,,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing  in Grapes, what fertiliser, dosage & quantity should i apply for top dressing"
+Banana,,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing  in Banana, what fertiliser, dosage & quantity should i apply for top dressing"
+Pomegranate,,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing  in Pomegranate, what fertiliser, dosage & quantity should i apply for top dressing"
+Mosambi,,PDKV Akola,"Fertiliser 
+(Top Dressing)","I am a farmer in region of PDKV Akola growing  in Mosambi, what fertiliser, dosage & quantity should i apply for top dressing"
+Soyabean,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Soyabean, what pests & diseases can occur, what are the symptoms & remedial measures"
+Cotton (Lint),Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Cotton (Lint), what pests & diseases can occur, what are the symptoms & remedial measures"
+Rice,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Rice, what pests & diseases can occur, what are the symptoms & remedial measures"
+Tur,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Tur, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sugarcane,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Sugarcane, what pests & diseases can occur, what are the symptoms & remedial measures"
+Maize,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Maize, what pests & diseases can occur, what are the symptoms & remedial measures"
+Bajra,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Bajra, what pests & diseases can occur, what are the symptoms & remedial measures"
+Udid,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Udid, what pests & diseases can occur, what are the symptoms & remedial measures"
+Moong,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Moong, what pests & diseases can occur, what are the symptoms & remedial measures"
+Groundnut,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Groundnut, what pests & diseases can occur, what are the symptoms & remedial measures"
+Jowar,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Jowar, what pests & diseases can occur, what are the symptoms & remedial measures"
+Ragi,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Ragi, what pests & diseases can occur, what are the symptoms & remedial measures"
+Nigerseed,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Nigerseed, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sesamum,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Sesamum, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sunflower,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Sunflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+Onion,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Onion, what pests & diseases can occur, what are the symptoms & remedial measures"
+Tomato,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Tomato, what pests & diseases can occur, what are the symptoms & remedial measures"
+Green Chilly,Kharif,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Kharif in Green Chilly, what pests & diseases can occur, what are the symptoms & remedial measures"
+Gram,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Gram, what pests & diseases can occur, what are the symptoms & remedial measures"
+Jowar,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Jowar, what pests & diseases can occur, what are the symptoms & remedial measures"
+Wheat,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Wheat, what pests & diseases can occur, what are the symptoms & remedial measures"
+Maize,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Maize, what pests & diseases can occur, what are the symptoms & remedial measures"
+Safflower,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Safflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+Mustard,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Mustard, what pests & diseases can occur, what are the symptoms & remedial measures"
+Linseed,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Linseed, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sunflower,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Sunflower, what pests & diseases can occur, what are the symptoms & remedial measures"
+Sesame,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Sesame, what pests & diseases can occur, what are the symptoms & remedial measures"
+Onion,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Onion, what pests & diseases can occur, what are the symptoms & remedial measures"
+Tomato,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Tomato, what pests & diseases can occur, what are the symptoms & remedial measures"
+Green Chilly,Rabi,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing Rabi in Green Chilly, what pests & diseases can occur, what are the symptoms & remedial measures"
+Mango,,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing  in Mango, what pests & diseases can occur, what are the symptoms & remedial measures"
+Orange ,,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing  in Orange , what pests & diseases can occur, what are the symptoms & remedial measures"
+Grapes,,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing  in Grapes, what pests & diseases can occur, what are the symptoms & remedial measures"
+Banana,,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing  in Banana, what pests & diseases can occur, what are the symptoms & remedial measures"
+Pomegranate,,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing  in Pomegranate, what pests & diseases can occur, what are the symptoms & remedial measures"
+Mosambi,,PDKV Akola,"Pest & Disease Management
+(Remedial)","I am a farmer in region of PDKV Akola growing  in Mosambi, what pests & diseases can occur, what are the symptoms & remedial measures"
+Soyabean,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Soyabean in Kharif, what should I do for Post Harvest - Storage Management"
+Cotton (Lint),Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Cotton (Lint) in Kharif, what should I do for Post Harvest - Storage Management"
+Rice,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Rice in Kharif, what should I do for Post Harvest - Storage Management"
+Tur,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Tur in Kharif, what should I do for Post Harvest - Storage Management"
+Sugarcane,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Sugarcane in Kharif, what should I do for Post Harvest - Storage Management"
+Maize,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Maize in Kharif, what should I do for Post Harvest - Storage Management"
+Bajra,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Bajra in Kharif, what should I do for Post Harvest - Storage Management"
+Udid,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Udid in Kharif, what should I do for Post Harvest - Storage Management"
+Moong,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Moong in Kharif, what should I do for Post Harvest - Storage Management"
+Groundnut,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Groundnut in Kharif, what should I do for Post Harvest - Storage Management"
+Jowar,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Jowar in Kharif, what should I do for Post Harvest - Storage Management"
+Ragi,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Ragi in Kharif, what should I do for Post Harvest - Storage Management"
+Nigerseed,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Nigerseed in Kharif, what should I do for Post Harvest - Storage Management"
+Sesamum,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Sesamum in Kharif, what should I do for Post Harvest - Storage Management"
+Sunflower,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Sunflower in Kharif, what should I do for Post Harvest - Storage Management"
+Onion,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Onion in Kharif, what should I do for Post Harvest - Storage Management"
+Tomato,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Tomato in Kharif, what should I do for Post Harvest - Storage Management"
+Green Chilly,Kharif,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Green Chilly in Kharif, what should I do for Post Harvest - Storage Management"
+Gram,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Gram in Rabi, what should I do for Post Harvest - Storage Management"
+Jowar,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Jowar in Rabi, what should I do for Post Harvest - Storage Management"
+Wheat,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Wheat in Rabi, what should I do for Post Harvest - Storage Management"
+Maize,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Maize in Rabi, what should I do for Post Harvest - Storage Management"
+Safflower,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Safflower in Rabi, what should I do for Post Harvest - Storage Management"
+Mustard,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Mustard in Rabi, what should I do for Post Harvest - Storage Management"
+Linseed,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Linseed in Rabi, what should I do for Post Harvest - Storage Management"
+Sunflower,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Sunflower in Rabi, what should I do for Post Harvest - Storage Management"
+Sesame,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Sesame in Rabi, what should I do for Post Harvest - Storage Management"
+Onion,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Onion in Rabi, what should I do for Post Harvest - Storage Management"
+Tomato,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Tomato in Rabi, what should I do for Post Harvest - Storage Management"
+Green Chilly,Rabi,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Green Chilly in Rabi, what should I do for Post Harvest - Storage Management"
+Mango,,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Mango in , what should I do for Post Harvest - Storage Management"
+Orange ,,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Orange  in , what should I do for Post Harvest - Storage Management"
+Grapes,,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Grapes in , what should I do for Post Harvest - Storage Management"
+Banana,,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Banana in , what should I do for Post Harvest - Storage Management"
+Pomegranate,,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Pomegranate in , what should I do for Post Harvest - Storage Management"
+Mosambi,,PDKV Akola,Post Harvest - Storage Management,"I am a farmer in region of PDKV Akola growing Mosambi in , what should I do for Post Harvest - Storage Management"

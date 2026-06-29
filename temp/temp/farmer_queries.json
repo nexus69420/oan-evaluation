@@ -1,0 +1,27 @@
+[
+  {
+    "user_query": "गावातील कृषी सहाय्यकाचा मोबाइल क्रमांक आणि कार्यालय वेळा कुठे मिळतील?",
+    "category": "Agri Assistant Contact",
+    "agristack": "Yes"
+  },
+  {
+    "user_query": "सोयाबीन दीर्घकाळ साठवताना बुरशी टाळण्यासाठी धान्याची आर्द्रता किती टक्के ठेवावी?",
+    "category": "Advisory",
+    "agristack": "No"
+  },
+  {
+    "user_query": "गहू साठवताना फॉस्फीन गोळ्यांची प्रति टन योग्य मात्रा किती असावी?",
+    "category": "Warehouse",
+    "agristack": "Yes"
+  },
+  {
+    "user_query": "पुढील ३ दिवस कापणीसाठी पावसाचा धोका किती, बार्शी तालुका?",
+    "category": "Weather Forecast",
+    "agristack": "No"
+  },
+  {
+    "user_query": "आज लासलगाव कृषी उत्पन्न बाजार समितीत कांद्याचा प्रति क्विंटल भाव किती?",
+    "category": "Advisory",
+    "agristack": "No"
+  }
+]
