@@ -54,7 +54,7 @@ class SubDimensionScore(BaseModel):
 
 
 # =============================================================================
-# COMMENTED OUT — Not used for language mix evaluation
+# For now, not using these dimensions
 # =============================================================================
 
 # class ProcessFidelity(BaseModel):
@@ -166,21 +166,19 @@ class EvaluationResult(BaseModel):
 
 
 # =============================================================================
-# JUDGE MODEL — all config from .env
-# Local (Ollama):  JUDGE_BASE_URL=http://localhost:11434/v1, JUDGE_API_KEY=ollama
-# GPU server:      JUDGE_BASE_URL=http://10.128.170.2:8080/v1, JUDGE_API_KEY=none
+# JUDGE MODEL — JUDGE_BASE_URL and JUDGE_MODEL_NAME must be set in .env
+# API key is not used by vLLM; timeout defaults to 120s if not set
 # =============================================================================
 
-_JUDGE_BASE_URL   = os.getenv("JUDGE_BASE_URL",   "http://10.128.170.2:8080/v1")
-_JUDGE_MODEL_NAME = os.getenv("JUDGE_MODEL_NAME", "google/gemma-4-31b-it")
-_JUDGE_API_KEY    = os.getenv("JUDGE_API_KEY",    "none")
+_JUDGE_BASE_URL   = os.environ["JUDGE_BASE_URL"]
+_JUDGE_MODEL_NAME = os.environ["JUDGE_MODEL_NAME"]
 _JUDGE_TIMEOUT    = int(os.getenv("JUDGE_TIMEOUT", "120"))
 
 _judge_model = OpenAIModel(
     model_name=_JUDGE_MODEL_NAME,
     provider=OpenAIProvider(
         base_url=_JUDGE_BASE_URL,
-        api_key=_JUDGE_API_KEY,
+        api_key="none",
     ),
 )
 

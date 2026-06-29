@@ -15,13 +15,12 @@ OUTPUT_CSV = os.path.join(current_dir, "data", "evaluation-gemma.csv")
 
 CSV_FIELDNAMES = [
     "question", "answer",
+    "mix_detected", "mix_severity", "mixed_hindi_phrases",
     "grammar_score", "grammar_evidence",
     "marathi_terminology_score", "marathi_terminology_evidence",
     "language_purity_score", "language_purity_evidence",
     "fluency_score", "fluency_evidence",
-    "language_quality_avg",
-    "mix_detected", "mix_severity",
-    "mixed_hindi_phrases", "summary",
+    "language_quality_avg", "summary",
 ]
 
 # Load input data
