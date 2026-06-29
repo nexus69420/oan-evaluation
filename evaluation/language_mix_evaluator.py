@@ -8,7 +8,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
-from pydantic_ai.models.openai import OpenAIResponsesModelSettings
+from pydantic_ai.models.openai import OpenAIModel, OpenAIModelSettings
+from pydantic_ai.providers.openai import OpenAIProvider
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -114,15 +115,22 @@ class LanguageMixResult(BaseModel):
         }
 
 
+_judge_model = OpenAIModel(
+    model_name='google/gemma-4-31b-it',
+    provider=OpenAIProvider(
+        base_url='http://10.128.170.2:8080/v1',
+        api_key='none',
+    ),
+)
+
 language_mix_agent = Agent(
-    model="gpt-5",
+    model=_judge_model,
     name="Language Mix Evaluation Agent",
     instrument=False,
     output_type=LanguageMixResult,
     retries=3,
-    model_settings=OpenAIResponsesModelSettings(
+    model_settings=OpenAIModelSettings(
         timeout=60,
-        openai_reasoning_effort="low",
     ),
 )
 

@@ -1,4 +1,4 @@
-"""Evaluate Hindi–Marathi language mix for question/answer pairs using a dedicated GPT-5 judge."""
+"""Evaluate Hindi–Marathi language mix for question/answer pairs using a dedicated LLM judge."""
 
 from __future__ import annotations
 
@@ -26,9 +26,10 @@ def resolve_path(path: Path) -> Path:
 
 
 def parse_args() -> argparse.Namespace:
-    default_input = REPO_ROOT / "data" / "language_mix_eval" / "questions.csv"
+    default_input = REPO_ROOT / "data" / "language_mix_eval" / "questions.json"
     default_output = REPO_ROOT / "data" / "language_mix_eval" / "language_quality_report.csv"
     default_json = REPO_ROOT / "data" / "language_mix_eval" / "evaluation.json"
+    default_excel = REPO_ROOT / "data" / "language_mix_eval" / "language_quality_report.xlsx"
 
     parser = argparse.ArgumentParser(
         description="Evaluate Hindi–Marathi language mix for Q&A pairs."
@@ -48,6 +49,18 @@ def parse_args() -> argparse.Namespace:
         default=None,
         metavar="JSON",
         help="Export an existing evaluation.json to CSV (no API calls)",
+    )
+    parser.add_argument(
+        "--output-excel",
+        type=Path,
+        default=default_excel,
+        help="Excel file to write/append results as a new sheet",
+    )
+    parser.add_argument(
+        "--sheet-name",
+        type=str,
+        default="gemma evals",
+        help="Sheet name for the new evaluation results in the Excel file",
     )
     return parser.parse_args()
 
@@ -137,6 +150,28 @@ async def run_evaluation(
     return full_results, report_rows
 
 
+def write_excel_sheet(excel_path: Path, new_df: pd.DataFrame, sheet_name: str, existing_csv: Path | None) -> None:
+    """Write new_df as sheet_name into excel_path, preserving any existing sheets."""
+    from openpyxl import load_workbook
+
+    excel_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if excel_path.exists():
+        book = load_workbook(excel_path)
+        # Remove sheet if it already exists so we can overwrite it cleanly
+        if sheet_name in book.sheetnames:
+            del book[sheet_name]
+        with pd.ExcelWriter(excel_path, engine="openpyxl", mode="a", if_sheet_exists="replace") as writer:
+            writer.book = book
+            new_df.to_excel(writer, sheet_name=sheet_name, index=False)
+    else:
+        # New file — seed with existing CSV as first sheet if available
+        with pd.ExcelWriter(excel_path, engine="openpyxl") as writer:
+            if existing_csv and existing_csv.exists():
+                pd.read_csv(existing_csv).to_excel(writer, sheet_name="previous evals", index=False)
+            new_df.to_excel(writer, sheet_name=sheet_name, index=False)
+
+
 def main() -> None:
     args = parse_args()
     args.input = resolve_path(args.input)
@@ -145,6 +180,8 @@ def main() -> None:
         args.eval_json = resolve_path(args.eval_json)
     if args.export_json:
         args.export_json = resolve_path(args.export_json)
+    if args.output_excel:
+        args.output_excel = resolve_path(args.output_excel)
 
     if args.export_json:
         count = export_evaluation_json_to_csv(args.export_json, args.output)
@@ -162,14 +199,17 @@ def main() -> None:
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(report_rows).to_csv(args.output, index=False, encoding="utf-8-sig")
+    print(f"Saved {len(report_rows)} rows to {args.output}")
+
+    if args.output_excel:
+        existing_csv = REPO_ROOT / "data" / "language_mix_eval" / "language_quality_report.csv"
+        write_excel_sheet(args.output_excel, pd.DataFrame(report_rows), args.sheet_name, existing_csv)
+        print(f"Saved sheet '{args.sheet_name}' to {args.output_excel}")
 
     if args.eval_json:
         args.eval_json.parent.mkdir(parents=True, exist_ok=True)
         with open(args.eval_json, "w", encoding="utf-8") as f:
             json.dump(full_results, f, ensure_ascii=False, indent=2)
-
-    print(f"Saved {len(report_rows)} rows to {args.output}")
-    if args.eval_json:
         print(f"Saved full evaluation JSON to {args.eval_json}")
 
 

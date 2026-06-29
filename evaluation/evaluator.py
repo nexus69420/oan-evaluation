@@ -7,7 +7,8 @@ from enum import IntEnum
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent, RunContext
-from pydantic_ai.models.openai import OpenAIResponsesModel, OpenAIResponsesModelSettings
+from pydantic_ai.models.openai import OpenAIModel, OpenAIModelSettings
+from pydantic_ai.providers.openai import OpenAIProvider
 from dotenv import load_dotenv
 load_dotenv()
 import logfire
@@ -332,16 +333,23 @@ class EvaluationResult(BaseModel):
             }
         }
 
+_judge_model = OpenAIModel(
+    model_name='google/gemma-4-31b-it',
+    provider=OpenAIProvider(
+        base_url='http://10.128.170.2:8080/v1',
+        api_key='none',
+    ),
+)
+
 evaluation_agent = Agent(
-    model='gpt-5',
+    model=_judge_model,
     name="Evaluation Agent",
     deps_type=EvaluationDeps,
     instrument=False,
     output_type=EvaluationResult,
     retries=3,
-    model_settings=OpenAIResponsesModelSettings(
+    model_settings=OpenAIModelSettings(
         timeout=60,
-        openai_reasoning_effort='low',
     )
 )
 
