@@ -1,12 +1,10 @@
 from __future__ import annotations
-import json
 import os
 import sys
-from dataclasses import dataclass
 from enum import IntEnum
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field
-from pydantic_ai import Agent, RunContext
+from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel, OpenAIModelSettings
 from pydantic_ai.providers.openai import OpenAIProvider
 from dotenv import load_dotenv
@@ -14,7 +12,6 @@ load_dotenv()
 import logfire
 logfire.configure(scrubbing=False)
 
-# Get the parent directory - oan-evaluation
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(current_dir)
 sys.path.append(current_dir)
@@ -22,68 +19,14 @@ sys.path.append(current_dir)
 from helpers.utils import get_prompt
 
 
-@dataclass
-class EvaluationDeps:
-    category: str
-
 def format_agent_record(record):
-    """
-    Formats a Type-2 'Agent Record' (with separated question/answer/turns)
-    into the same clean transcript format.
-    Includes 'thinking' traces.
-    """
+    """Format a question/answer record into a clean transcript for the judge."""
     lines = []
-    
-    # --- 1. Context Header ---
-    cat = record.get('category', 'Unknown')
-    
-    # Map 'agristack_required' to Icon
-    agristack_val = record.get('agristack_required', 'No')
-    agristack_icon = "✅" if agristack_val == 'Yes' else "❌"
-    
-    lines.append(f"🏷️  Context: [{cat}] | Agristack: {agristack_icon}")
-    lines.append("=" * 60)
-    lines.append("")
 
-    # --- 2. USER QUERY ---
     lines.append("👤 USER:")
     lines.append(f"{record.get('question', '').strip()}")
     lines.append("-" * 40)
 
-    # --- 3. MIDDLE STEPS (Agent Turns) ---
-    for turn in record.get('agent_turns', []):
-        for part in turn.get('parts', []):
-            part_kind = part.get('part_kind')
-            
-            # A. THINKING / REASONING
-            if part_kind == 'thinking':
-                content = part.get('content', '')
-                lines.append("💭 THOUGHT:")
-                lines.append(f"{str(content).strip()}")
-                lines.append("-" * 40)
-
-            # B. TOOL CALL
-            elif part_kind == 'tool-call':
-                name = part.get('tool_name')
-                args = part.get('args', '{}')
-                
-                lines.append(f"⚙️  ACTION: {name}")
-                lines.append(f"    Args: {args}")
-
-            # C. TOOL RETURN
-            elif part_kind == 'tool-return':
-                content = part.get('content', '')
-                
-                # formatting check: is it json?
-                if isinstance(content, (dict, list)):
-                     content_str = json.dumps(content, ensure_ascii=False, indent=2)
-                else:
-                     content_str = str(content)
-
-                lines.append(f"📥 RESULT: {content_str.strip()}")
-                lines.append("-" * 40)
-
-    # --- 4. FINAL ANSWER ---
     lines.append("🤖 ASSISTANT:")
     lines.append(f"{record.get('answer', '').strip()}")
     lines.append("=" * 60)
@@ -91,281 +34,168 @@ def format_agent_record(record):
     return "\n".join(lines)
 
 
-
 class Rating(IntEnum):
-    """Likert-scale rating for evaluation sub-dimensions."""
-    UNACCEPTABLE = 1  # Critical failure - harmful, fabricated, or complete breakdown
-    POOR = 2          # Major issues significantly affecting usefulness or correctness
-    ACCEPTABLE = 3    # Meets minimum requirements with noticeable gaps
-    GOOD = 4          # Strong performance with only minor issues
-    EXCELLENT = 5     # Exemplary, matches gold-standard behavior
+    UNACCEPTABLE = 1
+    POOR = 2
+    ACCEPTABLE = 3
+    GOOD = 4
+    EXCELLENT = 5
 
 
 class SubDimensionScore(BaseModel):
-    """Score for a single evaluation sub-dimension."""
     score: Optional[Rating] = Field(
-        None, 
-        description="Rating 1-5, or null if not applicable to this query type"
+        None,
+        description="Rating 1-5, or null if not applicable"
     )
     evidence: str = Field(
-        ..., 
-        description="Brief justification in English with reasoning; may quote Marathi snippets as supporting evidence"
-    )
-
-# =============================================================================
-# DIMENSION 1: PROCESS FIDELITY
-# =============================================================================
-
-class ProcessFidelity(BaseModel):
-    """Evaluates whether the agent followed prescribed workflows and maintained output hygiene."""
-    
-    agristack_workflow: SubDimensionScore = Field(
-        ..., 
-        description="Called fetch_agristack_data first when marked available"
-    )
-    term_identification: SubDimensionScore = Field(
-        ..., 
-        description="Used search_terms before search_documents for advisory queries"
-    )
-    tool_sequencing: SubDimensionScore = Field(
-        ..., 
-        description="Correct tool order (geocode→service, scheme_codes→scheme_info)"
-    )
-    search_quality: SubDimensionScore = Field(
-        ..., 
-        description="Effective 2-5 word English queries with relevant terms"
-    )
-    output_hygiene: SubDimensionScore = Field(
-        ..., 
-        description="No tool names leaked, no internal thinking exposed, no artifacts"
+        ...,
+        description="Exact quoted phrase(s) from the response as evidence; commentary in English"
     )
 
 
 # =============================================================================
-# DIMENSION 2: FACTUAL GROUNDING
+# COMMENTED OUT — Not used for language mix evaluation
 # =============================================================================
 
-class FactualGrounding(BaseModel):
-    """Evaluates whether claims are supported by tool outputs with no fabrication or harm."""
-    
-    source_alignment: SubDimensionScore = Field(
-        ..., 
-        description="All factual claims traceable to specific tool outputs"
-    )
-    no_fabrication: SubDimensionScore = Field(
-        ..., 
-        description="No invented data when tools return empty; gaps acknowledged"
-    )
-    citation_accuracy: SubDimensionScore = Field(
-        ..., 
-        description="Sources cited with farmer-friendly names, not internal tool names"
-    )
-    safety_compliance: SubDimensionScore = Field(
-        ..., 
-        description="Correct dosages, no banned chemicals, legal practices only"
-    )
+# class ProcessFidelity(BaseModel):
+#     """Evaluates whether the agent followed prescribed workflows."""
+#     agristack_workflow: SubDimensionScore
+#     term_identification: SubDimensionScore
+#     tool_sequencing: SubDimensionScore
+#     search_quality: SubDimensionScore
+#     output_hygiene: SubDimensionScore
 
+# class FactualGrounding(BaseModel):
+#     """Evaluates whether claims are supported by tool outputs."""
+#     source_alignment: SubDimensionScore
+#     no_fabrication: SubDimensionScore
+#     citation_accuracy: SubDimensionScore
+#     safety_compliance: SubDimensionScore
 
-# =============================================================================
-# DIMENSION 3: RESPONSE USEFULNESS
-# =============================================================================
-
-class ResponseUsefulness(BaseModel):
-    """Evaluates whether the response is actually helpful to the farmer."""
-    
-    completeness: SubDimensionScore = Field(
-        ..., 
-        description="Addresses all parts of farmer's query"
-    )
-    actionability: SubDimensionScore = Field(
-        ..., 
-        description="Specific, timed, quantified advice (varieties, dosages, timing)"
-    )
-    context_fit: SubDimensionScore = Field(
-        ..., 
-        description="Uses farmer profile/location data appropriately when available"
-    )
-    clarity: SubDimensionScore = Field(
-        ..., 
-        description="Clear structure, readable formatting, appropriate length"
-    )
-    conversation_closure: SubDimensionScore = Field(
-        ..., 
-        description="Ends with relevant, specific follow-up question or next step"
-    )
+# class ResponseUsefulness(BaseModel):
+#     """Evaluates whether the response is helpful to the farmer."""
+#     completeness: SubDimensionScore
+#     actionability: SubDimensionScore
+#     context_fit: SubDimensionScore
+#     clarity: SubDimensionScore
+#     conversation_closure: SubDimensionScore
 
 
 # =============================================================================
-# DIMENSION 4: MARATHI LINGUISTIC QUALITY
+# LANGUAGE MIX QUALITY — Active
 # =============================================================================
 
-class MarathiQuality(BaseModel):
-    """Evaluates Marathi language correctness, terminology, and naturalness."""
-    
+class LanguageQuality(BaseModel):
+    """Scores the four language sub-dimensions for Hindi/English mix in Marathi responses."""
+
     grammar: SubDimensionScore = Field(
-        ..., 
-        description="Grammatically correct, complete sentences"
+        ...,
+        description="Marathi sentence structure correctness; penalize Hindi verb forms and conjunctions"
     )
-    terminology: SubDimensionScore = Field(
-        ..., 
-        description="Uses proper Marathi agricultural terms from glossary"
+    marathi_terminology: SubDimensionScore = Field(
+        ...,
+        description="Standard Marathi agricultural terms used; penalize Hindi equivalents (फसल, मिट्टी, खाद, सिंचाई)"
     )
     language_purity: SubDimensionScore = Field(
-        ..., 
-        description="No inappropriate English-Marathi mixing within sentences"
+        ...,
+        description="Freedom from Hindi/English mixing: slash-pairs, parenthetical glosses, inline foreign words, Hindi closings"
     )
     fluency: SubDimensionScore = Field(
-        ..., 
-        description="Reads naturally, conversational tone for rural context"
+        ...,
+        description="Natural conversational Marathi for a rural Maharashtra farmer; penalize code-switching that breaks flow"
     )
 
-
-# =============================================================================
-# MAIN EVALUATION RESULT
-# =============================================================================
 
 class EvaluationResult(BaseModel):
     """
-    Complete evaluation result for a MahaVistaar agricultural assistant response.
-    
-    Evaluates across 4 dimensions (16 sub-dimensions total):
-    - Process Fidelity: Workflow compliance and output hygiene
-    - Factual Grounding: Source alignment, no fabrication, safety
-    - Response Usefulness: Completeness, actionability, clarity
-    - Marathi Quality: Grammar, terminology, fluency
-    
-    Critical failures (score=UNACCEPTABLE) in safety_compliance, no_fabrication, or 
-    source_alignment result in overall_pass=False regardless of other scores.
+    Language mix evaluation result for a Maha Vistaar response.
+    Detects inappropriate Hindi and English in Marathi agricultural responses.
     """
-    
-    process_fidelity: ProcessFidelity
-    factual_grounding: FactualGrounding
-    response_usefulness: ResponseUsefulness
-    marathi_quality: MarathiQuality
-    
+
+    language_quality: LanguageQuality
+
+    mix_detected: bool = Field(
+        ...,
+        description="True if ANY Hindi or English intrusion is found, even a single word"
+    )
+    mix_severity: Rating = Field(
+        ...,
+        description="1=none, 2=mild (1-2 words), 3=moderate (3-6), 4=heavy (7+ or full Hindi sentence), 5=dominant Hindi/English"
+    )
+    mixed_hindi_phrases: List[str] = Field(
+        default_factory=list,
+        description="Exhaustive list of every violation quoted exactly from the response, each labeled with its type"
+    )
     summary: str = Field(
-        ..., 
-        description="2-3 sentences in English: key strength + top improvement area"
+        ...,
+        description="2-3 sentences in English: total violation count, dominant pattern type, single highest-impact fix"
     )
 
-    def _calculate_dimension_average(self, dimension: BaseModel) -> Optional[float]:
-        """Calculate average score for a dimension, excluding N/A (None) scores."""
-        scores = []
-        for field_name in dimension.model_fields:
-            sub_dim: SubDimensionScore = getattr(dimension, field_name)
-            if sub_dim.score is not None:
-                scores.append(sub_dim.score.value)
-        return round(sum(scores) / len(scores), 2) if scores else None
-
-    def _get_critical_failures(self) -> List[str]:
-        """Identify critical failures (score=UNACCEPTABLE) in safety-critical sub-dimensions."""
-        critical_fields = [
-            ("factual_grounding", "safety_compliance"),
-            ("factual_grounding", "no_fabrication"),
-            ("factual_grounding", "source_alignment"),
-        ]
-        failures = []
-        for dim_name, field_name in critical_fields:
-            dimension = getattr(self, dim_name)
-            sub_dim: SubDimensionScore = getattr(dimension, field_name)
-            if sub_dim.score == Rating.UNACCEPTABLE:
-                failures.append(f"{dim_name}.{field_name}")
-        return failures
-
-    def _sub_dim_to_dict(self, sub_dim: SubDimensionScore) -> Dict[str, Any]:
-        """Convert sub-dimension to dict with numeric score."""
+    def _sub_to_dict(self, sub: SubDimensionScore) -> Dict[str, Any]:
         return {
-            "score": sub_dim.score.value if sub_dim.score else None,
-            "evidence": sub_dim.evidence
+            "score": sub.score.value if sub.score else None,
+            "evidence": sub.evidence,
         }
-
-    def _dimension_to_dict(self, dimension: BaseModel) -> Dict[str, Any]:
-        """Convert dimension to dict with numeric scores."""
-        result = {}
-        for field_name in dimension.model_fields:
-            sub_dim: SubDimensionScore = getattr(dimension, field_name)
-            result[field_name] = self._sub_dim_to_dict(sub_dim)
-        return result
 
     def to_eval_dict(self) -> Dict[str, Any]:
-        """
-        Export evaluation as JSON-serializable dict with computed metrics.
-        """
-        dimensions = {
-            "process_fidelity": {
-                "scores": self._dimension_to_dict(self.process_fidelity),
-                "average": self._calculate_dimension_average(self.process_fidelity)
-            },
-            "factual_grounding": {
-                "scores": self._dimension_to_dict(self.factual_grounding),
-                "average": self._calculate_dimension_average(self.factual_grounding)
-            },
-            "response_usefulness": {
-                "scores": self._dimension_to_dict(self.response_usefulness),
-                "average": self._calculate_dimension_average(self.response_usefulness)
-            },
-            "marathi_quality": {
-                "scores": self._dimension_to_dict(self.marathi_quality),
-                "average": self._calculate_dimension_average(self.marathi_quality)
-            }
-        }
-        
-        # Calculate overall average from all valid sub-dimension scores (equal weight per sub-dimension)
-        all_scores = []
-        for dimension in [self.process_fidelity, self.factual_grounding, 
-                          self.response_usefulness, self.marathi_quality]:
-            for field_name in dimension.model_fields:
-                sub_dim: SubDimensionScore = getattr(dimension, field_name)
-                if sub_dim.score is not None:
-                    all_scores.append(sub_dim.score.value)
-        overall_average = round(sum(all_scores) / len(all_scores), 2) if all_scores else None
-        
-        critical_failures = self._get_critical_failures()
-        
-        return {
-            "dimensions": dimensions,
-            "summary": self.summary,
-            "metrics": {
-                "overall_average": overall_average,
-                "critical_failures": critical_failures,
-                "critical_failure_count": len(critical_failures),
-                "overall_pass": len(critical_failures) == 0
-            }
+        scores = {
+            name: self._sub_to_dict(getattr(self.language_quality, name))
+            for name in LanguageQuality.model_fields
         }
 
+        valid_scores = [v["score"] for v in scores.values() if v["score"] is not None]
+        language_avg = round(sum(valid_scores) / len(valid_scores), 2) if valid_scores else None
+
+        return {
+            "dimensions": {
+                "language_quality": {
+                    "scores": scores,
+                    "average": language_avg,
+                }
+            },
+            "mix_detected": self.mix_detected,
+            "mix_severity": self.mix_severity.value,
+            "mixed_hindi_phrases": self.mixed_hindi_phrases,
+            "summary": self.summary,
+            "metrics": {
+                "language_quality_avg": language_avg,
+                "mix_detected": self.mix_detected,
+                "mix_severity": self.mix_severity.value,
+            },
+        }
+
+
+# =============================================================================
+# JUDGE MODEL — all config from .env
+# Local (Ollama):  JUDGE_BASE_URL=http://localhost:11434/v1, JUDGE_API_KEY=ollama
+# GPU server:      JUDGE_BASE_URL=http://10.128.170.2:8080/v1, JUDGE_API_KEY=none
+# =============================================================================
+
+_JUDGE_BASE_URL   = os.getenv("JUDGE_BASE_URL",   "http://10.128.170.2:8080/v1")
+_JUDGE_MODEL_NAME = os.getenv("JUDGE_MODEL_NAME", "google/gemma-4-31b-it")
+_JUDGE_API_KEY    = os.getenv("JUDGE_API_KEY",    "none")
+_JUDGE_TIMEOUT    = int(os.getenv("JUDGE_TIMEOUT", "120"))
+
 _judge_model = OpenAIModel(
-    model_name='google/gemma-4-31b-it',
+    model_name=_JUDGE_MODEL_NAME,
     provider=OpenAIProvider(
-        base_url='http://10.128.170.2:8080/v1',
-        api_key='none',
+        base_url=_JUDGE_BASE_URL,
+        api_key=_JUDGE_API_KEY,
     ),
 )
 
 evaluation_agent = Agent(
     model=_judge_model,
-    name="Evaluation Agent",
-    deps_type=EvaluationDeps,
+    name="Language Mix Evaluation Agent",
     instrument=False,
     output_type=EvaluationResult,
     retries=3,
     model_settings=OpenAIModelSettings(
-        timeout=60,
+        timeout=_JUDGE_TIMEOUT,
     )
 )
 
 
-@evaluation_agent.system_prompt(dynamic=True)
-def system_prompt(ctx: RunContext) -> str:
-    """Generate a dynamic system prompt based on the category."""
-    category = ctx.deps.category
-    category_normalized = category.lower().replace(' ', '_')    
-    # For agri_services we can combine:
-    if category_normalized in ['kvk','soil_lab','warehouse','chc']:
-        category_prompt = get_prompt('category/agri_services')
-    elif category_normalized in ['weather_historical','weather_forecast']:
-        category_prompt = get_prompt('category/weather')        
-    else:
-        category_prompt = get_prompt('category/' + category_normalized)
-
-    master_prompt = get_prompt('evaluation_system')
-    return master_prompt + "\n\n" + category_prompt
+@evaluation_agent.system_prompt
+def system_prompt() -> str:
+    return get_prompt('language_mix_evaluation')
