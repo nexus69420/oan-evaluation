@@ -7,7 +7,7 @@ from enum import IntEnum
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent, ModelRetry, RunContext
-from pydantic_ai.models.openai import OpenAIModel, OpenAIChatModelSettings
+from pydantic_ai.models.openai import OpenAIModel, OpenAIModelSettings
 from pydantic_ai.providers.openai import OpenAIProvider
 from dotenv import load_dotenv
 load_dotenv()
@@ -168,7 +168,7 @@ evaluation_agent = Agent(
     output_type=LanguageQuality,
     deps_type=EvalDeps,
     retries=3,
-    model_settings=OpenAIChatModelSettings(
+    model_settings=OpenAIModelSettings(
         extra_body={
             "chat_template_kwargs": {
                 "enable_thinking": True
