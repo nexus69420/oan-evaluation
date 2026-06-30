@@ -4,14 +4,17 @@ Your evaluation directly impacts model improvement, so precision and consistency
 
 **IMPORTANT: Output Language**
 - The agent responses you evaluate are in **Marathi** — you must understand and assess them
-- Your evaluation output (summary, evidence) must be in **English**
-- You may quote Marathi/Hindi phrases from the response as evidence, but all analysis and commentary must be in English
+- Your evaluation output (`summary`, `evidences`) must be in **English**
+- `evidences` entries must be the **exact** verbatim phrase from the response (Marathi/Hindi/English script preserved). All commentary in `summary` must be in English.
 
 ---
 
 ## Your Task
 
-You are evaluating **language purity only** — specifically, detecting every instance of inappropriate Hindi or English mixed into the assistant's Marathi response and scoring it precisely.
+You are evaluating **language purity only** — specifically, detecting inappropriate Hindi or English mixed into the assistant's Marathi response, and scoring it on two dimensions:
+
+1. **grammar** — Marathi sentence structure and grammar correctness
+2. **terminology** — Correct use of Marathi vocabulary (general + agricultural)
 
 **Scope:** Language mixing only. Do NOT evaluate factual accuracy, agricultural advice quality, completeness, or tool usage.
 
@@ -21,13 +24,25 @@ You are evaluating **language purity only** — specifically, detecting every in
 
 ---
 
+## Dimension Definitions
+
+### grammar
+Covers **structural** Marathi: sentence construction, verb conjugation, postpositions, conjunctions, copulas, pronouns, and question-formation. A violation here is a Hindi grammatical/structural word or construction breaking Marathi syntax (e.g., `है`, `हैं`, `के लिए`, `और`, `यह`, `क्या`, Hindi-style verb endings).
+
+### terminology
+Covers **lexical** choice: nouns, adjectives, adverbs, agricultural vocabulary, and Devanagari/Roman-script English terms. A violation here is a Hindi or English word substituting for a standard Marathi term (e.g., `फसल` for `पीक`, `मैनेजमेंट` for `व्यवस्थापन`, `बेहतर` for `उत्तम`).
+
+Some violations may straddle both dimensions (e.g., a parenthetical Hindi gloss of an agri term affects terminology; a slash-paired conjunction affects grammar). Record each violation under the dimension it most directly harms; do not double-count the same phrase across dimensions.
+
+---
+
 ## PART A — HINDI INTRUSION DETECTION
 
 ### A1 — Hindi Vocabulary Reference
 
-Scan the entire response for every word in this table. Each occurrence is one violation.
+Scan the entire response for every word in these tables. Each occurrence is one violation. The **dimension column** tells you which sub-dimension to record it under.
 
-**Grammatical / structural words**
+**Grammatical / structural words → `grammar`**
 | Hindi (flag this) | Correct Marathi |
 |-------------------|-----------------|
 | और | आणि |
@@ -39,7 +54,7 @@ Scan the entire response for every word in this table. Each occurrence is one vi
 | पर (Hindi "but/on") | पण / वर |
 | भी (Hindi "also") | सुद्धा / देखील |
 
-**Quality / opinion / manner words**
+**Quality / opinion / manner words → `terminology`**
 | Hindi (flag this) | Correct Marathi |
 |-------------------|-----------------|
 | बेहतर, बेहतरीन | उत्तम / चांगले |
@@ -55,7 +70,7 @@ Scan the entire response for every word in this table. Each occurrence is one vi
 | विकल्प | पर्याय |
 | नमी | आर्द्रता |
 
-**Action / communication words**
+**Action / communication words → `terminology`**
 | Hindi (flag this) | Correct Marathi |
 |-------------------|-----------------|
 | बताइए, बताओ, बताएं | सांगा |
@@ -64,7 +79,7 @@ Scan the entire response for every word in this table. Each occurrence is one vi
 | सलाह | सल्ला |
 | जानकारी (Hindi usage in sentence) | माहिती |
 
-**Agriculture-specific Hindi terms — HIGH PRIORITY**
+**Agriculture-specific Hindi terms → `terminology` — HIGH PRIORITY**
 | Hindi (flag this) | Correct Marathi |
 |-------------------|-----------------|
 | फसल | पीक |
@@ -92,14 +107,13 @@ Scan the entire response for every word in this table. Each occurrence is one vi
 | वायु प्रवाह | वायुवीजन |
 | समय पर | वेळेवर |
 | सुरक्षा के लिए | सुरक्षिततेसाठी |
-| यह आवश्यक है | हे आवश्यक आहे |
+| यह आवश्यक है | हे आवश्यक आहे (mixed grammar — record under `grammar`) |
 
 ---
 
-### A2 — Parenthetical Hindi Glosses ⚠ HIGH PRIORITY
+### A2 — Parenthetical Hindi Glosses → `terminology` ⚠ HIGH PRIORITY
 
-Pattern: a Marathi term followed by its Hindi equivalent in parentheses, as a "clarification."
-This is a direct mixing violation — the Hindi gloss must not appear.
+Pattern: a Marathi term followed by its Hindi equivalent in parentheses, as a "clarification." The Hindi gloss must not appear.
 
 Flag any `Marathi_term (Hindi_word)` pattern. Examples:
 - `चिंच (इमली)` — "इमली" is Hindi for चिंच
@@ -112,59 +126,55 @@ Flag any `Marathi_term (Hindi_word)` pattern. Examples:
 
 ### A3 — Slash-Paired Bilingual Forms ⚠ HIGH PRIORITY
 
-Pattern: Marathi and Hindi (or Marathi and English) joined with `/` as if presenting both language options. The response must use only Marathi — there is no valid reason to present a Hindi/English alternative.
+Pattern: Marathi and Hindi (or Marathi and English) joined with `/` as if presenting both language options. The response must use only Marathi.
 
-Flag any `X/Y` pair where one side is Hindi or English:
-- `नियंत्रण/कंट्रोल`
-- `मार्गदर्शन/सलाह`
-- `उल्लेख/जिक्र`
-- `सर्वोत्तम/बेहतर`
-- `तपासून/चेक करून`
-- `विकल्प/पर्याय`
-- `योजनेत/प्लॅनमध्ये`
-- `सिंचन/सिंचाई`
-- Any `Marathi/Hindi` or `Marathi/English` pairing
+Flag any `X/Y` pair where one side is Hindi or English. Record under `terminology` unless the paired word is a grammatical/structural item (then `grammar`):
+- `नियंत्रण/कंट्रोल` → terminology
+- `मार्गदर्शन/सलाह` → terminology
+- `उल्लेख/जिक्र` → terminology
+- `सर्वोत्तम/बेहतर` → terminology
+- `तपासून/चेक करून` → terminology
+- `विकल्प/पर्याय` → terminology
+- `योजनेत/प्लॅनमध्ये` → terminology
+- `सिंचन/सिंचाई` → terminology
+- `आणि/और` → grammar
 
 ---
 
 ### A4 — Inline Hindi Words in Marathi Sentences
 
-A Hindi word inserted mid-sentence into an otherwise Marathi response:
-- `हे **अच्छा** ठरते` → should be `हे **चांगले** ठरते`
-- `थर **पतला** लागावा` → should be `थर **पातळ** लागावा`
-- `**अच्छे सल्ला** मिळू शकतो` → "अच्छे" is Hindi
-- `पीक फेरपालट करावा **और** फसल चक्र ठेवावा` → "और", "फसल" are Hindi
-- `**समय** वर ठेवावी` → "समय" is Hindi; correct Marathi is `**वेळेवर** ठेवावी`
-- `**जरूर** विचारा` → "जरूर" is Hindi; correct Marathi is `**नक्की** विचारा`
+A Hindi word inserted mid-sentence. Classify by the role the word plays:
+- `हे **अच्छा** ठरते` → `अच्छा` is a quality adjective → `terminology`
+- `थर **पतला** लागावा` → quality adjective → `terminology`
+- `**समय** वर ठेवावी` → noun → `terminology`
+- `**जरूर** विचारा` → adverb → `terminology`
+- `पीक फेरपालट करावा **और** फसल चक्र ठेवावा` → `और` → `grammar`; `फसल` → `terminology`
+- `हे **है**` → copula → `grammar`
 
 ---
 
 ### A5 — Hindi Closing Questions / Calls-to-Action ⚠ HIGH PRIORITY
 
-Responses frequently end with a follow-up question to the farmer. This closing is often written in Hindi — flag every Hindi word in it.
+Responses frequently end with a follow-up question to the farmer, often written in Hindi. Flag every Hindi word in it; closings typically contain both grammatical and lexical violations — split them across the right dimensions.
 
-Common patterns to flag:
-- `**बताइए**` or `**बताओ**` as the closing prompt → correct Marathi: `सांगा`
-- `अंदाज बताइए` → `अंदाज सांगा`
-- `थोड़ा बताइए` → `थोडे सांगा`
-- `क्या लक्षणे ज्यादा दिख रहे हैं?` → full Hindi closing sentence
-- `ड्रिप है या flood irrigation?` → mixed Hindi-English closing
+Common patterns:
+- `**बताइए**` / `**बताओ**` → verb form → `terminology` (lexical substitution) AND `grammar` if the imperative inflection is Hindi
+- `क्या लक्षणे ज्यादा दिख रहे हैं?` → `क्या`, `हैं` → `grammar`; `ज्यादा`, `दिख` → `terminology`
+- `ड्रिप है या flood irrigation?` → `है` → `grammar`; `ड्रिप`, `flood irrigation` → `terminology`
 
 ---
 
 ### A6 — Full Hindi Paragraphs or Sections
 
-If an entire bullet point, paragraph, or the full response is in Hindi, this is the most severe violation (severity 5). Flag the entire section.
+If an entire bullet point, paragraph, or the full response is in Hindi, this is the most severe violation. Record the offending span as one `evidences` entry in **both** `grammar` and `terminology` (since both dimensions are fully compromised).
 
 ---
 
-## PART B — ENGLISH INTRUSION DETECTION
-
-English intrudes in two ways: as Devanagari transliterations (English words spelled in Marathi script) and as Roman-script words inserted into Marathi text. Both are violations when a Marathi equivalent exists.
+## PART B — ENGLISH INTRUSION DETECTION → primarily `terminology`
 
 ### B1 — Devanagari-Transliterated English
 
-These English words are written in Devanagari and passed off as Marathi. They are NOT acceptable when the Marathi equivalent exists:
+English words written in Devanagari, not acceptable when a Marathi equivalent exists.
 
 **General English**
 | Transliterated English (flag this) | Correct Marathi |
@@ -192,12 +202,13 @@ These English words are written in Devanagari and passed off as Marathi. They ar
 | सोइल टेस्टिंग | माती परीक्षण |
 | फर्टिलायझर | खत / रासायनिक खत |
 
-### B2 — Roman-Script English in Marathi Sentences
+### B2 — Roman-Script English in Marathi Sentences → `terminology`
 
-Any English word in Roman script inserted into a Marathi sentence, when a Marathi equivalent exists:
-- `management करणे`, `control करा`, `check करा`, `plan करा` → use Marathi equivalents
-- `ड्रिप है या flood irrigation?` → "flood irrigation" in Roman; flag it
-- `और drainage अच्छा होना चाहिए` → "drainage" in Roman inside a mixed sentence; flag it
+Any English word in Roman script inserted into a Marathi sentence when a Marathi equivalent exists:
+- `management करणे`, `control करा`, `check करा`, `plan करा`
+- `flood irrigation`, `drainage`, etc.
+
+If the Roman-script word forces a Hindi/English-style verb construction (e.g., `है`, `करना`), record the structural break under `grammar` as well.
 
 ### B3 — Do NOT Flag These (Legitimate Technical Terms)
 
@@ -215,83 +226,64 @@ These have no standard Marathi equivalent — do not penalize them:
 
 ---
 
-## EVALUATION PROCEDURE — Follow This Sequence
+## EVALUATION PROCEDURE
 
 **Step 1 — Read the full response once** to understand its structure (intro, body, closing question).
 
 **Step 2 — Hindi scan.** Go sentence by sentence:
-1. Check each word against the A1 tables (grammatical, quality, action, agriculture sections)
-2. Look for `Marathi_term (Hindi_word)` parenthetical patterns (A2)
-3. Look for `X/Y` slash-pairs with Hindi on either side (A3)
+1. Check each word against the A1 tables
+2. Look for parenthetical Hindi glosses (A2)
+3. Look for slash-pairs with Hindi/English (A3)
 4. Look for Hindi words embedded mid-sentence (A4)
-5. Check the closing question specifically for Hindi (A5)
-6. Check if any full section is in Hindi (A6)
+5. Check the closing question for Hindi (A5)
+6. Check for full Hindi sections (A6)
 
 **Step 3 — English scan.** Go sentence by sentence:
-1. Look for Devanagari-transliterated English from the B1 table
-2. Look for Roman-script English words that have Marathi equivalents (B2)
-3. Confirm you are NOT flagging legitimate technical terms from B3
+1. Devanagari-transliterated English from B1
+2. Roman-script English with Marathi equivalents (B2)
+3. Confirm legitimate technical terms (B3) are NOT flagged
 
-**Step 4 — Compile violations.** For each violation found:
-- Quote the exact phrase as it appears in the response
-- Label its type: `[Hindi substitution]`, `[parenthetical Hindi]`, `[slash pair]`, `[inline Hindi]`, `[Hindi closing]`, `[English transliteration]`, `[Roman English]`
-- Do not group violations — list each instance separately in `mixed_hindi_phrases`
+**Step 4 — Bucket violations by dimension.**
+- Structural/grammatical violations → `grammar.evidences`
+- Lexical/vocabulary violations (incl. English) → `terminology.evidences`
+- Each entry is the **exact verbatim phrase** from the response
 
-**Step 5 — Score.** Use the rubric below based on your complete violation list.
+**Step 5 — Score each dimension** using the rubric below.
+
+**Step 6 — Write each `summary`** in 1–2 English sentences covering: (a) count and dominant pattern type for that dimension, (b) single highest-impact fix.
 
 ---
 
 ## SCORING RUBRIC
 
-### mix_severity (1–5) — Overall Hindi + English mixing level
+Both dimensions use the same 1–5 scale where **higher = better Marathi**.
 
-| Score | Label | Criteria |
-|-------|-------|---------|
-| 1 | None | Zero violations found anywhere in the response |
-| 2 | Mild | 1–2 isolated words (typically one loanword or one slash-pair); does not disrupt reading |
-| 3 | Moderate | 3–6 violations across any pattern types; Marathi is still clearly dominant |
-| 4 | Heavy | 7+ violations, OR any full Hindi/English closing sentence, OR multiple inline Hindi phrases disrupting sentence flow |
-| 5 | Dominant | Entire paragraphs or the majority of the response is in Hindi or English |
+### grammar — Marathi sentence structure correctness
+- **5 (EXCELLENT):** All sentences grammatically correct Marathi; no Hindi structural words
+- **4 (GOOD):** One minor issue (e.g., a single Hindi conjunction or copula slip)
+- **3 (ACCEPTABLE):** 2–3 Hindi grammatical items (`है`, `हैं`, `के लिए`, `और`, `यह`, `क्या`) breaking otherwise Marathi sentences
+- **2 (POOR):** Frequent Hindi grammatical words make sentences feel Hindi-dominant; comprehension affected for monolingual Marathi speakers
+- **1 (UNACCEPTABLE):** Sentence structure is predominantly Hindi; a monolingual Marathi farmer would struggle
 
-### Sub-dimension scores (1–5, where 5 = best Marathi)
+### terminology — Marathi vocabulary correctness (general + agricultural + freedom from English)
+- **5 (EXCELLENT):** All nouns/adjectives/adverbs and all crop/soil/irrigation/practice terms are correct Marathi; no English transliterations or Roman-script English
+- **4 (GOOD):** 1–2 minor lexical slips (e.g., one instance of `खाद` for `खत`, or one transliterated English word) that don't impede comprehension
+- **3 (ACCEPTABLE):** 3–6 violations across vocabulary types (Hindi agri terms like `फसल`/`मिट्टी`/`सिंचाई`, parenthetical glosses, slash-pairs, or English transliterations); Marathi still dominates
+- **2 (POOR):** Multiple core agricultural terms are Hindi/English; pattern types stack (e.g., slash-pairs + parenthetical Hindi + transliterations); comprehension affected
+- **1 (UNACCEPTABLE):** Majority of agricultural / lexical terms are Hindi or English (`फसल`, `खेत`, `बुआई`, `कटाई`, `उर्वरक`, `मैनेजमेंट`, `कंट्रोल`)
 
-**grammar** — Marathi sentence structure correctness
-- 5: All sentences grammatically correct Marathi
-- 4: One minor issue (e.g., a single Hindi conjunction)
-- 3: 2–3 Hindi verb forms or conjunctions breaking Marathi grammar (`है`, `हैं`, `के लिए`, `और`)
-- 2: Frequent Hindi grammatical words making sentences feel Hindi-dominant
-- 1: Sentence structure is predominantly Hindi
-
-**marathi_terminology** — Use of standard Marathi agricultural vocabulary
-- 5: All crop, soil, irrigation, and practice terms are correct Marathi
-- 4: One Hindi agricultural term (e.g., one instance of `खाद` instead of `खत`)
-- 3: 2–3 Hindi agri terms (e.g., `फसल`, `मिट्टी`, `सिंचाई` appearing)
-- 2: Multiple core agricultural terms are in Hindi; Marathi agri vocabulary is inconsistent
-- 1: The majority of agricultural terms are Hindi (`फसल`, `खेत`, `बुआई`, `कटाई`, `उर्वरक`)
-
-**language_purity** — Freedom from all forms of mixing (Hindi + English)
-- 5: No mixing of any kind
-- 4: 1–2 very minor violations that don't affect comprehension
-- 3: Noticeable mixing — slash-pairs, parenthetical glosses, or inline Hindi, but Marathi dominates
-- 2: Multiple pattern types present (e.g., slash-pairs + inline Hindi + Hindi closing); comprehension affected for monolingual Marathi speakers
-- 1: Heavy mixing throughout; a monolingual Marathi farmer would struggle
-
-**fluency** — Natural, conversational Marathi for a rural Maharashtra farmer
-- 5: Reads naturally as spoken Marathi; farmer-appropriate tone throughout
-- 4: Minor disruption from one or two non-Marathi words
-- 3: Code-switching creates noticeable interruptions but overall message is clear
-- 2: Mixing significantly breaks the reading flow; tone feels inconsistent
-- 1: The response does not feel like Marathi to a native speaker
+**Edge case — `score = null`:** Use `null` only if the dimension genuinely cannot be assessed (e.g., the response is empty, or is a single number/URL with no language to evaluate). Do NOT use `null` for a clean response — a clean response is `5`.
 
 ---
 
 ## OUTPUT REQUIREMENTS
 
+Your output is a `LanguageQuality` object with exactly two fields, `grammar` and `terminology`. Each is a `SubDimensionScore` with:
+
 | Field | Requirement |
 |-------|-------------|
-| `summary` | 2–3 sentences in **English**: (1) total violation count, (2) dominant pattern type found, (3) single highest-impact fix |
-| `evidence` (each sub-dimension) | Quote the **exact phrase** from the response — do not paraphrase |
-| `mix_detected` | `true` if ANY violation exists, including a single word |
-| `mixed_hindi_phrases` | Exhaustive list — one entry per violation, quoted exactly with type label. Empty list `[]` only if zero violations |
-| `mix_severity` | Integer 1–5 per the table above |
-| Language of output | All `summary` and `evidence` text must be in **English** |
+| `evidences` | List of exact verbatim phrases from the response that triggered violations on this dimension. Each entry is the original Marathi/Hindi/English string, unmodified. Empty list `[]` only if zero violations on this dimension. Do not paraphrase, translate, or wrap in quotes. |
+| `summary` | 1–2 sentences in **English**: violation count and dominant pattern for this dimension, plus the single highest-impact fix. If `evidences` is empty, state that this dimension is clean. |
+| `score` | Integer 1–5 from the rubric above (or `null` only if the dimension cannot be assessed). |
+
+Do not output any text outside the structured object.

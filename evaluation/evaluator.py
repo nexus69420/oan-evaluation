@@ -5,7 +5,7 @@ from enum import IntEnum
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
-from pydantic_ai.models.openai import OpenAIModel, OpenAIModelSettings
+from pydantic_ai.models.openai import OpenAIModel, OpenAIChatModelSettings
 from pydantic_ai.providers.openai import OpenAIProvider
 from dotenv import load_dotenv
 load_dotenv()
@@ -43,13 +43,29 @@ class Rating(IntEnum):
 
 
 class SubDimensionScore(BaseModel):
+    evidences: List[str] = Field(
+        default_factory=list,
+        description=(
+            "Exact verbatim phrases from the response that triggered violations on this dimension. "
+            "Each entry must appear character-for-character in the original response "
+            "(Marathi/Hindi/English script preserved, no paraphrasing or translation). "
+            "Empty list if there are no violations."
+        )
+    )
+    summary: str = Field(
+        ...,
+        description=(
+            "1-2 sentence summary in English: violation count and dominant pattern for this dimension, "
+            "plus the single highest-impact fix. State that the dimension is clean if evidences is empty."
+        )
+    )
     score: Optional[Rating] = Field(
         None,
-        description="Rating 1-5, or null if not applicable"
-    )
-    evidence: str = Field(
-        ...,
-        description="Exact quoted phrase(s) from the response as evidence; commentary in English"
+        description=(
+            "Rating on a 1-5 scale where higher = better Marathi "
+            "(1=unacceptable, 2=poor, 3=acceptable, 4=good, 5=excellent). "
+            "Use null only if the dimension cannot be assessed (e.g., empty response or no language content)."
+        )
     )
 
 
@@ -86,85 +102,35 @@ class SubDimensionScore(BaseModel):
 # =============================================================================
 
 class LanguageQuality(BaseModel):
-    """Scores the four language sub-dimensions for Hindi/English mix in Marathi responses."""
+    """Language-purity evaluation of a Marathi agent response on two sub-dimensions.
+
+    Each sub-dimension carries verbatim evidence, a short English summary, and a 1-5 score
+    where higher = better Marathi. Structural (grammar) and lexical (terminology) violations
+    are reported separately so the same phrase is never double-counted.
+    """
 
     grammar: SubDimensionScore = Field(
         ...,
-        description="Marathi sentence structure correctness; penalize Hindi verb forms and conjunctions"
+        description=(
+            "Structural Marathi correctness: sentence construction, verb conjugation, "
+            "postpositions, conjunctions, copulas, pronouns, question formation. "
+            "Violations here are Hindi grammatical/structural words or constructions breaking "
+            "Marathi syntax (e.g., है, हैं, के लिए, और, यह, क्या). "
+            "Score 1-5, higher = better Marathi grammar."
+        )
     )
-    marathi_terminology: SubDimensionScore = Field(
+    terminology: SubDimensionScore = Field(
         ...,
-        description="Standard Marathi agricultural terms used; penalize Hindi equivalents (फसल, मिट्टी, खाद, सिंचाई)"
+        description=(
+            "Lexical Marathi correctness: nouns, adjectives, adverbs, agricultural vocabulary, "
+            "and freedom from Devanagari-transliterated or Roman-script English. "
+            "Violations here are Hindi or English words substituting for a standard Marathi term "
+            "(e.g., फसल for पीक, मैनेजमेंट for व्यवस्थापन, बेहतर for उत्तम), including parenthetical "
+            "Hindi glosses and slash-paired bilingual forms. "
+            "Score 1-5, higher = better Marathi terminology."
+        )
     )
-    language_purity: SubDimensionScore = Field(
-        ...,
-        description="Freedom from Hindi/English mixing: slash-pairs, parenthetical glosses, inline foreign words, Hindi closings"
-    )
-    fluency: SubDimensionScore = Field(
-        ...,
-        description="Natural conversational Marathi for a rural Maharashtra farmer; penalize code-switching that breaks flow"
-    )
-
-
-class EvaluationResult(BaseModel):
-    """
-    Language mix evaluation result for a Maha Vistaar response.
-    Detects inappropriate Hindi and English in Marathi agricultural responses.
-    """
-
-    language_quality: LanguageQuality
-
-    mix_detected: bool = Field(
-        ...,
-        description="True if ANY Hindi or English intrusion is found, even a single word"
-    )
-    mix_severity: Rating = Field(
-        ...,
-        description="1=none, 2=mild (1-2 words), 3=moderate (3-6), 4=heavy (7+ or full Hindi sentence), 5=dominant Hindi/English"
-    )
-    mixed_hindi_phrases: List[str] = Field(
-        default_factory=list,
-        description="Exhaustive list of every violation quoted exactly from the response, each labeled with its type"
-    )
-    summary: str = Field(
-        ...,
-        description="2-3 sentences in English: total violation count, dominant pattern type, single highest-impact fix"
-    )
-
-    def _sub_to_dict(self, sub: SubDimensionScore) -> Dict[str, Any]:
-        return {
-            "score": sub.score.value if sub.score else None,
-            "evidence": sub.evidence,
-        }
-
-    def to_eval_dict(self) -> Dict[str, Any]:
-        scores = {
-            name: self._sub_to_dict(getattr(self.language_quality, name))
-            for name in LanguageQuality.model_fields
-        }
-
-        valid_scores = [v["score"] for v in scores.values() if v["score"] is not None]
-        language_avg = round(sum(valid_scores) / len(valid_scores), 2) if valid_scores else None
-
-        return {
-            "dimensions": {
-                "language_quality": {
-                    "scores": scores,
-                    "average": language_avg,
-                }
-            },
-            "mix_detected": self.mix_detected,
-            "mix_severity": self.mix_severity.value,
-            "mixed_hindi_phrases": self.mixed_hindi_phrases,
-            "summary": self.summary,
-            "metrics": {
-                "language_quality_avg": language_avg,
-                "mix_detected": self.mix_detected,
-                "mix_severity": self.mix_severity.value,
-            },
-        }
-
-
+    
 # =============================================================================
 # JUDGE MODEL — JUDGE_BASE_URL and JUDGE_MODEL_NAME must be set in .env
 # API key is not used by vLLM; timeout defaults to 120s if not set
@@ -186,10 +152,14 @@ evaluation_agent = Agent(
     model=_judge_model,
     name="Language Mix Evaluation Agent",
     instrument=False,
-    output_type=EvaluationResult,
+    output_type=LanguageQuality,
     retries=3,
-    model_settings=OpenAIModelSettings(
-        timeout=_JUDGE_TIMEOUT,
+    model_settings=OpenAIChatModelSettings(
+        extra_body={
+            "chat_template_kwargs": {
+                "enable_thinking": True
+            }
+        }
     )
 )
 

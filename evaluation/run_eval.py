@@ -1,6 +1,7 @@
 import os
-import asyncio
 import csv
+import json
+import asyncio
 import warnings
 warnings.filterwarnings('ignore')
 from tqdm.asyncio import tqdm
@@ -10,93 +11,72 @@ from evaluator import evaluation_agent, format_agent_record
 load_dotenv()
 
 current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-INPUT_CSV  = os.path.join(current_dir, "data", "questions.csv")
-OUTPUT_CSV = os.path.join(current_dir, "data", "evaluation-gemma.csv")
-
-CSV_FIELDNAMES = [
-    "question", "answer",
-    "mix_detected", "mix_severity", "mixed_hindi_phrases",
-    "grammar_score", "grammar_evidence",
-    "marathi_terminology_score", "marathi_terminology_evidence",
-    "language_purity_score", "language_purity_evidence",
-    "fluency_score", "fluency_evidence",
-    "language_quality_avg", "summary",
-]
-
-# Load input data
-data = []
-with open(INPUT_CSV, 'r', encoding='utf-8-sig') as f:
-    for row in csv.DictReader(f):
-        data.append({"question": row["question"], "answer": row["answer"]})
-
-# Load any existing evaluations so we can skip them on re-run
-existing = {}
-if os.path.exists(OUTPUT_CSV):
-    with open(OUTPUT_CSV, 'r', encoding='utf-8-sig') as f:
-        for row in csv.DictReader(f):
-            q = row.get("question", "")
-            if q and row.get("summary"):
-                existing[q] = row
-    print(f"Loaded {len(existing)} existing evaluations")
+INPUT_CSV   = os.path.join(current_dir, "data", "questions.csv")
+OUTPUT_JSON = os.path.join(current_dir, "data", "evaluation-gemma.json")
+CONCURRENCY = int(os.getenv("EVAL_CONCURRENCY", "8"))
 
 
-def to_csv_row(item, eval_dict):
-    scores = eval_dict["dimensions"]["language_quality"]["scores"]
-    return {
-        "question":                     item["question"],
-        "answer":                       item["answer"],
-        "grammar_score":                scores["grammar"]["score"],
-        "grammar_evidence":             scores["grammar"]["evidence"],
-        "marathi_terminology_score":    scores["marathi_terminology"]["score"],
-        "marathi_terminology_evidence": scores["marathi_terminology"]["evidence"],
-        "language_purity_score":        scores["language_purity"]["score"],
-        "language_purity_evidence":     scores["language_purity"]["evidence"],
-        "fluency_score":                scores["fluency"]["score"],
-        "fluency_evidence":             scores["fluency"]["evidence"],
-        "language_quality_avg":         eval_dict["dimensions"]["language_quality"]["average"],
-        "mix_detected":                 eval_dict["mix_detected"],
-        "mix_severity":                 eval_dict["mix_severity"],
-        "mixed_hindi_phrases":          " | ".join(eval_dict["mixed_hindi_phrases"]),
-        "summary":                      eval_dict["summary"],
-    }
+def load_questions(path):
+    with open(path, 'r', encoding='utf-8-sig') as f:
+        return [
+            {"question": row["question"], "answer": row["answer"]}
+            for row in csv.DictReader(f)
+        ]
 
 
-async def evaluate_item(item):
-    message = format_agent_record(item)
-    try:
-        eval_result = await evaluation_agent.run(message)
-        return to_csv_row(item, eval_result.output.to_eval_dict())
-    except Exception as e:
-        print(f"Error: {item.get('question', '')[:50]}... - {e}")
-        return None
+def load_existing(path):
+    if not os.path.exists(path):
+        return {}
+    with open(path, 'r', encoding='utf-8') as f:
+        return {row["question"]: row for row in json.load(f) if row.get("question")}
+
+
+def save_results(path, results):
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(results, f, ensure_ascii=False, indent=2)
+
+
+async def evaluate_item(item, sem, results, lock):
+    async with sem:
+        message = format_agent_record(item)
+        try:
+            result = await evaluation_agent.run(message)
+            record = {
+                "question": item["question"],
+                "answer": item["answer"],
+                **result.output.model_dump(),
+            }
+        except Exception as e:
+            print(f"Error: {item.get('question', '')[:50]}... - {e}")
+            return
+        async with lock:
+            results.append(record)
+            save_results(OUTPUT_JSON, results)
 
 
 async def main():
-    results = []
-    tasks = []
+    data = load_questions(INPUT_CSV)
+    existing = load_existing(OUTPUT_JSON)
+    print(f"Loaded {len(existing)} existing evaluations")
 
+    results = []
+    pending = []
     for item in data:
-        question = item.get("question", "")
-        if question in existing:
-            results.append(existing[question])
+        if item["question"] in existing:
+            results.append(existing[item["question"]])
         else:
-            tasks.append(item)
+            pending.append(item)
 
     print(f"Skipping {len(results)} already evaluated items")
-    print(f"Evaluating {len(tasks)} items...")
+    print(f"Evaluating {len(pending)} items with {CONCURRENCY} workers...")
 
-    for item in tqdm(tasks, desc="Evaluating"):
-        result = await evaluate_item(item)
-        if result is not None:
-            results.append(result)
+    sem = asyncio.Semaphore(CONCURRENCY)
+    lock = asyncio.Lock()
+    tasks = [evaluate_item(item, sem, results, lock) for item in pending]
+    await tqdm.gather(*tasks, desc="Evaluating")
 
-    with open(OUTPUT_CSV, 'w', encoding='utf-8', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=CSV_FIELDNAMES)
-        writer.writeheader()
-        writer.writerows(results)
-
-    print(f"Saved {len(results)} rows to {OUTPUT_CSV}")
-    return results
+    save_results(OUTPUT_JSON, results)
+    print(f"Saved {len(results)} records to {OUTPUT_JSON}")
 
 
 if __name__ == "__main__":
