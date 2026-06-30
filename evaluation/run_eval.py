@@ -6,7 +6,7 @@ import warnings
 warnings.filterwarnings('ignore')
 from tqdm.asyncio import tqdm
 from dotenv import load_dotenv
-from evaluator import evaluation_agent, format_agent_record
+from evaluator import EvalDeps, evaluation_agent, format_agent_record
 
 load_dotenv()
 
@@ -39,8 +39,9 @@ def save_results(path, results):
 async def evaluate_item(item, sem, results, lock):
     async with sem:
         message = format_agent_record(item)
+        deps = EvalDeps(question=item["question"], answer=item["answer"])
         try:
-            result = await evaluation_agent.run(message)
+            result = await evaluation_agent.run(message, deps=deps)
             record = {
                 "question": item["question"],
                 "answer": item["answer"],

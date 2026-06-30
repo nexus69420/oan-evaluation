@@ -1,10 +1,12 @@
 from __future__ import annotations
 import os
+import re
 import sys
+from dataclasses import dataclass
 from enum import IntEnum
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field
-from pydantic_ai import Agent
+from pydantic_ai import Agent, ModelRetry, RunContext
 from pydantic_ai.models.openai import OpenAIModel, OpenAIChatModelSettings
 from pydantic_ai.providers.openai import OpenAIProvider
 from dotenv import load_dotenv
@@ -148,11 +150,23 @@ _judge_model = OpenAIModel(
     ),
 )
 
+@dataclass
+class EvalDeps:
+    """Per-run dependencies — the original question and answer text the judge is scoring.
+
+    Passed via `agent.run(..., deps=EvalDeps(question=..., answer=...))` so the output
+    validator can verify every quoted evidence string actually exists in the source.
+    """
+    question: str
+    answer: str
+
+
 evaluation_agent = Agent(
     model=_judge_model,
     name="Language Mix Evaluation Agent",
     instrument=False,
     output_type=LanguageQuality,
+    deps_type=EvalDeps,
     retries=3,
     model_settings=OpenAIChatModelSettings(
         extra_body={
@@ -167,3 +181,48 @@ evaluation_agent = Agent(
 @evaluation_agent.system_prompt
 def system_prompt() -> str:
     return get_prompt('language_mix_evaluation')
+
+
+_WHITESPACE_RE = re.compile(r"\s+")
+
+
+def _normalize(text: str) -> str:
+    """Collapse all whitespace runs to a single space so evidence matching tolerates
+    line-break and indentation differences between the judge's quote and the source."""
+    return _WHITESPACE_RE.sub(" ", text).strip()
+
+
+def _find_missing(evidences: List[str], haystack_normalized: str) -> List[str]:
+    """Return evidence strings that do NOT appear as substrings of the normalized source."""
+    missing = []
+    for phrase in evidences:
+        if not phrase or not phrase.strip():
+            continue
+        if _normalize(phrase) not in haystack_normalized:
+            missing.append(phrase)
+    return missing
+
+
+@evaluation_agent.output_validator
+def validate_evidences_in_source(ctx: RunContext[EvalDeps], output: LanguageQuality) -> LanguageQuality:
+    """Reject outputs whose `evidences` quote phrases that do not appear in the original
+    question+answer. Forces the judge to retry with verbatim quotes rather than paraphrases
+    or hallucinated text."""
+    source = _normalize(f"{ctx.deps.question}\n{ctx.deps.answer}")
+
+    problems = []
+    for dimension in ("grammar", "terminology"):
+        sub = getattr(output, dimension)
+        missing = _find_missing(sub.evidences, source)
+        if missing:
+            quoted = ", ".join(f'"{m}"' for m in missing)
+            problems.append(f"{dimension}: {quoted}")
+
+    if problems:
+        raise ModelRetry(
+            "The following `evidences` were not found verbatim in the original question or answer — "
+            "re-quote them exactly as they appear in the source, or remove them: "
+            + "; ".join(problems)
+        )
+
+    return output
