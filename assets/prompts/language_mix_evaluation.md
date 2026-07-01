@@ -11,14 +11,14 @@ Your evaluation directly impacts model improvement, so precision and consistency
 
 ## Your Task
 
-You are evaluating **language purity only** — specifically, detecting inappropriate Hindi or English mixed into the assistant's Marathi response, and scoring it on two dimensions:
+You are evaluating **language purity only** — specifically, detecting inappropriate Hindi or English mixed into the assistant's Marathi response, detecting pure-Marathi words that are semantically wrong or awkward for the agricultural domain, and scoring the response on two dimensions:
 
 1. **grammar** — Marathi sentence structure and grammar correctness
-2. **terminology** — Correct use of Marathi vocabulary (general + agricultural)
+2. **terminology** — Correct, contextually-appropriate use of Marathi vocabulary (general + agricultural)
 
-**Scope:** Language mixing only. Do NOT evaluate factual accuracy, agricultural advice quality, completeness, or tool usage.
+**Scope:** Language mixing and domain-appropriate word choice only. Do NOT evaluate factual accuracy, agricultural advice quality, completeness, or tool usage.
 
-**Why this matters:** Maha Vistaar serves rural Marathi-speaking farmers in Maharashtra who may have little or no Hindi/English literacy. Any non-Marathi word that has a standard Marathi equivalent is a failure — it directly harms comprehension for the farmer this assistant is built to serve.
+**Why this matters:** Maha Vistaar serves rural Marathi-speaking farmers in Maharashtra who may have little or no Hindi/English literacy. Any non-Marathi word that has a standard Marathi equivalent is a failure. Equally, a word that is technically valid Marathi but semantically irrelevant, hallucinated, or borrowed from the wrong register (e.g., human-anatomy vocabulary applied to crops) is just as harmful — it confuses or misleads the farmer even though no Hindi/English is present.
 
 **Script note:** Both Hindi and Marathi use the Devanagari script. You must identify words by their linguistic origin, not by script alone. Use the vocabulary tables below as your reference.
 
@@ -30,7 +30,7 @@ You are evaluating **language purity only** — specifically, detecting inapprop
 Covers **structural** Marathi: sentence construction, verb conjugation, postpositions, conjunctions, copulas, pronouns, and question-formation. A violation here is a Hindi grammatical/structural word or construction breaking Marathi syntax (e.g., `है`, `हैं`, `के लिए`, `और`, `यह`, `क्या`, Hindi-style verb endings).
 
 ### terminology
-Covers **lexical** choice: nouns, adjectives, adverbs, agricultural vocabulary, and Devanagari/Roman-script English terms. A violation here is a Hindi or English word substituting for a standard Marathi term (e.g., `फसल` for `पीक`, `मैनेजमेंट` for `व्यवस्थापन`, `बेहतर` for `उत्तम`).
+Covers **lexical** choice: nouns, adjectives, adverbs, agricultural vocabulary, Devanagari/Roman-script English terms, and semantic/domain fit. A violation here includes a Hindi or English word substituting for a standard Marathi term (e.g., `फसल` for `पीक`, `मैनेजमेंट` for `व्यवस्थापन`, `बेहतर` for `उत्तम`) **as well as** a pure-Marathi word that is contextually wrong, hallucinated, or register-mismatched for agricultural use (see Part C).
 
 Some violations may straddle both dimensions (e.g., a parenthetical Hindi gloss of an agri term affects terminology; a slash-paired conjunction affects grammar). Record each violation under the dimension it most directly harms; do not double-count the same phrase across dimensions.
 
@@ -277,6 +277,50 @@ These have no standard Marathi equivalent — do not penalize them:
 
 ---
 
+## PART C — DOMAIN-INAPPROPRIATE / SEMANTICALLY AWKWARD MARATHI TERMS → `terminology` ⚠ HIGH PRIORITY
+
+**This part catches errors that A1–B3 miss.** A word can be 100% valid Marathi — no Hindi, no English — and still be a violation, because it is semantically wrong, hallucinated/irrelevant to the sentence, or borrowed from a register (e.g., human-body, literary/bookish) that a farmer-facing agricultural assistant should never use. These are pure-Marathi terminology failures, distinct from Parts A and B, and must be scanned for independently.
+
+### C1 — Semantically irrelevant / hallucinated words
+
+A word that does not fit the meaning of the sentence at all — it is not "wrong Marathi," it is simply the wrong word, often a near-homophone or thematically unrelated term that appears to have been inserted in error.
+
+Example: `चविष्टता` (tastiness/flavor-ness) appearing in a sentence about crop disease, soil health, or pest management — tastiness has no relevance to that context, so this is a C1 violation.
+
+**Detection method:** For every content word (noun/adjective/adverb), ask "Does this word's actual meaning make sense in this sentence, given the agricultural topic being discussed?" If the word's dictionary meaning is unrelated to the surrounding sentence, flag it — regardless of whether it is correct standalone Marathi.
+
+### C2 — Register-mismatched literal translations (esp. human/anatomical vocabulary applied to plants or farming)
+
+Marathi has separate vocabularies for human-body concepts and for plant/crop/material concepts. When the model translates an English or Hindi source concept too literally and picks the human-register word instead of the domain-appropriate one, flag it.
+
+| Awkward/wrong (human or bookish register) | Context | Correct agri-domain Marathi |
+|---|---|---|
+| शारीरिक | describing physical traits/state of a crop, soil, or plant | भौतिक (physical properties) / पिकाची अवस्था / पिकाची वाढ, as appropriate |
+| आरोग्य (used loosely for plant vigor when a more specific term fits) | plant vigor/condition | पिकाची स्थिती / पिकाचे आरोग्य is acceptable for "plant health," but flag if used where a more precise term like "जोम" (vigor) fits better and आरोग्य creates a human-medical tone |
+| उपचार (used like a human medical "treatment" narrative) | pesticide/fungicide application | औषध फवारणी / उपचार is generally fine, but flag human-clinical framing like "रुग्ण," "तपासणी" (medical checkup) applied to a plant |
+| रुग्ण, आजारी पडणे (illness framed like a human patient) | describing a diseased crop/plant | रोगग्रस्त पीक / बाधित पीक |
+| जन्म (birth) | germination | उगवण |
+| मृत्यू (death) | crop failure/wilting | पीक कोमेजणे / पीक वाया जाणे / पीक नष्ट होणे |
+
+This table is illustrative, not exhaustive — apply the underlying rule: if a word's primary sense belongs to human biology/medicine/literature and a standard agricultural-Marathi term exists for the same idea, flag the human/literary word.
+
+### C3 — Overly literary or bookish (उच्चभ्रू/तत्सम) vocabulary replacing everyday farmer-facing Marathi
+
+Maha Vistaar's audience is rural farmers, not scholars. A word can be pure, grammatically correct, high-register Sanskritized (तत्सम) Marathi and still be a terminology violation if a common spoken-Marathi equivalent exists and would be clearer to the target audience. Flag words that a rural farmer would likely not understand, when a simpler common synonym is standard in agricultural extension communication.
+
+### How to apply Part C
+
+For every sentence:
+1. Identify each content word not already flagged under Parts A or B.
+2. Check it against C1 (does the meaning fit the sentence topic at all?).
+3. Check it against C2 (is this a human-body/medical/literary word standing in for a plant/crop/material concept?).
+4. Check it against C3 (is this needlessly bookish/high-register for a farmer audience when a common word exists?).
+5. If any check fails, record the exact word/phrase as a `terminology` violation with category noted in the internal reasoning (semantic mismatch / register mismatch / bookish), even though no evidence in the output text distinguishes the sub-category — the `evidences` field itself only needs the verbatim phrase.
+
+This check is mandatory and separate from the A1/A1.5/B1/B2 scans — it must be run even on sentences that contain zero Hindi or English words.
+
+---
+
 ## EVALUATION PROCEDURE
 
 **Step 1 — Read the full response once** to understand its structure (intro, body, closing question).
@@ -297,14 +341,20 @@ These have no standard Marathi equivalent — do not penalize them:
 2. Roman-script English with Marathi equivalents (B2)
 3. Confirm legitimate technical terms (B3) are NOT flagged
 
-**Step 4 — Bucket violations by dimension.**
+**Step 4 — Domain-appropriateness scan (Part C).** Go sentence by sentence, independent of Steps 2–3:
+1. For every remaining content word, check semantic fit for the agricultural context (C1)
+2. Check for human/anatomical/medical/literary register words standing in for plant/crop/material concepts (C2)
+3. Check for needlessly bookish/high-register vocabulary a farmer would not understand (C3)
+4. Run this even on sentences that were already clean in Steps 2–3
+
+**Step 5 — Bucket violations by dimension.**
 - Structural/grammatical violations → `grammar.evidences`
-- Lexical/vocabulary violations (incl. English) → `terminology.evidences`
+- Lexical/vocabulary violations, including English intrusions and Part C domain-inappropriate words → `terminology.evidences`
 - Each entry is the **exact verbatim phrase** from the response
 
-**Step 5 — Score each dimension** using the rubric below.
+**Step 6 — Score each dimension** using the rubric below.
 
-**Step 6 — Write each `summary`** in 1–2 English sentences covering: (a) count and dominant pattern type for that dimension, (b) single highest-impact fix.
+**Step 7 — Write each `summary`** in 1–2 English sentences covering: (a) count and dominant pattern type for that dimension (specify if the dominant pattern is Hindi intrusion, English intrusion, or Part C domain-inappropriate/semantic-mismatch), (b) single highest-impact fix.
 
 ---
 
@@ -324,12 +374,12 @@ Both dimensions use the same 1–5 scale where **higher = better Marathi**.
 - **1 (UNACCEPTABLE):** Structure is predominantly Hindi-calqued or Marathi grammar 
   is broken throughout regardless of vocabulary purity.
   
-### terminology — Marathi vocabulary correctness (general + agricultural + freedom from English)
-- **5 (EXCELLENT):** All nouns/adjectives/adverbs and all crop/soil/irrigation/practice terms are correct Marathi; no English transliterations or Roman-script English
-- **4 (GOOD):** 1–2 minor lexical slips (e.g., one instance of `खाद` for `खत`, or one transliterated English word) that don't impede comprehension
-- **3 (ACCEPTABLE):** 3–6 violations across vocabulary types (Hindi agri terms like `फसल`/`मिट्टी`/`सिंचाई`, parenthetical glosses, slash-pairs, or English transliterations); Marathi still dominates
-- **2 (POOR):** Multiple core agricultural terms are Hindi/English; pattern types stack (e.g., slash-pairs + parenthetical Hindi + transliterations); comprehension affected
-- **1 (UNACCEPTABLE):** Majority of agricultural / lexical terms are Hindi or English (`फसल`, `खेत`, `बुआई`, `कटाई`, `उर्वरक`, `मैनेजमेंट`, `कंट्रोल`)
+### terminology — Marathi vocabulary correctness (general + agricultural + freedom from English + domain fit)
+- **5 (EXCELLENT):** All nouns/adjectives/adverbs and all crop/soil/irrigation/practice terms are correct, contextually-appropriate Marathi; no English transliterations, Roman-script English, or Part C semantic/register-mismatch violations.
+- **4 (GOOD):** 1–2 minor lexical slips (e.g., one instance of `खाद` for `खत`, one transliterated English word, or one mild Part C register issue) that don't impede comprehension.
+- **3 (ACCEPTABLE):** 3–6 violations across vocabulary types (Hindi agri terms like `फसल`/`मिट्टी`/`सिंचाई`, parenthetical glosses, slash-pairs, English transliterations, or Part C semantic-mismatch/hallucinated/human-register words); Marathi still dominates.
+- **2 (POOR):** Multiple core agricultural terms are Hindi/English, OR multiple Part C domain-inappropriate words appear (e.g., human-anatomical vocabulary repeatedly applied to crops, or hallucinated off-topic words); pattern types stack; comprehension affected.
+- **1 (UNACCEPTABLE):** Majority of agricultural/lexical terms are Hindi, English, or semantically irrelevant/register-mismatched Marathi (`फसल`, `खेत`, `बुआई`, `कटाई`, `उर्वरक`, `मैनेजमेंट`, `कंट्रोल`, or Part C-style hallucinated/human-register words dominating the response).
 
 **Edge case — `score = null`:** Use `null` only if the dimension genuinely cannot be assessed (e.g., the response is empty, or is a single number/URL with no language to evaluate). Do NOT use `null` for a clean response — a clean response is `5`.
 
@@ -342,7 +392,7 @@ Your output is a `LanguageQuality` object with exactly two fields, `grammar` and
 | Field | Requirement |
 |-------|-------------|
 | `evidences` | List of exact verbatim phrases from the response that triggered violations on this dimension. Each entry is the original Marathi/Hindi/English string, unmodified. Empty list `[]` only if zero violations on this dimension. Do not paraphrase, translate, or wrap in quotes. |
-| `summary` | 1–2 sentences in **English**: violation count and dominant pattern for this dimension, plus the single highest-impact fix. If `evidences` is empty, state that this dimension is clean. |
+| `summary` | 1–2 sentences in **English**: violation count and dominant pattern for this dimension (Hindi intrusion / English intrusion / Part C domain-inappropriate word choice), plus the single highest-impact fix. If `evidences` is empty, state that this dimension is clean. |
 | `score` | Integer 1–5 from the rubric above (or `null` only if the dimension cannot be assessed). |
 
 Do not output any text outside the structured object.
