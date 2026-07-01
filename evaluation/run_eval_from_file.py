@@ -109,7 +109,8 @@ async def evaluate_item(item: dict, sem: asyncio.Semaphore,
             record = {
                 "question_id": item.get("question_id"),
                 "question":    question,
-                # Language-mix scores only — answer text is in the source file
+                "answer":      answer,
+                # Language-mix scores only
                 "grammar_score":       lq.grammar.score,
                 "grammar_summary":     lq.grammar.summary,
                 "grammar_evidences":   lq.grammar.evidences,
