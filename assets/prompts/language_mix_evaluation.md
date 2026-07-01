@@ -109,6 +109,57 @@ Scan the entire response for every word in these tables. Each occurrence is one 
 | सुरक्षा के लिए | सुरक्षिततेसाठी |
 | यह आवश्यक है | हे आवश्यक आहे (mixed grammar — record under `grammar`) |
 
+### A1.5 — Marathi-Internal Grammar Correctness (NOT just Hindi-word detection) ⚠ CRITICAL
+
+Grammar violations are not limited to literal Hindi words. Even a sentence built entirely 
+from Marathi vocabulary can be grammatically broken if it follows Hindi sentence logic. 
+Check every sentence independently for these patterns:
+
+**a) Gender/number agreement errors**
+Marathi verbs and adjectives must agree with the subject's gender (m/f/n) and number. 
+Flag mismatches even if every word is Marathi vocabulary.
+- Wrong: `पीक चांगली आली` (पीक is neuter, चांगली is feminine — mismatch)
+- Correct: `पीक चांगले आले`
+- Wrong: `माती सुकला` (माती is feminine, सुकला is masculine)
+- Correct: `माती सुकली`
+
+**b) Postposition (विभक्ती प्रत्यय) errors**
+Hindi and Marathi postpositions don't map 1:1. A calqued postposition is a grammar 
+violation even if the postposition itself is a Marathi word.
+- Wrong: `शेतात पाणी ला द्या` (incorrect प्रत्यय stacking, Hindi "पानी को" logic)
+- Correct: `शेताला पाणी द्या`
+- Wrong: `पिकाचे साठी` (Hindi "फसल के लिए" calqued word order)
+- Correct: `पिकासाठी`
+
+**c) Hindi-style compound/conjunct verb constructions calqued into Marathi**
+Hindi frequently uses [noun + करना] compounds; when this structure is translated 
+word-for-word into Marathi instead of using Marathi's native verb, it's a grammar 
+violation even though every word is technically Marathi.
+- Wrong: `फवारणी करना पडेल` (Hindi infinitive "करना" retained)
+- Wrong-but-subtler: `संपर्क करा` used where native Marathi idiom would be 
+  `संपर्क साधा` — flag only if it produces an ungrammatical or unidiomatic 
+  Marathi construction, not mere stylistic variance
+
+**d) Wrong or missing case markers on nouns before postpositions**
+- Wrong: `शेतकरी समस्या बद्दल बोलले` (missing marker on समस्या)
+- Correct: `शेतकरी समस्येबद्दल बोलले`
+
+**e) Hindi word-order calques (SOV variations, relative clause structure)**
+Even with all-Marathi vocabulary, sentence order copied directly from Hindi relative 
+clause structure (जो...वह / जे...ते calques) can be grammatically awkward or incorrect 
+in Marathi. Flag constructions like `जे शेतकरी आहे, त्याने...` where number agreement 
+between जे and आहे breaks (should be `जे शेतकरी आहेत, त्यांनी...`).
+
+**f) Wrong verb tense/aspect formation**
+Flag Hindi-pattern tense formation, e.g. continuous/habitual aspect built with Hindi 
+auxiliary logic rather than Marathi's प्रगत/चालू forms.
+
+**How to apply this section:**
+For every sentence, independently ask: "If I strip out all Hindi-origin words, is the 
+REMAINING Marathi grammatically well-formed?" If not, record the malformed sentence 
+fragment as a grammar violation — even if A1's word list found nothing in it. This 
+check is mandatory and separate from the A1 word-list scan.
+
 ---
 
 ### A2 — Parenthetical Hindi Glosses → `terminology` ⚠ HIGH PRIORITY
@@ -230,13 +281,16 @@ These have no standard Marathi equivalent — do not penalize them:
 
 **Step 1 — Read the full response once** to understand its structure (intro, body, closing question).
 
-**Step 2 — Hindi scan.** Go sentence by sentence:
-1. Check each word against the A1 tables
-2. Look for parenthetical Hindi glosses (A2)
-3. Look for slash-pairs with Hindi/English (A3)
-4. Look for Hindi words embedded mid-sentence (A4)
-5. Check the closing question for Hindi (A5)
-6. Check for full Hindi sections (A6)
+**Step 2 — Hindi scan AND Marathi-internal grammar scan.** Go sentence by sentence:
+1. Check each word against the A1 tables (Hindi word intrusion)
+2. Independently check the sentence's Marathi structure against A1.5 
+   (gender/number agreement, postpositions, calqued constructions, word order) 
+   — do this even for sentences that pass step 1 with zero Hindi words
+3. Look for parenthetical Hindi glosses (A2)
+4. Look for slash-pairs with Hindi/English (A3)
+5. Look for Hindi words embedded mid-sentence (A4)
+6. Check the closing question for Hindi (A5)
+7. Check for full Hindi sections (A6)
 
 **Step 3 — English scan.** Go sentence by sentence:
 1. Devanagari-transliterated English from B1
@@ -259,12 +313,17 @@ These have no standard Marathi equivalent — do not penalize them:
 Both dimensions use the same 1–5 scale where **higher = better Marathi**.
 
 ### grammar — Marathi sentence structure correctness
-- **5 (EXCELLENT):** All sentences grammatically correct Marathi; no Hindi structural words
-- **4 (GOOD):** One minor issue (e.g., a single Hindi conjunction or copula slip)
-- **3 (ACCEPTABLE):** 2–3 Hindi grammatical items (`है`, `हैं`, `के लिए`, `और`, `यह`, `क्या`) breaking otherwise Marathi sentences
-- **2 (POOR):** Frequent Hindi grammatical words make sentences feel Hindi-dominant; comprehension affected for monolingual Marathi speakers
-- **1 (UNACCEPTABLE):** Sentence structure is predominantly Hindi; a monolingual Marathi farmer would struggle
-
+- **5 (EXCELLENT):** No Hindi structural words AND no Marathi-internal grammar errors 
+  (agreement, postpositions, calques) per A1.5.
+- **4 (GOOD):** One minor issue — either a single Hindi structural word OR one 
+  Marathi-internal agreement/postposition slip.
+- **3 (ACCEPTABLE):** 2–3 total grammar issues, combining Hindi structural words 
+  AND/OR Marathi-internal errors (gender/number mismatch, wrong विभक्ती, calqued verbs).
+- **2 (POOR):** Frequent errors of either type; sentences feel structurally broken 
+  or Hindi-calqued even where vocabulary is Marathi.
+- **1 (UNACCEPTABLE):** Structure is predominantly Hindi-calqued or Marathi grammar 
+  is broken throughout regardless of vocabulary purity.
+  
 ### terminology — Marathi vocabulary correctness (general + agricultural + freedom from English)
 - **5 (EXCELLENT):** All nouns/adjectives/adverbs and all crop/soil/irrigation/practice terms are correct Marathi; no English transliterations or Roman-script English
 - **4 (GOOD):** 1–2 minor lexical slips (e.g., one instance of `खाद` for `खत`, or one transliterated English word) that don't impede comprehension
