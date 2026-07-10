@@ -89,6 +89,83 @@ The repo ships with a small sample `data/train.csv` / `val.csv` / `test.csv`
 run immediately and produce a real result. Each costs a few cents with the
 default `gpt-4o-mini` judge.
 
+## New to this repo? Step by step
+
+### 1. Set up the environment
+```bash
+cd dspy-evaluator-alignment
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 2. Add your API key
+```bash
+cp .env.example .env
+```
+Then edit `.env` and set:
+```
+OPENAI_API_KEY=sk-...
+```
+That's the only required setting — everything else (model, score range,
+file paths) has a working default.
+
+### 3. Get your data into the right shape
+Put 3 CSVs — `train.csv`, `val.csv`, `test.csv` — in `data/`, each with at
+minimum: `question`, `agent_response`, `human_score`. The repo already
+ships small sample CSVs in exactly this shape, so **you can skip this step
+entirely for your first run** and just try it on the bundled sample data.
+
+### 4. Run a first fine-tuning pass (pick one)
+
+**Holistic** — one prompt scores everything at once:
+```bash
+python -m evaluator_alignment_prompts.train \
+  --train-csv data/train.csv --val-csv data/val.csv --test-csv data/test.csv
+```
+
+**Per-metric** — several narrow prompts, each scoring one thing (accuracy,
+citations, no-fabrication, actionability):
+```bash
+python -m evaluator_alignment_prompts.metrics.train_metrics \
+  --train-csv data/train.csv --val-csv data/val.csv --test-csv data/test.csv
+```
+
+You can run both if you're not sure which fits — they don't conflict. Watch
+the terminal for `Baseline val composite` vs the final `Test composite`
+score — that tells you whether it actually improved.
+
+### 5. Look at what it produced
+```bash
+cat optimized_prompts/latest.md              # holistic: best rewritten prompt
+cat optimized_prompts/metrics/*_latest.md     # per-metric: best rewritten prompt, per metric
+```
+Also worth a look: `artifacts/error_report_*.md` (holistic) — shows exactly
+which examples the judge got wrong and why.
+
+### 6. If you like the result, promote it
+This is the one manual step that makes a fine-tuned prompt "live":
+```bash
+# Holistic
+python -m evaluator_alignment_prompts.promote.promote
+
+# Per-metric (all metrics, or just one)
+python -m evaluator_alignment_prompts.promote.promote_metrics --all
+python -m evaluator_alignment_prompts.promote.promote_metrics --metric citation_accuracy
+```
+This overwrites `prompts/evaluation_system_baseline.md` (or
+`prompts/metrics/<metric>.md`) with the new version, backing up whatever
+was there first.
+
+### 7. Iterate
+Re-run step 4 — it now starts from the prompt you just promoted, so each
+round builds on the last. Repeat 4→6 until scores plateau.
+
+**Once you have your own data:** swap in your real CSVs at step 3, and if
+your CSV uses different column names or a different score scale (e.g. 1–5
+instead of 1–4), set `COL_QUESTION` / `COL_SCORE` / `SCORE_MIN` / `SCORE_MAX`
+etc. in `.env` instead of renaming your data — see `.env.example` for the
+full list.
+
 ## What you need to provide
 
 Three CSVs — already split into train/validation/test — each with these
