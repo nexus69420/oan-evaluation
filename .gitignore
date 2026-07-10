@@ -1,0 +1,19 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Run outputs — regenerated every run, not source
+artifacts/
+optimized_prompts/*.md
+!optimized_prompts/.gitkeep
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,30 @@
+{
+  "accuracy_completeness": {
+    "prompt_file": "accuracy_completeness.md",
+    "score_min": 1,
+    "score_max": 4,
+    "score_col": "accuracy_completeness_score",
+    "notes_col": "accuracy_completeness_notes"
+  },
+  "citation_accuracy": {
+    "prompt_file": "citation_accuracy.md",
+    "score_min": 0,
+    "score_max": 1,
+    "score_col": "citation_accuracy_score",
+    "notes_col": "citation_accuracy_notes"
+  },
+  "no_fabrication": {
+    "prompt_file": "no_fabrication.md",
+    "score_min": 0,
+    "score_max": 1,
+    "score_col": "no_fabrication_score",
+    "notes_col": "no_fabrication_notes"
+  },
+  "actionability": {
+    "prompt_file": "actionability.md",
+    "score_min": 1,
+    "score_max": 4,
+    "score_col": "actionability_score",
+    "notes_col": "actionability_notes"
+  }
+}

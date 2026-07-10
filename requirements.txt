@@ -1,0 +1,6 @@
+dspy-ai>=2.5
+pandas
+python-dotenv
+numpy
+scipy
+jinja2
