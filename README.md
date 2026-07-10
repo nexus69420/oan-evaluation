@@ -392,3 +392,4 @@ history, never used directly by anything until you explicitly promote one.
   pipeline for scoring brand-new, unlabeled responses — that's on you (or a
   separate system) using `BlindEvaluatorModule` / `SingleMetricEvaluatorModule`
   with the promoted prompt file.
+# promot-tuning
