@@ -195,6 +195,46 @@ training, so their scores tell you whether the tuned prompt actually
 generalizes rather than having memorized your training examples. If you
 only have one CSV, split it yourself (e.g. 60/20/20) before running this.
 
+## Example: running on a real dataset with different column names
+
+`data/pivot_real/` is a worked example of pointing this repo at a CSV that
+wasn't built for it — a real production evaluation export (`pivot_source.csv`,
+185 rows, split 70/15/15 into `train.csv`/`val.csv`/`test.csv`). Its columns
+don't match our bundled toy data at all:
+
+| | Toy sample data | `data/pivot_real/` |
+|---|---|---|
+| Response column | `agent_response` | `answer` |
+| Score column naming | `citation_accuracy_score` (single underscore) | `citation_accuracy__score` (double underscore) |
+| Score column per metric | 4 metrics (incl. `actionability`) | 3 overlapping metrics + 2 others we don't have prompts for (`source_data_comprehensiveness`, `tool_call_quality`) + one excluded on purpose (`translation_accuracy` — real scores cluster at 9–10, too narrow a range to optimize against) |
+
+Rather than renaming the CSV or editing any Python, this is handled with
+config alone:
+
+- **`prompts/metrics/metrics_config_pivot.json`** — a second copy of
+  `metrics_config.json`, with `score_col`/`notes_col` corrected to this
+  CSV's real double-underscore column names (only for the 3 metrics that
+  exist in both datasets: `accuracy_completeness`, `citation_accuracy`,
+  `no_fabrication`). It doesn't contain any of the CSV's actual data — just
+  the column-name lookup, same idea as the default config.
+- **`METRICS_CONFIG_FILE`** and **`COL_RESPONSE`** environment variables —
+  both already existed for exactly this purpose — point them at the new
+  config and the `answer` column for this run only:
+
+```bash
+METRICS_CONFIG_FILE=prompts/metrics/metrics_config_pivot.json \
+COL_RESPONSE=answer \
+python -m evaluator_alignment_prompts.metrics.train_metrics \
+  --train-csv data/pivot_real/train.csv --val-csv data/pivot_real/val.csv --test-csv data/pivot_real/test.csv \
+  --metrics accuracy_completeness,citation_accuracy,no_fabrication \
+  --breadth 2 --depth 1
+```
+
+The default `prompts/metrics/metrics_config.json` (used by the plain
+`python -m evaluator_alignment_prompts.metrics.train_metrics` command earlier
+in this README) is untouched and still targets the toy sample CSVs — this is
+purely an additional, opt-in example, not a replacement.
+
 ## Promoting a fine-tuned prompt (going from "tuned" to "the judge you actually use")
 
 **`train.py` / `train_metrics.py` experiment. `promote.py` / `promote_metrics.py` ship it.**
@@ -426,12 +466,18 @@ prompts/                        # the actual prompt TEXT your judge(s) use — n
     no_fabrication.md, actionability.md   # one prompt file per metric. train_metrics.py
                                           #   starts here; promote_metrics.py overwrites
                                           #   these when you publish
+    metrics_config_pivot.json        # alternate config for data/pivot_real/ (see
+                                      #   "Example: running on a real dataset" above) —
+                                      #   same 3 prompt files, different CSV column names
     archive/                        # auto-created backups, one per promote_metrics.py run
 
 data/                            # your labeled examples
   train.csv, val.csv, test.csv    # sample data — replace with your own. Same 3 files
                                    #   serve BOTH workflows (holistic uses `human_score`,
                                    #   per-metric uses `<metric>_score` columns)
+  pivot_real/                     # worked example: a real dataset with different column
+                                   #   names, run via metrics_config_pivot.json above
+    pivot_source.csv, train.csv, val.csv, test.csv
 
 optimized_prompts/              # every fine-tuning ATTEMPT (drafts, never auto-published)
   latest.md, best_<ts>.md, stage1_copro_<ts>.md, ...   # holistic drafts (train.py output)
