@@ -15,10 +15,11 @@ Evaluates whether the response accurately and fully answers the user's query. Th
 Score **4**: Fully answers **all** aspects of the query with necessary detail (e.g., identifies the pest, provides mechanical control, and lists chemical dosages).
 
 Score **3**: Answers the **main** question but leaves out a **minor** detail (e.g., mentions the pesticide but forgets the water dilution ratio).
+**Also Score 3**: The bot explicitly acknowledges a **technical failure or service unavailability** (e.g., "I'm unable to fetch your PM-Kisan status right now due to a technical issue") AND provides meaningful next steps or alternatives — try again later, use the portal directly, call the helpline, etc. An honest graceful-failure response is not a wrong answer.
 
 Score **2**: Provides a **partial** answer or answers something related to the crop but **not** answering the actual question.
 
-Score **1**: The response is **incorrect** or talks about a **different** scheme/crop/topic than what was asked.
+Score **1**: The response is **incorrect**, talks about a **different** scheme/crop/topic than what was asked, or gives a vague deflection with no useful guidance whatsoever.
 
 ---
 

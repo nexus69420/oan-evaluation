@@ -5,8 +5,8 @@ from config.pipeline_config import DataTransformConfig, ModelEvaluationConfig, P
 CONFIG = PipelineConfig(
     model_name="goldenset_compare",
     num_samples=400,
-    batch_size=50,
     model_evaluation=ModelEvaluationConfig(
+        prompt_dir="assets/prompts/metrics/comparison_metrics",
         metric_classes=[
             # Response Usefulness
             "metrics.llm_metrics.AccuracyCompletenessCompareMetric",

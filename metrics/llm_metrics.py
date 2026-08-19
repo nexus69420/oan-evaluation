@@ -29,6 +29,16 @@ class _LlmMetricBase(BaseMetric):
 
 
 # LLM metrics (one LLM call per metric)
+class FactualAccuracyMetric(_LlmMetricBase):
+    metric_name = "factual_accuracy"
+    prompt_file = "factual_accuracy.md"
+
+
+class AnswerRelevanceMetric(_LlmMetricBase):
+    metric_name = "answer_relevance"
+    prompt_file = "answer_relevance.md"
+
+
 class CitationComprehensivenessMetric(_LlmMetricBase):
     metric_name = "citation_comprehensiveness"
     prompt_file = "citation_comprehensiveness.md"
@@ -118,6 +128,11 @@ class ToneMetric(_LlmMetricBase):
 class TermIdentificationMetric(_LlmMetricBase):
     metric_name = "term_identification"
     prompt_file = "term_identification.md"
+
+
+class ToolCallQualityMetric(_LlmMetricBase):
+    metric_name = "tool_call_quality"
+    prompt_file = "tool_call_quality.md"
 
 
 # LLM-backed voice metrics
@@ -295,3 +310,67 @@ class OutputHygieneMetric(BaseMetric):
         bad_markers = ["tool-call", "tool-return", "internal", "debug"]
         clean = not any(marker in answer.lower() for marker in bad_markers)
         return MetricResult(metric_name=self.metric_name, score=1.0 if clean else 0.0, reason="No internal artifacts" if clean else "Potential internal artifacts in output", metadata={"markers": bad_markers})
+
+
+class LanguageMixingMetric(BaseMetric):
+    """Rule-based language mixing detector (no LLM call, no cost)."""
+
+    metric_name = "language_mixing"
+
+    async def evaluate(
+        self,
+        *,
+        row_json: Dict[str, Any],
+        transformed_json: Dict[str, Any],
+        variables: Dict[str, Any],
+        config: Dict[str, Any],
+    ) -> MetricResult:
+        from helpers.language_utils import (
+            LANGUAGE_CONFIGS,
+            OUTPUT_LANGUAGE_MAP,
+            build_reason,
+            compute_score,
+            detect_english_mixing,
+            detect_foreign_scripts,
+            detect_target_from_question,
+        )
+
+        merged   = {**row_json, **transformed_json, **variables}
+        question = merged.get("question", "")
+        answer   = merged.get("answer", "")
+
+        lang_key: str | None = None
+        if merged.get("output_language"):
+            lang_key = OUTPUT_LANGUAGE_MAP.get(merged["output_language"].strip().lower())
+        if not lang_key:
+            lang_key = detect_target_from_question(question)
+
+        if not lang_key or lang_key not in LANGUAGE_CONFIGS:
+            return MetricResult(
+                metric_name=self.metric_name,
+                score=None,
+                reason="Could not determine target language -- skipped",
+                metadata={},
+            )
+
+        lang_config    = LANGUAGE_CONFIGS[lang_key]
+        foreign_detail = detect_foreign_scripts(answer, lang_config)
+        english_detail = (
+            detect_english_mixing(answer)
+            if lang_config["check_english_mixing"]
+            else {"technical_abbrevs": [], "parens_english": [], "inline_english": []}
+        )
+        score  = compute_score(lang_config, foreign_detail, english_detail)
+        reason = build_reason(lang_config, foreign_detail, english_detail)
+
+        return MetricResult(
+            metric_name=self.metric_name,
+            score=float(score),
+            reason=reason,
+            metadata={
+                "target_language":        lang_config["display_name"],
+                "foreign_scripts_found":  list(foreign_detail.keys()),
+                "inline_english_count":   len(english_detail.get("inline_english", [])),
+                "technical_abbrevs_count": len(english_detail.get("technical_abbrevs", [])),
+            },
+        )

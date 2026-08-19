@@ -64,7 +64,9 @@ class ModelEvaluationConfig:
         metric_configs: Optional[Dict[str, Dict[str, Any]]] = None,
         llm: Optional[Dict[str, Any]] = None,
         default_llm_profile: Optional[str] = None,
+        prompt_dir: Optional[str] = None,
     ) -> None:
+        self.prompt_dir = prompt_dir or "assets/prompts/metrics"
         self.metric_classes = metric_classes or [
             "metrics.llm_metrics.CitationComprehensivenessMetric",
             "metrics.llm_metrics.NoFabricationMetric",
@@ -94,6 +96,7 @@ class ModelEvaluationConfig:
             "metrics.llm_metrics.ToolSequencingMetric",
             "metrics.llm_metrics.SearchQualityMetric",
             "metrics.llm_metrics.OutputHygieneMetric",
+            "metrics.llm_metrics.LanguageMixingMetric",
         ]
         self.metric_configs = metric_configs or {}
         self.llm_profiles, self.default_llm_profile, self.llm = normalize_llm_profiles(
@@ -109,9 +112,9 @@ class PipelineConfig:
         model_name: str = DEFAULT_MODEL_NAME,
         input_path: Optional[str] = None,
         output_path: Optional[str] = None,
-        num_samples: Optional[int] = 90,
+        num_samples: Optional[int] = 10,
         max_concurrent: int = 20,
-        batch_size: int = 20,
+        checkpoint_interval_minutes: float = 2.0,
         fail_open: bool = True,
         data_transform: Optional[DataTransformConfig] = None,
         model_evaluation: Optional[ModelEvaluationConfig] = None,
@@ -121,13 +124,13 @@ class PipelineConfig:
         self.output_path = output_path
         self.num_samples = num_samples
         self.max_concurrent = max_concurrent
-        self.batch_size = batch_size
+        self.checkpoint_interval_minutes = checkpoint_interval_minutes
         self.fail_open = fail_open
         self.data_transform = data_transform or DataTransformConfig()
         self.model_evaluation = model_evaluation or ModelEvaluationConfig()
 
     def resolve_paths(self, repo_root: Path) -> None:
-        model_dir = repo_root / "data" / "models" / self.model_name.replace("/", "_")
+        model_dir = repo_root / "data" / "models" / self.model_name
         if not self.input_path:
             self.input_path = str(model_dir / "data.json")
         if not self.output_path:

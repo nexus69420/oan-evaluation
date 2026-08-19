@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from dotenv import load_dotenv
-from tqdm.asyncio import tqdm
+from tqdm import tqdm
 
 from metrics.base import MetricResult
 
@@ -226,6 +226,7 @@ async def run_pipeline(CONFIG) -> List[Dict[str, Any]]:
             or CONFIG.model_evaluation.metric_configs.get(metric_name)
             or {}
         )
+        metric_config.setdefault("prompt_dir", CONFIG.model_evaluation.prompt_dir)
         _resolve_llm_for_metric(
             CONFIG.model_evaluation,
             metric_config,
@@ -234,46 +235,71 @@ async def run_pipeline(CONFIG) -> List[Dict[str, Any]]:
         metric_instances.append((metric_name, metric_obj, metric_config))
 
     semaphore = asyncio.Semaphore(CONFIG.max_concurrent)
-    batch_size = max(1, int(getattr(CONFIG, "batch_size", len(row_bundles) or 1)))
+    n_rows = len(row_bundles)
+    bar_width = max(len(mn) for mn, _, _ in metric_instances) if metric_instances else 20
 
-    for batch_start in range(0, len(row_bundles), batch_size):
-        batch_rows = row_bundles[batch_start : batch_start + batch_size]
-        batch_num = (batch_start // batch_size) + 1
+    metric_bars = {
+        metric_name: tqdm(
+            total=n_rows,
+            desc=metric_name.ljust(bar_width),
+            position=i,
+            leave=True,
+        )
+        for i, (metric_name, _, _) in enumerate(metric_instances)
+    }
 
-        for metric_name, metric_obj, metric_config in metric_instances:
-            tasks = [
-                _run_metric_for_row(
-                    semaphore=semaphore,
-                    metric_obj=metric_obj,
-                    metric_name=metric_name,
-                    metric_config=metric_config,
-                    row_bundle=row_bundle,
-                    fail_open=CONFIG.fail_open,
-                )
-                for row_bundle in batch_rows
-            ]
-            results = await tqdm.gather(
-                *tasks,
-                desc=f"Batch {batch_num} metric: {metric_name}",
-            )
+    async def _run_and_store(row_bundle, metric_name, metric_obj, metric_config):
+        result = await _run_metric_for_row(
+            semaphore=semaphore,
+            metric_obj=metric_obj,
+            metric_name=metric_name,
+            metric_config=metric_config,
+            row_bundle=row_bundle,
+            fail_open=CONFIG.fail_open,
+        )
+        row_bundle["metrics"].append(result)
+        eval_payload = result.get("metadata", {}).get("evaluation")
+        if eval_payload:
+            row_bundle["evaluation"] = eval_payload
+        metric_bars[metric_name].update(1)
 
-            for row_bundle, metric_result in zip(batch_rows, results):
-                row_bundle["metrics"].append(metric_result)
-                eval_payload = metric_result.get("metadata", {}).get("evaluation")
-                if eval_payload:
-                    row_bundle["evaluation"] = eval_payload
+    def _build_output_rows() -> List[Dict[str, Any]]:
+        rows = []
+        for rb in row_bundles:
+            out: Dict[str, Any] = {"original": rb["original"], "metrics": rb["metrics"]}
+            if "evaluation" in rb:
+                out["evaluation"] = rb["evaluation"]
+            rows.append(out)
+        return rows
 
+    async def _periodic_save():
+        interval = getattr(CONFIG, "checkpoint_interval_minutes", 2.0) * 60
+        while True:
+            await asyncio.sleep(interval)
+            with output_path.open("w", encoding="utf-8") as f:
+                json.dump(_build_output_rows(), f, ensure_ascii=False, indent=2)
+            tqdm.write(f"[checkpoint] saved → {output_path}")
+
+    all_tasks = [
+        _run_and_store(row_bundle, metric_name, metric_obj, metric_config)
+        for row_bundle in row_bundles
+        for metric_name, metric_obj, metric_config in metric_instances
+    ]
+    save_task = asyncio.create_task(_periodic_save())
+    try:
+        await asyncio.gather(*all_tasks)
+    finally:
+        save_task.cancel()
+        try:
+            await save_task
+        except asyncio.CancelledError:
+            pass
+
+    for bar in metric_bars.values():
+        bar.close()
+
+    final_rows = _build_output_rows()
     with output_path.open("w", encoding="utf-8") as f:
-        final_rows: List[Dict[str, Any]] = []
-        for row_bundle in row_bundles:
-            out_row = {
-                "original": row_bundle["original"],
-                "metrics": row_bundle["metrics"],
-            }
-            if "evaluation" in row_bundle:
-                out_row["evaluation"] = row_bundle["evaluation"]
-            final_rows.append(out_row)
-
         json.dump(final_rows, f, ensure_ascii=False, indent=2)
 
     _print_cost_summary(final_rows)
@@ -293,7 +319,42 @@ if __name__ == "__main__":
         default="config.pipeline_config",
         help="Config module path or python file path that exposes CONFIG",
     )
+    parser.add_argument(
+        "--model-name",
+        type=str,
+        default=None,
+        help="Override CONFIG.model_name (and re-derive input/output paths)",
+    )
+    parser.add_argument(
+        "--output-file",
+        type=str,
+        default=None,
+        help="Override output filename (e.g. evaluation_v2.json); placed in same model dir",
+    )
     args = parser.parse_args()
 
-    asyncio.run(main(args.config))
+    async def _main_with_overrides(
+        config_path: str,
+        model_name_override: str | None,
+        output_file_override: str | None,
+    ) -> None:
+        import importlib, sys
+        if config_path.endswith(".py"):
+            spec = importlib.util.spec_from_file_location("_cfg", config_path)
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+        else:
+            mod = importlib.import_module(config_path)
+        cfg = mod.CONFIG
+        if model_name_override:
+            cfg.model_name = model_name_override
+            cfg.input_path = None
+            cfg.output_path = None
+        if output_file_override:
+            from pathlib import Path
+            cfg.resolve_paths(Path(__file__).resolve().parent)
+            cfg.output_path = str(Path(cfg.output_path).parent / output_file_override)
+        await run_pipeline(cfg)
+
+    asyncio.run(_main_with_overrides(args.config, args.model_name, args.output_file))
 

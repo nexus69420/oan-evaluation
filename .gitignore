@@ -207,3 +207,17 @@ marimo/_lsp/
 __marimo__/
 
 #temporary files
+
+# Evaluation run outputs — regenerable by rerunning the pipeline, not code.
+# (data/evaluation_questions*.csv, data/human-evals-v1/, and the two labeled
+# reference CSVs under data/ are fixture/ground-truth inputs and stay tracked.)
+data/models/
+data/production_eval/
+data/results/
+
+# Inference run outputs — always gitignored, regardless of which inference
+# script wrote them. Inputs (per_lang_csvs/, benchmark CSVs) are separate and
+# stay tracked; only inference/output/ is generated/disposable.
+inference/output/
+goldenset_full_review_*.csv
+*.xlsx

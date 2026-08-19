@@ -3,10 +3,11 @@ from __future__ import annotations
 import json
 import re
 import time
+from pathlib import Path
 from typing import Any, Dict
 
 from helpers.llm_helper import llm_call
-from helpers.prompt_helper import render_prompt
+from helpers.prompt_helper import render_prompt, try_render_prompt
 
 from .base import MetricResult
 
@@ -95,7 +96,13 @@ async def run_llm_metric(
     llm = config["llm"]
     prompt_dir = config.get("prompt_dir", "assets/prompts/metrics")
     context = build_context(row_json, transformed_json, variables, config)
-    prompt = render_prompt(prompt_file, context=context, prompt_dir=prompt_dir)
+
+    specific_dir = str(Path(prompt_dir) / "bv_specific")
+    specific_context = {**context, **config.get("specific_kwargs", {})}
+    specific = try_render_prompt(prompt_file, context=specific_context, prompt_dir=specific_dir)
+
+    main_prompt = render_prompt(prompt_file, context=context, prompt_dir=prompt_dir)
+    prompt = f"{specific}\n\n{main_prompt}" if specific else main_prompt
 
     started_at = time.perf_counter()
     llm_response = await llm_call(prompt=prompt, llm=llm)

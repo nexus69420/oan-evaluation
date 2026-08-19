@@ -1,7 +1,0 @@
-{
-    "provider_name": "openai",
-    "provider_base_url": "http://216.48.185.71:8080/v1/",
-    "model_name": "kenpath/mhv_vistaar_all_mhv_vistaar_all_qwen3-32b_v0.2_v0.2.1",
-    "model_settings": {},
-    "date": "2026-01-26 14:39:27"
-}

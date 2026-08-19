@@ -1,0 +1,2265 @@
+{
+  "info": {
+    "_postman_id": "55fc90df-fa8f-4f09-ab7a-b14fda8be21b",
+    "name": "oan vistaar network api's",
+    "description": "# OAN Vistaar Network APIs\n\nThis collection contains APIs for the Open Agriculture Network (OAN) Vistaar platform, which facilitates agricultural commerce and warehouse management through a standardized network protocol.\n\n## Overview\n\nThe OAN Vistaar Network APIs enable seamless integration with the Maha Vistaar agricultural marketplace, providing capabilities for:\n\n- **Warehouse Discovery**: Search and locate warehouses across the network\n- **Inventory Management**: Query available storage capacity and commodities\n- **Network Communication**: Interact with BAP (Buyer Application Platform) clients\n\n## Base URL\n\n```\nhttps://middleware-bap-client.mahapocra.gov.in\n```\n\n## Authentication\n\nAuthentication details should be configured using Bearer tokens stored in vault variables.\n\n## Getting Started\n\n1. Set up your environment variables\n2. Configure authentication credentials\n3. Use the search endpoint to discover warehouses\n4. Process responses according to the OAN protocol specifications\n\n## Support\n\nFor issues or questions, please contact the Kenpath.io team.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34137100"
+  },
+  "item": [
+    {
+      "name": "maha-vistaar",
+      "item": [
+        {
+          "name": "Warehouse Network API's",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"advisory:mh-vistaar\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"IND\"\n            }\n        },\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        \"message_id\": \"e12a8d33-c018-4ec8-a454-495d87baae4d\",\n        \"transaction_id\": \"13a2fbd0-6b2e-47d2-bdac-ff4db4fa1d1b\",\n        \"timestamp\": \"1768210089\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"warehouse\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"service-locations\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"19.70056,74.00843\"\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Weather Forecast Network API's",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"advisory:weather:mh-vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"name\": \"Weather-Forecast\"\n                }\n            },\n            \"item\": {\n                \"time\": {\n                    \"range\": {\n                        \"start\": \"2025-08-21T00:00:00Z\",\n                        \"end\": \"2025-08-22T23:59:59Z\"\n                    }\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"17.69293598,74.0074529\"\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Weather Historical Network API's",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"advisory:weather:mh-vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        \"message_id\": \"e12a8d33-c018-4ec8-a454-495d87baae4d\",\n        \"transaction_id\": \"13a2fbd0-6b2e-47d2-bdac-ff4db4fa1d1b\",\n        \"timestamp\": \"1768210089\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"name\": \"Weather-Historical\"\n                }\n            },\n            \"item\": {\n                \"time\": {\n                    \"range\": {\n                        \"start\": \"2025-06-09T00:00:00.000Z\",\n                        \"end\": \"2025-06-10T00:00:00.000Z\"\n                    }\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"17.51, 74.52\"\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Maha DBT Farmer Details Info Network API",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"mahadbt:mh-vistaar\",\n        \"ttl\": \"PT10S\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        \"bpp_id\": \"mahadbt-bpp-network.mahapocra.gov.in\",\n        \"bpp_uri\": \"https://dev-mahadbt-bpp-network.mahapocra.gov.in\",\n        \"message_id\": \"efa7d486-eff1-4bda-a767-d275704f3a50\",\n        \"transaction_id\": \"0d994f04-0fad-483e-9b8e-a9d57adc3ef8\",\n        \"timestamp\": \"1758271405\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"farmer-details-info\"\n                }\n            },\n            \"item\": {\n                \"id\": \"95828057814\"\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Scheme Information Network API",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"advisory:mh-vistaar\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"IND\"\n            }\n        },\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        // \"message_id\": \"e12a8d33-c018-4ec8-a454-495d87baae4d\",\n        // \"transaction_id\": \"13a2fbd0-6b2e-47d2-bdac-ff4db4fa1d1b\",\n        // \"timestamp\": \"1768210089\"\n        \"message_id\": \"{{$randomUUID}}\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"schemes-agri\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"code\": \"pmkisan\"\n                }\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Mandi Price Network API",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"advisory:mh-vistaar\",\n        \"action\": \"search\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        \"bpp_id\": \"bpp.mahapocra.gov.in\",\n        \"bpp_uri\": \"https://middleware.mahapocra.gov.in/bpp/\",\n        \"message_id\": \"23906b52-28a1-42a5-ae6e-f8a7eb67ff88\",\n        \"transaction_id\": \"b94b64fe-1199-47d1-bc02-ad0375a09b87\",\n        \"timestamp\": \"1768235156\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"price-discovery\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"code\": \"\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"20.1428, 74.2417\"\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Village Information Network API",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"advisory:mh-vistaar\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"IND\"\n            }\n        },\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        \"message_id\": \"e12a8d33-c018-4ec8-a454-495d87baae4d\",\n        \"transaction_id\": \"13a2fbd0-6b2e-47d2-bdac-ff4db4fa1d1b\",\n        \"timestamp\": \"1768210089\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"village-information\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"Village Information\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"19.95,73.79\"\n                        },\n                        \"time\": {\n                            \"range\": {\n                                \"start\": \"2025-09-22T08:00:00.108Z\"\n                            }\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Krishi Vigyan Kendra (kvk) Network API",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"advisory:mh-vistaar\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"IND\"\n            }\n        },\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        \"message_id\": \"8f93e6ac-a255-4fd1-a38e-9165257c44cd\",\n        \"transaction_id\": \"d343d704-cac5-42cf-a545-d464abb83a20\",\n        \"timestamp\": \"1768235311\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"kvk\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"service-locations\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"19.5132,74.5321\"\n                        },\n                        \"time\": {\n                            \"range\": {\n                                \"start\": \"2025-09-19T08:00:00.108Z\"\n                            }\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Custom Hiring Centre (chc) Network API",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"advisory:mh-vistaar\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"IND\"\n            }\n        },\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        \"message_id\": \"8f93e6ac-a255-4fd1-a38e-9165257c44cd\",\n        \"transaction_id\": \"d343d704-cac5-42cf-a545-d464abb83a20\",\n        \"timestamp\": \"1768235311\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"chc\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"service-locations\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"19.5132,74.5321\"\n                        },\n                        \"time\": {\n                            \"range\": {\n                                \"start\": \"2025-09-19T08:00:00.108Z\"\n                            }\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Soil Testing Laboratories ( soil_lab ) Network API",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"advisory:mh-vistaar\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"IND\"\n            }\n        },\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        \"message_id\": \"8f93e6ac-a255-4fd1-a38e-9165257c44cd\",\n        \"transaction_id\": \"d343d704-cac5-42cf-a545-d464abb83a20\",\n        \"timestamp\": \"1768235311\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"soil_lab\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"service-locations\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"gps\": \"19.5132,74.5321\"\n                        },\n                        \"time\": {\n                            \"range\": {\n                                \"start\": \"2025-09-19T08:00:00.108Z\"\n                            }\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Agristack Network API",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"context\": {\n        \"domain\": \"advisory:mh-vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap.mahapocra.gov.in\",\n        \"bap_uri\": \"https://middleware.mahapocra.gov.in/bap/\",\n        \"location\": {\n            \"country\": {\n                \"name\": \"India\",\n                \"code\": \"IND\"\n            }\n        },\n        \n        \n        \"message_id\": \"49de0559-c429-4f10-be92-e6eb9d286e51\",\n        \"transaction_id\": \"7772ef7f-ea0b-45ed-a187-43bae104fed4\",\n        \"timestamp\": \"1769089964\"\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"agristack_farmer_info\"\n                }\n            },\n            \"item\": {\n                \"id\": \"62891426784\"\n            }\n        }\n    }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://middleware-bap-client.mahapocra.gov.in/search",
+              "protocol": "https",
+              "host": [
+                "middleware-bap-client",
+                "mahapocra",
+                "gov",
+                "in"
+              ],
+              "path": [
+                "search"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "# Maha Vistaar APIs\n\nThis folder contains API endpoints specific to the Maha Vistaar agricultural marketplace integration.\n\n## About Maha Vistaar\n\nMaha Vistaar is a comprehensive agricultural marketplace platform that connects farmers, warehouses, and buyers across Maharashtra region. These APIs enable programmatic access to the platform's warehouse network.\n\n## Endpoints\n\nThe endpoints in this folder support:\n\n- Warehouse search and discovery\n    \n- Real-time inventory queries\n    \n- Location-based warehouse filtering\n    \n- Capacity and availability checks"
+    },
+    {
+      "name": "bharat-vistaar",
+      "item": [
+        {
+          "name": "dev",
+          "item": [
+            {
+              "name": "Weather Forecast Network API's dev",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:oan\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"name\": \"Weather-Forecast\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"lat\": 12.9167,\n                            \"lon\": 92.9\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PMFBY INIT Get OTP Network API dev",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"init\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"pmfby-agri\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"pmfby\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"tags\": [\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"request_type\"\n                                    },\n                                    \"value\": \"get_otp\"\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"phone_number\"\n                                    },\n                                    \"value\": \"9591931134\"\n                                }\n                            ]\n                        },\n                        \"contact\": {\n                            \"phone\": \"9591931134\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/init",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "init"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mandi Price Network API dev",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"price-discovery\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"code\": \"mandi\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"lat\": \"21.6571\",\n                            \"lon\": \"82.1612\"\n                        },\n                        \"time\": {\n                            \"range\": {\n                                \"start\": \"2025-08-01T08:00:00.108Z\",\n                                \"end\": \"2025-08-01T08:00:00.108Z\"\n                            }\n                        },\n                        \"commoditycode\": 2\n                    }\n                ]\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "ignore :PMFBY INIT Verify OTP Network API dev",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"init\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"pmfby-agri\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"pmfby\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"tags\": [\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"request_type\"\n                                    },\n                                    \"value\": \"verify_otp\"\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"phone_number\"\n                                    },\n                                    \"value\": \"9591931134\"\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"requested_otp\"\n                                    },\n                                    \"value\": 625642\n                                }\n                            ]\n                        },\n                        \"contact\": {\n                            \"phone\": \"9591931134\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/init",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "init"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PMFBY Policy Status check Network API dev",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"6b1ba003-2f8e-4cce-ade6-938809d7bb3c\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"name\": \"pmfby-agri\",\n                    \"code\": \"pmfby\"\n                }\n            }\n        },\n        \"fulfillments\": [\n            {\n                \"customer\": {\n                    \"person\": {\n                        \"tags\": [\n                            {\n                                \"descriptor\": {\n                                    \"code\": \"inquiry_type\"\n                                },\n                                \"value\": \"policy_status\"\n                            },\n                            {\n                                \"descriptor\": {\n                                    \"code\": \"year\"\n                                },\n                                \"value\": \"2023\"\n                            },\n                            {\n                                \"descriptor\": {\n                                    \"code\": \"season\"\n                                },\n                                \"value\": \"Rabi\"\n                            }\n                        ]\n                    },\n                    \"contact\": {\n                        \"phone\": \"9953947674\"\n                    }\n                }\n            }\n        ]\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PMFBY Claim Status check Network API dev",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"6b1ba003-2f8e-4cce-ade6-938809d7bb3c\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"name\": \"pmfby-agri\",\n                    \"code\": \"pmfby\"\n                }\n            }\n        },\n        \"fulfillments\": [\n            {\n                \"customer\": {\n                    \"person\": {\n                        \"tags\": [\n                            {\n                                \"descriptor\": {\n                                    \"code\": \"inquiry_type\"\n                                },\n                                \"value\": \"claim_status\"\n                            },\n                            {\n                                \"descriptor\": {\n                                    \"code\": \"year\"\n                                },\n                                \"value\": \"2023\"\n                            },\n                            {\n                                \"descriptor\": {\n                                    \"code\": \"season\"\n                                },\n                                \"value\": \"Rabi\"\n                            }\n                        ]\n                    },\n                    \"contact\": {\n                        \"phone\": \"9953947674\"\n                    }\n                }\n            }\n        ]\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PMFBY OTP Verification and Status check",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"status\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"9197c2dc-d1ab-4673-b2b4-99d1c8d4bd04\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order_id\": \"473138\",\n        \"order\": {\n            \"id\": \"order-1\",\n            \"provider\": {\n                \"id\": \"pmfby-agri\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"pmfby\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"tags\": [\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"inquiry_type\"\n                                    },\n                                    \"value\": \"policy_status\"\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"year\"\n                                    },\n                                    \"value\": \"2023\"\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"season\"\n                                    },\n                                    \"value\": \"Rabi\"\n                                }\n                            ]\n                        },\n                        \"contact\": {\n                            \"phone\": \"9953947674\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/status",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PMKISAN Network api dev",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"init\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Customer Name\",\n                            \"tags\": [\n                                {\n                                    \"display\": true,\n                                    \"descriptor\": {\n                                        \"name\": \"Registration Details\",\n                                        \"code\": \"reg-details\"\n                                    },\n                                    \"list\": [\n                                        {\n                                            \"descriptor\": {\n                                                \"name\": \"Registration Number\",\n                                                \"code\": \"reg-number\"\n                                            },\n                                            \"value\": \"BR295454592\",\n                                            \"display\": true\n                                        }\n                                    ]\n                                }\n                            ]\n                        },\n                        \"contact\": {\n                            \"phone\": \"\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/init",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "init"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SHC Network api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"init\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"shc-discovery\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"soil-health-card\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"tags\": [\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"cycle\"\n                                    },\n                                    \"value\": \"2025-26\"\n                                }\n                            ]\n                        },\n                        \"contact\": {\n                            \"phone\": \"+917005334456\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/init",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "init"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Scheme Info Network api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"schemes-agri\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"pmkisan\"\n                }\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GFR Crop Registries",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"gfr-agri\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"gfr-agri-crop-registy\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"tags\": [\n                                {\n                                    \"location\": {\n                                        \"lat\": 21.6571,\n                                        \"lon\": 82.1612\n                                    }\n                                }\n                            ]\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GFR Crop Recommendation",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"gfr-agri\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"gfr-agri-crop-recommendation\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"tags\": [\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"stateId\"\n                                    },\n                                    \"value\": \"63f99fbd519359b7438a84ca\"\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"crops\"\n                                    },\n                                    \"value\": [\n                                        \"66b5b6a605f96e8242f1a87f\",\n                                        \"673c34e6d7df5f1bd0b6386e\"\n                                    ]\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"naturalFarming\"\n                                    },\n                                    \"value\": false\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"phoneNo\"\n                                    },\n                                    \"value\": \"+917005334456\"\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"cycle\"\n                                    },\n                                    \"value\": \"2025-26\"\n                                }\n                            ]\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PMKISAN Greviance Create Greviance Reg Network api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"init\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"pmkisan-greviance\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"pmkisan-greviance\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Customer Name\",\n                            \"tags\": [\n                                {\n                                    \"display\": true,\n                                    \"descriptor\": {\n                                        \"name\": \"Registration Details\",\n                                        \"code\": \"reg-details\"\n                                    },\n                                    \"list\": [\n                                        {\n                                            \"descriptor\": {\n                                                \"name\": \"Registration Number\",\n                                                \"code\": \"reg-number\"\n                                            },\n                                            \"value\": \"R1234567890\",\n                                            \"display\": true\n                                        }\n                                    ]\n                                },\n                                {\n                                    \"display\": true,\n                                    \"descriptor\": {\n                                        \"name\": \"Grievance Details\",\n                                        \"code\": \"grievance-details\"\n                                    },\n                                    \"list\": [\n                                        {\n                                            \"descriptor\": {\n                                                \"name\": \"Grievance Type\",\n                                                \"code\": \"grievance-type\"\n                                            },\n                                            \"value\": \"G001\",\n                                            \"display\": true\n                                        },\n                                        {\n                                            \"descriptor\": {\n                                                \"name\": \"Grievance Description\",\n                                                \"code\": \"grievance-description\"\n                                            },\n                                            \"value\": \"Test grievance description from documentation\",\n                                            \"display\": true\n                                        }\n                                    ]\n                                }\n                            ]\n                        },\n                        \"contact\": {\n                            \"phone\": \"9876543210\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/init",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "init"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PMKISAN Greviance Create Greiance aadhar Network api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"init\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"pmkisan-greviance\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"pmkisan-greviance\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"name\": \"Customer Name\",\n                            \"tags\": [\n                                {\n                                    \"display\": true,\n                                    \"descriptor\": {\n                                        \"name\": \"Registration Details\",\n                                        \"code\": \"reg-details\"\n                                    },\n                                    \"list\": [\n                                        {\n                                            \"descriptor\": {\n                                                \"name\": \"Aadhaar Number\",\n                                                \"code\": \"aad-number\"\n                                            },\n                                            \"value\": \"123456789012\",\n                                            \"display\": true\n                                        }\n                                    ]\n                                },\n                                {\n                                    \"display\": true,\n                                    \"descriptor\": {\n                                        \"name\": \"Grievance Details\",\n                                        \"code\": \"grievance-details\"\n                                    },\n                                    \"list\": [\n                                        {\n                                            \"descriptor\": {\n                                                \"name\": \"Grievance Type\",\n                                                \"code\": \"grievance-type\"\n                                            },\n                                            \"value\": \"G001\",\n                                            \"display\": true\n                                        },\n                                        {\n                                            \"descriptor\": {\n                                                \"name\": \"Grievance Description\",\n                                                \"code\": \"grievance-description\"\n                                            },\n                                            \"value\": \"Test grievance description from documentation\",\n                                            \"display\": true\n                                        }\n                                    ]\n                                }\n                            ]\n                        },\n                        \"contact\": {\n                            \"phone\": \"9876543210\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/init",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "init"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PMKISAN Greviance Status Network api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://bap-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_id\": \"bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://bpp-network-playground-sandbox-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"name\": \"grievance-agri\",\n                    \"code\": \"grievance\"\n                }\n            },\n            \"order\": {\n                \"fulfillments\": [\n                    {\n                        \"customer\": {\n                            \"person\": {\n                                \"name\": \"Customer Name\",\n                                \"tags\": [\n                                    {\n                                        \"display\": true,\n                                        \"descriptor\": {\n                                            \"name\": \"Registration Details\",\n                                            \"code\": \"reg-details\"\n                                        },\n                                        \"list\": [\n                                            {\n                                                \"descriptor\": {\n                                                    \"name\": \"Registration Number\",\n                                                    \"code\": \"reg-number\"\n                                                },\n                                                \"value\": \"R1234567890\",\n                                                \"display\": true\n                                            }\n                                        ]\n                                    }\n                                ]\n                            }\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://bap-client-playground-sandbox-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "bap-client-playground-sandbox-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "prod",
+          "item": [
+            {
+              "name": "Weather Forecast Network API prod",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"seeker-network-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://seeker-network-vistaar.da.gov.in\",\n        \"bpp_id\": \"provider-network-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://provider-network-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"name\": \"Weather-Forecast\",\n                    \"code\": \"WFC\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"lat\": \"7.98333\",\n                            \"lon\": \"93.55\"\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://seeker-client-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "seeker-client-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mandi Price Network api prod",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"seeker-network-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://seeker-network-vistaar.da.gov.in\",\n        \"bpp_id\": \"provider-network-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://provider-network-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"price-discovery\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"code\": \"mandi\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"lat\": \"18.5246\",\n                            \"lon\": \"73.8786\"\n                        },\n                        \"time\": {\n                            \"range\": {\n                                \"start\": \"2026-02-12T08:00:00.108Z\",\n                                \"end\": \"2026-02-10T08:00:00.108Z\"\n                            }\n                        },\n                        \"commoditycode\": 2\n                    }\n                ]\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://seeker-client-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "seeker-client-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PMFBY INIT Get OTP Network api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"init\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"seeker-network-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://seeker-network-vistaar.da.gov.in\",\n        \"bpp_id\": \"provider-network-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://provider-network-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order\": {\n            \"provider\": {\n                \"id\": \"pmfby-agri\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"pmfby\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"tags\": [\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"request_type\"\n                                    },\n                                    \"value\": \"get_otp\"\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"phone_number\"\n                                    },\n                                    \"value\": \"9591931134\"\n                                }\n                            ]\n                        },\n                        \"contact\": {\n                            \"phone\": \"9591931134\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://seeker-client-vistaar.da.gov.in/init",
+                  "protocol": "https",
+                  "host": [
+                    "seeker-client-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "init"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PMFBY OTP verification and status check",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"status\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"seeker-network-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://seeker-network-vistaar.da.gov.in\",\n        \"bpp_id\": \"provider-network-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://provider-network-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"order_id\": \"473138\",\n        \"order\": {\n            \"id\": \"order-1\",\n            \"provider\": {\n                \"id\": \"pmfby-agri\"\n            },\n            \"items\": [\n                {\n                    \"id\": \"pmfby\"\n                }\n            ],\n            \"fulfillments\": [\n                {\n                    \"customer\": {\n                        \"person\": {\n                            \"tags\": [\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"inquiry_type\"\n                                    },\n                                    \"value\": \"policy_status\"\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"year\"\n                                    },\n                                    \"value\": \"2023\"\n                                },\n                                {\n                                    \"descriptor\": {\n                                        \"code\": \"season\"\n                                    },\n                                    \"value\": \"Rabi\"\n                                }\n                            ]\n                        },\n                        \"contact\": {\n                            \"phone\": \"9953947674\"\n                        }\n                    }\n                }\n            ]\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://seeker-client-vistaar.da.gov.in/status",
+                  "protocol": "https",
+                  "host": [
+                    "seeker-client-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Scheme Info network api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"seeker-network-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://seeker-network-vistaar.da.gov.in\",\n        \"bpp_id\": \"provider-network-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://provider-network-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"code\": \"schemes-agri\"\n                }\n            },\n            \"item\": {\n                \"descriptor\": {\n                    \"name\": \"pmfby\"\n                }\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://seeker-client-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "seeker-client-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Weather Forecast Mausamgram Network API",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"context\": {\n        \"domain\": \"schemes:vistaar\",\n        \"action\": \"search\",\n        \"version\": \"1.1.0\",\n        \"bap_id\": \"seeker-network-vistaar.da.gov.in\",\n        \"bap_uri\": \"https://seeker-network-vistaar.da.gov.in\",\n        \"bpp_id\": \"provider-network-vistaar.da.gov.in\",\n        \"bpp_uri\": \"https://provider-network-vistaar.da.gov.in\",\n        \"transaction_id\": \"{{$randomUUID}}\",\n        \"message_id\": \"{{$randomUUID}}\",\n        \"timestamp\": \"{{$timestamp}}\",\n        \"ttl\": \"PT10M\",\n        \"location\": {\n            \"country\": {\n                \"code\": \"IND\"\n            },\n            \"city\": {\n                \"code\": \"*\"\n            }\n        }\n    },\n    \"message\": {\n        \"intent\": {\n            \"category\": {\n                \"descriptor\": {\n                    \"name\": \"Weather-Forecast-Mausamgram\",\n                    \"code\": \"WFC\"\n                }\n            },\n            \"fulfillment\": {\n                \"stops\": [\n                    {\n                        \"location\": {\n                            \"lat\": \"7.98333\",\n                            \"lon\": \"93.55\"\n                        }\n                    }\n                ]\n            }\n        }\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://seeker-client-vistaar.da.gov.in/search",
+                  "protocol": "https",
+                  "host": [
+                    "seeker-client-vistaar",
+                    "da",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "search"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bh external",
+      "item": [
+        {
+          "name": "mandi",
+          "item": [
+            {
+              "name": "Mandi Price dev",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://34.0.4.235:8080/v1/fetch-agmarknet-vistaar?token=a5b3e6cb-f628-46eb-b5c4-5761e9733af5&statecode=MH&from_date=20-08-2025&to_date=20-08-2025&commoditycode=4&districtcode=338&marketcode=1282",
+                  "protocol": "http",
+                  "host": [
+                    "34",
+                    "0",
+                    "4",
+                    "235"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "v1",
+                    "fetch-agmarknet-vistaar"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "a5b3e6cb-f628-46eb-b5c4-5761e9733af5"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "MH"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "20-08-2025"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "20-08-2025"
+                    },
+                    {
+                      "key": "commoditycode",
+                      "value": "4"
+                    },
+                    {
+                      "key": "districtcode",
+                      "value": "338"
+                    },
+                    {
+                      "key": "marketcode",
+                      "value": "1282"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mandi New Token API",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"access_name\": \"Masters-Data-Agmarknet\",\n    \"password\": \"mastersagmarknet123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://34.0.4.235:8080/v1/generate-dynamic-token-agmarknet",
+                  "protocol": "http",
+                  "host": [
+                    "34",
+                    "0",
+                    "4",
+                    "235"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "v1",
+                    "generate-dynamic-token-agmarknet"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mandi New Market with Commodity Mapping API",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://34.0.4.235:8080/v1/fetch-agmarknet-market-commodity-mapping?token=fd080398-23fc-42dd-a9e1-c69c0657ae41&statecode=AP&option=6&from_date=01-07-2025&to_date=01-12-2025",
+                  "protocol": "http",
+                  "host": [
+                    "34",
+                    "0",
+                    "4",
+                    "235"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "v1",
+                    "fetch-agmarknet-market-commodity-mapping"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "fd080398-23fc-42dd-a9e1-c69c0657ae41"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "AP"
+                    },
+                    {
+                      "key": "option",
+                      "value": "6"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "01-07-2025"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "01-12-2025"
+                    },
+                    {
+                      "key": "",
+                      "value": "",
+                      "type": "text",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mandi New Master Data API",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://34.0.4.235:8080/v1/fetch-agmarknet-master-data?token=e58c69c5-6ad1-49e9-bb4b-53b7e3e0a803&option=6",
+                  "protocol": "http",
+                  "host": [
+                    "34",
+                    "0",
+                    "4",
+                    "235"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "v1",
+                    "fetch-agmarknet-master-data"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "e58c69c5-6ad1-49e9-bb4b-53b7e3e0a803"
+                    },
+                    {
+                      "key": "option",
+                      "value": "6"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Mandi Prod API",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://34.0.4.235:8080/v1/fetch-agmarknet-vistaar?token=a5b3e6cb-f628-46eb-b5c4-5761e9733af5&to_date=25-03-2026&commoditycode=64&districtcode=255&statecode=KA&from_date=01-03-2026",
+                  "protocol": "http",
+                  "host": [
+                    "34",
+                    "0",
+                    "4",
+                    "235"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "v1",
+                    "fetch-agmarknet-vistaar"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "a5b3e6cb-f628-46eb-b5c4-5761e9733af5"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "25-03-2026"
+                    },
+                    {
+                      "key": "commoditycode",
+                      "value": "64"
+                    },
+                    {
+                      "key": "districtcode",
+                      "value": "255"
+                    },
+                    {
+                      "key": "statecode",
+                      "value": "KA"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "01-03-2026"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "pmfby",
+          "item": [
+            {
+              "name": "Get FarmerId",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://pmfbydemo.amnex.co.in/api/v1/services/services/farmerMobileExists?mobile=9953947674&authToken=3509AA77-1ABA-410F-9CB2-51D59AAEC0383509AA77-1ABA-410F-9CB2-51D59AAEC038",
+                  "protocol": "https",
+                  "host": [
+                    "pmfbydemo",
+                    "amnex",
+                    "co",
+                    "in"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "services",
+                    "services",
+                    "farmerMobileExists"
+                  ],
+                  "query": [
+                    {
+                      "key": "mobile",
+                      "value": "9953947674"
+                    },
+                    {
+                      "key": "authToken",
+                      "value": "3509AA77-1ABA-410F-9CB2-51D59AAEC0383509AA77-1ABA-410F-9CB2-51D59AAEC038"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Login auth api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"deviceType\": \"web\",\n    \"mobile\": \"9873382826\",\n    \"otp\": 123456,\n    \"password\": \"019096071e228ed6611599c83d96783ccf2dcc02790ffe165f7e11e70e5ee1b12ea864dc123eea1367d96ef240cda319180f58d23653890fe5d99e0f911dbb79\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://pmfbydemo.amnex.co.in/api/v2/external/service/login",
+                  "protocol": "https",
+                  "host": [
+                    "pmfbydemo",
+                    "amnex",
+                    "co",
+                    "in"
+                  ],
+                  "path": [
+                    "api",
+                    "v2",
+                    "external",
+                    "service",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "shc",
+          "item": [
+            {
+              "name": "Get Access Token",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query Query($refreshToken: String!) { generateAccessToken(refreshToken: $refreshToken) }\",\n  \"variables\": {\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlblR5cGUiOiJSZWZyZXNoVG9rZW4iLCJhdXRob3JpdHkiOiIiLCJwYXJlbnQiOiIiLCJ0eXBlIjoiRXh0ZXJuYWxVc2VyIiwic3ViIjoiNjc3NzgwZWYzNzkyZjZmOWQxMzExOWJkIiwidXNlcnN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTczNTg4NTAzOSwiZXhwIjoxNzM2NDg5ODM5LCJhdWQiOiJzb2lsaGVhbHRoLmRhYy5nb3YuaW4iLCJpc3MiOiJzb2lsaGVhbHRoLmRhYy5nb3YuaW4iLCJqdGkiOiI0NzEzNjg3ZS1hM2NmLTRiYTUtYjk0MC0wZjFlZDliZjE4YmEifQ.rOl0BztuPnmJh53hnzr9sv3Nfj4n1qTnABpOU-1N1KA\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://soilhealth4.dac.gov.in",
+                  "protocol": "https",
+                  "host": [
+                    "soilhealth4",
+                    "dac",
+                    "gov",
+                    "in"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get valid token",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlblR5cGUiOiJBY2Nlc3NUb2tlbiIsImF1dGhvcml0eSI6IiIsInBhcmVudCI6IiIsInR5cGUiOiJFeHRlcm5hbFVzZXIiLCJ1c2VyIjoiNjc3NzgwZWYzNzkyZjZmOWQxMzExOWJkIiwidXNlcnN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTc3MDYzMTI5MSwiZXhwIjoxNzcxMjM2MDkxLCJhdWQiOiJzb2lsaGVhbHRoLmRhYy5nb3YuaW4iLCJpc3MiOiJzb2lsaGVhbHRoLmRhYy5nb3YuaW4iLCJqdGkiOiIwNDYwY2E2OS04MWFlLTQ2NWEtODdlZC02NjA3N2ZmNzM5ODcifQ.w7TrDyDhgy9KipRSm1ytEf55IV8x-azuG6jDJmPeIIo"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": \"query GetTestForAuthUser($computedId: String, $phone: PhoneNumber, $state: String, $district: String, $name: String, $farmer: String, $from: Datetime, $to: Datetime, $cycle: String, $locale: String, $scheme: String, $limit: Int, $skip: Int) { getTestForAuthUser(computedID: $computedId, phone: $phone, state: $state, district: $district, name: $name, farmer: $farmer, from: $from, to: $to, cycle: $cycle, scheme: $scheme, limit: $limit, skip: $skip) { id computedID cycle scheme plot { address area surveyNo } farmer { address name phone } crop location testparameters rdfValues status testCompletedAt sampleDate reportData district block village results fertilizer html(locale: $locale) uniqueID } }\",\n    \"variables\": {\n        \"cycle\": \"2025-26\",\n        \"phone\": \"+917005334456\",\n        \"limit\": 10,\n        \"skip\": 0,\n        \"locale\": \"en\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://soilhealth4.dac.gov.in",
+                  "protocol": "https",
+                  "host": [
+                    "soilhealth4",
+                    "dac",
+                    "gov",
+                    "in"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "SHC",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlblR5cGUiOiJBY2Nlc3NUb2tlbiIsImF1dGhvcml0eSI6IiIsInBhcmVudCI6IiIsInR5cGUiOiJFeHRlcm5hbFVzZXIiLCJ1c2VyIjoiNjc3NzgwZWYzNzkyZjZmOWQxMzExOWJkIiwidXNlcnN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTc3NjE2MzEwMywiZXhwIjoxNzc2NzY3OTAzLCJhdWQiOiJzb2lsaGVhbHRoLmRhYy5nb3YuaW4iLCJpc3MiOiJzb2lsaGVhbHRoLmRhYy5nb3YuaW4iLCJqdGkiOiJlZTI0NDY1My03ZTYyLTRmNTktYWY3MC1jMjg0MDU4ODE5YzYifQ.JX-cVGQ_JTaHs0dMhKgyaTBCM2bZCZFeaGx3dj4aq6o"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"query\": \"query GetTestForAuthUser($computedId: String, $phone: PhoneNumber, $state: String, $district: String, $name: String, $farmer: String, $from: Datetime, $to: Datetime, $cycle: String, $locale: String, $scheme: String, $limit: Int, $skip: Int) { getTestForAuthUser(computedID: $computedId, phone: $phone, state: $state, district: $district, name: $name, farmer: $farmer, from: $from, to: $to, cycle: $cycle, scheme: $scheme, limit: $limit, skip: $skip) { id computedID cycle scheme plot { address area surveyNo } farmer { address name phone } crop location testparameters rdfValues status testCompletedAt sampleDate reportData district block village results fertilizer html(locale: $locale) uniqueID } }\",\n    \"variables\": {\n        \"cycle\": \"2025-26\",\n        \"phone\": \"+917005334456\",\n        \"limit\": 1,\n        \"skip\": 0,\n        \"locale\": \"en\"\n    }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://soilhealth4.dac.gov.in",
+                  "protocol": "https",
+                  "host": [
+                    "soilhealth4",
+                    "dac",
+                    "gov",
+                    "in"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "mausam gram",
+          "item": [
+            {
+              "name": "Daily Forecast - Grid (Lat/Lon)",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic TU9BLUZXOkZwMjY3YWEyZGJkOWE1YzIwYTQ3MmQ3NTI4ZjBmZDhjYjY0ZGQwMTU3NjEwM2I1MDBhMzNkNmJlYWQ2NTg1ZDQ="
+                  }
+                ],
+                "url": {
+                  "raw": "https://mausamgram.imd.gov.in/nwpapi/get-daily?lat=18.4&lon=74.4",
+                  "protocol": "https",
+                  "host": [
+                    "mausamgram",
+                    "imd",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "nwpapi",
+                    "get-daily"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "18.4"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "74.4"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Daily Forecast - GP Code",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Basic TU9BLUZXOkZwMjY3YWEyZGJkOWE1YzIwYTQ3MmQ3NTI4ZjBmZDhjYjY0ZGQwMTU3NjEwM2I1MDBhMzNkNmJlYWQ2NTg1ZDQ="
+                  }
+                ],
+                "url": {
+                  "raw": "https://mausamgram.imd.gov.in/nwpapi/get-daily?gpcode=262423",
+                  "protocol": "https",
+                  "host": [
+                    "mausamgram",
+                    "imd",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "nwpapi",
+                    "get-daily"
+                  ],
+                  "query": [
+                    {
+                      "key": "gpcode",
+                      "value": "262423"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Hourly Forecast - Grid (Lat/Lon)",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "user",
+                    "value": "MOA-FW"
+                  },
+                  {
+                    "key": "key",
+                    "value": "Fp267aa2dbd9a5c20a472d7528f0fd8cb64dd01576103b500a33d6bead6585d4"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"lat\": 28.5355,\n    \"lon\": 77.3910,\n    \"hourly\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://mausamgram.imd.gov.in/nwp/api/GetHourlyData",
+                  "protocol": "https",
+                  "host": [
+                    "mausamgram",
+                    "imd",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "nwp",
+                    "api",
+                    "GetHourlyData"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Hourly Forecast - GP Code",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "user",
+                    "value": "MOA-FW"
+                  },
+                  {
+                    "key": "key",
+                    "value": "Fp267aa2dbd9a5c20a472d7528f0fd8cb64dd01576103b500a33d6bead6585d4"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"hourly\": 1,\n    \"gpcode\": 262423\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://mausamgram.imd.gov.in/nwp/api/GetHourlyData",
+                  "protocol": "https",
+                  "host": [
+                    "mausamgram",
+                    "imd",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "nwp",
+                    "api",
+                    "GetHourlyData"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "test api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "accept",
+                    "value": "*/*"
+                  },
+                  {
+                    "key": "accept-language",
+                    "value": "en-GB,en-US;q=0.9,en;q=0.8"
+                  },
+                  {
+                    "key": "priority",
+                    "value": "u=1, i"
+                  },
+                  {
+                    "key": "referer",
+                    "value": "https://mausamgram.imd.gov.in/"
+                  },
+                  {
+                    "key": "sec-ch-ua",
+                    "value": "\"Not:A-Brand\";v=\"99\", \"Google Chrome\";v=\"145\", \"Chromium\";v=\"145\""
+                  },
+                  {
+                    "key": "sec-ch-ua-mobile",
+                    "value": "?1"
+                  },
+                  {
+                    "key": "sec-ch-ua-platform",
+                    "value": "\"iOS\""
+                  },
+                  {
+                    "key": "sec-fetch-dest",
+                    "value": "empty"
+                  },
+                  {
+                    "key": "sec-fetch-mode",
+                    "value": "cors"
+                  },
+                  {
+                    "key": "sec-fetch-site",
+                    "value": "same-origin"
+                  },
+                  {
+                    "key": "user-agent",
+                    "value": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1"
+                  },
+                  {
+                    "key": "Cookie",
+                    "value": "_ga=GA1.1.1064131523.1771479306; _ga_32TG9YS6MD=GS2.1.s1771479306$o1$g0$t1771479317$j49$l0$h0"
+                  }
+                ],
+                "url": {
+                  "raw": "https://mausamgram.imd.gov.in/test4_mme.php?lat_gfs=28.500&lon_gfs=77.125&date=2026021900_3hr_0p125",
+                  "protocol": "https",
+                  "host": [
+                    "mausamgram",
+                    "imd",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "test4_mme.php"
+                  ],
+                  "query": [
+                    {
+                      "key": "exclude",
+                      "value": "{part}",
+                      "disabled": true
+                    },
+                    {
+                      "key": "lat_gfs",
+                      "value": "28.500"
+                    },
+                    {
+                      "key": "lon_gfs",
+                      "value": "77.125"
+                    },
+                    {
+                      "key": "date",
+                      "value": "2026021900_3hr_0p125"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "GFR",
+          "item": [
+            {
+              "name": "get state",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "query Query {\r\n getState\r\n}",
+                    "variables": ""
+                  }
+                },
+                "url": {
+                  "raw": "https://soilhealth4.dac.gov.in",
+                  "protocol": "https",
+                  "host": [
+                    "soilhealth4",
+                    "dac",
+                    "gov",
+                    "in"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get district",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query Query($state: ID, $subdistrict: Boolean) { getdistrictAndSubdistrictBystate(state: $state, subdistrict: $subdistrict) }\",\n  \"variables\": {\n    \"state\": \"63f99fbd519359b7438a84ca\",\n    \"subdistrict\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://soilhealth4.dac.gov.in",
+                  "protocol": "https",
+                  "host": [
+                    "soilhealth4",
+                    "dac",
+                    "gov",
+                    "in"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get crop registries",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query GetCropRegistries($state: String) { getCropRegistries(state: $state) { name variety irrigationType season splitdose state GFRavailable id combinedName __typename } }\",\n  \"variables\": {\n    \"state\": \"63f99fbd519359b7438a84ca\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://soilhealth4.dac.gov.in",
+                  "protocol": "https",
+                  "host": [
+                    "soilhealth4",
+                    "dac",
+                    "gov",
+                    "in"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get recommendations",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "graphql",
+                  "graphql": {
+                    "query": "query GetRecommendations($state: ID!, $results: JSON!, $district: ID, $crops: [ID!], $naturalFarming: Boolean) {\r\n  getRecommendations(\r\n    state: $state\r\n    results: $results\r\n    district: $district\r\n    crops: $crops\r\n naturalFarming: $naturalFarming\n )\r\n}",
+                    "variables": "{\n  \"crops\": [\n    \"66b5b6a605f96e8242f1a87f\",\"63f99fbd519359b7438a84ca\"\n  ],\n  \"state\": \"63f99fbd519359b7438a84ca\",\n  \"results\": {\n    \"n\": \"157\",\n    \"p\": \"14.9\",\n    \"k\": \"114.6\",\n    \"OC\": \"1.4\"\n  },\n  \"naturalFarming\": false\n}"
+                  }
+                },
+                "url": {
+                  "raw": "https://soilhealth4.dac.gov.in",
+                  "protocol": "https",
+                  "host": [
+                    "soilhealth4",
+                    "dac",
+                    "gov",
+                    "in"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "IMD",
+          "item": [
+            {
+              "name": "City IMD",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://city.imd.gov.in/api/cityweather_loc.php?id=99967",
+                  "protocol": "https",
+                  "host": [
+                    "city",
+                    "imd",
+                    "gov",
+                    "in"
+                  ],
+                  "path": [
+                    "api",
+                    "cityweather_loc.php"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "99967"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "pmkisan greviance",
+          "item": [
+            {
+              "name": "Get Aadhaar Token api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"EncryptedRequest\": \"DwDo4BSqm0N0jtaii8t+5WiZRtY9StIK2E5lfvEJfJnj+5aor7hR/YmI7alM24/xO3pTZwjvIxo5owfjxt64I6O65K4vQjUqPBKY/JGQQkovbLCO6VZXaZMElE1SToUs\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://pmkisanstaging.amnex.co.in/exlinkstaging/services/GrievanceServiceTest.asmx/GrievanceAadhaarToken",
+                  "protocol": "https",
+                  "host": [
+                    "pmkisanstaging",
+                    "amnex",
+                    "co",
+                    "in"
+                  ],
+                  "path": [
+                    "exlinkstaging",
+                    "services",
+                    "GrievanceServiceTest.asmx",
+                    "GrievanceAadhaarToken"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Status Details api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"EncryptedRequest\": \"DwDo4BSqm0N0jtaii8t+5WiZRtY9StIK2E5lfvEJfJnj+5aor7hR/YmI7alM24/xO3pTZwjvIxo5owfjxt64I6O65K4vQjUqPBKY/JGQQkovbLCO6VZXaZMElE1SToUs\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://pmkisanstaging.amnex.co.in/exlinkstaging/services/GrievanceServiceTest.asmx/GrievanceStatusCheck",
+                  "protocol": "https",
+                  "host": [
+                    "pmkisanstaging",
+                    "amnex",
+                    "co",
+                    "in"
+                  ],
+                  "path": [
+                    "exlinkstaging",
+                    "services",
+                    "GrievanceServiceTest.asmx",
+                    "GrievanceStatusCheck"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Greviance using Reg & aadhar no api",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"EncryptedRequest\": \"DwDo4BSqm0N0jtaii8t+5WiZRtY9StIK2E5lfvEJfJnj+5aor7hR/YmI7alM24/xO3pTZwjvIxo5owfjxt64I6O65K4vQjUqPBKY/JGQQkovbLCO6VZXaZMElE1SToUs\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://pmkisanstaging.amnex.co.in/exlinkstaging/services/GrievanceServiceTest.asmx/LodgeGrievance",
+                  "protocol": "https",
+                  "host": [
+                    "pmkisanstaging",
+                    "amnex",
+                    "co",
+                    "in"
+                  ],
+                  "path": [
+                    "exlinkstaging",
+                    "services",
+                    "GrievanceServiceTest.asmx",
+                    "LodgeGrievance"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

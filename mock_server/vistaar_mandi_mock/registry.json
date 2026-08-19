@@ -1,0 +1,58 @@
+{
+  "match_tolerance_deg_per_axis": 1.0,
+  "description": "Lat/lon from OpenStreetMap Nominatim (2026-05-12). Commodity codes from bharat-oan-api/assets/commodity_codes.json (AGMKT codes). Mock server matches nearest city when max(|Δlat|,|Δlon|) ≤ match_tolerance_deg_per_axis.",
+  "cities": [
+    {
+      "key": "kozhikode",
+      "query": "Kozhikode, Kerala, India",
+      "latitude": 11.2450558,
+      "longitude": 75.7754716
+    },
+    {
+      "key": "chandigarh",
+      "query": "Chandigarh, India",
+      "latitude": 30.7334421,
+      "longitude": 76.7797143
+    },
+    {
+      "key": "mumbai",
+      "query": "Mumbai, Maharashtra, India",
+      "latitude": 19.054999,
+      "longitude": 72.8692035
+    },
+    {
+      "key": "kochi",
+      "query": "Kochi, Kerala, India",
+      "latitude": 9.9679032,
+      "longitude": 76.2444378
+    },
+    {
+      "key": "bangalore",
+      "query": "Bangalore, Karnataka, India",
+      "latitude": 12.9767936,
+      "longitude": 77.590082
+    }
+  ],
+  "commodities": [
+    {
+      "crop": "cotton",
+      "agmkt_code": 15,
+      "canonical_name": "Cotton"
+    },
+    {
+      "crop": "apple",
+      "agmkt_code": 17,
+      "canonical_name": "Apple"
+    },
+    {
+      "crop": "potato",
+      "agmkt_code": 24,
+      "canonical_name": "Potato"
+    },
+    {
+      "crop": "tapioca",
+      "agmkt_code": 85,
+      "canonical_name": "Tapioca"
+    }
+  ]
+}

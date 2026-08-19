@@ -1,7 +1,0 @@
-{
-    "provider_name": "openai",
-    "provider_base_url": "http://216.48.185.71:8080/v1/",
-    "model_name": "KissanAI/Dhenu2-In-Llama3.1-8B-Instruct",
-    "model_settings": {},
-    "date": "2026-01-25 14:23:59"
-}

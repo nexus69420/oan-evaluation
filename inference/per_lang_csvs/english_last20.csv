@@ -1,0 +1,66 @@
+session_id,question_id,category,question
+166,166-1,Scheme_actions,I want to register a grievance in PM-KISAN.
+166,166-2,Scheme_actions,KL2210000980 is my registration number.
+166,166-3,Scheme_actions,Installment has not arrived even though I am eligible. Register this grievance.
+167,167-1,Advisory,I want to report that my PM-KISAN money was not credited to my bank account.
+167,167-2,Scheme_actions,My PM-KISAN registration number is KL2210000980.
+167,167-3,Advisory,The installment has not been credited for the past season even though my name is in the beneficiary list.
+168,168-1,Scheme_actions,What is the current status of my PM-KISAN grievance?
+168,168-2,Scheme_actions,My registration number is KL2210000980.
+169,169-1,Scheme_actions,Has my PM-KISAN grievance been resolved yet?
+169,169-2,Scheme_actions,Registration number is KL2210000980.
+170,170-1,Advisory,I want to check my PM-KISAN status.
+170,170-2,Scheme_actions,Registration number is KL2210000980.
+170,170-3,Advisory,OTP is 1111.
+170,170-4,Scheme_actions,I can see installment 17 is the latest but it has not been credited. Can I file a grievance?
+170,170-5,Scheme_actions,"Yes, file the grievance for non-receipt of the latest PM-KISAN installment for KL2210000980."
+171,171-1,Advisory,Can I see my soil health card report?
+171,171-2,Advisory,My phone number is 9876543210.
+171,171-3,Advisory,I want the 2024-25 cycle report.
+172,172-1,Advisory,I want to check my PMFBY crop insurance policy status.
+172,172-2,Advisory,My registered phone number is 9876543210.
+172,172-3,Advisory,"I received the OTP, it is 111111."
+172,172-4,Advisory,Please check policy status for Kharif season 2024.
+173,173-1,Advisory,I want to know the claim status of my PMFBY crop insurance.
+173,173-2,Advisory,My phone number is 9876543210.
+173,173-3,Advisory,OTP is 111111.
+173,173-4,Advisory,Tell me the claim status for Kharif 2024.
+174,174-1,Advisory,PMFBY crop insurance ka policy status check karna hai.
+174,174-2,Advisory,Phone number 9876543210.
+174,174-3,Advisory,OTP is 111111.
+174,174-4,Advisory,Kharif 2024 ke liye policy status chahiye.
+175,175-1,Advisory,Can you check if I have a PMFBY policy for Rabi season?
+175,175-2,Advisory,My phone number is 9876543210.
+175,175-3,Advisory,The OTP I received is 111111.
+175,175-4,Advisory,Check policy status for Rabi 2024.
+176,176-1,Scheme_actions,I want to file a PMFBY grievance. My crop insurance claim was not settled.
+176,176-2,Advisory,My registered mobile number is 9876543210.
+176,176-3,Advisory,I received the OTP: 111111.
+176,176-4,Scheme_actions,My PMFBY application number is PMFBY2024KL001. The season is Kharif 2024.
+176,176-5,Scheme_actions,Grievance: I did not receive the claim amount despite submitting all documents.
+177,177-1,Scheme_actions,I want to register a complaint for PMFBY crop insurance.
+177,177-2,Advisory,"Phone number 9876543210, OTP 111111."
+177,177-3,Scheme_actions,"Application number PMFBY2024KL001, Kharif 2024."
+177,177-4,Scheme_actions,Grievance: My crop was damaged but I did not receive compensation.
+178,178-1,Advisory,Which crops are registered under GFR near my farm in Kochi?
+178,178-2,Advisory,My farm is at latitude 9.93 and longitude 76.27.
+178,178-3,Advisory,I am specifically interested in tapioca and cotton crops.
+179,179-1,Advisory,I need fertilizer recommendations for my tapioca and cotton crops.
+179,179-2,Advisory,I am in Kerala. My phone number is 9876543210.
+179,179-3,Advisory,Please give recommendations for the 2024-25 cycle for Tapioca and Cotton.
+180,180-1,Advisory,Which GFR registered crops are near my farm?
+180,180-2,Agri_services,"My farm location: latitude 9.93, longitude 76.27, Kochi Kerala."
+180,180-3,Advisory,Also give fertilizer recommendations for tapioca and cotton.
+181,181-1,Advisory,I want to find certified seed dealers near my farm for tapioca.
+181,181-2,Advisory,"My farm is near Pune, Maharashtra."
+181,181-3,Advisory,The latitude is 9.93 and longitude is 76.27.
+182,182-1,Advisory,Where can I get certified cotton seeds near me?
+182,182-2,Agri_services,"My location is Pune, Maharashtra."
+183,183-1,Advisory,What crop groups are available in the SATHI seed portal?
+184,184-1,Advisory,Can you list crops available under the oilseeds group in SATHI?
+184,184-2,Advisory,Now search for certified cotton seed dealers near Pune.
+185,185-1,Scheme_actions,I want to check my PMFBY crop insurance and file a grievance if my claim is pending.
+185,185-2,Advisory,My phone number is 9876543210.
+185,185-3,Advisory,OTP received: 111111.
+185,185-4,Advisory,Check claim status for Kharif 2024.
+185,185-5,Scheme_actions,The claim has not been settled. Application number PMFBY2024KL001. Please file a grievance.

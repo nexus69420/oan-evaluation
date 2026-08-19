@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Union
 
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, TemplateNotFound
 
 
 PromptSpec = Union[str, Dict[str, Any]]
@@ -36,6 +36,19 @@ def render_prompt(
     )
     template = env.get_template(resolved_name)
     return template.render(**(context or {}))
+
+
+def try_render_prompt(
+    prompt_file: str,
+    *,
+    context: Optional[Dict[str, Any]] = None,
+    prompt_dir: str = "assets/prompts",
+) -> Optional[str]:
+    """Like render_prompt but returns None if the template file does not exist."""
+    try:
+        return render_prompt(prompt_file, context=context, prompt_dir=prompt_dir)
+    except TemplateNotFound:
+        return None
 
 
 def combine_prompts(

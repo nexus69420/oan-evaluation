@@ -1,7 +1,0 @@
-{
-    "provider_name": "openai",
-    "provider_base_url": "http://216.48.185.71:8080/v1/",
-    "model_name": "Qwen/Qwen3.5-122B-A10B",
-    "model_settings": {},
-    "date": "2026-03-04 15:29:19"
-}

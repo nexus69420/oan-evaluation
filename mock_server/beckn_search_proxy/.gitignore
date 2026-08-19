@@ -1,0 +1,3 @@
+# Local overrides (keep .env.example in git)
+.env
+request_log.txt

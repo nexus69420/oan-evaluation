@@ -25,7 +25,7 @@ Score **0** (Fabricated): The response includes some fact, number, or instructio
 
 - Question: *How do I manage whiteflies in cotton?*
 - Score **1** if the response says: "You can use yellow sticky traps and neem oil" (and this is in the sources) **or** "I don't have information on this in the provided sources."
-- Score **0** if the response says: "There is no source about this but you can use neem oil and spray 80mg of Potassium" (uses external knowledge to fill gaps).
+- Score **0** if the response says: "There is no source about this but you can use neem oil and spray 80mg of Potassium" (uses no cited knowledge to fill gaps).
 
 ---
 
