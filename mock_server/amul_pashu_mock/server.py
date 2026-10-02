@@ -11,7 +11,9 @@ Do not point the shared amul_app container here.
 """
 from __future__ import annotations
 
+import hashlib
 import json
+from datetime import date, timedelta
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
@@ -39,17 +41,44 @@ FARMER = {
 }
 
 TECHNICIANS = [
-    {"userId": "EVAL-TECH-1", "fullName": "Eval Technician One", "mobileNumber": "9000000002"},
-    {"userId": "EVAL-TECH-2", "fullName": "Eval Technician Two", "mobileNumber": "9000000003"},
+    {"userId": "EVAL-TECH-1", "fullName": "Rameshbhai Chaudhary", "mobileNumber": "9000000002"},
+    {"userId": "EVAL-TECH-2", "fullName": "Sureshbhai Patel", "mobileNumber": "9000000003"},
 ]
 
-MILK = {
-    "result": "ok",
-    "milk": [
-        {"date": "2026-07-16", "shift": "morning", "qty": 8.5, "fat": 4.1, "snf": 8.5, "amount": 340},
-    ],
-    "deduction": [],
-}
+MILK_HISTORY_DAYS = 60
+MILK_RATE_PER_FAT_KG = 820  # rupees per kg of fat
+
+
+def _milk_records(today: date) -> tuple[list[dict], list[dict]]:
+    """Deterministic morning/evening pours for the last MILK_HISTORY_DAYS days, plus monthly deductions."""
+    milk, deduction = [], []
+    for back in range(MILK_HISTORY_DAYS - 1, -1, -1):
+        day = today - timedelta(days=back)
+        for shift in ("morning", "evening"):
+            if back == 0 and shift == "evening":
+                continue
+            seed = int(hashlib.sha1(f"{day}:{shift}".encode()).hexdigest()[:8], 16)
+            qty = round((4.5 if shift == "morning" else 3.5) + (seed % 13) / 10, 1)
+            fat = round(3.8 + (seed >> 4) % 9 / 10, 1)
+            snf = round(8.2 + (seed >> 8) % 5 / 10, 1)
+            amount = round(qty * fat / 100 * MILK_RATE_PER_FAT_KG, 2)
+            milk.append({"date": day.isoformat(), "shift": shift, "qty": qty, "fat": fat, "snf": snf, "amount": amount})
+        if day.day == 5:
+            deduction.append({"date": day.isoformat(), "accountname": "Cattle feed", "amount": 1450})
+        if day.day == 20:
+            deduction.append({"date": day.isoformat(), "accountname": "Mineral mixture", "amount": 240})
+    return milk, deduction
+
+
+def milk_collection(query: dict[str, str]) -> dict:
+    milk, deduction = _milk_records(date.today())
+    start, end = query.get("fromdate", ""), query.get("todate", "")
+    in_range = lambda r: (not start or r["date"] >= start) and (not end or r["date"] <= end)  # noqa: E731
+    return {
+        "result": "ok",
+        "milk": [r for r in milk if in_range(r)],
+        "deduction": [r for r in deduction if in_range(r)],
+    }
 
 # In-process record of booking attempts. Never forwarded.
 WRITE_LOG: list[dict] = []
@@ -91,7 +120,7 @@ class Handler(BaseHTTPRequestHandler):
             self._send(200, TECHNICIANS)
             return
         if name == "FarmerMilkCollectionDetails":
-            self._send(200, MILK)
+            self._send(200, milk_collection(query))
             return
         if name == "get-amul-farmer":
             self._send(200, {"Farmer": [FARMER]})
@@ -143,7 +172,8 @@ class Handler(BaseHTTPRequestHandler):
         ticket = f"EVAL-{kind}-{_TICKETS[name]:04d}"
         WRITE_LOG.append({"refused": False, "endpoint": name, "query": query, "ticketNumber": ticket})
         if name == "CreateAICall":
-            self._send(200, {"aitName": "Eval Technician One", "ticketNumber": ticket})
+            tech = next((t for t in TECHNICIANS if t["userId"] == query.get("userId")), TECHNICIANS[0])
+            self._send(200, {"aitName": tech["fullName"], "ticketNumber": ticket})
             return
         self._send(200, {"ticketNumber": ticket})
 

@@ -19,7 +19,7 @@ ai-animal,ai-animal-3,The first one.,પહેલો.,AI_technician_booking,crea
 milk-dates,milk-dates-1,How much milk was produced on the 14th?,14tarikh nu દૂધ કેટલું થયું,Milk_collection,get_farmer_milk_collection_details
 milk-dates,milk-dates-2,Of the 13th date,13તારીખ નું,Milk_collection,get_farmer_milk_collection_details
 milk-dates,milk-dates-3,Please provide the accounts from 16.7.2026 to 31.7.2026.,16.7.2026થી 31.7.2026સુધી નો હિસાબ આપો,Milk_collection,get_farmer_milk_collection_details
-milk-today,milk-today-1,How much is today's milk?,આજ નું દૂધ કેટલું છે,Milk_collection,get_farmer_milk_collection_details
+milk-today,milk-today-1,How much milk did I pour at the society today?,આજે મેં મંડળીમાં કેટલું દૂધ ભર્યું?,Milk_collection,get_farmer_milk_collection_details
 milk-period,milk-period-1,From April 4th until May,4 એપ્રિલથી સુધી મે સુધી,Milk_collection,get_farmer_milk_collection_details
 milk-period,milk-period-2,How much money did I receive during this period?,આ સમયગાળા દરમિયાન મને કેટલા પૈસા મળ્યા?,Milk_collection,get_farmer_milk_collection_details
 milk-week,milk-week-1,Show the details of the milk I have deposited in the last 7 days.,છેલ્લા 7 દિવસમાં મેં જમા કરાવેલા દૂધની વિગતો બતાવો.,Milk_collection,get_farmer_milk_collection_details

@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import threading
 import urllib.request
+from datetime import date, timedelta
 from http.server import ThreadingHTTPServer
 
 from server import HOST, PORT, Handler, WRITE_LOG
@@ -29,6 +30,13 @@ def main() -> None:
     assert status == 200 and farmer[0]["farmerCode"] == "EVAL-FARMER", farmer
     status, techs = get("/GetAITUserDetailsBySocietyCode?unionCode=EVAL-UNION&societyCode=EVAL-SOC")
     assert status == 200 and len(techs) == 2, techs
+    today = date.today()
+    week_ago = (today - timedelta(days=6)).isoformat()
+    status, milk = get(f"/FarmerMilkCollectionDetails?fromdate={week_ago}&todate={today.isoformat()}")
+    assert status == 200 and len(milk["milk"]) == 13, len(milk["milk"])
+    assert all(week_ago <= r["date"] <= today.isoformat() for r in milk["milk"] + milk["deduction"])
+    status, old = get("/FarmerMilkCollectionDetails?fromdate=2020-01-01&todate=2020-01-31")
+    assert status == 200 and old["milk"] == [] and old["deduction"] == [], old
     status, booked = post(
         "/CreateAICall?unionCode=EVAL-UNION&societyCode=EVAL-SOC&farmerCode=EVAL-FARMER&userId=EVAL-TECH-1&species=cow"
     )
