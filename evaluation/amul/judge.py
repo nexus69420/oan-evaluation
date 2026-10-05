@@ -14,6 +14,15 @@ JUDGES: dict[str, list[str]] = {
     "grounding": ["source_alignment", "no_fabrication", "citation_accuracy"],
     "gujarati_language": ["grammar", "terminology", "language_purity", "fluency", "gujarati_language"],
     "prod_reference": ["reference_agreement"],
+    "task_success": ["task_success"],
+    "translation_meaning": ["translation_meaning"],
+    "safety": ["safety_compliance"],
+    "search_quality": ["search_quality"],
+    "recovery": ["recovery_clarification"],
+    "context_retention": ["context_retention"],
+    "agristack": ["agristack_workflow"],
+    "term_identification": ["term_identification"],
+    "tool_sequencing": ["tool_sequencing"],
 }
 
 # Judges that only apply when the turn carries this field.
@@ -101,25 +110,45 @@ class Judge:
         return re.sub(r"\{\{\s*(\w+)\s*\}\}", lambda m: values.get(m.group(1), m.group(0)), text)
 
     def _complete(self, prompt: str) -> str:
-        body = {"model": self.model, "temperature": 0, "messages": [{"role": "user", "content": prompt}]}
-        req = Request(
-            self.url,
-            data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
-            headers={
-                "Authorization": f"Bearer {self.key}",
-                "Content-Type": "application/json",
-                "User-Agent": "amul-eval/1.0",
-            },
-        )
-        with urlopen(req, timeout=300) as resp:
-            return json.load(resp)["choices"][0]["message"]["content"]
+        from urllib.error import HTTPError
+
+        last_error: Exception | None = None
+        for use_json in (True, False):
+            body = {"model": self.model, "temperature": 0, "messages": [{"role": "user", "content": prompt}]}
+            if use_json:
+                body["response_format"] = {"type": "json_object"}
+            req = Request(
+                self.url,
+                data=json.dumps(body, ensure_ascii=False).encode("utf-8"),
+                headers={
+                    "Authorization": f"Bearer {self.key}",
+                    "Content-Type": "application/json",
+                    "User-Agent": "amul-eval/1.0",
+                },
+            )
+            try:
+                with urlopen(req, timeout=300) as resp:
+                    return json.load(resp)["choices"][0]["message"]["content"]
+            except HTTPError as exc:
+                last_error = exc
+                if use_json:
+                    continue
+                raise
+        raise RuntimeError(f"judge request failed: {last_error}")
 
     @staticmethod
     def _parse(text: str, metrics: list[str]) -> dict[str, tuple[float | None, str]]:
         match = re.search(r"\{.*\}", text, re.S)
         if not match:
             raise ValueError("no JSON in judge reply")
-        data = json.loads(match.group())
+        blob = match.group()
+        try:
+            data = json.loads(blob)
+        except json.JSONDecodeError:
+            try:
+                data = json.loads(blob.replace('\\"', '"'))
+            except json.JSONDecodeError:
+                return _scores_from_broken(text, metrics)
         parsed = {}
         for metric in metrics:
             entry = data.get(metric)
@@ -142,3 +171,22 @@ class Judge:
             except (ValueError, json.JSONDecodeError) as exc:
                 error = exc
         raise RuntimeError(f"{judge} judge failed twice: {error}")
+
+
+def _scores_from_broken(text: str, metrics: list[str]) -> dict[str, tuple[float | None, str]]:
+    """Gemma sometimes mixes escaped and raw quotes in one object. Pull the scores out anyway."""
+    parsed = {}
+    for metric in metrics:
+        found = re.search(
+            rf"{re.escape(metric)}(?:\\?\"|\s|:|\{{)*score(?:\\?\"|\s|:)*\s*(null|[1-5])",
+            text,
+            re.I,
+        )
+        if not found:
+            raise ValueError(f"missing {metric}")
+        raw = found.group(1)
+        score = None if raw.lower() == "null" else float(raw)
+        if score is not None and score not in (1, 2, 3, 4, 5):
+            raise ValueError(f"{metric} score out of range: {score!r}")
+        parsed[metric] = (score, "Score recovered from a malformed judge reply.")
+    return parsed

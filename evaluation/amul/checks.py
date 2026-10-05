@@ -1,9 +1,12 @@
 """Rule-based Amul metrics. No LLM calls; each returns (score, reason) or None when not applicable."""
 from __future__ import annotations
 
+import csv
 import json
 import re
 from datetime import date
+from functools import lru_cache
+from pathlib import Path
 from typing import Callable
 
 from helpers.language_utils import (
@@ -42,6 +45,14 @@ BUFFALO_WORDS = re.compile(r"\bbuffalo(?:es|s)?\b|ભેંસ|ભેસ|પા�
 COW_WORDS = re.compile(r"\bcows?\b|\bheifers?\b|ગાય|વાછરડી", re.I)
 URGENT_WORDS = re.compile(r"\b(?:urgent|emergency|immediately|serious|critical)\b|તાત્કાલિક|ઇમરજન્સી|ગંભીર", re.I)
 MAX_MILK_RANGE_DAYS = 31
+_MILK_ROW = re.compile(
+    r"\|\s*(\d{4}-\d{2}-\d{2})\s*\|\s*[^|]+\|\s*([\d.]+)\s*\|\s*[\d.]+\s*\|\s*[\d.]+\s*\|\s*([\d.]+)\s*\|"
+)
+_LITRES = re.compile(r"(\d+(?:\.\d+)?)\s*lit(?:er|re)?s?\b", re.I)
+_RUPEES = re.compile(r"(?:₹|rs\.?)\s*(\d[\d,]*(?:\.\d+)?)", re.I)
+_TOTAL_WORD = re.compile(r"\btotal\b|કુલ", re.I)
+_MONEY_ASK = re.compile(r"earning|money|rupee|payment|કમાણી|પૈસા", re.I)
+_LITRE_ASK = re.compile(r"lit(?:er|re)|લીટર|લિટર", re.I)
 
 
 def _session_tickets(turn: dict, session: list[dict]) -> set[str]:
@@ -82,6 +93,49 @@ def ticket_consistency(turn: dict, session: list[dict]) -> Result:
             return 0.0, f"English answer has ticket {', '.join(untold)}, but the Gujarati translation dropped it."
         return 0.0, f"Booking tool returned ticket {', '.join(untold)}, but the reply does not tell the farmer."
     return 1.0, f"Reply's ticket {', '.join(sorted(in_answer))} matches the booking tool's result."
+
+
+@lru_cache(maxsize=1)
+def _seed_expected_tools() -> dict[str, str]:
+    """Per-turn expected tools from the seed sheet. Empty means this turn should not be scored."""
+    path = Path(__file__).resolve().parents[2] / "inference" / "amul_seed_questions.csv"
+    with path.open(encoding="utf-8", newline="") as handle:
+        return {row["question_id"]: (row.get("expected_tools") or "").strip() for row in csv.DictReader(handle)}
+
+
+def _spec_list(turn: dict) -> list[str]:
+    raw = (turn.get("expected_tools") or "").strip() or _seed_expected_tools().get(turn.get("question_id") or "", "")
+    return [part.strip() for part in raw.split("+") if part.strip()]
+
+
+def expected_tools(turn: dict, session: list[dict]) -> Result:
+    """Tools this turn itself should call. `prior:name` counts a call on this turn or an earlier one.
+
+    Clarification turns are blank in the seed sheet. They are not failed for skipping the session's tool.
+    """
+    spec = _spec_list(turn)
+    if not spec:
+        return None
+    called_now = [c.get("name") for c in turn.get("tool_calls") or [] if c.get("name")]
+    called_so_far = [
+        c.get("name")
+        for earlier in session
+        if earlier.get("turn_index", 0) <= turn.get("turn_index", 0)
+        for c in earlier.get("tool_calls") or []
+        if c.get("name")
+    ]
+    missing = []
+    for item in spec:
+        if item.startswith("prior:"):
+            name = item.split(":", 1)[1]
+            if name not in called_so_far:
+                missing.append(f"{name} by this turn")
+        elif item not in called_now:
+            missing.append(item)
+    if missing:
+        used = ", ".join(dict.fromkeys(called_now)) or "nothing"
+        return 0.0, f"Expected {', '.join(missing)}; this turn called {used}."
+    return 1.0, f"Expected tools present: {', '.join(spec)}."
 
 
 def expected_tool_called(turn: dict, session: list[dict]) -> Result:
@@ -217,6 +271,61 @@ def tool_arguments(turn: dict, session: list[dict]) -> Result:
     return 1.0, f"Arguments of {', '.join(dict.fromkeys(checked))} match the farmer profile, technician list and the farmer's words."
 
 
+def _milk_rows_so_far(turn: dict, session: list[dict]) -> list[tuple[float, float]]:
+    """Qty and amount from the latest milk-tool table in this session, up to and including this turn."""
+    found: list[tuple[float, float]] = []
+    for earlier in session:
+        if earlier.get("turn_index", 0) > turn.get("turn_index", 0):
+            continue
+        for call in earlier.get("tool_calls") or []:
+            if call.get("name") != "get_farmer_milk_collection_details":
+                continue
+            output = call.get("output")
+            text = output if isinstance(output, str) else json.dumps(output, ensure_ascii=False)
+            rows = [(float(qty), float(amount)) for _, qty, amount in _MILK_ROW.findall(text)]
+            if rows:
+                found = rows
+    return found
+
+
+def milk_total(turn: dict, session: list[dict]) -> Result:
+    """Stated litre or earnings total against the sum of the milk records already fetched.
+
+    Blank when this turn is not asking for a total, or no milk table is in the session yet.
+    The grounding judge has both caught and missed the 72.7 L vs 68.4 L error.
+    """
+    question = f"{turn.get('question_en') or ''} {turn.get('question_gu') or ''}"
+    answer = turn.get("answer_en") or ""
+    if not _TOTAL_WORD.search(question) and not _TOTAL_WORD.search(answer):
+        return None
+    rows = _milk_rows_so_far(turn, session)
+    if not rows:
+        return None
+    wants_money = bool(_MONEY_ASK.search(question))
+    wants_litres = bool(_LITRE_ASK.search(question)) and not wants_money
+    problems = []
+    if wants_litres:
+        claimed = [float(n) for n in _LITRES.findall(answer)]
+        if not claimed:
+            return 0.0, "Farmer asked for a litre total, but the English answer states none."
+        actual = round(sum(qty for qty, _ in rows), 1)
+        if abs(claimed[0] - actual) > 0.05:
+            problems.append(f"answer says {claimed[0]:g} L, the {len(rows)} records sum to {actual:g} L")
+    elif wants_money:
+        claimed = [float(n.replace(",", "")) for n in _RUPEES.findall(answer)]
+        if not claimed:
+            return 0.0, "Farmer asked for total earnings, but the English answer states no amount."
+        actual = round(sum(amount for _, amount in rows), 2)
+        if abs(claimed[0] - actual) > 0.5:
+            problems.append(f"answer says ₹{claimed[0]:.2f}, the {len(rows)} records sum to ₹{actual:.2f}")
+    else:
+        return None
+    if problems:
+        return 0.0, "; ".join(problems) + "."
+    kind = "earnings" if wants_money else "litres"
+    return 1.0, f"Stated {kind} total matches the sum of the {len(rows)} collection records."
+
+
 def latency_s(turn: dict, session: list[dict]) -> Result:
     if turn.get("latency_s") is None:
         return None
@@ -225,8 +334,10 @@ def latency_s(turn: dict, session: list[dict]) -> Result:
 
 CHECKS: dict[str, Callable[[dict, list[dict]], Result]] = {
     "expected_tool_called": expected_tool_called,
+    "expected_tools": expected_tools,
     "ticket_consistency": ticket_consistency,
     "tool_arguments": tool_arguments,
+    "milk_total": milk_total,
     "output_hygiene": output_hygiene,
     "language_mixing": language_mixing,
     "glossary_adherence": glossary_adherence,

@@ -15,7 +15,7 @@ from evaluation.amul.checks import CHECKS
 from evaluation.amul.judge import JUDGE_REQUIRES, JUDGES, Judge, eval_farmer_context
 from evaluation.amul.langfuse_io import Langfuse, load_env_file, load_run
 
-CHECKS_VERSION = "amul-checks-v3"
+CHECKS_VERSION = "amul-checks-v5"
 
 
 def _is_low(name: str, score: float) -> bool:
@@ -48,6 +48,7 @@ def main() -> None:
         "feeds the terminology judge and glossary_adherence",
     )
     parser.add_argument("--limit", type=int, help="Only judge the first N turns (trial runs)")
+    parser.add_argument("--only", help="Comma-separated question_ids to score")
     parser.add_argument("--workers", type=int, default=4, help="Parallel judge calls")
     parser.add_argument("--cache", help="Save the extracted turns to this JSON file")
     parser.add_argument("--from-cache", help="Read turns from this JSON file instead of Langfuse")
@@ -79,6 +80,15 @@ def main() -> None:
     sessions: dict[str, list[dict]] = defaultdict(list)
     for turn in turns:
         sessions[turn["session_id"]].append(turn)
+    for history in sessions.values():
+        last = max(t.get("turn_index") or 0 for t in history)
+        for turn in history:
+            turn["is_last_turn"] = (turn.get("turn_index") or 0) == last
+    if args.only:
+        wanted = {item.strip() for item in args.only.split(",") if item.strip()}
+        targets_all = [turn for turn in turns if turn.get("question_id") in wanted]
+    else:
+        targets_all = turns
 
     checks = [] if args.checks == "none" else [n.strip() for n in args.checks.split(",") if n.strip()]
     judges = [n.strip() for n in args.judges.split(",") if n.strip()]
@@ -88,7 +98,7 @@ def main() -> None:
 
     # (turn, metric name, score, reason, version)
     results: list[tuple[dict, str, float, str, str]] = []
-    for turn in turns:
+    for turn in targets_all:
         for name in checks:
             outcome = CHECKS[name](turn, sessions[turn["session_id"]])
             if outcome is not None:
@@ -97,7 +107,7 @@ def main() -> None:
     if judges:
         context = Path(args.farmer_context).read_text(encoding="utf-8") if args.farmer_context else eval_farmer_context()
         judge = Judge(context)
-        targets = turns[: args.limit] if args.limit else turns
+        targets = targets_all[: args.limit] if args.limit else targets_all
 
         def score_turn(turn: dict) -> list[tuple[dict, str, float, str, str]]:
             rows = []
