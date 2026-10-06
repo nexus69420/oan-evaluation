@@ -23,6 +23,14 @@ JUDGES: dict[str, list[str]] = {
     "agristack": ["agristack_workflow"],
     "term_identification": ["term_identification"],
     "tool_sequencing": ["tool_sequencing"],
+    "completeness": ["completeness"],
+    "actionability": ["actionability"],
+    "context_fit": ["context_fit"],
+    "clarity": ["clarity"],
+    "conversation_closure": ["conversation_closure"],
+    "persona": ["persona_adherence"],
+    "brevity": ["brevity"],
+    "content_gap": ["content_gap"],
 }
 
 # Judges that only apply when the turn carries this field.
