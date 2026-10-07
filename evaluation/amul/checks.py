@@ -1,12 +1,9 @@
 """Rule-based Amul metrics. No LLM calls; each returns (score, reason) or None when not applicable."""
 from __future__ import annotations
 
-import csv
 import json
 import re
 from datetime import date
-from functools import lru_cache
-from pathlib import Path
 from typing import Callable
 
 from helpers.language_utils import (
@@ -93,60 +90,6 @@ def ticket_consistency(turn: dict, session: list[dict]) -> Result:
             return 0.0, f"English answer has ticket {', '.join(untold)}, but the Gujarati translation dropped it."
         return 0.0, f"Booking tool returned ticket {', '.join(untold)}, but the reply does not tell the farmer."
     return 1.0, f"Reply's ticket {', '.join(sorted(in_answer))} matches the booking tool's result."
-
-
-@lru_cache(maxsize=1)
-def _seed_expected_tools() -> dict[str, str]:
-    """Per-turn expected tools from the seed sheet. Empty means this turn should not be scored."""
-    path = Path(__file__).resolve().parents[2] / "inference" / "amul_seed_questions.csv"
-    with path.open(encoding="utf-8", newline="") as handle:
-        return {row["question_id"]: (row.get("expected_tools") or "").strip() for row in csv.DictReader(handle)}
-
-
-def _spec_list(turn: dict) -> list[str]:
-    raw = (turn.get("expected_tools") or "").strip() or _seed_expected_tools().get(turn.get("question_id") or "", "")
-    return [part.strip() for part in raw.split("+") if part.strip()]
-
-
-def expected_tools(turn: dict, session: list[dict]) -> Result:
-    """Tools this turn itself should call. `prior:name` counts a call on this turn or an earlier one.
-
-    Clarification turns are blank in the seed sheet. They are not failed for skipping the session's tool.
-    """
-    spec = _spec_list(turn)
-    if not spec:
-        return None
-    called_now = [c.get("name") for c in turn.get("tool_calls") or [] if c.get("name")]
-    called_so_far = [
-        c.get("name")
-        for earlier in session
-        if earlier.get("turn_index", 0) <= turn.get("turn_index", 0)
-        for c in earlier.get("tool_calls") or []
-        if c.get("name")
-    ]
-    missing = []
-    for item in spec:
-        if item.startswith("prior:"):
-            name = item.split(":", 1)[1]
-            if name not in called_so_far:
-                missing.append(f"{name} by this turn")
-        elif item not in called_now:
-            missing.append(item)
-    if missing:
-        used = ", ".join(dict.fromkeys(called_now)) or "nothing"
-        return 0.0, f"Expected {', '.join(missing)}; this turn called {used}."
-    return 1.0, f"Expected tools present: {', '.join(spec)}."
-
-
-def expected_tool_called(turn: dict, session: list[dict]) -> Result:
-    if not turn.get("is_last_turn") or not turn.get("tool_hint"):
-        return None
-    expected = turn["tool_hint"]
-    called = [c["name"] for t in session for c in t["tool_calls"]]
-    if expected in called:
-        return 1.0, f"Session called {expected} (tools used: {', '.join(dict.fromkeys(called))})."
-    used = ", ".join(dict.fromkeys(called)) or "none"
-    return 0.0, f"Session never called {expected}; tools used: {used}. Scored on the last turn for the whole session."
 
 
 def output_hygiene(turn: dict, session: list[dict]) -> Result:
@@ -333,8 +276,6 @@ def latency_s(turn: dict, session: list[dict]) -> Result:
 
 
 CHECKS: dict[str, Callable[[dict, list[dict]], Result]] = {
-    "expected_tool_called": expected_tool_called,
-    "expected_tools": expected_tools,
     "ticket_consistency": ticket_consistency,
     "tool_arguments": tool_arguments,
     "milk_total": milk_total,

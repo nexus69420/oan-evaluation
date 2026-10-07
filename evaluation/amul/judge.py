@@ -13,28 +13,19 @@ PROMPT_DIR = Path(__file__).resolve().parents[2] / "assets" / "prompts" / "metri
 JUDGES: dict[str, list[str]] = {
     "grounding": ["source_alignment", "no_fabrication", "citation_accuracy"],
     "gujarati_language": ["grammar", "terminology", "language_purity", "fluency", "gujarati_language"],
-    "prod_reference": ["reference_agreement"],
     "task_success": ["task_success"],
     "translation_meaning": ["translation_meaning"],
     "safety": ["safety_compliance"],
-    "search_quality": ["search_quality"],
     "recovery": ["recovery_clarification"],
     "context_retention": ["context_retention"],
-    "agristack": ["agristack_workflow"],
-    "term_identification": ["term_identification"],
     "tool_sequencing": ["tool_sequencing"],
     "completeness": ["completeness"],
     "actionability": ["actionability"],
     "context_fit": ["context_fit"],
-    "clarity": ["clarity"],
-    "conversation_closure": ["conversation_closure"],
     "persona": ["persona_adherence"],
     "brevity": ["brevity"],
     "content_gap": ["content_gap"],
 }
-
-# Judges that only apply when the turn carries this field.
-JUDGE_REQUIRES = {"prod_reference": "prod_reference"}
 
 # Knowledge results run to ~90k chars (47 union schemes); truncating them makes supported facts look invented.
 MAX_TOOL_OUTPUT_CHARS = 120_000
@@ -79,14 +70,6 @@ def _fmt_history(turn: dict, session: list[dict]) -> str:
     return "\n\n".join(blocks)
 
 
-def _fmt_prod_reference(turn: dict) -> str:
-    refs = turn.get("prod_reference") or []
-    return "\n\n".join(
-        f"Reference {i} — {r['tool']}({json.dumps(r['input'], ensure_ascii=False)}), match {r['similarity']}%:\n{r['output']}"
-        for i, r in enumerate(refs, 1)
-    )
-
-
 class Judge:
     def __init__(self, farmer_context: str) -> None:
         base = os.environ.get("SCENARIO_GEMMA_BASE_URL")
@@ -111,7 +94,6 @@ class Judge:
             "answer": turn.get("answer_en") or turn.get("answer_gu") or "",
             "question_gu": turn.get("question_gu") or "",
             "answer_gu": turn.get("answer_gu") or "",
-            "prod_reference": _fmt_prod_reference(turn),
             "glossary": "\n".join(f"- {en} -> {gu}" for en, gu in turn.get("glossary") or []) or "(no glossary terms in this answer)",
         }
         text = (PROMPT_DIR / f"{judge}.md").read_text(encoding="utf-8")

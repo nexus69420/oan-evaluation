@@ -154,6 +154,4 @@ def load_run(lf: Langfuse, dataset: str, run: str) -> list[dict]:
             for h in history
         ]
         history.append(turn)
-    for history in by_session.values():
-        history[-1]["is_last_turn"] = True
     return turns

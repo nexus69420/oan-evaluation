@@ -12,10 +12,10 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from evaluation.amul.checks import CHECKS
-from evaluation.amul.judge import JUDGE_REQUIRES, JUDGES, Judge, eval_farmer_context
+from evaluation.amul.judge import JUDGES, Judge, eval_farmer_context
 from evaluation.amul.langfuse_io import Langfuse, load_env_file, load_run
 
-CHECKS_VERSION = "amul-checks-v5"
+CHECKS_VERSION = "amul-checks-v6"
 
 
 def _is_low(name: str, score: float) -> bool:
@@ -37,12 +37,6 @@ def main() -> None:
     parser.add_argument("--judges", default="", help="Comma-separated Gemma judges. Options: " + ", ".join(JUDGES))
     parser.add_argument("--farmer-context", help="JSON file with the farmer profile; defaults to the eval stub's fixture farmer")
     parser.add_argument(
-        "--prod-reference",
-        action="store_true",
-        help="Attach successful knowledge-base tool results from other Amul Agent Dev conversations to turns whose own lookups failed",
-    )
-    parser.add_argument("--union", default="banas", help="Farmer's milk union, used to rank union-scheme references")
-    parser.add_argument(
         "--glossary-container",
         help="Agent container (e.g. amul_app_eval) used to build each answer's mini glossary with the agent's own code; "
         "feeds the terminology judge and glossary_adherence",
@@ -56,18 +50,11 @@ def main() -> None:
     args = parser.parse_args()
 
     load_env_file(args.env_file)
-    lf = Langfuse() if (args.post or args.prod_reference or not args.from_cache) else None
+    lf = Langfuse() if (args.post or not args.from_cache) else None
     if args.from_cache:
         turns = json.loads(Path(args.from_cache).read_text(encoding="utf-8"))
     else:
         turns = load_run(lf, args.dataset, args.run)
-    if args.prod_reference:
-        from evaluation.amul.prod_reference import attach_references, load_library
-
-        library = load_library(lf)
-        attached = attach_references(turns, library, union=args.union)
-        sizes = ", ".join(f"{tool} {len(entries)}" for tool, entries in library.items())
-        print(f"reference library: {sizes}; turns with a reference: {attached}")
     if args.glossary_container:
         from evaluation.amul.glossary import attach_glossary
 
@@ -80,10 +67,6 @@ def main() -> None:
     sessions: dict[str, list[dict]] = defaultdict(list)
     for turn in turns:
         sessions[turn["session_id"]].append(turn)
-    for history in sessions.values():
-        last = max(t.get("turn_index") or 0 for t in history)
-        for turn in history:
-            turn["is_last_turn"] = (turn.get("turn_index") or 0) == last
     if args.only:
         wanted = {item.strip() for item in args.only.split(",") if item.strip()}
         targets_all = [turn for turn in turns if turn.get("question_id") in wanted]
@@ -112,8 +95,6 @@ def main() -> None:
         def score_turn(turn: dict) -> list[tuple[dict, str, float, str, str]]:
             rows = []
             for name in judges:
-                if JUDGE_REQUIRES.get(name) and not turn.get(JUDGE_REQUIRES[name]):
-                    continue
                 version = f"{judge.model}/{judge.prompt_version(name)}"
                 try:
                     for metric, (score, evidence) in judge.run(name, turn, sessions[turn["session_id"]]).items():
